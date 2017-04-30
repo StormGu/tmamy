@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-
+use App\Traits\CaptureIpTrait;
+use App\Models\Profile;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\UserRequest as StoreRequest;
 use App\Http\Requests\UserRequest as UpdateRequest;
@@ -18,7 +19,7 @@ class UserCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\User');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/users');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/users_manage');
         $this->crud->setEntityNameStrings('user', 'users');
 
         /*
@@ -61,6 +62,48 @@ class UserCrudController extends CrudController
             'name' => 'password_confirmation',
             'type' => 'password',
             'label' => __('auth.confirmPassword'),
+        ]);
+
+        $this->crud->addField([
+            'name' => 'password_confirmation',
+            'type' => 'password',
+            'label' => __('auth.confirmPassword'),
+        ]);
+
+        $this->crud->addField([
+            'name' => 'signup_ip_address',
+            'label' => __('auth.signup_ip_address'),
+            'attributes' => [
+                'readonly' => 'readonly'
+            ],
+        ]);
+        $this->crud->addField([
+            'name' => 'signup_confirmation_ip_address',
+            'label' => __('auth.signup_confirmation_ip_address'),
+            'attributes' => [
+                'readonly' => 'readonly'
+            ],
+        ]);
+        $this->crud->addField([
+            'name' => 'admin_ip_address',
+            'label' => __('auth.admin_ip_address'),
+            'attributes' => [
+                'readonly' => 'readonly'
+            ],
+        ]);
+        $this->crud->addField([
+            'name' => 'updated_ip_address',
+            'label' => __('auth.updated_ip_address'),
+            'attributes' => [
+                'readonly' => 'readonly'
+            ],
+        ]);
+        $this->crud->addField([
+            'name' => 'deleted_ip_address',
+            'label' => __('auth.deleted_ip_address'),
+            'attributes' => [
+                'readonly' => 'readonly'
+            ],
         ]);
 
         $this->crud->addColumn([
@@ -160,16 +203,29 @@ class UserCrudController extends CrudController
     }
 
     public function store(StoreRequest $request) {
+
+        $ipAddress  = new CaptureIpTrait;
+
+        $request->request->set('activated', '1');
+        $request->request->set('token', str_random(64));
+        $request->request->set('admin_ip_address', $ipAddress->getClientIp());
+        $request->request->set('password', bcrypt($request->input('password')));
+
         // your additional operations before save here
-        $redirect_location = parent::storeCrud();
+        $redirect_location = parent::storeCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
     }
 
     public function update(UpdateRequest $request) {
+
+        $ipAddress   = new CaptureIpTrait;
+
+        $request->request->set('updated_ip_address', $ipAddress->getClientIp());
+
         // your additional operations before save here
-        $redirect_location = parent::updateCrud();
+        $redirect_location = parent::updateCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
