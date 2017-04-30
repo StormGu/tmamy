@@ -7,11 +7,11 @@ use App\Models\Advertisement;
 
 class AdvertisementInfoCareersJobRequirement extends Model
 {
-      /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
+    /*
+  |--------------------------------------------------------------------------
+  | GLOBAL VARIABLES
+  |--------------------------------------------------------------------------
+  */
     protected $table = 'advertisement_info_careers_job_requirement';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
@@ -31,9 +31,8 @@ class AdvertisementInfoCareersJobRequirement extends Model
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
-    */ 
-     public function advertisement()
-    {
+    */
+    public function advertisement() {
         return $this->belongsTo(Advertisement::class);
     }
     /*

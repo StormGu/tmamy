@@ -75,33 +75,30 @@ class Advertisement extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function category()
-    {
+
+    public function category() {
         return $this->belongsTo(Category::class);
     }
 
-    public function account()
-    {
+    public function account() {
 
     }
 
-    public function customer()
-    {
+    public function customer() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function magazine_version()
-    {
+    public function magazine_version() {
         return $this->belongsTo(Category::class);
     }
 
-    public function magazine_page_no()
-    {
+    public function magazine_page_no() {
         return $this->belongsTo(Category::class);
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdvertisementInfoCareersJobSectorTable extends Migration
+class CreateConstantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateAdvertisementInfoCareersJobSectorTable extends Migration
      */
     public function up()
     {
-        Schema::create('advertisement_info_careers_job_sector', function (Blueprint $table) {
-            $table->increments('id');
-
-            $table->integer('advertisement_id')->nullable();
-            $table->string('sector_id');
+        Schema::create('constants', function (Blueprint $table) {
             
-            $table->timestamps();
+            $table->increments('id');
+            $table->string('key');
+            $table->string('value');
+            
         });
     }
 
@@ -30,6 +29,6 @@ class CreateAdvertisementInfoCareersJobSectorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('advertisement_info_careers_job_sector');
+        Schema::dropIfExists('constants');
     }
 }

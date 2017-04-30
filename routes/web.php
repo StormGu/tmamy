@@ -41,6 +41,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
     CRUD::resource('categories', 'CategoryCrudController');
     CRUD::resource('stores', 'StoreCrudController');
     CRUD::resource('users_manage', 'UserCrudController');
+    CRUD::resource('constants', 'ConstantCrudController');
 });
 
 // Registered, activated, and is admin routes.

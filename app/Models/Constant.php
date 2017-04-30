@@ -3,53 +3,60 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Advertisement;
+use Backpack\CRUD\CrudTrait;
+use App\Models\PersonHouse;
+use Backpack\CRUD\ModelTraits\SpatieTranslatable\HasTranslations;
 
-class AdvertisementInfoCareersJobSector extends Model
+class Constant extends Model
 {
-      /*
+    use CrudTrait;
+    use HasTranslations;
+     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
-    protected $table = 'advertisement_info_careers_job_sector';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
+
+    //protected $table = 'constants';
+    //protected $primaryKey = 'id';
+    public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [
-        'advertisement_id',
-        'sector_id'
-    ];
+    protected $fillable = ['key', 'value'];
     // protected $hidden = [];
     // protected $dates = [];
+    public $translatable = ['value'];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+
+    public function getKeyTrans() {
+
+        return trans("constant.$this->key");
+    }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
-    */ 
-     public function advertisement()
-    {
-        return $this->belongsTo(Advertisement::class);
-    }
+    */
 
-    public function sector() {
-
+    public function ownerships(){
+        return $this->hasMany(PersonHouse::class);
     }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
     |--------------------------------------------------------------------------
     */
+
     /*
     |--------------------------------------------------------------------------
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

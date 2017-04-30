@@ -14,16 +14,16 @@ class AdvertisementFeature extends Model
     protected $fillable = [
         'advertisement_id',
         'feature_list_id',
-         'start_date',
-          'expire_date',
-           'status',
-            'offer_id'
+        'start_date',
+        'expire_date',
+        'status',
+        'offer_id'
     ];
     // protected $hidden = [];
-     protected $dates = [
-         'start_date',
-          'expire_date'
-          ];
+    protected $dates = [
+        'start_date',
+        'expire_date'
+    ];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
@@ -33,21 +33,19 @@ class AdvertisementFeature extends Model
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
-    */ 
-    public function advertisement()
-    {
+    */
+    public function advertisement() {
         return $this->belongsTo(Advertisement::class);
     }
 
-    public function feature()
-    {
+    public function feature() {
 
     }
 
-    public function offer()
-    {
+    public function offer() {
 
     }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
