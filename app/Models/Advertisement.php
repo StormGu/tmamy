@@ -102,6 +102,10 @@ class Advertisement extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function features(){
+        return $this->belongsToMany(FeatureList::class, 'advertisement_feature', 'advertisement_id', 'feature_list_id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
