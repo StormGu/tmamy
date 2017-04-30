@@ -35,7 +35,7 @@
 
           </div>
 
-          {!! Form::model($user, array('action' => array('UsersManagementController@update', $user->id), 'method' => 'PUT')) !!}
+          {!! Form::model($user, array('action' => array('Admin\UsersManagementController@update', $user->id), 'method' => 'PUT')) !!}
 
             {!! csrf_field() !!}
 

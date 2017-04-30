@@ -94,20 +94,14 @@
 
                                                     @if ($user_role->name == 'User')
                                                         @php $labelClass = 'primary' @endphp
-
                                                     @elseif ($user_role->name == 'Admin')
                                                         @php $labelClass = 'warning' @endphp
-
                                                     @elseif ($user_role->name == 'Unverified')
                                                         @php $labelClass = 'danger' @endphp
-
                                                     @else
                                                         @php $labelClass = 'default' @endphp
-
                                                     @endif
-
                                                     <span class="label label-{{$labelClass}}">{{ $user_role->name }}</span>
-
                                                 @endforeach
                                             </td>
                                             <td class="hidden-sm hidden-xs hidden-md">{{$user->created_at}}</td>

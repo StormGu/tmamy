@@ -21,11 +21,11 @@
           <!-- ================================================ -->
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
 
+          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/users') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.users') }}</span></a></li>
+          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/advertisements') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.advertisements') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/categories') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.categories') }}</span></a></li>
-
+          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/stores') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.stores') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/routes') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.routes') }}</span></a></li>
-
-
           <!-- ======================================= -->
           <li class="header">{{ trans('backpack::base.user') }}</li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/logout') }}"><i class="fa fa-sign-out"></i> <span>{{ trans('backpack::base.logout') }}</span></a></li>

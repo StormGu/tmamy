@@ -5,76 +5,90 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\AdvertisementRequest as StoreRequest;
-use App\Http\Requests\AdvertisementRequest as UpdateRequest;
+use App\Http\Requests\UserRequest as StoreRequest;
+use App\Http\Requests\UserRequest as UpdateRequest;
 
-class AdvertisementCrudController extends CrudController
+class UserCrudController extends CrudController
 {
-    public function setup()
-    {
+    public function setup() {
 
         /*
         |--------------------------------------------------------------------------
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Advertisement');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/advertisements');
-        $this->crud->setEntityNameStrings('advertisement', 'advertisements');
+        $this->crud->setModel('App\Models\User');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/users');
+        $this->crud->setEntityNameStrings('user', 'users');
 
         /*
         |--------------------------------------------------------------------------
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        // $this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'email',
+            'label' => __('auth.email'),
+        ]);
 
         $this->crud->addField([
-            'name' => 'title',
-            'type' => 'text',
-            'label' => __('adv.title')
+            'name' => 'first_name',
+            'label' => __('auth.first_name'),
         ]);
 
-        $this->crud->addColumn([
-            'name' => 'title',
-            'type' => 'text',
-            'label' => __('adv.title')
+        $this->crud->addField([
+            'name' => 'last_name',
+            'label' => __('auth.last_name'),
         ]);
 
-        $this->crud->addColumn([
-            'label' => __('adv.category'), // Table column heading
-            'type' => 'select',
-            // the method that defines the relationship in your Model
-            'entity' => 'category',
+        $this->crud->addField([       // SelectMultiple = n-n relationship (with pivot table)
+            'label' => __('auth.roles'),
+            'type' => 'select_multiple',
+            'name' => 'roles', // the method that defines the relationship in your Model
+            'entity' => 'roles', // the method that defines the relationship in your Model
             'attribute' => 'name', // foreign key attribute that is shown to user
-            'model' => 'App\Models\Category'
+            'model' => '\jeremykenedy\LaravelRoles\Models\Role', // foreign key model
+            'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+        ]);
+
+        $this->crud->addField([
+            'name' => 'password',
+            'type' => 'password',
+            'label' => __('auth.password'),
+        ]);
+
+        $this->crud->addField([
+            'name' => 'password_confirmation',
+            'type' => 'password',
+            'label' => __('auth.confirmPassword'),
         ]);
 
         $this->crud->addColumn([
-            'label' => __('adv.customer'), // Table column heading
-            'type' => 'select',
-            'name' => 'user_id',
-            // the method that defines the relationship in your Model
-            'entity' => 'customer',
-            'attribute' => 'name', // foreign key attribute that is shown to user
-            'model' => 'App\Models\User'
+            'name' => 'email',
+            'label' => __('auth.email'),
         ]);
 
         $this->crud->addColumn([
-            'name' => 'is_free',
-            'type' => 'boolean',
-            'colors' => [
-                0 => 'red',
-                1 => 'green'
-            ],
-            'label' => __('adv.is_free')
+            'name' => 'name',
+            'label' => __('auth.name'),
+        ]);
+
+        $this->crud->addColumn([
+            'label' => __('auth.roles'), // Table column heading
+            'type' => "select_multiple",
+            'name' => 'roles', // the method that defines the relationship in your Model
+            'entity' => 'roles', // the method that defines the relationship in your Model
+            'attribute' => "name", // foreign key attribute that is shown to user
+            'model' => "App\\Models\\Role", // foreign key model
         ]);
 
         $this->crud->addColumn([
             'name' => 'created_at',
-            'type' => 'datetime',
-            'label' => __('adv.created_at')
+            'label' => __('auth.created_at'),
+            'type' => 'datetime'
         ]);
+
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
@@ -143,15 +157,9 @@ class AdvertisementCrudController extends CrudController
         // $this->crud->orderBy();
         // $this->crud->groupBy();
         // $this->crud->limit();
-
-        $this->crud->removeButton('create');
-        $this->crud->removeButton('update');
-
-        $this->crud->addButtonFromView('line', 'show_adv', 'show_adv', 'beginning');
     }
 
-    public function store(StoreRequest $request)
-    {
+    public function store(StoreRequest $request) {
         // your additional operations before save here
         $redirect_location = parent::storeCrud();
         // your additional operations after save here
@@ -159,8 +167,7 @@ class AdvertisementCrudController extends CrudController
         return $redirect_location;
     }
 
-    public function update(UpdateRequest $request)
-    {
+    public function update(UpdateRequest $request) {
         // your additional operations before save here
         $redirect_location = parent::updateCrud();
         // your additional operations after save here

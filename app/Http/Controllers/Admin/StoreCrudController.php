@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\AdvertisementRequest as StoreRequest;
-use App\Http\Requests\AdvertisementRequest as UpdateRequest;
+use App\Http\Requests\StoreRequest as StoreRequest;
+use App\Http\Requests\StoreRequest as UpdateRequest;
 
-class AdvertisementCrudController extends CrudController
+class StoreCrudController extends CrudController
 {
+
+    public $site_url = 'stores';
+
     public function setup()
     {
 
@@ -18,64 +21,54 @@ class AdvertisementCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Advertisement');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/advertisements');
-        $this->crud->setEntityNameStrings('advertisement', 'advertisements');
+        $this->crud->setModel('App\Models\Store');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/stores');
+        $this->crud->setEntityNameStrings('store', 'stores');
 
         /*
         |--------------------------------------------------------------------------
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
+
         // $this->crud->setFromDb();
 
-        $this->crud->addField([
-            'name' => 'title',
-            'type' => 'text',
-            'label' => __('adv.title')
-        ]);
-
         $this->crud->addColumn([
-            'name' => 'title',
-            'type' => 'text',
-            'label' => __('adv.title')
-        ]);
-
-        $this->crud->addColumn([
-            'label' => __('adv.category'), // Table column heading
+            'label' => __('store.category'),
             'type' => 'select',
-            // the method that defines the relationship in your Model
+            'name' => 'category_id',
             'entity' => 'category',
-            'attribute' => 'name', // foreign key attribute that is shown to user
-            'model' => 'App\Models\Category'
+            'attribute' => 'name',
+            'model' => "App\\Models\\Category",
         ]);
 
         $this->crud->addColumn([
-            'label' => __('adv.customer'), // Table column heading
+            'label' => __('store.customer'), // Table column heading
             'type' => 'select',
             'name' => 'user_id',
-            // the method that defines the relationship in your Model
             'entity' => 'customer',
             'attribute' => 'name', // foreign key attribute that is shown to user
             'model' => 'App\Models\User'
         ]);
 
         $this->crud->addColumn([
-            'name' => 'is_free',
-            'type' => 'boolean',
+            'name' => 'status',
+            'type' => 'label',
             'colors' => [
-                0 => 'red',
-                1 => 'green'
+                'blocked' => 'red',
+                'approved' => 'green',
+                'draft_ad' => 'teal',
+                'expired' => 'black',
+                'waiting_approval' => 'yellow',
             ],
-            'label' => __('adv.is_free')
+            'label' => __('store.status')
         ]);
 
         $this->crud->addColumn([
             'name' => 'created_at',
             'type' => 'datetime',
-            'label' => __('adv.created_at')
+            'label' => __('store.created_at')
         ]);
-
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
@@ -147,7 +140,7 @@ class AdvertisementCrudController extends CrudController
         $this->crud->removeButton('create');
         $this->crud->removeButton('update');
 
-        $this->crud->addButtonFromView('line', 'show_adv', 'show_adv', 'beginning');
+        $this->crud->addButtonFromView('line', 'show_store', 'show_store', 'beginning');
     }
 
     public function store(StoreRequest $request)
