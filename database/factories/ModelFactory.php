@@ -43,3 +43,4 @@ $factory->define(App\Models\Profile::class, function (Faker\Generator $faker) {
 		'github_username' => $faker->userName,
     ];
 });
+
