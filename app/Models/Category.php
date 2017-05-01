@@ -49,6 +49,9 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id');
     }
 
+    public function properties(){
+        return $this->hasMany(Property::class, 'category_id', 'id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

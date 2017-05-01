@@ -2,30 +2,29 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\ModelTraits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\CrudTrait;
 
-class AdvertisementInfoServicesCost extends Model
+class Property extends Model
 {
+    use CrudTrait;
+    use HasTranslations;
 
-    /*
-   |--------------------------------------------------------------------------
-   | GLOBAL VARIABLES
-   |--------------------------------------------------------------------------
-   */
+     /*
+    |--------------------------------------------------------------------------
+    | GLOBAL VARIABLES
+    |--------------------------------------------------------------------------
+    */
 
-    protected $table = 'advertisement_info_services_cost';
-    // protected $primaryKey = 'id';
+    //protected $table = 'propertys';
+    //protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [
-        'advertisement_id',
-        'currency_id',
-        'service_title',
-        'service_cost',
-    ];
+    protected $fillable = ['name', 'category_id'];
     // protected $hidden = [];
     // protected $dates = [];
-
+    public $translatable = ['name'];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
@@ -38,12 +37,8 @@ class AdvertisementInfoServicesCost extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function advertisement() {
-        return $this->belongsTo(Advertisement::class);
-    }
-
-    public function currency() {
-        return $this->belongsTo(Constant::class, 'currency_id', 'id');
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     /*
