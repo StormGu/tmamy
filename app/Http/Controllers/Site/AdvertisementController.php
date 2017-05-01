@@ -34,8 +34,8 @@ class AdvertisementController extends Controller
                 $data['object_career'] = AdvertisementInfoCareersJob::whereAdvertisementId($id)->first();
                 $data['object_requirements'] = AdvertisementInfoCareersJobRequirement::whereAdvertisementId($id)->get();
                 // $data['object_requirements'] = AdvertisementInfoCareersJobRequirement::whereAdvertisementId($id)->first();
-
-
+                $data['features'] = $object->features()->get();
+                
                 break;
 
             default:

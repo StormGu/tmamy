@@ -86,6 +86,23 @@
             </table>
         </div>
     </div>
+    <div class="p-details-tab">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#">Specialized in</a>
+            </li>
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+    <div class="tab-content review">
+        <div role="tabpanel" class="tab-pane active">
+            <ul>
+                @foreach($features as $key => $feature)
+                    <li>{{ $feature->name }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
 </div>
 
 <div class="col-md-6">

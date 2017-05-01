@@ -6,4 +6,6 @@ return [
     'categories' => 'Categories',
     'stores' => 'Stores',
     'advertisements' => 'Advertisements',
+    'constants' => 'Constants',
+    'slider' => 'Slider',
 ];

@@ -14,12 +14,12 @@ class ConstantCrudController extends CrudController
 
         $this->crud->setModel('App\Models\Constant');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/constants');
-        $this->crud->setEntityNameStrings('ثابت', 'ثوابت النظام');
+        $this->crud->setEntityNameStrings('Constant', 'Constants');
 
 
         $this->crud->addField([
             'name' => 'key',
-            'label' => 'النوع',
+            'label' => trans('constant.key'),
             'type' => 'select_from_array',
             'options' => [
                 'gender' => trans('constant.gender'),
@@ -28,8 +28,10 @@ class ConstantCrudController extends CrudController
                 'work_experience' => trans('constant.work_experience'),
                 'education_level' => trans('constant.education_level'),
                 'employment_status' => trans('constant.employment_status'),
+                'no_of_kitchen' => trans('constant.no_of_kitchen'),
             ]
         ]);
+
 
         $this->crud->addField([
             'label' => trans('constant.value'),

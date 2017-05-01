@@ -19,7 +19,7 @@ class FeatureListCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\FeatureList');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/featurelist');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/features');
         $this->crud->setEntityNameStrings('featurelist', 'feature_lists');
 
         /*
@@ -27,7 +27,6 @@ class FeatureListCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-
         $this->crud->allowAccess('reorder');
         $this->crud->enableReorder('name', 2);
         // ------ CRUD COLUMNS
@@ -53,7 +52,7 @@ class FeatureListCrudController extends CrudController
 
         $this->crud->addField([
             'label' => 'Parent',
-            'type' => 'select',
+            'type' => 'featurelist',
             'name' => 'parent_id',
             'entity' => 'parent',
             'attribute' => 'name',
