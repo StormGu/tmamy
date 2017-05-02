@@ -34,8 +34,8 @@ class AdvertisementFeature extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function advertisement() {
-        return $this->belongsTo(Advertisement::class);
+    public function advertisements() {
+        return $this->belongsToMany(Advertisement::class, 'features', 'advertisement_id', 'feature_list_id');
     }
 
     public function feature() {

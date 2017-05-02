@@ -26,7 +26,7 @@ class AdvertisementController extends Controller
         }
 
         $data['object'] = $object;
-        $data['adv_type'] = 'career_job';
+        $data['adv_type'] = '';
 
         switch ($data['adv_type']) {
             case 'career_job':
@@ -34,13 +34,15 @@ class AdvertisementController extends Controller
                 $data['object_career'] = AdvertisementInfoCareersJob::whereAdvertisementId($id)->first();
                 $data['object_requirements'] = AdvertisementInfoCareersJobRequirement::whereAdvertisementId($id)->get();
                 // $data['object_requirements'] = AdvertisementInfoCareersJobRequirement::whereAdvertisementId($id)->first();
-                $data['features'] = $object->features()->get();
-                
+
+
                 break;
 
             default:
 
         }
+
+        $data['features'] = $object->features()->get();
 
 
         return View('site.advertisement.show', $data);

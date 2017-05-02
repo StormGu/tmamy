@@ -38,7 +38,7 @@ class CheckIsUserActivated
                 'authenticated.activation-resend',
                 'social/redirect/{provider}',
                 'social/handle/{provider}',
-                'logout',
+                // 'logout',
                 'welcome',
             ];
 

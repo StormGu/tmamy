@@ -39,30 +39,34 @@ class Category extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function parent()
-    {
+    public function advertisements() {
+        return $this->hasMany(Advertisement::class, 'category_id', 'id');
+    }
+
+    public function parent() {
         return $this->belongsTo(Category::class, 'parent_id');
     }
 
-    public function children()
-    {
+    public function children() {
         return $this->hasMany(Category::class, 'parent_id');
     }
 
-    public function properties(){
+    public function properties() {
         return $this->hasMany(Property::class, 'category_id', 'id');
     }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
     |--------------------------------------------------------------------------
     */
 
-    public function scopeFirstLevelItems($query)
-    {
-        return $query->where('depth', '1')
-            ->orWhere('depth', null)
-            ->orderBy('lft', 'ASC');
+    public function scopeFirstLevelItems($query) {
+        return $query->where('depth', '1')->orWhere('depth', null)->orderBy('lft', 'ASC');
+    }
+
+    public function scopeParents($query) {
+        return $query->where('parent_id', NULL);
     }
 
     /*

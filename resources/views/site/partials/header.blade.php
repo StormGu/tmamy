@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="logo">
-                    <a href="{{ url('/') }}"><img src="{{ asset('site/logo1.png')}}" alt="Stepre"></a>
+                    <a href="{{ url('/') }}"><img src="{{ url(config('settings.site_logo')) }}" alt="Stepre"></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 hidden-xs">

@@ -3,20 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\CrudTrait;
 
-class Country extends Model
+class Language extends Model
 {
-    /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
+    use CrudTrait;
 
-     protected $table = 'countries';
+    /*
+   |--------------------------------------------------------------------------
+   | GLOBAL VARIABLES
+   |--------------------------------------------------------------------------
+   */
+
+    // protected $table = 'languages';
     // protected $primaryKey = 'id';
-    // public $timestamps = false;
+    public $timestamps = false;
     // protected $guarded = ['id'];
-     protected $fillable = ['name',];
+    protected $fillable = ['name', 'code', 'locale', 'image', 'direction', 'sort_order', 'status'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -25,6 +28,10 @@ class Country extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+
+    public function scopeActive($query) {
+        return $query->where('status', 1);
+    }
 
     /*
     |--------------------------------------------------------------------------

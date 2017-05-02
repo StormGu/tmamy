@@ -82,12 +82,12 @@ class Advertisement extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function category() {
-        return $this->belongsTo(Category::class);
+    public function currency() {
+        return $this->belongsTo(Constant::class, 'currency_id', 'id');
     }
 
-    public function account() {
-
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 
     public function customer() {
@@ -102,7 +102,7 @@ class Advertisement extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function features(){
+    public function features() {
         return $this->belongsToMany(FeatureList::class, 'advertisement_feature', 'advertisement_id', 'feature_list_id');
     }
 
@@ -111,11 +111,21 @@ class Advertisement extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+
+    public function scopeSponsered($query) {
+        return $query->where('top_list', 1);
+    }
+
+    public function scopeApproved($query) {
+        return $query->whereStatus('Approved');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

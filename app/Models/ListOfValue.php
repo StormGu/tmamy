@@ -2,23 +2,29 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\ModelTraits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\CrudTrait;
 
-class Country extends Model
+class ListOfValue extends Model
 {
-    /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
+    use CrudTrait;
+    use HasTranslations;
 
-     protected $table = 'countries';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
+    /*
+     |--------------------------------------------------------------------------
+     | GLOBAL VARIABLES
+     |--------------------------------------------------------------------------
+     */
+
+    protected $table = 'list_of_values';
+    //protected $primaryKey = 'id';
+    public $timestamps = false;
     // protected $guarded = ['id'];
-     protected $fillable = ['name',];
+    protected $fillable = ['title'];
     // protected $hidden = [];
     // protected $dates = [];
+    public $translatable = ['title'];
 
     /*
     |--------------------------------------------------------------------------
@@ -31,6 +37,10 @@ class Country extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+
+    public function list_of_values() {
+        return $this->hasMany(ListOfValueDetail::class, 'parent_id', 'id');
+    }
 
     /*
     |--------------------------------------------------------------------------
