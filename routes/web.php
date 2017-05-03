@@ -212,3 +212,27 @@ Route::get('image/{size}/{name}', function ($size = null, $name = null) {
     }
 
 })->where('name', '([A-z\d-\/_.]+)?');
+
+
+
+// Change Locale Route
+Route::get('lang/{lang}', function ($lang) {
+
+
+    // Get Available Languages
+    $available_locales = array_column(json_decode(json_encode(\DB::table('languages')
+        ->select('code')
+        ->where('status', '1')
+        ->orderBy('sort_order', 'asc')
+        ->get()), true), 'code');
+
+    if (in_array($lang, $available_locales)) {
+
+        \Session::put('locale', $lang);
+    } else {
+
+        \Session::put('locale', \Config::get('locale'));
+    }
+
+    return Redirect::back();
+});
