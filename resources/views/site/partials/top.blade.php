@@ -18,10 +18,14 @@
                             @endif
                         </ul>
                     </li>
-                    <li><a href="#"><i class="fa fa-globe"></i>English <i class="fa fa-angle-down"></i></a>
+                    <li>
+                        <a href="#">{!! Html::image('images/flags/' . $current_locale->image) !!} {{ $current_locale->locale }}
+                            <i class="fa fa-angle-down"></i></a>
                         <ul class="header-dropdown">
-                            @foreach(\App\Models\Language::active()->get()->pluck('locale', 'id') as $id => $name)
-                                <li><a href="{{ url('/') }}">{{ $name }}</a></li>
+                            @foreach(\App\Models\Language::active()->get() as $locale)
+                                <li>
+                                    <a href="{{ url('lang/'. $locale->code) }}">{!! Html::image('images/flags/' . $locale->image ) !!} {{ $locale->locale }} </a>
+                                </li>
                             @endforeach
                         </ul>
                     </li>
@@ -57,7 +61,8 @@
 
                     </div>
                     <div class="header-contact-info">
-                        <p><i class="fa fa-mobile"></i>@lang('titles.mobile_no'): <span>{{ Config('settings.mobile_no') }}</span></p>
+                        <p><i class="fa fa-mobile"></i>@lang('titles.mobile_no'):
+                            <span>{{ Config('settings.mobile_no') }}</span></p>
                     </div>
                 </div>
             </div>
