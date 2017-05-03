@@ -28,6 +28,7 @@
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/constants') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.constants') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/slider') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.slider') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/routes') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.routes') }}</span></a></li>
+          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/coupons') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.coupons') }}</span></a></li>
 
           <!-- ======================================= -->
           <li class="header">{{ trans('backpack::base.user') }}</li>

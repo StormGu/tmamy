@@ -54,9 +54,12 @@ Route::group([
     CRUD::resource('property', 'PropertyCrudController');
     CRUD::resource('listofvalues', 'ListOfValueCrudController');
 
+
     Route::group(['prefix' => 'listofvalues/{parent_id}'], function () {
         CRUD::resource('listofvaluesdetails', 'ListOfValueDetailCrudController');
     });
+
+    CRUD::resource('coupons', 'CouponCrudController');
 });
 
 // Registered, activated, and is admin routes.

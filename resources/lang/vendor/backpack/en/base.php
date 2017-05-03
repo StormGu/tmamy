@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'coupons' => 'Coupons',
     'users' => 'Users Administration',
     'routes' => 'Routes',
     'categories' => 'Categories',
