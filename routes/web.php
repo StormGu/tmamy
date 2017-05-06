@@ -20,9 +20,7 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('contact', 'ContactController@index');
     Route::post('contact', 'ContactController@store');
     Route::get('adv/{id}', 'AdvertisementController@get');
-    Route::get('setting', 'UserSettingController@index');
-    Route::post('setting', 'UserSettingController@update');
-    Route::get('stores', 'UserProfileController@stores');
+
 });
 
 
@@ -180,7 +178,17 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
         'uses' => 'ProfilesController@userProfileAvatar'
     ]);
 
-    Route::get('profile/ads/{type_id?}', 'Site\UserProfileController@advertisements');
+    Route::get('profile/ads/{type?}', 'Site\UserProfileController@advertisements');
+    Route::get('profile/stores/{type?}', 'Site\UserProfileController@stores');
+
+    Route::get('profile/settings', 'Site\UserSettingController@index');
+    Route::post('profile/settings', 'Site\UserSettingController@update');
+
+    Route::get('profile/settings/password', 'Site\UserSettingController@password');
+    Route::post('profile/settings/password', 'Site\UserSettingController@updateUserPassword');
+
+    Route::get('profile/settings/social', 'Site\UserSettingController@social');
+    Route::post('profile/settings/social', 'Site\UserSettingController@updateSocial');
 
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);

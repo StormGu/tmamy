@@ -24,8 +24,14 @@ class UserSettingRequest extends FormRequest
 
         $rules = [];
 
+        if ($this->dob){
+            $rules += [
+                'dob' => 'date'
+            ];
+        }
+
         if ($this->password) {
-            $rules = [
+            $rules += [
                 'password' => 'required|confirmed',
                 'password_confirmation' => 'required|same:password',
             ];

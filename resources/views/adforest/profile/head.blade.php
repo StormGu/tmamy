@@ -1,7 +1,7 @@
 <div class="col-md-12 col-xs-12 col-sm-12">
     <section class="search-result-item">
         <a class="image-link" href="#"><img class="image" alt=""
-                                            src="@if ($object->profile->avatar_status == 1) {{ $object->profile->avatar }} @else {{ Gravatar::get($object->email) }} @endif"
+                                            src="@if ($object->profile->avatar_status == 1){{ url($object->profile->avatar) }}@else {{ Gravatar::get($object->email) }} @endif"
                                             alt="{{ $object->name }}"> </a>
         <div class="search-result-item-body">
             <div class="row">
@@ -32,14 +32,14 @@
 
     <div class="dashboard-menu-container">
         <ul>
-            <li class="active"><a href="">
-                    <div class="menu-name"> @lang('profile.profile')</div>
+            <li @if(Request::is('profile/ads*')) class="active" @endif><a href="{{ url('profile/ads') }}">
+                    <div class="menu-name"> @lang('profile.ads')</div>
                 </a></li>
-            <li><a href="">
+            <li @if(Request::is('profile/store*')) class="active" @endif><a href="{{ url('profile/stores') }}">
                     <div class="menu-name">@lang('profile.stores')</div>
                 </a></li>
-            <li><a href="">
-                    <div class="menu-name">@lang('profile.ads')</div>
+            <li class="pull-right @if(Request::is('profile/settings*')) active @endif"><a href="{{ url('profile/settings') }}">
+                    <div class="menu-name">@lang('profile.settings')</div>
                 </a></li>
         </ul>
     </div>
