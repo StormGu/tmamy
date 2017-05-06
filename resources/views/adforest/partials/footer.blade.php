@@ -7,7 +7,7 @@
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <!-- Info Widget -->
                     <div class="widget">
-                        <div class="logo"><img src="{{ url(config('settings.site_logo')) }}" width="180" height="40"/>
+                        <div class="logo"><img src="{{ url(config('settings.footer_logo')) }}" width="180" height="40"/>
                         </div>
                         <p>{{ config('settings.description') }}</p>
                         <ul>
