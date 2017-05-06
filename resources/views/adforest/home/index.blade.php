@@ -31,7 +31,7 @@
                                                                     </a>
                                                                 </div>
                                                                 <a href="{{ url('adv/'. $adv->id) }}"
-                                                                   class="view-details">View Details</a>
+                                                                   class="view-details">@lang('advertisement.view_details')</a>
                                                             </div>
                                                             <!-- Ad Img End -->
                                                             <div class="short-description">
