@@ -1,7 +1,7 @@
 @extends('adforest.layout.master')
 
 @section('breadcrumbs')
-    @include('adforest.partials.breadcrumbs', ['breadcrumbs' => $breadcrumbs])
+    @include('adforest.partials.breadcrumbs', ['breadcrumbs' => (isset($breadcrumbs)?$breadcrumbs : '' )])
 @endsection
 
 @section('content')

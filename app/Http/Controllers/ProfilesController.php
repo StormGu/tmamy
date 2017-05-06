@@ -403,4 +403,8 @@ class ProfilesController extends Controller
         return $this->seperationKey;
     }
 
+
+    public function ads($type_id = null){
+
+    }
 }

@@ -22,7 +22,11 @@ class UserProfileController extends Controller {
 
     public function update(){}
 
-    public function advetisments(){}
+    public function advertisements($type_id = null){
+
+        $data = [];
+        return View('adforest.profile.ads', $data);
+    }
 
     public function stores($id = null){
 

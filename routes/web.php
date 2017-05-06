@@ -180,6 +180,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
         'uses' => 'ProfilesController@userProfileAvatar'
     ]);
 
+    Route::get('profile/ads/{type_id?}', 'Site\UserProfileController@advertisements');
+
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);
 
