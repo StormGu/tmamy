@@ -12,7 +12,7 @@ class LoginController extends Controller {
     use AuthenticatesUsers;
 
     protected $redirectAfterLogout = '/login';
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/admin/users';
 
     public function __construct() {
         $this->middleware('guest', ['except' => 'logout']);

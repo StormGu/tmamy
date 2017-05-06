@@ -42,6 +42,7 @@ Route::group([
 
     Route::get('/', ['uses' => 'HomeController@index']);
     Route::get('home', ['uses' => 'HomeController@index']);
+    Route::get('dashboard', ['uses' => 'HomeController@index']);
 
     Route::resource('advertisements', 'AdvertisementCrudController');
     //Route::resource('categories', 'CategoryCrudController');
@@ -215,7 +216,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'role:a
 Route::group(['middleware' => ['auth', 'activated']], function () {
 
     Route::get('/profile', ['as' => 'public.home', 'uses' => 'Site\UserProfileController@show']);
-    Route::get('/logout', ['uses' => 'Auth\LoginController@logout'])->name('logout');
+    Route::get('admin/logout', ['uses' => 'Auth\LoginController@logout'])->name('logout');
 });
 
 // Resize Image
