@@ -1,8 +1,5 @@
 @extends('adforest.layout.master')
 
-@section('breadcrumbs')
-    @include('adforest.partials.breadcrumbs', ['breadcrumbs' => $breadcrumbs])
-@endsection
 
 @section('content')
     <div class="main-content-area clearfix">
