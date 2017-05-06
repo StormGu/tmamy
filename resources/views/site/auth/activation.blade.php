@@ -1,8 +1,10 @@
 @extends('site.layout.master')
 
-@section('template_title')
-    {{ Lang::get('titles.activation') }}
+
+@section('breadcrumbs')
+    @include('adforest.partials.breadcrumbs', ['breadcrumbs' => $breadcrumbs])
 @endsection
+
 
 @section('content')
     <div class="my-account-area">

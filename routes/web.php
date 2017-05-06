@@ -18,9 +18,11 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@index');
     Route::get('contact', 'ContactController@index');
+    Route::post('contact', 'ContactController@store');
     Route::get('adv/{id}', 'AdvertisementController@get');
     Route::get('setting', 'UserSettingController@index');
     Route::post('setting', 'UserSettingController@update');
+    Route::get('stores', 'UserProfileController@stores');
 });
 
 
@@ -59,6 +61,8 @@ Route::group([
     });
 
     CRUD::resource('coupons', 'CouponCrudController');
+
+    CRUD::resource('settings', '\Backpack\Settings\app\Http\Controllers\SettingCrudController');
 });
 
 // Registered, activated, and is admin routes.
@@ -122,16 +126,17 @@ Route::group(['middleware' => ['auth', 'activated']], function () {
     // Activation Routes
     Route::get('/activation-required', ['uses' => 'Auth\ActivateController@activationRequired'])
         ->name('activation-required');
+
     // Route::get('/logout', ['uses' => 'Auth\LoginController@logout'])->name('logout');
 
     //  Homepage Route - Redirect based on user role is in controller.
-    Route::get('/profile', ['as' => 'public.home', 'uses' => 'UserController@index']);
+    // Route::get('/profile', ['as' => 'public.home', 'uses' => 'UserController@index']);
 
     // Show users profile - viewable by other users.
-    Route::get('profile/{username}', [
-        'as' => '{username}',
-        'uses' => 'ProfilesController@show'
-    ]);
+//    Route::get('profile/{id}', [
+//        'as' => '{id}',
+//        'uses' => 'ProfilesController@show'
+//    ]);
 
 });
 
@@ -140,26 +145,26 @@ Route::group(['middleware' => ['auth', 'activated']], function () {
 Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function () {
 
     // User Profile and Account Routes
-    Route::resource('profile', 'ProfilesController', [
-            'only' => [
-                'show',
-                'edit',
-                'update',
-                'create'
-            ]
-        ]);
-    Route::put('profile/{username}/updateUserAccount', [
-        'as' => '{username}',
-        'uses' => 'ProfilesController@updateUserAccount'
-    ]);
-    Route::put('profile/{username}/updateUserPassword', [
-        'as' => '{username}',
-        'uses' => 'ProfilesController@updateUserPassword'
-    ]);
-    Route::delete('profile/{username}/deleteUserAccount', [
-        'as' => '{username}',
-        'uses' => 'ProfilesController@deleteUserAccount'
-    ]);
+//    Route::resource('profile', 'ProfilesController', [
+//            'only' => [
+//                'show',
+//                'edit',
+//                'update',
+//                'create'
+//            ]
+//        ]);
+//    Route::put('profile/{username}/updateUserAccount', [
+//        'as' => '{username}',
+//        'uses' => 'ProfilesController@updateUserAccount'
+//    ]);
+//    Route::put('profile/{username}/updateUserPassword', [
+//        'as' => '{username}',
+//        'uses' => 'ProfilesController@updateUserPassword'
+//    ]);
+//    Route::delete('profile/{username}/deleteUserAccount', [
+//        'as' => '{username}',
+//        'uses' => 'ProfilesController@deleteUserAccount'
+//    ]);
 
     // Route to show user avatar
     Route::get('images/profile/{id}/avatar/{image}', [
@@ -190,7 +195,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'role:a
 
 Route::group(['middleware' => ['auth', 'activated']], function () {
 
-    Route::get('/profile', ['as' => 'public.home', 'uses' => 'Site\UserProfileController@index']);
+    Route::get('/profile', ['as' => 'public.home', 'uses' => 'Site\UserProfileController@show']);
     Route::get('/logout', ['uses' => 'Auth\LoginController@logout'])->name('logout');
 });
 

@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model {
+class Profile extends Model
+{
 
     /**
      * The database table used by the model.
@@ -19,46 +20,44 @@ class Profile extends Model {
      * @var array
      */
     protected $guarded = [
-    	'id'
+        'id'
     ];
 
-	/**
-	 * Fillable fields for a Profile
-	 *
-	 * @var array
-	 */
-	protected $fillable = [
-		'theme_id',
+    /**
+     * Fillable fields for a Profile
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'theme_id',
         'location',
-		'bio',
-		'twitter_username',
-		'github_username',
+        'bio',
+        'twitter_username',
+        'github_username',
         'user_profile_bg',
         'avatar',
         'avatar_status',
-	];
+    ];
 
     protected $casts = [
         'theme_id' => 'integer',
     ];
 
-	/**
-	 * A profile belongs to a user
-	 *
-	 * @return mixed
-	 */
-	public function user()
-	{
-		return $this->belongsTo('App\Models\User');
-	}
+    /**
+     * A profile belongs to a user
+     *
+     * @return mixed
+     */
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 
     /**
      * Profile Theme Relationships
      *
      * @var array
      */
-    public function theme()
-    {
+    public function theme() {
         return $this->hasOne('App\Models\Theme');
     }
 

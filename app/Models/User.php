@@ -88,8 +88,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    public function social()
-    {
+    public function social() {
         return $this->hasMany('App\Models\Social');
     }
 
@@ -98,50 +97,45 @@ class User extends Authenticatable
      *
      * @var array
      */
-    public function profile()
-    {
-        return $this->hasOne('App\Models\Profile');
+    public function profile() {
+        return $this->hasOne(Profile::class, 'user_id', 'id');
     }
 
 
     // User Profile Setup - SHould move these to a trait or interface...
 
-    public function profiles()
-    {
+    public function profiles() {
         return $this->belongsToMany('App\Models\Profile')->withTimestamps();
     }
 
-    public function hasProfile($name)
-    {
-        foreach($this->profiles as $profile)
-        {
-            if($profile->name == $name) return true;
+    public function hasProfile($name) {
+        foreach ($this->profiles as $profile) {
+            if ($profile->name == $name)
+                return true;
         }
 
         return false;
     }
 
-    public function assignProfile($profile)
-    {
+    public function assignProfile($profile) {
         return $this->profiles()->attach($profile);
     }
 
-    public function removeProfile($profile)
-    {
+    public function removeProfile($profile) {
         return $this->profiles()->detach($profile);
     }
+
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param  string $token
      * @return void
      */
-    public function sendPasswordResetNotification($token)
-    {
+    public function sendPasswordResetNotification($token) {
         $this->notify(new ResetPasswordNotification($token));
     }
 
-    public function getNameAttribute($name){
+    public function getNameAttribute($name) {
 
         return $this->first_name . ' ' . $this->last_name;
     }

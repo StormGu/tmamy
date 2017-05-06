@@ -39,7 +39,7 @@
 
                             <p class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                                 {!! Form::label('password', __('auth.password')) !!}
-                                {!! Form::password('password', null, ['class' => 'form-control', 'required']) !!}
+                                {!! Form::password('password', ['class' => 'form-control', 'required']) !!}
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -49,7 +49,7 @@
 
                             <p class="form-group {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                                 {!! Form::label('password_confirmation', __('auth.confirmPassword')) !!}
-                                {!! Form::password('password_confirmation', null, ['class' => 'form-control', 'required']) !!}
+                                {!! Form::password('password_confirmation', ['class' => 'form-control', 'required']) !!}
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>

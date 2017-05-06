@@ -11,7 +11,7 @@ class HomeController extends Controller {
 
     public function index(){
 
-        return View('site.home.index');
+        return View('adforest.home.index');
     }
 
     public function storesHotSelling(){}

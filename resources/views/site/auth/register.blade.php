@@ -20,7 +20,7 @@
                             <h2>@lang('auth.register')</h2>
                             <p class="form-group {{ $errors->has('first_name') ? ' has-error' : '' }}">
                                 {!! Form::label('first_name', __('auth.first_name')) !!}
-                                {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => __('auth.first_name'), 'required', 'autofocus']) !!}
+                                {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => __('auth.ph_firstname'), 'required', 'autofocus']) !!}
                                 @if ($errors->has('first_name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('first_name') }}</strong>
@@ -29,7 +29,7 @@
                             </p>
                             <p class="form-group {{ $errors->has('last_name') ? ' has-error' : '' }}">
                                 {!! Form::label('last_name', __('auth.last_name')) !!}
-                                {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => __('auth.last_name'), 'required', 'autofocus']) !!}
+                                {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => __('auth.ph_lastname'), 'required', 'autofocus']) !!}
                                 @if ($errors->has('last_name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('last_name') }}</strong>
@@ -38,7 +38,7 @@
                             </p>
                             <p class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                                 {!! Form::label('email', __('auth.email')) !!}
-                                {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => __('auth.email'), 'required']) !!}
+                                {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => __('auth.ph_email'), 'required']) !!}
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -48,7 +48,7 @@
                             <div class="row">
                             <p class="form-group col-sm-6 col-md-6 col-lg-6 {{ ($errors->has('password')) ? ' has-error' : '' }}">
                                 {!! Form::label('password', __('auth.password')) !!}
-                                {!! Form::password('password', ['class' => 'form-control', 'id' => 'password', 'placeholder' => __('auth.password'), 'required']) !!}
+                                {!! Form::password('password', ['class' => 'form-control', 'id' => 'password', 'placeholder' => __('auth.ph_password'), 'required']) !!}
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -57,7 +57,7 @@
                             </p>
                             <p class="form-group col-sm-6 col-md-6 col-lg-6">
                                 {!! Form::label('password_confirmation', __('auth.confirmPassword')) !!}
-                                {!! Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password-confirm', 'placeholder' => __('auth.confirmPassword'), 'required']) !!}
+                                {!! Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password-confirm', 'placeholder' => __('auth.ph_password_conf'), 'required']) !!}
                             </p>
                             </div>
                             <p class="form-group ">

@@ -10,9 +10,11 @@ class UserSettingController extends Controller
 {
     public function index() {
 
+        $data['breadcrumbs'][trans('auth.settings')] = '#';
+
         $data['object'] = \Auth::user();
 
-        return View('site.profile.setting', $data);
+        return View('adforest.profile.settings', $data);
     }
 
     public function update(UserSettingRequest $request) {
