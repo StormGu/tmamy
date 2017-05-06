@@ -13,32 +13,32 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'عدم تطابق بيانات الاعتماد.',
+    'throttle' => 'عدد كبير جدا من محاولات تسجيل الدخول. الرجاء إعادة المحاولة في غضون ثوان.',
 
     // Activation items
-    'sentEmail'         => 'We have sent an email to :email.',
-    'clickInEmail'      => 'Please click the link in it to activate your account.',
-    'anEmailWasSent'    => 'An email was sent to :email on :date.',
-    'clickHereResend'   => 'Click here to resend the email.',
-    'successActivated'  => 'Success, your account has been activated.',
-    'unsuccessful'      => 'Your account could not be activated; please try again.',
-    'notCreated'        => 'Your account could not be created; please try again.',
-    'tooManyEmails'     => 'Too many activation emails have been sent to :email. <br />Please try again in <span class="label label-danger">:hours hours</span>.',
-    'regThanks'         => 'Thank you for registering, ',
-    'invalidToken'      => 'Invalid activation token. ',
-    'activationSent'    => 'Activation email sent. ',
-    'alreadyActivated'  => 'Already activated. ',
+    'sentEmail'         => 'تم إرسال رسالة إلى البريد الالكتروني',
+    'clickInEmail'      => 'يرجى النقر على الرابط لتنشيط حسابك.',
+    'anEmailWasSent'    => 'تم إرسال رسالة إلكترونية إلى البريد بتاريخ:',
+    'clickHereResend'   => 'انقر هنا لإعادة إرسال الايميل',
+    'successActivated'  => 'تم تنشيط الحساب بنجاح',
+    'unsuccessful'      => 'تعذر تنشيط حسابك؛ حاول مرة اخرى',
+    'notCreated'        => 'تعذر إنشاء حسابك؛ حاول مرة اخرى',
+    'tooManyEmails'     => 'تم إرسال عدد كبير جدا من رسائل البريد الإلكتروني للتفعيل إلى :email. <br />يرجى إعادة المحاولة في <span class="label label-danger">:hours ساعة</span>.',
+    'regThanks'         => 'شكرا لتسجيلك',
+    'invalidToken'      => 'رمز التنشيط غير صالح',
+    'activationSent'    => 'تم إرسال رسالة التنشيط ',
+    'alreadyActivated'  => 'تم التنشيط. ',
 
     // Labels
-    'whoops'            => 'Whoops! ',
-    'someProblems'      => 'There were some problems with your input.',
+    'whoops'            => 'أووبس! ',
+    'someProblems'      => 'حدثت بعض المشاكل في المدخلات',
     'email'             => 'البريد الالكتروني',
     'password'          => 'كلمة المرور',
-    'rememberMe'        => ' Remember Me',
-    'login'             => 'Login',
+    'rememberMe'        => 'تذكرني',
+    'login'             => 'تسجيل دخول',
     'forgot'            => 'هل فقدت كلمة المرور؟',
-    'forgot_message'    => 'Password Troubles?',
+    'forgot_message'    => 'مشاكل في كلمة المرور؟',
     'name'              => 'اسم المستخدم',
     'first_name'        => 'الاسم الأول',
     'last_name'         => 'الاسم الأخير',
@@ -47,7 +47,7 @@ return [
     'agree'          => 'أنا موافق على وثيقة الاستخدام.',
 
     // Placeholders
-    'ph_name'           => 'Username',
+    'ph_name'           => 'اسم المستخدم',
     'ph_email'          => 'البريد الالكتروني',
     'ph_firstname'      => 'الاسم الأول',
     'ph_lastname'       => 'الاسم الأخير',
@@ -55,27 +55,27 @@ return [
     'ph_password_conf'  => 'تأكيد كلمة المرور',
 
     // User flash messages
-    'sendResetLink'     => 'Send Password Reset Link',
-    'resetPassword'     => 'Reset Password',
-    'loggedIn'          => 'You are logged in!',
+    'sendResetLink'     => 'إرسال رابط إعادة تعيين كلمة المرور',
+    'resetPassword'     => 'إعادة تعيين كلمة المرور',
+    'loggedIn'          => 'لقد سجلت الدخول!',
 
     // email links
-    'pleaseActivate'    => 'Please activate your account.',
-    'clickHereReset'    => 'Click here to reset your password: ',
-    'clickHereActivate' => 'Click here to activate your account: ',
+    'pleaseActivate'    => 'يرجى تنشيط حسابك',
+    'clickHereReset'    => 'انقر هنا لإعادة تعيين كلمة المرور:',
+    'clickHereActivate' => 'انقر هنا لتنشيط حسابك:',
 
     // Validators
-    'userNameTaken'     => 'Username is taken',
-    'userNameRequired'  => 'Username is required',
-    'fNameRequired'     => 'First Name is required',
-    'lNameRequired'     => 'Last Name is required',
-    'emailRequired'     => 'Email is required',
+    'userNameTaken'     => 'اسم المستخدم مأخوذ',
+    'userNameRequired'  => 'اسم المستخدم مطلوب',
+    'fNameRequired'     => 'الاسم الأول مطلوب',
+    'lNameRequired'     => 'الاسم الأخير مطلوب',
+    'emailRequired'     => 'الايميل مطلوب',
     'emailInvalid'      => 'يجب إدخال بريد الكتروني صحيح البنية!',
-    'passwordRequired'  => 'Password is required',
-    'PasswordMin'       => 'Password needs to have at least 6 characters',
-    'PasswordMax'       => 'Password maximum length is 20 characters',
-    'captchaRequire'    => 'Captcha is required',
-    'CaptchaWrong'      => 'Wrong captcha, please try again.',
-    'roleRequired'      => 'User role is required.'
+    'passwordRequired'  => 'كلمة السر مطلوب',
+    'PasswordMin'       => 'يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل',
+    'PasswordMax'       => 'الحد الأقصى لكلمة المرور هو 20 حرفا',
+    'captchaRequire'    => 'كلمة التحقق مطلوبة',
+    'CaptchaWrong'      => 'كلمة تحقق خاطئة,يرجى المحاولة مرة أخرى',
+    'roleRequired'      => 'دور المستخدم مطلوب'
 
 ];

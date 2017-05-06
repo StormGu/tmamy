@@ -73,7 +73,7 @@
                             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h4 class="panel-title"><a>Recent Ads</a></h4>
+                                        <h4 class="panel-title"><a>@lang('advertisement.recent_ads')</a></h4>
                                     </div>
                                     <div class="panel-collapse">
                                         <div class="panel-body">
