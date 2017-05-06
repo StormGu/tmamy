@@ -65,6 +65,15 @@ Route::group([
     CRUD::resource('settings', '\Backpack\Settings\app\Http\Controllers\SettingCrudController');
 });
 
+Route::group([
+    'as' => 'admin.',
+    'namespace' => 'Admin',
+    'middleware' => ['auth', 'activated']
+], function () {
+
+    CRUD::resource('settings', '\Backpack\Settings\app\Http\Controllers\SettingCrudController');
+});
+
 // Registered, activated, and is admin routes.
 Route::group([
     'namespace' => 'Admin',
