@@ -24,7 +24,6 @@ Route::group(['namespace' => 'Site'], function () {
 
     Route::get('PostAdvertisement', 'AdvertisementController@PostAdvertisement');
     Route::post('PostAdv', 'AdvertisementController@PostAdv');
-=======
     Route::get('advertisement/{id}', 'AdvertisementController@get');
 
 
