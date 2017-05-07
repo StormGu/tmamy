@@ -27,18 +27,12 @@ return [
     'adminThemesList' => 'المواضيع',
     'adminThemesAdd' => 'إضافة موضوع جديد',
 
-<<<<<<< HEAD
-	'adminLogs'		=> 'ملفات التسجيل',
-	'adminPHP'		=> 'معلومات PHP',
-	'adminRoutes'	=> 'تفاصيل التوجيه',
     'myAds' => 'إعلاناتي',
 
     'stores' => 'متاجر',
-    'ads' => 'إعلانات'
-=======
+    'ads' => 'إعلانات',
     'adminLogs' => 'ملفات التسجيل',
     'adminPHP' => 'معلومات PHP',
     'adminRoutes' => 'تفاصيل التوجيه',
->>>>>>> 1538a3a624dc7c261c0e7da0b0791f9fcde02215
 
 ];
