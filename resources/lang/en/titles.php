@@ -33,5 +33,9 @@ return [
     'adminLogs' => 'Log Files',
     'adminPHP' => 'PHP Information',
     'adminRoutes' => 'Routing Details',
+    'myAds' => 'My Ads',
+    'stores' => 'STORES',
+    'ads' => 'ADS'
+
 
 ];

@@ -83,6 +83,52 @@ return [
 
 	// Restore User Account
 	'errorRestoreUserTime'		=> 'Sorry, account cannot be restored',
-	'successUserRestore'		=> 'Welcome back :username! Account Successfully Restored'
+	'successUserRestore'		=> 'Welcome back :username! Account Successfully Restored',
+
+
+	'sutatus'		=> 'status',
+	'ads_all'		=> 'All Ads',
+	'ads_approved'		=> 'Ads approved',
+	'ads_blocked'		=> 'Ads blocked',
+	'ads_draft'		=> 'Ads draft',
+	'ads_expired'		=> 'Ads expired',
+	'ads_rejected'		=> 'Ads rejected',
+	'ads_waiting_approval'		=> 'Ads waiting approval',
+	'ADS'		=> 'Advertisements',
+	'stores'		=> 'stores',
+	'status'		=> 'status',
+	'store_all'		=> 'store all',
+	'store_approved'		=> 'store approved',
+	'store_blocked'		=> 'store blocked',
+	'store_draft'		=> 'store draft',
+	'store_expired'		=> 'store expired',
+	'store_rejected'		=> 'store rejected',
+	'store_waiting_approval'		=> 'store waiting approval',
+	'settings'		=> 'settings',
+	'ads'		=> 'ads',
+	'setting'		=> 'setting',
+	'settings_all'		=> 'all setting',
+	'password'		=> 'password',
+	'social'		=> 'social',
+	'avatar'		=> 'avatar',
+	'Browse'		=> 'Browse...',
+	'email'		=> 'email',
+	'first_name'		=> 'first name',
+	'last_name'		=> 'last name',
+	'language'		=> 'language',
+	'country'		=> 'country',
+	'city'		=> 'city',
+	'address'		=> 'address',
+	'bio'		=> 'bio',
+	'dob'		=> 'dob',
+	'mobile_no'		=> 'mobile no.',
+	'gender_id'		=> 'gender',
+	'password_confirmation'		=> 'password confirmation',
+	'facebook'		=> 'facebook',
+	'twitter'		=> 'twitter',
+	'googleplus'		=> 'googleplus',
+	'linkedin'		=> 'linkedin',
+	'pinterest'		=> 'pinterest'
+
 
 ];

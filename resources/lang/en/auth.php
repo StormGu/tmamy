@@ -75,6 +75,7 @@ return [
     'PasswordMax'       => 'Password maximum length is 20 characters',
     'captchaRequire'    => 'Captcha is required',
     'CaptchaWrong'      => 'Wrong captcha, please try again.',
-    'roleRequired'      => 'User role is required.'
+    'roleRequired'      => 'User role is required.',
+    'social'      => 'social'
 
 ];
