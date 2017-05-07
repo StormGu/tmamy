@@ -27,7 +27,7 @@
                                 </ul>
                             </div>
                             <div class="featured-ribbon">
-                                <span>Featured</span>
+                                <span>@lang('advertisement.Featured')</span>
                             </div>
                         </div>
                         <!-- Listing Slider  -->
@@ -62,13 +62,13 @@
                         <!-- Share Ad  -->
                         <div class="ad-share text-center">
                             <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-4 col-sm-4 col-xs-12">
-                                <i class="fa fa-share-alt"></i> <span class="hidetext">Share</span>
+                                <i class="fa fa-share-alt"></i> <span class="hidetext">@lang('advertisement.Share')</span>
                             </div>
                             <a class="ad-box col-md-4 col-sm-4 col-xs-12" href="#"><i class="fa fa-star active"></i>
-                                <span class="hidetext">Add to watchlist</span></a>
+                                <span class="hidetext">@lang('advertisement.add')</span></a>
                             <div data-target=".report-quote" data-toggle="modal"
                                  class="ad-box col-md-4 col-sm-4 col-xs-12">
-                                <i class="fa fa-warning"></i> <span class="hidetext">Report</span>
+                                <i class="fa fa-warning"></i> <span class="hidetext">@lang('advertisement.Report')</span>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -82,22 +82,22 @@
                                     </h3>
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                                    <span><strong>Condition</strong> :</span> Used
+                                    <span><strong>@lang('advertisement.Condition')</strong> :</span>used
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                                    <span><strong>Brand</strong> :</span> Nokia
+                                    <span><strong>@lang('advertisement.Brand')</strong> :</span> Nokia
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                                    <span><strong>Model</strong> :</span> Lumia 625
+                                    <span><strong>@lang('advertisement.Model')</strong> :</span> Lumia 625
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                                    <span><strong>Product Type</strong>:</span> Mobile
+                                    <span><strong>@lang('advertisement.productType')</strong>:</span> Mobile
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                                    <span><strong>Date</strong> :</span> 2014-10-06
+                                    <span><strong>@lang('advertisement.Date')</strong> :</span> 2014-10-06
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                                    <span><strong>Price</strong> :</span> Rs. 22,000
+                                    <span><strong>@lang('advertisement.Price')</strong> :</span> Rs. 22,000
                                 </div>
                             </div>
                             <!-- Short Features  -->
@@ -110,6 +110,7 @@
                                         Engine is good condition.
                                     </li>
                                     <li>
+
                                         Complete service history available.
                                     </li>
                                     <li>
@@ -122,6 +123,7 @@
                                         As good as a brand new car.
                                     </li>
                                     <li>
+
                                         Lady Driven Car in Immaculate Condition.
                                     </li>
                                     <li>
@@ -141,7 +143,7 @@
                                 <!-- Heading Area -->
                                 <div class="heading-panel">
                                     <h3 class="main-title text-left">
-                                        Specifications
+                                        @lang('advertisement.Specifications')
                                     </h3>
                                 </div>
                                 <p>
@@ -174,8 +176,8 @@
                     <!-- Price Alert -->
                     <div class="alert-box-container  margin-top-30">
                         <div class="well">
-                            <h3>Create Alert</h3>
-                            <p>Receive emails for the latest ads matching your search criteria</p>
+                            <h3> @lang('advertisement.alert')</h3>
+                            <p> Receive emails for the latest ads matching your search criteria</p>
                             <form>
                                 <div class="row">
                                     <div class="col-md-5 col-xs-12 col-sm-12">
@@ -200,7 +202,7 @@
                         <div class="heading-panel">
                             <div class="col-xs-12 col-md-12 col-sm-12">
                                 <h3 class="main-title text-left">
-                                    Related Ads
+                                    @lang('advertisement.RelatedAds')
                                 </h3>
                             </div>
                         </div>
@@ -245,7 +247,7 @@
                                                         <div class="tooltip-content">
                                                             <h4>Call Timings</h4>
                                                             <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM
-                                                            <br> <strong>Saturday</strong> 09.00 AM - 5.30 PM
+                                                            <br> <strong>Saturday</strong>09.00 AM - 5.30 PM
                                                             <br> <strong>Sunday</strong> <span
                                                                     class="label label-success">+92-123-4567</span>
                                                         </div>
@@ -257,8 +259,8 @@
                                                         <span class="tooltip-item"><i
                                                                     class="fa fa-map-marker"></i></span>
                                                         <div class="tooltip-content">
-                                                            <h4>Address</h4>
-                                                            Musee du Louvre, 75058 Paris - France
+                                                            <h4> @lang('advertisement.address')</h4>
+                                                           Musee du Louvre, 75058 Paris - France
                                                         </div>
                                                     </div>
                                                 </li>
@@ -284,7 +286,7 @@
                                                 <div class="last-updated">Last Updated: 1 day ago</div>
                                                 <div class="ad-meta"><a class="btn save-ad"><i
                                                                 class="fa fa-heart-o"></i> Save Ad.</a> <a
-                                                            class="btn btn-success"><i class="fa fa-phone"></i> View
+                                                            class="btn btn-success"><i class="fa fa-phone"></i>View
                                                         Details.</a></div>
                                             </div>
                                         </div>
@@ -586,10 +588,10 @@
                             </div>
                             <div class="ad-listing-meta">
                                 <ul>
-                                    <li>Ad Id: <span class="color">4143</span></li>
-                                    <li>Categories: <span class="color">Used Cars</span></li>
-                                    <li>Visits: <span class="color">9</span></li>
-                                    <li>Location: <span class="color">New York, USA</span></li>
+                                    <li>@lang('advertisement.AdId'): <span class="color">4143</span></li>
+                                    <li>@lang('advertisement.categories'): <span class="color">Used Cars</span></li>
+                                    <li>@lang('advertisement.visits'): <span class="color">9</span></li>
+                                    <li>@lang('advertisement.location'): <span class="color">New York, USA</span></li>
                                 </ul>
                             </div>
                             <div id="itemMap" style="width: 100%; height: 370px; margin-bottom:5px;"></div>
@@ -597,7 +599,7 @@
                         <!-- Featured Ads -->
                         <div class="widget">
                             <div class="widget-heading">
-                                <h4 class="panel-title"><a>Featured Ads</a></h4>
+                                <h4 class="panel-title"><a>@lang('advertisement.featuredAds')</a></h4>
                             </div>
                             <div class="widget-content">
                                 <div class="featured-slider-3">
@@ -806,7 +808,7 @@
                         <!-- Recent Ads -->
                         <div class="widget">
                             <div class="widget-heading">
-                                <h4 class="panel-title"><a>Recent Ads</a></h4>
+                                <h4 class="panel-title"><a>@lang('advertisement.recentAds')</a></h4>
                             </div>
                             <div class="widget-content recent-ads">
                                 <!-- Ads -->
@@ -944,7 +946,7 @@
                         <!-- Saftey Tips  -->
                         <div class="widget">
                             <div class="widget-heading">
-                                <h4 class="panel-title"><a>Safety tips for deal</a></h4>
+                                <h4 class="panel-title"><a>@lang('advertisement.tips')</a></h4>
                             </div>
                             <div class="widget-content saftey">
                                 <ol>

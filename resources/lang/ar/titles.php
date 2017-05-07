@@ -30,5 +30,9 @@ return [
 	'adminLogs'		=> 'ملفات التسجيل',
 	'adminPHP'		=> 'معلومات PHP',
 	'adminRoutes'	=> 'تفاصيل التوجيه',
+    'myAds' => 'إعلاناتي',
+
+    'stores' => 'متاجر',
+    'ads' => 'إعلانات'
 
 ];
