@@ -80,7 +80,7 @@
                                                 <!-- Ad Desc -->
                                                 <div class="ad-archive-desc">
                                                     <!-- Price -->
-                                                    <div class="ad-price">{{ $object->currency->value }} {{ $object->price }}</div>
+                                                    <div class="ad-price"> {{ isset($object->currency->value) ? $object->currency->value : '' }} {{ number_format( $object->price, 2) }}</div>
                                                     <!-- Title -->
                                                     <h3>{{ $object->title }}</h3>
                                                     <!-- Category -->

@@ -6,12 +6,12 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <!-- menu logo -->
-                    <ul class="menu-logo">
+                    <ul class="menu-logo @if ($current_locale->direction == 'rtl') menu-logo-align-right @endif">
                         <li><a href="{{ url('/') }}"><img src="{{ url(config('settings.site_logo')) }}" width="180"
                                                           height="40"></a></li>
                     </ul>
                     <!-- menu links -->
-                    <ul class="menu-links">
+                    <ul class="menu-links @if ($current_locale->direction == 'rtl') menu-links-align-right @endif">
                         <!-- active class -->
                         <li><a href="{{ url('/') }}"> @lang('titles.home')</a></li>
                         @foreach(\App\Models\Category::parents()->limit(5)->pluck('name', 'id') as $category_id => $category)

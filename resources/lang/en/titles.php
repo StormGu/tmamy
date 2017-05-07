@@ -2,8 +2,8 @@
 
 return [
 
-    'app' => 'Laravel',
-    'app2' => 'Laravel Auth 2.0',
+    'app' => 'Tmamy',
+    'app2' => 'Tmamy Auth 2.0',
     'home' => 'Home',
     'contact' => 'Contact',
     'myAccount' => 'My Account',
@@ -33,5 +33,9 @@ return [
     'adminLogs' => 'Log Files',
     'adminPHP' => 'PHP Information',
     'adminRoutes' => 'Routing Details',
+    'myAds' => 'My Ads',
+    'stores' => 'STORES',
+    'ads' => 'ADS'
+
 
 ];
