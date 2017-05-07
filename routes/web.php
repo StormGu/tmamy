@@ -23,7 +23,6 @@ Route::group(['namespace' => 'Site'], function () {
 
 });
 
-
 // Authentication Routes
 Auth::routes();
 
@@ -39,7 +38,7 @@ Route::group([
     'namespace' => 'Admin',
     'middleware' => ['auth', 'activated', 'role:admin']
 ], function () {
-
+    // Dashboard
     Route::get('/', ['uses' => 'HomeController@index']);
     Route::get('home', ['uses' => 'HomeController@index']);
     Route::get('dashboard', ['uses' => 'HomeController@index']);
@@ -47,19 +46,20 @@ Route::group([
     Route::resource('advertisements', 'AdvertisementCrudController');
     CRUD::resource('categories', 'CategoryCrudController');
     CRUD::resource('stores', 'StoreCrudController');
-    CRUD::resource('users_manage', 'UserCrudController');
+    CRUD::resource('users', 'UserCrudController');
     CRUD::resource('constants', 'ConstantCrudController');
     CRUD::resource('features', 'FeatureListCrudController');
     CRUD::resource('slider', 'SliderCrudController');
     CRUD::resource('property', 'PropertyCrudController');
     CRUD::resource('listofvalues', 'ListOfValueCrudController');
-
     Route::group(['prefix' => 'listofvalues/{parent_id}'], function () {
         CRUD::resource('listofvaluesdetails', 'ListOfValueDetailCrudController');
     });
 
     CRUD::resource('coupons', 'CouponCrudController');
     CRUD::resource('settings', '\Backpack\Settings\app\Http\Controllers\SettingCrudController');
+
+    Route::get('routes', 'AdminDetailsController@listRoutes');
 });
 
 // Registered, activated, and is admin routes.
@@ -78,17 +78,7 @@ Route::group([
         ]
     ]);
 
-    Route::resource('users', 'UsersManagementController', [
-        'names' => [
-            'index' => 'users',
-            'destroy' => 'user.destroy'
-        ],
-        'except' => [
-            'deleted'
-        ]
-    ]);
 
-    Route::get('routes', 'AdminDetailsController@listRoutes');
 });
 
 
