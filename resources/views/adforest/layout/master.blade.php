@@ -24,36 +24,72 @@
     <link rel="icon" href="{{ asset('adforest/images/favicon.ico') }}" type="image/x-icon"/>
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    @if ($current_locale->direction == 'rtl')
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="{{ asset('adforest/css/bootstrap.css') }}">
-    <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="{{ asset('adforest/css/style.css') }}">
-    <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="{{ asset('adforest/css/font-awesome.css') }}" type="text/css">
-    <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
-    <link href="{{ asset('adforest/css/flaticon.css') }}" rel="stylesheet">
-    <!-- =-=-=-=-=-=-= Et Line Fonts =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="{{ asset('adforest/css/et-line-fonts.css') }}" type="text/css">
-    <!-- =-=-=-=-=-=-= Menu Drop Down =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="{{ asset('adforest/css/forest-menu.css') }}" type="text/css">
-    <!-- =-=-=-=-=-=-= Animation =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="{{ asset('adforest/css/animate.min.css') }}" type="text/css">
-    <!-- =-=-=-=-=-=-= Select Options =-=-=-=-=-=-= -->
-    <link href="{{ asset('adforest/css/select2.min.css') }}" rel="stylesheet"/>
-    <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
-    <link href="{{ asset('adforest/css/nouislider.min.css') }}" rel="stylesheet">
-    <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
-    <link href="{{ asset('adforest/css/slider.css') }}" rel="stylesheet">
-    <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('adforest/css/owl.carousel.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('adforest/css/owl.theme.css') }}">
-    <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
-    <link href="{{ asset('adforest/skins/minimal/minimal.css') }}" rel="stylesheet">
-    <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
-    <link href="{{ asset('adforest/css/responsive-media.css') }}" rel="stylesheet">
-    <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
-    <link rel="stylesheet" id="color" href="{{ asset('adforest/css/colors/defualt.css') }}">
-    <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/rtl_css/bootstrap.css') }}">
+        <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/rtl_css/style.css') }}">
+        <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/rtl_css/font-awesome.css') }}" type="text/css">
+        <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/rtl_css/flaticon.css') }}" rel="stylesheet">
+        <!-- =-=-=-=-=-=-= Et Line Fonts =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/rtl_css/et-line-fonts.css') }}" type="text/css">
+        <!-- =-=-=-=-=-=-= Menu Drop Down =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/rtl_css/forest-menu.css') }}" type="text/css">
+        <!-- =-=-=-=-=-=-= Animation =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/rtl_css/animate.min.css') }}" type="text/css">
+        <!-- =-=-=-=-=-=-= Select Options =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/rtl_css/select2.min.css') }}" rel="stylesheet"/>
+        <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/rtl_css/nouislider.min.css') }}" rel="stylesheet">
+
+        <!-- =-=-=-=-=-=-= Bootstrap Rtl Style =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/rtl_css/bootstrap-rtl.css') }}" rel="stylesheet">
+        <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/rtl_css/slider.css') }}" rel="stylesheet">
+        <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('adforest/rtl_css/owl.carousel.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('adforest/rtl_css/owl.theme.css') }}">
+        <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/skins/minimal/minimal.css') }}" rel="stylesheet">
+        <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/rtl_css/responsive-media.css') }}" rel="stylesheet">
+        <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
+        <link rel="stylesheet" id="color" href="{{ asset('adforest/rtl_css/colors/defualt.css') }}">
+    @else
+    <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/css/bootstrap.css') }}">
+        <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/css/style.css') }}">
+        <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/css/font-awesome.css') }}" type="text/css">
+        <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/css/flaticon.css') }}" rel="stylesheet">
+        <!-- =-=-=-=-=-=-= Et Line Fonts =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/css/et-line-fonts.css') }}" type="text/css">
+        <!-- =-=-=-=-=-=-= Menu Drop Down =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/css/forest-menu.css') }}" type="text/css">
+        <!-- =-=-=-=-=-=-= Animation =-=-=-=-=-=-= -->
+        <link rel="stylesheet" href="{{ asset('adforest/css/animate.min.css') }}" type="text/css">
+        <!-- =-=-=-=-=-=-= Select Options =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/css/select2.min.css') }}" rel="stylesheet"/>
+        <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/css/nouislider.min.css') }}" rel="stylesheet">
+        <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/css/slider.css') }}" rel="stylesheet">
+        <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('adforest/css/owl.carousel.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('adforest/css/owl.theme.css') }}">
+        <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/skins/minimal/minimal.css') }}" rel="stylesheet">
+        <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
+        <link href="{{ asset('adforest/css/responsive-media.css') }}" rel="stylesheet">
+        <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
+        <link rel="stylesheet" id="color" href="{{ asset('adforest/css/colors/defualt.css') }}">
+    @endif
+<!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
     <link rel="stylesheet" id="theme-color" type="text/css" href="{{ asset('adforest/css/colors/sea-green.css') }}"/>
     <!-- JavaScripts -->
     <script src="{{ asset('adforest//modernizr.js') }}"></script>
@@ -73,7 +109,8 @@
             ]) !!};
     </script>
 </head>
-<body>
+<body @if ($current_locale->direction == 'rtl')  class="rtl" @endif>
+
 <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
 <div class="colored-header">
     @include('adforest.partials.top')
@@ -85,9 +122,9 @@
 
 <div class="main-content-area clearfix">
 
-@yield('content')
+    @yield('content')
 
-@include('adforest.partials.footer')
+    @include('adforest.partials.footer')
 
 </div>
 <!-- Back To Top -->

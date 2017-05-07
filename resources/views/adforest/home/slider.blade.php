@@ -4,7 +4,7 @@
     @foreach(\App\Models\Slider::pluck('filename', 'id') as $image_id => $filename)
         <div class="ms-slide slide-{{ $image_id }}" data-delay="5">
             <img src="{{ asset('adforest/js/masterslider/style/blank.gif') }}"
-                 data-src="{{ url('image/1350×300/' . $filename) }}"/>
+                 data-src="{{ url('image/850×300/' . $filename) }}"/>
         </div>
 @endforeach
 
