@@ -34,8 +34,8 @@ class UserRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
             case 'POST': {
 
                 $rules = [
-                    'first_name' => 'required',
-                    'last_name' => 'required',
+                    'first_name' => 'require|max:255',
+                    'last_name' => 'required|max:255',
                     'email' => 'required|email|max:255|unique:users',
                     'roles' => 'required'
                 ];

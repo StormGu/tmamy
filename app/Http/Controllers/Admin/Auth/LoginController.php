@@ -11,7 +11,7 @@ class LoginController extends Controller {
 
     use AuthenticatesUsers;
 
-    protected $redirectAfterLogout = '/login';
+    protected $redirectAfterLogout = 'admin/login';
     protected $redirectTo = '/admin';
 
     public function __construct() {
@@ -24,10 +24,10 @@ class LoginController extends Controller {
     }
 
     public function logout() {
-        $user = Auth::user();
-        Log::info('User Logged Out. ', [$user]);
-        Auth::logout();
-        Session::flush();
+        $user = \Auth::user();
+        \Log::info('User Logged Out. ', [$user]);
+        \Auth::logout();
+        \Session::flush();
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
 }

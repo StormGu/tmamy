@@ -31,6 +31,7 @@
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/coupons') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.coupons') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/features') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.features') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/property') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.property') }}</span></a></li>
+          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/settings') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.settings') }}</span></a></li>
 
           <!-- ======================================= -->
           <li class="header">{{ trans('backpack::base.user') }}</li>

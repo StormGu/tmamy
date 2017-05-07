@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Traits\CaptureIpTrait;
 use App\Models\Profile;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\UserRequest as StoreRequest;
 use App\Http\Requests\UserRequest as UpdateRequest;
+use Illuminate\Http\Request;
 
 class UserCrudController extends CrudController
 {
@@ -19,7 +21,7 @@ class UserCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\User');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/users_manage');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/users');
         $this->crud->setEntityNameStrings('user', 'users');
 
         /*
@@ -27,35 +29,50 @@ class UserCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->addField([
-            'name' => 'email',
-            'label' => __('auth.email'),
-        ]);
 
         $this->crud->addField([
             'name' => 'first_name',
             'label' => __('auth.first_name'),
+            'wrapperAttributes' => [
+                'class' => 'col-md-6'
+            ]
         ]);
 
         $this->crud->addField([
             'name' => 'last_name',
             'label' => __('auth.last_name'),
+            'wrapperAttributes' => [
+                'class' => 'col-md-6'
+            ]
         ]);
 
-        $this->crud->addField([       // SelectMultiple = n-n relationship (with pivot table)
+        $this->crud->addField([
+            'name' => 'separator',
+            'type' => 'custom_html',
+            'value' => '<div class="clearfix"></div>'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'email',
+            'label' => __('auth.email'),
+
+        ]);
+
+        $this->crud->addField([
             'label' => __('auth.roles'),
             'type' => 'select_multiple',
-            'name' => 'roles', // the method that defines the relationship in your Model
-            'entity' => 'roles', // the method that defines the relationship in your Model
-            'attribute' => 'name', // foreign key attribute that is shown to user
-            'model' => '\jeremykenedy\LaravelRoles\Models\Role', // foreign key model
-            'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+            'name' => 'roles',
+            'entity' => 'roles',
+            'attribute' => 'name',
+            'model' => '\jeremykenedy\LaravelRoles\Models\Role',
+            'pivot' => true,
         ]);
 
         $this->crud->addField([
             'name' => 'password',
             'type' => 'password',
             'label' => __('auth.password'),
+            'hint' => __('auth.leave_password_blank_for_not_modification')
         ]);
 
         $this->crud->addField([
@@ -74,46 +91,74 @@ class UserCrudController extends CrudController
             'name' => 'signup_ip_address',
             'label' => __('auth.signup_ip_address'),
             'attributes' => [
-                'readonly' => 'readonly'
+                'readonly' => 'readonly',
             ],
+            'wrapperAttributes' => [
+                'class' => 'col-md-6'
+            ]
         ]);
+
         $this->crud->addField([
             'name' => 'signup_confirmation_ip_address',
             'label' => __('auth.signup_confirmation_ip_address'),
             'attributes' => [
                 'readonly' => 'readonly'
             ],
+            'wrapperAttributes' => [
+                'class' => 'col-md-6'
+            ]
         ]);
+
+        $this->crud->addField([
+            'name' => 'separator',
+            'type' => 'custom_html',
+            'value' => '<div class="clearfix"></div>'
+        ]);
+
         $this->crud->addField([
             'name' => 'admin_ip_address',
             'label' => __('auth.admin_ip_address'),
             'attributes' => [
                 'readonly' => 'readonly'
             ],
+            'wrapperAttributes' => [
+                'class' => '  col-md-6'
+            ]
         ]);
+
         $this->crud->addField([
             'name' => 'updated_ip_address',
             'label' => __('auth.updated_ip_address'),
             'attributes' => [
                 'readonly' => 'readonly'
             ],
+            'wrapperAttributes' => [
+                'class' => 'col-md-6'
+            ]
         ]);
+
+        $this->crud->addField([
+            'name' => 'separator',
+            'type' => 'custom_html',
+            'value' => '<div class="clearfix"></div>'
+        ]);
+
         $this->crud->addField([
             'name' => 'deleted_ip_address',
             'label' => __('auth.deleted_ip_address'),
             'attributes' => [
                 'readonly' => 'readonly'
-            ],
-        ]);
-
-        $this->crud->addColumn([
-            'name' => 'email',
-            'label' => __('auth.email'),
+            ]
         ]);
 
         $this->crud->addColumn([
             'name' => 'name',
             'label' => __('auth.name'),
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'email',
+            'label' => __('auth.email'),
         ]);
 
         $this->crud->addColumn([
@@ -131,80 +176,19 @@ class UserCrudController extends CrudController
             'type' => 'datetime'
         ]);
 
-        // $this->crud->setFromDb();
+        $this->crud->addFilter([
+            'type' => 'simple',
+            'name' => 'trashed',
+            'label' => 'Trashed'
+        ], false, function () {
+            $this->crud->query = $this->crud->query->onlyTrashed();
+        });
 
-        // ------ CRUD FIELDS
-        // $this->crud->addField($options, 'update/create/both');
-        // $this->crud->addFields($array_of_arrays, 'update/create/both');
-        // $this->crud->removeField('name', 'update/create/both');
-        // $this->crud->removeFields($array_of_names, 'update/create/both');
-
-        // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
-        // $this->crud->addColumns(); // add multiple columns, at the end of the stack
-        // $this->crud->removeColumn('column_name'); // remove a column from the stack
-        // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
-        // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
-        // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
-
-        // ------ CRUD BUTTONS
-        // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
-        // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
-        // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model
-        // $this->crud->addButtonFromView($stack, $name, $view, $position); // add a button whose HTML is in a view placed at resources\views\vendor\backpack\crud\buttons
-        // $this->crud->removeButton($name);
-        // $this->crud->removeButtonFromStack($name, $stack);
-        // $this->crud->removeAllButtons();
-        // $this->crud->removeAllButtonsFromStack('line');
-
-        // ------ CRUD ACCESS
-        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
-        // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
-
-        // ------ CRUD REORDER
-        // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);
-        // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('reorder');
-
-        // ------ CRUD DETAILS ROW
-        // $this->crud->enableDetailsRow();
-        // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
-        // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
-
-        // ------ REVISIONS
-        // You also need to use \Venturecraft\Revisionable\RevisionableTrait;
-        // Please check out: https://laravel-backpack.readme.io/docs/crud#revisions
-        // $this->crud->allowAccess('revisions');
-
-        // ------ AJAX TABLE VIEW
-        // Please note the drawbacks of this though:
-        // - 1-n and n-n columns are not searchable
-        // - date and datetime columns won't be sortable anymore
-        // $this->crud->enableAjaxTable();
-
-        // ------ DATATABLE EXPORT BUTTONS
-        // Show export to PDF, CSV, XLS and Print buttons on the table view.
-        // Does not work well with AJAX datatables.
-        // $this->crud->enableExportButtons();
-
-        // ------ ADVANCED QUERIES
-        // $this->crud->addClause('active');
-        // $this->crud->addClause('type', 'car');
-        // $this->crud->addClause('where', 'name', '==', 'car');
-        // $this->crud->addClause('whereName', 'car');
-        // $this->crud->addClause('whereHas', 'posts', function($query) {
-        //     $query->activePosts();
-        // });
-        // $this->crud->addClause('withoutGlobalScopes');
-        // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
-        // $this->crud->with(); // eager load relationships
-        // $this->crud->orderBy();
-        // $this->crud->groupBy();
-        // $this->crud->limit();
     }
 
     public function store(StoreRequest $request) {
 
-        $ipAddress  = new CaptureIpTrait;
+        $ipAddress = new CaptureIpTrait;
 
         $request->request->set('activated', '1');
         $request->request->set('token', str_random(64));
@@ -214,13 +198,18 @@ class UserCrudController extends CrudController
         // your additional operations before save here
         $redirect_location = parent::storeCrud($request);
         // your additional operations after save here
+
+        $profile    = new Profile;
+        $this->crud->entry->profile()->save($profile);
+        $this->crud->entry->attachRole($request->input('role'));
+
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
     }
 
     public function update(UpdateRequest $request) {
 
-        $ipAddress   = new CaptureIpTrait;
+        $ipAddress = new CaptureIpTrait;
 
         $request->request->set('updated_ip_address', $ipAddress->getClientIp());
 
@@ -228,6 +217,25 @@ class UserCrudController extends CrudController
         $redirect_location = parent::updateCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
+        $profile    = new Profile;
+        $this->crud->entry->profile()->save($profile);
+        $this->crud->entry->attachRole($request->input('role'));
+
         return $redirect_location;
+    }
+
+    public function destroy($id, Request $request = null) {
+
+        $ipAddress   = new CaptureIpTrait;
+        $currentUserId = \Auth::id();
+        $user        = User::findOrFail($id);
+
+        if ($user->id != $currentUserId) {
+
+            $request->request->set('deleted_ip_address', $ipAddress->getClientIp());
+            return parent::destroy($id);
+        }
+
+        return back()->with('error', trans('auth.deleteSelfError'));
     }
 }

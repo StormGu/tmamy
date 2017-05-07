@@ -19,7 +19,6 @@
                                             <div class="item">
                                                 @foreach (\App\Models\Advertisement::whereCategoryId($category_id)->approved()->get() as $adv)
                                                     <div class="col-md-4 no-padding">
-
                                                         <div class="category-grid-box">
                                                             <div class="category-grid-img">
                                                                 <img class="img-responsive"
@@ -56,6 +55,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    @if($loop->iteration % 3 ==0)
+                                            </div>
+                                            <div class="item">
+                                                @endif
                                                 @endforeach
                                             </div>
                                         </div>
@@ -77,39 +80,41 @@
                                     </div>
                                     <div class="panel-collapse">
                                         <div class="panel-body">
-
-                                            <div class="category-grid-box">
-                                                <div class="category-grid-img">
-                                                    <img class="img-responsive" alt=""
-                                                         src="{{ url('image/190×244/' . $adv->image_filename) }}">
-                                                    <div class="user-preview">
-                                                        <a href="{{ url('adv/'. $adv->id) }}"> <img
-                                                                    src="{{ url('image/200×200/' . $adv->image_filename) }}"
-                                                                    class="avatar avatar-small" alt="">
-                                                        </a>
+                                            @foreach(\App\Models\Advertisement::approved()->inRandomOrder()->limit(5)->get() as $adv)
+                                                <div class="category-grid-box">
+                                                    <div class="category-grid-img">
+                                                        <img class="img-responsive" alt=""
+                                                             src="{{ url('image/190×244/' . $adv->image_filename) }}">
+                                                        <div class="user-preview">
+                                                            <a href="{{ url('adv/'. $adv->id) }}"> <img
+                                                                        src="{{ url('image/200×200/' . $adv->image_filename) }}"
+                                                                        class="avatar avatar-small" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <a href="{{ url('adv/'. $adv->id) }}" class="view-details">View
+                                                            Details</a>
                                                     </div>
-                                                    <a href="{{ url('adv/'. $adv->id) }}" class="view-details">View
-                                                        Details</a>
-                                                </div>
-                                                <!-- Ad Img End -->
-                                                <div class="short-description">
-                                                    <!-- Ad Category -->
-                                                    <div class="category-title"><span><a href="#">Cars</a></span>
+                                                    <!-- Ad Img End -->
+                                                    <div class="short-description">
+                                                        <!-- Ad Category -->
+                                                        <div class="category-title"><span><a href="#">Cars</a></span>
+                                                        </div>
+                                                        <!-- Ad Title -->
+                                                        <h3><a title=""
+                                                               href="{{ url('adv/'. $adv->id) }}">{{ $adv->title }}</a>
+                                                        </h3>
+                                                        <!-- Price -->
+                                                        <div class="price">$18,200 <span
+                                                                    class="negotiable">(Negotiable)</span></div>
                                                     </div>
-                                                    <!-- Ad Title -->
-                                                    <h3><a title=""
-                                                           href="{{ url('adv/'. $adv->id) }}">{{ $adv->title }}</a></h3>
-                                                    <!-- Price -->
-                                                    <div class="price">$18,200 <span
-                                                                class="negotiable">(Negotiable)</span></div>
+                                                    <div class="ad-info">
+                                                        <ul>
+                                                            <li><i class="fa fa-map-marker"></i>London</li>
+                                                            <li><i class="fa fa-clock-o"></i> 15 minutes ago</li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                                <div class="ad-info">
-                                                    <ul>
-                                                        <li><i class="fa fa-map-marker"></i>London</li>
-                                                        <li><i class="fa fa-clock-o"></i> 15 minutes ago</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

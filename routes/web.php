@@ -19,10 +19,11 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('home', 'HomeController@index');
     Route::get('contact', 'ContactController@index');
     Route::post('contact', 'ContactController@store');
+
     Route::get('adv/{id}', 'AdvertisementController@get');
+    Route::get('advertisement/{id}', 'AdvertisementController@get');
 
 });
-
 
 // Authentication Routes
 Auth::routes();
@@ -32,45 +33,35 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin\Auth'], function () {
     Route::post('login', ['uses' => 'LoginController@login']);
 });
 
-// Admin Routes
+// Admin Panel: Registered, Activated, and is admin role.
 Route::group([
     'as' => 'admin.',
     'prefix' => 'admin',
     'namespace' => 'Admin',
-    'middleware' => ['auth', 'activated']
+    'middleware' => ['auth', 'activated', 'role:admin']
 ], function () {
-
+    // Dashboard
     Route::get('/', ['uses' => 'HomeController@index']);
     Route::get('home', ['uses' => 'HomeController@index']);
     Route::get('dashboard', ['uses' => 'HomeController@index']);
 
     Route::resource('advertisements', 'AdvertisementCrudController');
-    //Route::resource('categories', 'CategoryCrudController');
     CRUD::resource('categories', 'CategoryCrudController');
     CRUD::resource('stores', 'StoreCrudController');
-    CRUD::resource('users_manage', 'UserCrudController');
+    CRUD::resource('users', 'UserCrudController');
     CRUD::resource('constants', 'ConstantCrudController');
     CRUD::resource('features', 'FeatureListCrudController');
     CRUD::resource('slider', 'SliderCrudController');
     CRUD::resource('property', 'PropertyCrudController');
     CRUD::resource('listofvalues', 'ListOfValueCrudController');
-
     Route::group(['prefix' => 'listofvalues/{parent_id}'], function () {
         CRUD::resource('listofvaluesdetails', 'ListOfValueDetailCrudController');
     });
 
     CRUD::resource('coupons', 'CouponCrudController');
-
     CRUD::resource('settings', '\Backpack\Settings\app\Http\Controllers\SettingCrudController');
-});
 
-Route::group([
-    'as' => 'admin.',
-    'namespace' => 'Admin',
-    'middleware' => ['auth', 'activated']
-], function () {
-
-    CRUD::resource('settings', '\Backpack\Settings\app\Http\Controllers\SettingCrudController');
+    Route::get('routes', 'AdminDetailsController@listRoutes');
 });
 
 // Registered, activated, and is admin routes.
@@ -89,17 +80,7 @@ Route::group([
         ]
     ]);
 
-    Route::resource('users', 'UsersManagementController', [
-        'names' => [
-            'index' => 'users',
-            'destroy' => 'user.destroy'
-        ],
-        'except' => [
-            'deleted'
-        ]
-    ]);
 
-    Route::get('routes', 'AdminDetailsController@listRoutes');
 });
 
 
@@ -196,27 +177,12 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
 });
 
-// Registered, activated, and is admin routes.
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'role:admin']], function () {
 
-
-    Route::resource('themes', 'ThemesManagementController', [
-        'names' => [
-            'index' => 'themes',
-            'destroy' => 'themes.destroy'
-        ]
-    ]);
-
-    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-    Route::get('php', 'AdminDetailsController@listPHPInfo');
-
-
-});
 
 Route::group(['middleware' => ['auth', 'activated']], function () {
 
     Route::get('/profile', ['as' => 'public.home', 'uses' => 'Site\UserProfileController@show']);
-    Route::get('admin/logout', ['uses' => 'Auth\LoginController@logout'])->name('logout');
+    Route::get('admin/logout', ['uses' => 'Admin\Auth\LoginController@logout'])->name('logout');
 });
 
 // Resize Image
