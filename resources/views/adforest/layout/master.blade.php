@@ -125,9 +125,46 @@
 <!-- Style Switcher -->
 <script src="{{ asset('adforest/js/color-switcher.js') }}"></script>
 <!-- Template Core JS -->
+
+
+<script src="{{ asset('adforest/js/ckeditor/ckeditor.js') }}" ></script>
+<!-- Ad Tags  -->
+<script src="{{ asset('adforest/js/jquery.tagsinput.min.js') }}"></script>
+<!-- DROPZONE JS  -->
+<script src="{{ asset('adforest/js/dropzone.js') }}" ></script>
+<script src="{{ asset('adforest/js/form-dropzone.js') }}" ></script>
+
 <script src="{{ asset('adforest/js/custom.js') }}"></script>
+<script type="text/javascript">
+    "use strict";
 
-@yield('custom_js')
+    /*--------- Textarea Ck Editor --------*/
+    CKEDITOR.replace( 'editor1' );
 
+    /*--------- Ad Tags --------*/
+    $('#tags').tagsInput({
+        'width':'100%'
+    });
+
+    /*--------- create remove function in dropzone --------*/
+    Dropzone.autoDiscover = false;
+    var acceptedFileTypes = "image/*"; //dropzone requires this param be a comma separated list
+    var fileList = new Array;
+    var i = 0;
+    $("#dropzone").dropzone({
+        addRemoveLinks: true,
+        maxFiles: 5, //change limit as per your requirements
+        acceptedFiles: '.jpeg,.jpg,.png,.gif',
+        dictMaxFilesExceeded: "Maximum upload limit reached",
+        acceptedFiles: acceptedFileTypes,
+        url: "uploads",
+        dictInvalidFileType: "upload only JPG/PNG",
+        init: function () {
+            // Hack: Add the dropzone class to the element
+            $(this.element).addClass("dropzone");
+        }
+    });
+    (jQuery);
+</script>
 </body>
 </html>

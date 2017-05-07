@@ -45,7 +45,7 @@
                     </ul>
                     <ul class="menu-search-bar">
                         <li>
-                            <a href="" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i>
+                            <a href="PostAdvertisement" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i>
                                 Post Free Ad</a>
                         </li>
                     </ul>

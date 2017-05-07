@@ -39,7 +39,6 @@ class Advertisement extends Model
         'region_id',
         'title',
         'details',
-        'details_summary',
         'mobile_no',
         'phone_no',
         'image_filename',

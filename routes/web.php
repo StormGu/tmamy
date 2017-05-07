@@ -20,9 +20,9 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('contact', 'ContactController@index');
     Route::post('contact', 'ContactController@store');
     Route::get('adv/{id}', 'AdvertisementController@get');
-
+    Route::get('PostAdvertisement', 'AdvertisementController@PostAdvertisement');
+    Route::post('PostAdv', 'AdvertisementController@PostAdv');
 });
-
 
 // Authentication Routes
 Auth::routes();
