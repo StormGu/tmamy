@@ -21,13 +21,13 @@ Route::group(['namespace' => 'Site'], function () {
     Route::post('contact', 'ContactController@store');
 
     Route::get('adv/{id}', 'AdvertisementController@get');
-<<<<<<< HEAD
+
     Route::get('PostAdvertisement', 'AdvertisementController@PostAdvertisement');
     Route::post('PostAdv', 'AdvertisementController@PostAdv');
 =======
     Route::get('advertisement/{id}', 'AdvertisementController@get');
 
->>>>>>> 02d9e3cff2229f6bd17fc03173b3e1a9de7d0211
+
 });
 
 // Authentication Routes
