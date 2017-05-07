@@ -119,7 +119,7 @@ class UsersManagementController extends Controller
             $user->attachRole($request->input('role'));
             $user->save();
 
-            return redirect('users')->with('success', trans('usersmanagement.createSuccess'));
+            return redirect('admin/users')->with('success', trans('usersmanagement.createSuccess'));
 
         }
     }
@@ -234,9 +234,10 @@ class UsersManagementController extends Controller
             $user->deleted_ip_address = $ipAddress->getClientIp();
             $user->save();
             $user->delete();
-            return redirect('users')->with('success', trans('usersmanagement.deleteSuccess'));
+            return redirect('admin/users')->with('success', trans('usersmanagement.deleteSuccess'));
         }
         return back()->with('error', trans('usersmanagement.deleteSelfError'));
 
     }
+
 }

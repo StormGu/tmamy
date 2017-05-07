@@ -32,12 +32,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin\Auth'], function () {
     Route::post('login', ['uses' => 'LoginController@login']);
 });
 
-// Admin Routes
+// Admin Panel: Registered, Activated, and is admin role.
 Route::group([
     'as' => 'admin.',
     'prefix' => 'admin',
     'namespace' => 'Admin',
-    'middleware' => ['auth', 'activated']
+    'middleware' => ['auth', 'activated', 'role:admin']
 ], function () {
 
     Route::get('/', ['uses' => 'HomeController@index']);
@@ -45,7 +45,6 @@ Route::group([
     Route::get('dashboard', ['uses' => 'HomeController@index']);
 
     Route::resource('advertisements', 'AdvertisementCrudController');
-    //Route::resource('categories', 'CategoryCrudController');
     CRUD::resource('categories', 'CategoryCrudController');
     CRUD::resource('stores', 'StoreCrudController');
     CRUD::resource('users_manage', 'UserCrudController');
@@ -60,16 +59,6 @@ Route::group([
     });
 
     CRUD::resource('coupons', 'CouponCrudController');
-
-    CRUD::resource('settings', '\Backpack\Settings\app\Http\Controllers\SettingCrudController');
-});
-
-Route::group([
-    'as' => 'admin.',
-    'namespace' => 'Admin',
-    'middleware' => ['auth', 'activated']
-], function () {
-
     CRUD::resource('settings', '\Backpack\Settings\app\Http\Controllers\SettingCrudController');
 });
 
@@ -196,22 +185,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
 });
 
-// Registered, activated, and is admin routes.
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'role:admin']], function () {
 
-
-    Route::resource('themes', 'ThemesManagementController', [
-        'names' => [
-            'index' => 'themes',
-            'destroy' => 'themes.destroy'
-        ]
-    ]);
-
-    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-    Route::get('php', 'AdminDetailsController@listPHPInfo');
-
-
-});
 
 Route::group(['middleware' => ['auth', 'activated']], function () {
 

@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use jeremykenedy\LaravelRoles\Exceptions\RoleDeniedException;
 
 class Handler extends ExceptionHandler
 {
@@ -28,31 +29,30 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
      * @return void
      */
-    public function report(Exception $exception)
-    {
+    public function report(Exception $exception) {
         parent::report($exception);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception               $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
-    {
+    public function render($request, Exception $exception) {
 
-// Add LOG HERE
+        // Add LOG HERE
         if ($exception instanceof \jeremykenedy\LaravelRoles\Exceptions\LevelDeniedException) {
-
-// ADD FLASH AND REDIRECT HERE
-
+            // ADD FLASH AND REDIRECT HERE
             return redirect()->back();
+        }
 
+        if ($exception instanceof RoleDeniedException) {
+            return response()->view('errors.401', [], 401);
         }
 
         return parent::render($request, $exception);
@@ -61,12 +61,11 @@ class Handler extends ExceptionHandler
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @param  \Illuminate\Http\Request                 $request
+     * @param  \Illuminate\Auth\AuthenticationException $exception
      * @return \Illuminate\Http\Response
      */
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
+    protected function unauthenticated($request, AuthenticationException $exception) {
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
