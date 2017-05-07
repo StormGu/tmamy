@@ -19,7 +19,9 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('home', 'HomeController@index');
     Route::get('contact', 'ContactController@index');
     Route::post('contact', 'ContactController@store');
+
     Route::get('adv/{id}', 'AdvertisementController@get');
+    Route::get('advertisement/{id}', 'AdvertisementController@get');
 
 });
 
