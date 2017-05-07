@@ -1,78 +1,60 @@
-<!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-<footer>
-    <!-- Footer Content -->
-    <div class="footer-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <!-- Info Widget -->
-                    <div class="widget">
-                        <div class="logo"><img src="{{ url(config('settings.footer_logo')) }}" width="180" height="40"/>
-                        </div>
-                        <p>{{ config('settings.description') }}</p>
-                        <ul>
-                            <li><img src="{{ asset('adforest/images/appstore.png') }}" alt=""></li>
-                            <li><img src="{{ asset('adforest/images/googleplay.png') }}" alt=""></li>
-                        </ul>
-                    </div>
-                    <!-- Info Widget Exit -->
-                </div>
-                <div class="col-md-3  col-sm-6 col-xs-12">
-                    <!-- Follow Us -->
-                    <div class="widget socail-icons">
-                        <h5>@lang('common.followUs')</h5>
-                        <ul>
-                            @if(Config('settings.facebook_url'))
-                                <li><a class="fb" {{ url( Config('settings.facebook_url')) }} target=" _blank"><i
-                                                class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                            @endif
-                            @if(Config('settings.twitter_url'))
-                                <li><a class="twitter" {{ url( Config('settings.twitter_url')) }} target=" _blank"><i
-                                                class="fa fa-twitter"></i></a><span>Twitter</span>
-                                </li>
-                            @endif
-                            @if(Config('settings.linkedin_url'))
-                                <li><a class="linkedin" {{ url( Config('settings.linkedin_url')) }} target=" _blank"><i
-                                                class="fa fa-linkedin"></i></a><span>Linkedin</span>
-                                </li>
-                            @endif
-                            @if(Config('settings.google_url'))
-                                <li><a class="googleplus" {{ url( Config('settings.google_url')) }} target=" _blank"><i
-                                                class="fa fa-google-plus"></i></a><span>Google+</span></li>
-                            @endif
-                        </ul>
-                    </div>
-                    <!-- Follow Us End -->
-                </div>
-                <div class="col-md-6  col-sm-6 col-xs-12">
-                    <!-- Newslatter -->
-                    <div class="widget widget-newsletter">
-                        <h5>@lang('newsletter.signup')</h5>
-                        <div class="fieldset">
-                            <p>@lang('newsletter.description')</p>
-                            <form>
-                                <input class="" placeholder="@lang('newsletter.subscribe_placeholder')" type="text">
-                                <input class="submit-btn" name="submit" value="@lang('newsletter.subscribe')"
-                                       type="submit">
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Newslatter -->
+<div class="footer-widget-area" style="height: 240px;">
+    <div class="container" style="margin-top: -12px;">
+        <div class="row boder-b-footer">
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                <div class="footer-widget">
+                    <img src="{{ url(config('settings.footer_logo')) }}" />
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Copyrights -->
-    <div class="copyrights">
-        <div class="container">
-            <div class="copyright-content">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <p>@lang('common.copyrights', ['year' => date('Y')])</p>
-                    </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                <div class="footer-widget">
+                    <h4>About Us</h4>
+                    <ul class="single-widget-list">
+                        <li><a href="#">Digital Plus Company</a></li>
+                        <li><a href="#">Tmamy Business Gate</a></li>
+                        <li><a href="#">Tamamy Stores</a></li>
+                    </ul>
                 </div>
             </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                <div class="footer-widget">
+                    <h4>Contact Us</h4>
+                    <ul class="single-widget-list">
+                        <li>Digital Plus Company</li>
+                        <li>Al Qarhoud, Dubai</li>
+                        <li>(+971) 42541227</li>
+                        <li><a href="#">info@digitalplus.ae</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                <div class="footer-widget">
+                    <h4>Help &amp; FAQ</h4>
+                    <ul class="single-widget-list">
+                        <li><a href="#">Digital Plus Company</a></li>
+                        <li><a href="#">Tmamy Business Gate</a></li>
+                        <li><a href="#">Tamamy Stores</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                <div class="footer-widget">
+                    <h4>Privacy Policy</h4>
+                    <ul class="single-widget-list">
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                <div class="footer-widget">
+                    <h4>Terms of Use</h4>
+                    <ul class="single-widget-list">
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
+        <span style="color: #fff"><p>@lang('common.copyrights', ['year' => date('Y')])</p></span>
     </div>
-</footer>
-<!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+</div>

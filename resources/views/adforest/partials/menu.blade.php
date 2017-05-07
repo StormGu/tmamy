@@ -1,56 +1,87 @@
-<!-- Navigation Menu -->
-<nav id="menu-1" class="mega-menu">
-    <!-- menu list items container -->
-    <section class="menu-list-items">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <!-- menu logo -->
-                    <ul class="menu-logo @if ($current_locale->direction == 'rtl') menu-logo-align-right @endif">
-                        <li><a href="{{ url('/') }}"><img src="{{ url(config('settings.site_logo')) }}" width="180"
-                                                          height="40"></a></li>
-                    </ul>
-                    <!-- menu links -->
-                    <ul class="menu-links @if ($current_locale->direction == 'rtl') menu-links-align-right @endif">
-                        <!-- active class -->
-                        <li><a href="{{ url('/') }}"> @lang('titles.home')</a></li>
-                        @foreach(\App\Models\Category::parents()->limit(5)->pluck('name', 'id') as $category_id => $category)
-                            <li>
-                                <a href="{{ url('/') }}"> {{$category}} <i
-                                            class="fa fa-angle-down fa-indicator"></i></a>
-                                <div class="drop-down grid-col-8">
-                                    <!--grid row-->
-                                    <div class="grid-row">
-                                        <!--grid column 3-->
-                                        <div class="grid-col-4">
-                                            <ul>
-                                                @foreach(\App\Models\Category::whereParentId($category_id)->limit(15)->pluck('name', 'id') as $child_id => $child_name)
-                                                    <li><a href="">{{ $child_name }}</a></li>
-                                                    @if($loop->iteration % 5 == 0)
-                                            </ul>
-                                        </div>
-                                        <div class="grid-col-4">
-                                            <ul>
-                                                @endif
-                                                @endforeach
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
-
-                        <li><a href="{{ url('contact') }}">@lang('titles.contact') </a></li>
-                    </ul>
-                    <ul class="menu-search-bar">
-                        <li>
-                            <a href="PostAdvertisement" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i>
-                                Post Free Ad</a>
-                        </li>
-                    </ul>
+<!--Header Area Start-->
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 rtl">
+                <div class="logo">
+                    <a href="{{ url('/') }}"><img src="{{ url(config('settings.site_logo')) }}" /></a>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-md-offset-3 hidden-xs ltr">
+                <div class="search-form">
+                    <form id="search-form" action="/MainSearch" method="post">
+                        <input type="hidden" name="_token" value="UWJfrxxZgjPu5gCmR1vC1gEUx0FpcrbG47XEly2Y">
+                        <div class="categories">
+                            <div class="box-search-select">
+                                <a data-toggle="modal" data-target="#myModal" class="mdl">Advance Search</a>
+                            </div>
+                        </div>
+                        <input type="search" placeholder="What do you want to search  . ." name="s"/>
+                        <button type="submit"><i class="fa fa-search"></i>Search</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-</nav>
+    </div>
+</header>
+<!--End of Header Area-->
+<!--Mainmenu Area Start-->
+<div class="mainmenu-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 ">
+                <div class="mainmenu">
+                    <nav>
+                        <ul id="nav">
+                            @foreach(\App\Models\Category::parents()->limit(11)->pluck('name', 'id') as $category_id => $category)
+                                <li><a href="">{{$category}}</a>
+                                    <div class="megamenu">
+                                        <div class="megamenu-image clearfix">
+                                            <div class="col-md-3 mega-banner">
+                                                <div class="border-list">
+                                                    @foreach(\App\Models\Category::whereParentId($category_id)->limit(15)->pluck('name', 'id') as $child_id => $child_name)
+                                                        <a href="#" class="mega-title">{{$child_name}}</a>
+                                                        @if($loop->iteration % 5 == 0)
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mega-banner">
+                                                <div class="border-list">
+                                                    @endif
+                                                    @endforeach
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu Area start -->
+    <div class="mobile-menu-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="mobile-menu">
+                        <nav id="dropdown">
+                            <ul>
+                                <li><a href="">HOME</a>
+                                    <ul>
+                                        <li><a href="">Home</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu Area end -->
+</div>
+<!--End of Mainmenu Area-->

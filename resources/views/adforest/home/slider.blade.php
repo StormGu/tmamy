@@ -1,15 +1,14 @@
-<div class="master-slider ms-skin-default" id="masterslider">
-    <!-- slide 1 -->
+<div class="slider-area">
+    <div class="preview-2">
+        <div id="nivoslider" class="slides">
+            @foreach(\App\Models\Slider::pluck('filename', 'id') as $image_id => $filename)
+                <img src="{{ url('image/850×300/' . $filename) }}" alt="" title="#slider-direction-1"  />
+            @endforeach
 
-    @foreach(\App\Models\Slider::pluck('filename', 'id') as $image_id => $filename)
-        <div class="ms-slide slide-{{ $image_id }}" data-delay="5">
-            <img src="{{ asset('adforest/js/masterslider/style/blank.gif') }}"
-                 data-src="{{ url('image/850×300/' . $filename) }}"/>
         </div>
-@endforeach
-
-
-<!-- end of slide -->
-
-</div>
-<!-- end Master Slider -->
+        <!-- direction 1 -->
+        <div id="slider-direction-1" class="t-cn slider-direction">
+            <div class="slider-progress"></div>
+        </div>
+    </div>
+    <!--End of Slider Area-->

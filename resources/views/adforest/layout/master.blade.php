@@ -29,7 +29,7 @@
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
         <link rel="stylesheet" href="{{ asset('adforest/rtl_css/bootstrap.css') }}">
         <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
-        <link rel="stylesheet" href="{{ asset('adforest/rtl_css/style.css') }}">
+{{--        <link rel="stylesheet" href="{{ asset('adforest/rtl_css/style.css') }}">--}}
         <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
         <link rel="stylesheet" href="{{ asset('adforest/rtl_css/font-awesome.css') }}" type="text/css">
         <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
@@ -62,7 +62,7 @@
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
         <link rel="stylesheet" href="{{ asset('adforest/css/bootstrap.css') }}">
         <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
-        <link rel="stylesheet" href="{{ asset('adforest/css/style.css') }}">
+        {{--<link rel="stylesheet" href="{{ asset('adforest/css/style.css') }}">--}}
         <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
         <link rel="stylesheet" href="{{ asset('adforest/css/font-awesome.css') }}" type="text/css">
         <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
@@ -89,10 +89,15 @@
         <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
         <link rel="stylesheet" id="color" href="{{ asset('adforest/css/colors/defualt.css') }}">
     @endif
-<!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
+
+    <link href="{{ asset('adforest/lib/nivo-slider/css/nivo-slider.css') }}" rel="stylesheet" >
+    <link href="{{ asset('adforest/nivo-slider/css/preview.css') }}" rel="stylesheet" >
+    <link href="{{ asset('adforest/css/tmamy-style.css') }}" rel="stylesheet" >
+
+    <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
     <link rel="stylesheet" id="theme-color" type="text/css" href="{{ asset('adforest/css/colors/sea-green.css') }}"/>
     <!-- JavaScripts -->
-    <script src="{{ asset('adforest//modernizr.js') }}"></script>
+    <script src="{{ asset('adforest/modernizr.js') }}"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -109,99 +114,174 @@
             ]) !!};
     </script>
 </head>
-<body @if ($current_locale->direction == 'rtl')  class="rtl" @endif>
+<body class="home-four @if ($current_locale->direction == 'rtl')  rtl @endif">
 
 <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
-<div class="colored-header">
-    @include('adforest.partials.top')
-    @include('adforest.partials.menu')
-</div>
+@include('adforest.partials.top')
+@include('adforest.partials.menu')
 
 <!-- Navigation Menu End -->
 @yield('breadcrumbs')
 
-<div class="main-content-area clearfix">
+@yield('content')
 
-    @yield('content')
 
-    @include('adforest.partials.footer')
+@include('adforest.partials.footer')
 
-</div>
 <!-- Back To Top -->
 <a href="#" class="cd-top">Top</a>
+
 <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
-<script src="{{ asset('adforest/js/jquery.min.js') }}"></script>
-<!-- Bootstrap Core Css  -->
-<script src="{{ asset('adforest/js/bootstrap.min.js') }}"></script>
-<!-- Jquery Easing -->
-<script src="{{ asset('adforest/js/easing.js') }}"></script>
-<!-- Menu Hover  -->
-<script src="{{ asset('adforest/js/forest-megamenu.js') }}"></script>
-<!-- Jquery Appear Plugin -->
-<script src="{{ asset('adforest/js/jquery.appear.min.js') }}"></script>
-<!-- Numbers Animation   -->
-<script src="{{ asset('adforest/js/jquery.countTo.js') }}"></script>
-<!-- Jquery Smooth Scroll  -->
-<script src="{{ asset('adforest/js/jquery.smoothscroll.js') }}"></script>
-<!-- Jquery Select Options  -->
-<script src="{{ asset('adforest/js/select2.min.js') }}"></script>
-<!-- noUiSlider -->
-<script src="{{ asset('adforest/js/nouislider.all.min.js') }}"></script>
-<!-- Carousel Slider  -->
-<script src="{{ asset('adforest/js/carousel.min.js') }}"></script>
-<script src="{{ asset('adforest/js/slide.js') }}"></script>
-<!-- Image Loaded  -->
-<script src="{{ asset('adforest/js/imagesloaded.js') }}"></script>
-<script src="{{ asset('adforest/js/isotope.min.js') }}"></script>
-<!-- CheckBoxes  -->
-<script src="{{ asset('adforest/js/icheck.min.js') }}"></script>
-<!-- Jquery Migration  -->
-<script src="{{ asset('adforest/js/jquery-migrate.min.js') }}"></script>
-<!-- Sticky Bar  -->
-<script src="{{ asset('adforest/js/theia-sticky-sidebar.js') }}"></script>
-<!-- Style Switcher -->
-<script src="{{ asset('adforest/js/color-switcher.js') }}"></script>
-<!-- Template Core JS -->
-
-
-<script src="{{ asset('adforest/js/ckeditor/ckeditor.js') }}" ></script>
-<!-- Ad Tags  -->
-<script src="{{ asset('adforest/js/jquery.tagsinput.min.js') }}"></script>
-<!-- DROPZONE JS  -->
-<script src="{{ asset('adforest/js/dropzone.js') }}" ></script>
-<script src="{{ asset('adforest/js/form-dropzone.js') }}" ></script>
-
-<script src="{{ asset('adforest/js/custom.js') }}"></script>
+<script src="{{ asset('adforest/tmamy/js/vendor/jquery-1.11.3.min.js')  }}"></script>
+<!-- bootstrap js
+============================================ -->
+<script src="{{ asset('adforest/tmamy/js/bootstrap.min.js')  }}"></script>
+<!-- owl.carousel.min js
+============================================ -->
+<script src="{{ asset('adforest/tmamy/js/owl.carousel.min.js')  }}"></script>
+<!-- nivo slider js
+============================================ -->
+<script src="{{ asset('adforest/tmamy/lib/nivo-slider/js/jquery.nivo.slider.js')  }}" type="text/javascript"></script>
+<script src="{{ asset('adforest/tmamy/lib/nivo-slider/home.js')  }}" type="text/javascript"></script>
+<!-- wow js
+============================================ -->
+<script src="{{ asset('adforest/tmamy/js/wow.js')  }}"></script>
+<script>
+    new WOW().init();
+</script>
+<!-- Price Slider js
+============================================ -->
+<script src="{{ asset('adforest/tmamy/js/price-slider.js')  }}"></script>
+<!-- BX Slider js
+============================================ -->
+<script src="{{ asset('adforest/tmamy/js/jquery.bxslider.min.js')  }}"></script>
+<!--Countdown js-->
+<script src="{{ asset('adforest/tmamy/js/jquery.countdown.min.js')  }}"></script>
+<!-- Scroll Up js
+============================================ -->
+<script src="{{ asset('adforest/tmamy/js/jquery.scrollUp.min.js')  }}"></script>
+<!-- Elevate Zoom js
+============================================ -->
+<script src="{{ asset('adforest/tmamy/js/jquery.elevatezoom.js')  }}"></script>
+<!-- Meanmenu js
+============================================ -->
+<script src="{{ asset('adforest/tmamy/js/meanmenu.js') }}"></script>
+<!-- plugins js
+============================================ -->
+<script src="{{ asset('adforest/tmamy/js/plugins.js') }}"></script>
+<!-- main js
+============================================ -->
+<script src="{{ asset('adforest/tmamy/js/main.js') }}"></script>
 <script type="text/javascript">
-    "use strict";
-
-    /*--------- Textarea Ck Editor --------*/
-    CKEDITOR.replace( 'editor1' );
-
-    /*--------- Ad Tags --------*/
-    $('#tags').tagsInput({
-        'width':'100%'
+    function fetch_select(val)
+    {
+        $.ajax({
+            type: 'post',
+            url: ' areaget.php',
+            data: {
+                get_option:val
+            },
+            success: function (response) {
+                document.getElementById("new_select").innerHTML=response;
+            }
+        });
+    }
+    function fetch_select1(val)
+    {
+        $.ajax({
+            type: 'post',
+            url: ' areaget1.php',
+            data: {
+                get_option:val
+            },
+            success: function (response) {
+                document.getElementById("new_select1").innerHTML=response;
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
     });
-
-    /*--------- create remove function in dropzone --------*/
-    Dropzone.autoDiscover = false;
-    var acceptedFileTypes = "image/*"; //dropzone requires this param be a comma separated list
-    var fileList = new Array;
-    var i = 0;
-    $("#dropzone").dropzone({
-        addRemoveLinks: true,
-        maxFiles: 5, //change limit as per your requirements
-        acceptedFiles: '.jpeg,.jpg,.png,.gif',
-        dictMaxFilesExceeded: "Maximum upload limit reached",
-        acceptedFiles: acceptedFileTypes,
-        url: "uploads",
-        dictInvalidFileType: "upload only JPG/PNG",
-        init: function () {
-            // Hack: Add the dropzone class to the element
-            $(this.element).addClass("dropzone");
+</script>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
         }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+//Initialize tooltips
+        $('.nav-tabs > li a[title]').tooltip();
+
+//Wizard
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            var $target = $(e.target);
+
+            if ($target.parent().hasClass('disabled')) {
+                return false;
+            }
+        });
+        $(".next-step").click(function (e) {
+            var $active = $('.wizard .nav-tabs li.active');
+            $active.next().removeClass('disabled');
+            nextTab($active);
+        });
+        $(".prev-step").click(function (e) {
+            var $active = $('.wizard .nav-tabs li.active');
+            prevTab($active);
+        });
     });
-    (jQuery);
+    function nextTab(elem) {
+        $(elem).next().find('a[data-toggle="tab"]').click();
+    }
+    function prevTab(elem) {
+        $(elem).prev().find('a[data-toggle="tab"]').click();
+    }
+    //according menu
+    $(document).ready(function()
+    {
+//Add Inactive Class To All Accordion Headers
+        $('.accordion-header').toggleClass('inactive-header');
+
+//Set The Accordion Content Width
+        var contentwidth = $('.accordion-header').width();
+        $('.accordion-content').css({});
+
+//Open The First Accordion Section When Page Loads
+        $('.accordion-header').first().toggleClass('active-header').toggleClass('inactive-header');
+        $('.accordion-content').first().slideDown().toggleClass('open-content');
+
+// The Accordion Effect
+        $('.accordion-header').click(function () {
+            if($(this).is('.inactive-header')) {
+                $('.active-header').toggleClass('active-header').toggleClass('inactive-header').next().slideToggle().toggleClass('open-content');
+                $(this).toggleClass('active-header').toggleClass('inactive-header');
+                $(this).next().slideToggle().toggleClass('open-content');
+            }
+
+            else {
+                $(this).toggleClass('active-header').toggleClass('inactive-header');
+                $(this).next().slideToggle().toggleClass('open-content');
+            }
+        });
+        $('.n-a-btn .fa-shopping-cart').parent().on('click', function(){
+            var href = $(this).attr('href');
+            window.location = href;
+        })
+
+        return false;
+    });
 </script>
 </body>
 </html>
