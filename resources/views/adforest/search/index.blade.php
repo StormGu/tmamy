@@ -1,6 +1,6 @@
 @extends('adforest.layout.master')
 
-@section('template_title', $object->title)
+@section('template_title', __('common.search_results'))
 
 @section('breadcrumbs')
     @include('adforest.partials.breadcrumbs', ['breadcrumbs' => $breadcrumbs])
@@ -14,6 +14,21 @@
                 <div class="col-md-9 col-md-push-3 col-lg-9 col-sx-12">
                     <div class="row">
                         @if($objects->count())
+                            {!! Form::open(['url' => url('search'), 'method' => 'get']) !!}
+                            <div class="search-holder">
+                                <div id="custom-search-input">
+                                    <div class="input-group col-md-12 col-xs-12 col-sm-12">
+                                        {!! Form::text('keyword', $keyword, ['placeholder' => __('common.searchPlaceholder'), 'class' => 'form-control']) !!}
+
+                                        <span class="input-group-btn">
+<button class="btn btn-theme" type="button" style="padding: 15px !important;">
+<span class=" glyphicon glyphicon-search"></span>
+</button>
+</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {!! Form::close() !!}
                             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
                                 <div class="filter-brudcrums">
                                 <span>
@@ -22,6 +37,7 @@
                                         - {{ $objects->lastPage() }}</span>
                                 </span>
                                 </div>
+
                             </div>
                         @endif
                         <div class="clearfix"></div>
@@ -54,16 +70,18 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            @lang('category.related_categories')
+                                            @lang('category.main_categories')
                                         </a>
                                     </h4>
                                 </div>
-                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                     aria-labelledby="headingOne">
                                     <div class="panel-body categories">
                                         <ul>
-                                            @foreach(\App\Models\Category::whereParentId($category_id)->withCount('advertisements')->get() as $category)
+                                            @foreach(\App\Models\Category::parents()->withCount('advertisements')->get() as $category)
                                                 <li><a href="{{ url('category/'. $category->id) }}">
                                                         {{ $category->name }}
                                                         <span>({{ $category->advertisements_count }})</span>

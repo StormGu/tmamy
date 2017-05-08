@@ -8,18 +8,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-md-offset-3 hidden-xs ltr">
-                <div class="search-form">
-                    <form id="search-form" action="/MainSearch" method="post">
-                        <input type="hidden" name="_token" value="UWJfrxxZgjPu5gCmR1vC1gEUx0FpcrbG47XEly2Y">
-                        <div class="categories">
-                            <div class="box-search-select">
-                                <a data-toggle="modal" data-target="#myModal" class="mdl">Advance Search</a>
-                            </div>
-                        </div>
-                        <input type="search" placeholder="What do you want to search  . ." name="s"/>
-                        <button type="submit"><i class="fa fa-search"></i>Search</button>
-                    </form>
-                </div>
+                @include('adforest.partials.search')
             </div>
         </div>
     </div>

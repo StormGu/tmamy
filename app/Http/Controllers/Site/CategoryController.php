@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
 
     public function index(Request $request, $category_id) {
-//        dd(\App\Models\Category::whereParentId($category_id)->withCount('advertisements')->get());
+        //        dd(\App\Models\Category::whereParentId($category_id)->withCount('advertisements')->get());
 
         $limit = $request->get('limit') ? $request->get('limit') : 2;
 
@@ -28,11 +28,7 @@ class CategoryController extends Controller
             ->paginate($limit)
             ->appends(\Input::except('page'));;
 
-        $data['sponsored'] = Advertisement::approved()
-            ->sponsered()
-            ->inRandomOrder()
-            ->limit(4)
-            ->get();
+        $data['sponsored'] = Advertisement::approved()->sponsered()->inRandomOrder()->limit(4)->get();
 
         return View('adforest.category.index', $data);
 

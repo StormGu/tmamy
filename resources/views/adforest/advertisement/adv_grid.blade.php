@@ -1,7 +1,10 @@
 <div class="white category-grid-box-1 ">
     <!-- Image Box -->
     <div class="image">
-        <img alt="{{ $object->title }}" src="{{ url('image/300×300/'. $object->image_filename) }}" class="img-responsive">
+        <a href="{{ url('adv/' . $object->id) }}">
+            <img alt="{{ $object->title }}" src="{{ url('image/300×300/'. $object->image_filename) }}"
+                 class="img-responsive">
+        </a>
     </div>
     <!-- Short Description -->
     <div class="short-description-1 ">
@@ -14,9 +17,9 @@
             <a href="{{ url('adv/' . $object->id) }}">{{ $object->title }}</a>
         </h3>
         <!-- Location -->
-        {{--<p class="location"><i class="fa fa-map-marker"></i> {{ $object->localtion }}--}}
-        {{--</p>--}}
-        <!-- Rating -->
+    {{--<p class="location"><i class="fa fa-map-marker"></i> {{ $object->localtion }}--}}
+    {{--</p>--}}
+    <!-- Rating -->
         <div class="rating">
             {{--<i class="fa fa-star"></i>--}}
             {{--<i class="fa fa-star"></i>--}}

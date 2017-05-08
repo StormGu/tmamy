@@ -27,6 +27,8 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('advertisement/{id}', 'AdvertisementController@get');
 
     Route::get('category/{category_id}', 'CategoryController@index');
+    Route::get('search', 'SearchController@index');
+    Route::post('search', 'SearchController@index');
 });
 
 // Authentication Routes
