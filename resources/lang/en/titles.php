@@ -35,7 +35,8 @@ return [
     'adminRoutes' => 'Routing Details',
     'myAds' => 'My Ads',
     'stores' => 'STORES',
-    'ads' => 'ADS'
+    'ads' => 'ADS',
+    'myStores' => 'My Stores'
 
 
 ];

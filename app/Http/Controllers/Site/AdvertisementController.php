@@ -34,20 +34,21 @@ class AdvertisementController extends Controller
         }
 
         $data['object'] = $object;
-        $data['adv_type'] = '';
 
         switch ($object->category_id) {
             case 73:
 
                 return $this->infoCareerJob($id, $data);
                 break;
-
             default:
 
                 $data['features'] = $object->features()->get();
                 return View('adforest.advertisement.show', $data);
         }
 
+        $advs = Advertisement::where('id', $id)->get();
+
+        return View('adforest.advertisement.show', compact('advs'));
     }
 
     public function PostAdvertisement() {
@@ -56,11 +57,11 @@ class AdvertisementController extends Controller
 
         $cou = Country::All();
 
-
         return view('adforest.advertisement.PostAdvertisement', compact('cat', 'cou'));
     }
 
     public function postAdv(Request $request) {
+
         $adv = new Advertisement;
 
         $Input = $request->all();

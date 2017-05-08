@@ -29,7 +29,8 @@ return [
     'AdId' => 'Ad Id',
     'categories' => 'Categories',
     'visits' => 'Visits',
-    'recent_ads' => 'Recent Ads'
+    'recent_ads' => 'Recent Ads',
+    'approved' => 'approved',
 
 
 ];

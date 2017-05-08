@@ -86,4 +86,5 @@ return [
     'admin_ip_address'      => 'admin ip address',
     'updated_ip_address'      => 'updated ip address',
     'deleted_ip_address'      => 'deleted ip address',
+    'settings'      => 'settings',
 ];

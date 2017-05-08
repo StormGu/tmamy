@@ -9,4 +9,7 @@ return [
     'advertisements' => 'Advertisements',
     'constants' => 'Constants',
     'slider' => 'Slider',
+    'features' => 'features',
+    'property' => 'property',
+    'settings' => 'settings',
 ];

@@ -41,21 +41,21 @@ return [
     'ph-theme'					=> 'اختار التنسيق',
 
     'label-location'			=> 'الموقع:',
-    'ph-location'				=> 'أدلخ موقعك',
+    'ph-location'				=> 'أدخل موقعك',
 
     'label-bio'					=> 'السيرة الذاتية:',
-    'ph-bio'					=> 'أدلخ سيرتك الذاتية',
+    'ph-bio'					=> 'أدخل سيرتك الذاتية',
 
     'label-github_username'		=> 'حساب الجيت هب:',
     'ph-github_username'		=> 'أدخل حساب الجيت هب',
 
     'label-twitter_username'	=> 'حساب تويتر:',
-    'ph-twitter_username'		=> 'أدلخ حساب تويتر',
+    'ph-twitter_username'		=> 'أدخل حساب تويتر',
 
     // User Account Settings Tab
     'editTriggerAlt'			=> 'تبديل قائمة المستخدم',
     'editAccountTitle'			=> 'إعدادات الحساب',
-    'editAccountAdminTitle'		=> 'إدالاة الحساب',
+    'editAccountAdminTitle'		=> 'إدارة الحساب',
     'updateAccountSuccess'      => 'تم تحديث حسابك بنجاح',
     'submitProfileButton'		=> 'حفظ التغييرات',
 
@@ -82,29 +82,29 @@ return [
     'submitButton'				=> 'حفظ التغييرات',
 
     // Restore User Account
-    'errorRestoreUserTime'		=> 'Sorry, account cannot be restored',
-    'successUserRestore'		=> 'Welcome back :username! Account Successfully Restored',
+    'errorRestoreUserTime'		=> 'عذرا، لا يمكن استعادة الحساب',
+    'successUserRestore'		=> 'مرحباً يعودتك :username! تمت استعادة الحساب بنجاح',
 
-
+/******/
     'sutatus'		=> 'الحالة',
-    'ads_all'		=> 'جميع الاعلانات',
-    'ads_approved'		=> 'تمت الموافقة على الإعلانات',
-    'ads_blocked'		=> 'تم حجب الاعلانات',
-    'ads_draft'		=> 'مسودة الإعلانات',
-    'ads_expired'		=> 'انتهت صلاحية الإعلانات',
-    'ads_rejected'		=> 'تم رفض الإعلانات',
-    'ads_waiting_approval'		=> 'إعلانات في انتظار الموافقة',
+    'ads_all'		=> 'الكل',
+    'ads_approved'		=> 'الموافق عليه',
+    'ads_blocked'		=> 'المحظور',
+    'ads_draft'		=> 'المسودة',
+    'ads_expired'		=> 'منتهي الصلاحية',
+    'ads_rejected'		=> 'المرفوض',
+    'ads_waiting_approval'		=> 'في انتظار الموافقة',
     'ads'		=> 'إعلانات',
     'stores'		=> 'متاجر',
     'settings'		=> 'إعدادات',
     'status'		=> 'الحالة',
-    'store_all'		=> 'جميع المتاجر',
-    'store_approved'		=> 'المتاجر الموافق عليها',
-    'store_blocked'		=> 'المتاجر المحظورة',
-    'store_draft'		=> 'مسودة المتاجر',
-    'store_expired'		=> 'المتاجر منتهية الصلاحية',
-    'store_rejected'		=> 'المتاجر المرفوضة',
-    'store_waiting_approval'		=> 'المتاجر في انتظار الموافقة',
+    'store_all'		=> 'الكل',
+    'store_approved'		=> 'الموافق عليه',
+    'store_blocked'		=> 'المحظور',
+    'store_draft'		=> 'المسودة',
+    'store_expired'		=> 'منتهي الصلاحية',
+    'store_rejected'		=> 'المرفوض',
+    'store_waiting_approval'		=> ' في انتظار الموافقة',
     'setting'		=> 'إعدادات',
     'settings_all'		=> 'جميع الإعدادات',
     'password'		=> 'كلمة المرور',
@@ -127,6 +127,7 @@ return [
     'twitter'		=> 'تويتر',
     'googleplus'		=> 'جوجل بلس',
     'linkedin'		=> 'لينكد ان',
-    'pinterest'		=> 'pinterest'
-
+    'pinterest'		=> 'pinterest',
+'ad_Post_ad'		=> 'إضافة إعلان',
+    'upgrade'		=> 'ترقيةالحساب',
 ];
