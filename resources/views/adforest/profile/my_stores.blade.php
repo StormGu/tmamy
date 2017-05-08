@@ -21,7 +21,7 @@
                         <!-- Sidebar Widgets -->
                         <div class="user-profile widget">
                             <div class="widget-heading">
-                                <h4 class="panel-title"><a>@lang('profile.status')</a></h4>
+                                <h4 class="panel-title">@lang('profile.status')</h4>
                             </div>
                             <ul>
                                 <li @if(Request::is('profile/stores'))class="active"@endif><a

@@ -16,12 +16,13 @@
                 <br>
                 <!-- Row -->
                 <div class="row">
+
                     <!-- Middle Content Area -->
                     <div class="col-md-4 leftbar-stick blog-sidebar">
                         <!-- Sidebar Widgets -->
                         <div class="user-profile widget">
                             <div class="widget-heading">
-                                <h4 class="panel-title"><a>@lang('profile.status')</a></h4>
+                                <h4 class="panel-title">@lang('profile.status')</h4>
                             </div>
                             <ul>
                                 <li @if(Request::is('profile/ads'))class="active"@endif><a
@@ -62,6 +63,7 @@
                             <!-- Ads Archive -->
                             <div class="posts-masonry">
                                 <div class="col-md-12 col-xs-12 col-sm-12 user-archives">
+
                                     <!-- Ads Listing -->
                                     @forelse ($objects as $object)
                                         <div class="ads-list-archive">
