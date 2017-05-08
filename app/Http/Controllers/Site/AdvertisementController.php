@@ -25,26 +25,26 @@ class AdvertisementController extends Controller
     public function get($id) {
 
 
-        $object = Advertisement::whereId($id)->whereStatus('approved')->first();
+      //  $object = Advertisement::whereId($id)->whereStatus('approved')->first();
 
-        $data['breadcrumbs'][$object->title] = '#';
+       // $data['breadcrumbs'][$object->title] = '#';
 
-        if (!$object) {
-            return redirect('home');
-        }
+      //  if (!$object) {
+        //    return redirect('home');
+      //  }
 
-        $data['object'] = $object;
+      //  $data['object'] = $object;
 
-        switch ($object->category_id) {
-            case 73:
+      //  switch ($object->category_id) {
+       //     case 73:
 
-                return $this->infoCareerJob($id, $data);
-                break;
-            default:
+         //       return $this->infoCareerJob($id, $data);
+          //      break;
+         //   default:
 
-                $data['features'] = $object->features()->get();
-                return View('adforest.advertisement.show', $data);
-        }
+          //      $data['features'] = $object->features()->get();
+           //     return View('adforest.advertisement.show', $data);
+    //    }
 
         $advs = Advertisement::where('id', $id)->get();
 

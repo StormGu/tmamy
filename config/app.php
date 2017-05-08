@@ -193,7 +193,7 @@ return [
         Backpack\CRUD\CrudServiceProvider::class,
         Backpack\Settings\SettingsServiceProvider::class,
         Spatie\Translatable\TranslatableServiceProvider::class,
-        Backpack\PermissionManager\PermissionManagerServiceProvider::class,
+       // Backpack\PermissionManager\PermissionManagerServiceProvider::class,
 
     ],
 

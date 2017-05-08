@@ -113,6 +113,16 @@ class UserProfileController extends Controller
 
         return redirect()->back();
     }
+
+    public function deletads($id){
+
+
+        $Advertisemen = Advertisement::find($id);
+
+        $Advertisemen->delete();
+
+        return redirect()->back();
+    }
     public function notifications() {
     }
 
