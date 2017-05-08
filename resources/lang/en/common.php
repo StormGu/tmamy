@@ -5,5 +5,6 @@ return [
     'copyrights' => ' All rights reserved © :year.',
     'followUs' => 'Follow Us',
     'delete' => 'delete',
-    'no_results' => 'no results'
+    'no_results' => 'no results',
+    'more' => 'more'
 ];
