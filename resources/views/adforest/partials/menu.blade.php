@@ -34,7 +34,7 @@
                     <nav>
                         <ul id="nav">
                             @foreach(\App\Models\Category::parents()->limit(11)->pluck('name', 'id') as $category_id => $category)
-                                <li><a href=""{{ url('category/' . $category_id) }}"">{{$category}}</a>
+                                <li><a href="{{ url('category/' . $category_id) }}">{{$category}}</a>
                                     @if(\App\Models\Category::whereParentId($category_id)->whereHas('advertisements')->count())
                                     <div class="megamenu">
                                         <div class="megamenu-image clearfix">

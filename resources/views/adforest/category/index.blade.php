@@ -13,15 +13,17 @@
             <div class="row">
                 <div class="col-md-9 col-md-push-3 col-lg-9 col-sx-12">
                     <div class="row">
-                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                            <div class="filter-brudcrums">
+                        @if($objects->count())
+                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                                <div class="filter-brudcrums">
                                 <span>
                                     @lang('common.showing')
                                     <span class="showed">{{ $objects->currentPage() }}
                                         - {{ $objects->lastPage() }}</span>
                                 </span>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <div class="clearfix"></div>
                         <div class="posts-masonry">
                             @forelse($objects as $object)
@@ -29,6 +31,15 @@
                                     @include('adforest.advertisement.adv_grid')
                                 </div>
                             @empty
+                                <div class="col-md-12 col-xs-12 col-sm-12 user-archives">
+                                    <section class="advertising">
+                                        <div class="banner">
+                                            <div class="wrapper">
+                                                <span class="title">@lang('common.no_results')</span>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
                             @endforelse
                         </div>
                         <div class="clearfix"></div>
@@ -43,27 +54,21 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion"
-                                           href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
-                                           class="collapsed">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
                                             @lang('category.related_categories')
                                         </a>
                                     </h4>
                                 </div>
-                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
-                                     aria-labelledby="headingOne" aria-expanded="false">
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body categories">
                                         <ul>
                                             @foreach(\App\Models\Category::whereParentId($category_id)->withCount('advertisements')->get() as $category)
-                                                <li>
-                                                    <a href="{{ url('category/'. $category->id) }}">
-                                                        <i class="flaticon-data"></i> {{ $category->name }}
+                                                <li><a href="{{ url('category/'. $category->id) }}">
+                                                        {{ $category->name }}
                                                         <span>({{ $category->advertisements_count }})</span>
-                                                    </a>
-                                                </li>
+                                                    </a></li>
                                             @endforeach
-
                                         </ul>
                                     </div>
                                 </div>
