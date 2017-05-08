@@ -1,6 +1,6 @@
 @extends('adforest.layout.master')
 
-@section('template_title', __('common.search_results'))
+@section('template_title')
 
 @section('breadcrumbs')
     @include('adforest.partials.breadcrumbs', ['breadcrumbs' => $breadcrumbs])
