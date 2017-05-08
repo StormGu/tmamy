@@ -24,35 +24,36 @@ class AdvertisementController extends Controller
     public function get($id) {
 
 
-        $object = Advertisement::whereId($id)->whereStatus('approved')->first();
+     //   $object = Advertisement::whereId($id)->whereStatus('approved')->first();
 
-        $data['breadcrumbs'][$object->title] = '#';
+     //   $data['breadcrumbs'][$object->title] = '#';
 
-        if (!$object) {
-            return redirect('home');
-        }
+      //  if (!$object) {
+       //     return redirect('home');
+      //  }
 
-        $data['object'] = $object;
-        $data['adv_type'] = '';
+      //  $data['object'] = $object;
+     //   $data['adv_type'] = '';
 
-        switch ($data['adv_type']) {
-            case 'career_job':
+       // switch ($data['adv_type']) {
+          //  case 'career_job':
                 // Career Job Case
-                $data['object_career'] = AdvertisementInfoCareersJob::whereAdvertisementId($id)->first();
-                $data['object_requirements'] = AdvertisementInfoCareersJobRequirement::whereAdvertisementId($id)->get();
+            //    $data['object_career'] = AdvertisementInfoCareersJob::whereAdvertisementId($id)->first();
+             //   $data['object_requirements'] = AdvertisementInfoCareersJobRequirement::whereAdvertisementId($id)->get();
                 // $data['object_requirements'] = AdvertisementInfoCareersJobRequirement::whereAdvertisementId($id)->first();
 
 
-                break;
+      //          break;
 
-            default:
+         //   default:
 
-        }
-
-        $data['features'] = $object->features()->get();
+      //  }
 
 
-        return View('adforest.advertisement.show', $data);
+     //   $data['features'] = $object->features()->get();
+
+        $advs = Advertisement::where('id', $id)->get();
+        return View('adforest.advertisement.show',compact('advs'));
     }
     public function PostAdvertisement(){
 

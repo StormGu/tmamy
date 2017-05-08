@@ -80,7 +80,9 @@ class Advertisement extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
     public function currency() {
         return $this->belongsTo(Constant::class, 'currency_id', 'id');
     }
@@ -88,7 +90,9 @@ class Advertisement extends Model
     public function category() {
         return $this->belongsTo(Category::class);
     }
-
+    public function country() {
+        return $this->belongsTo(Country::class);
+    }
     public function customer() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
