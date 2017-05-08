@@ -47,6 +47,10 @@
                         </div>
 
                     </div>
+                    <div>
+                        <button  type="button" class="btn btn-primary pull-right" >
+                            <a href="{{ url('/PostAdvertisement') }}">@lang('profile.ad_Post_ad')</a></button>
+                    </div>
                     <div class="col-md-8">
                         <!-- Row -->
                         <div class="row">

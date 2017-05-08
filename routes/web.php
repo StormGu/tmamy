@@ -167,6 +167,10 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::get('profile/ads/{type?}', 'Site\UserProfileController@advertisements');
     Route::get('profile/stores/{type?}', 'Site\UserProfileController@stores');
 
+
+    Route::get('profile/poststores', 'Site\UserProfileController@poststores');
+    Route::post('postnewstores', 'Site\UserProfileController@postnewstores');
+
     Route::get('profile/settings', 'Site\UserSettingController@index');
     Route::post('profile/settings', 'Site\UserSettingController@update');
 

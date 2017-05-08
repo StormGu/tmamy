@@ -60,6 +60,8 @@ class AdvertisementController extends Controller
 
         $cou =  Country::All();
 
+
+
         return view('adforest.advertisement.PostAdvertisement', compact('cat','cou'));
     }
 
@@ -74,11 +76,9 @@ class AdvertisementController extends Controller
         $logoName = time().'.'.$filelogo->getClientOriginalName();
         $request->file('image_filename')->move("uploads/",$logoName);
 
-
-
-
         $adv->advertisementno = 1555;
         $adv->title=$Input['title'];
+        $adv->user_id=$Input['user_id'];
         $adv->category_id=$Input['category_id'];
         $adv->country_id=$Input['country_id'];
         $adv->title=$Input['title'];

@@ -9,7 +9,9 @@
                     <h4 class="search-result-item-heading"><a href="#">{{ $object->name }}</a></h4>
                     <p class="info">{{ $object->email }}</p>
                     <p class="description">{{ $object->profile->bio }}</p>
+
                 </div>
+
                 <div class="col-md-7 col-sm-12 col-xs-12">
                     <div class="row ad-history">
                         <div class="col-md-4 col-sm-4 col-xs-12 pull-right">

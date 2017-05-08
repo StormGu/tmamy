@@ -48,6 +48,11 @@
                         </div>
 
                     </div>
+
+                    <div>
+                        <button  type="button" class="btn btn-primary pull-right" >
+                            <a href="{{ url('profile/poststores') }}">@lang('profile.store_Post_Store')</a></button>
+                    </div>
                     <div class="col-md-8">
                         <!-- Row -->
                         <div class="row">
