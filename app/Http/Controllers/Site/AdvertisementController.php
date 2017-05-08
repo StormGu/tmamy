@@ -66,6 +66,7 @@ class AdvertisementController extends Controller
     }
 
     public function postAdv(Request $request){
+
         $adv = new Advertisement;
 
         $Input=$request->all();
@@ -90,7 +91,7 @@ class AdvertisementController extends Controller
         $adv->advertisment_type_id=$Input['minimalradio'];
         $adv->price=$Input['price'];
         $adv->image_filename='uploads/'. $logoName;
-
+        $adv->video_filename=$Input['video_filename'];
 
 
 
