@@ -1,7 +1,7 @@
 <div class="header-top">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 col-md-5 col-sm-5 rtl">
+            <div class="col-lg-6 col-md-6 col-sm-5 rtl">
                 <ul class="header-left-top header-menu">
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -18,8 +18,8 @@
                     </li>
                     @if (Auth::check())
                         {{--<li><a href="{{ url('/add_credit') }}">@lang('titles.addCredit')</a></li>--}}
-                        <li><a href="{{ url('/profile') }}">@lang('titles.myProfile')</a></li>
-                        <li><a href="{{ url('/logout') }}">@lang('titles.logout')</a></li>
+<!--                         <li><a href="{{ url('/profile') }}">@lang('titles.myProfile')</a></li>
+ -->                        <li><a href="{{ url('/logout') }}">@lang('titles.logout')</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">

@@ -184,8 +184,10 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
 
 Route::group(['middleware' => ['auth', 'activated']], function () {
+//Site\UserProfileController@show
+    //Route::get('/profile', ['as' => 'public.home', 'uses' => 'Site\UserProfileController@show']);
+    Route::get('/profile', ['as' => 'public.home', 'uses' => 'Site\UserProfileController@advertisements']);
 
-    Route::get('/profile', ['as' => 'public.home', 'uses' => 'Site\UserProfileController@show']);
     Route::get('admin/logout', ['uses' => 'Admin\Auth\LoginController@logout'])->name('logout');
 });
 

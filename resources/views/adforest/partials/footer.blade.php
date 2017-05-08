@@ -55,6 +55,6 @@
             </div>
 
         </div>
-        <span style="color: #fff"><p>@lang('common.copyrights', ['year' => date('Y')])</p></span>
+        
     </div>
 </div>

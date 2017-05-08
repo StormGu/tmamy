@@ -557,19 +557,9 @@
                     <!-- Sidebar Widgets -->
                     <div class="sidebar">
                         <!-- Contact info -->
-                        <div class="contact white-bg">
-                            <!-- Email Button trigger modal -->
-                            <button class="btn-block btn-contact contactEmail" data-toggle="modal"
-                                    data-target=".price-quote">Contact Seller Via Email
-                            </button>
-                            <!-- Email Modal -->
-                            <button class="btn-block btn-contact contactPhone number" data-last="111111X">0320<span>XXXXXXX</span>
-                            </button>
-                        </div>
+                        
                         <!-- Price info block -->
-                        <div class="ad-listing-price">
-                            <p>Rs. 22,000</p>
-                        </div>
+                        
                         <!-- User Info -->
                         <div class="white-bg user-contact-info">
                             <div class="user-info-card">
@@ -597,6 +587,9 @@
                             <div id="itemMap" style="width: 100%; height: 370px; margin-bottom:5px;"></div>
                         </div>
                         <!-- Featured Ads -->
+<div class="ad-listing-price">
+                            <p>Rs. 22,000</p>
+                        </div>
                         <div class="widget">
                             <div class="widget-heading">
                                 <h4 class="panel-title"><a>@lang('advertisement.featuredAds')</a></h4>

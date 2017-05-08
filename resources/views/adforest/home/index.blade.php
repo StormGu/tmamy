@@ -22,13 +22,13 @@
                         <div class="side-div" style="margin-top: 30px;height: 370px;">
                             <ul>
                                 <li style="text-align: center;"><a class="active" href="">company fhtsher</a></li>
-                                <li style="padding: 8px;"><img src=" img/bnr.png" style="width: 100%;"></li>
-                                <li style="padding: 8px;"><img src=" img/bnr1.png" style="width: 100%;"></li>
-                                <li style="padding: 8px;"><img src=" img/bnr2.png" style="width: 100%;"></li>
-                                <li style="padding: 8px;"><img src=" img/bnr.png" style="width: 100%;"></li>
+                                <li style="padding: 8px;"><img src=" adforest/img/bnr.png" style="width: 100%;"></li>
+                                <li style="padding: 8px;"><img src=" adforest/img/bnr1.png" style="width: 100%;"></li>
+                                <li style="padding: 8px;"><img src=" adforest/img/bnr2.png" style="width: 100%;"></li>
+                                <li style="padding: 8px;"><img src=" adforest/img/bnr.png" style="width: 100%;"></li>
                             </ul>
                         </div>
-                        <div class="app-img"><a href=""> <img src=" img/app.png"> </a></div>
+                        <div class="app-img"><a href=""> <img src=" adforest/img/app.png"> </a></div>
                     </aside>
                 </div>
 
@@ -37,7 +37,7 @@
 
                     @foreach(\App\Models\Category::parents()->has('advertisements')->pluck('name', 'id') as $category_id => $category_name)
                         <div class="features-tab clearfix">
-                            <h3 class="medic"><img src=" icon/real-stat.png" alt="icon"
+                            <h3 class="medic"><img src="adforest/icon/real-stat.png" alt="icon"
                                                    class="img-icon">{{ $category_name }}</h3>
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs navbar-right" role="tablist">
@@ -108,14 +108,14 @@
 
                             <div class="adv">
                                 <div class="mbotn" data-category="shopping">
-                                    <img src=" img/carr.png">
+                                    <img src="adforest/img/carr.png">
                                     <span class="colored"
                                           title=" cars / rent"> Cars / Rent</span>
                                 </div>
                                 <div class="cover">
 
                                     <a href="">
-                                        <img src=" img/car.png">
+                                        <img src=" adforest/img/car.png">
                                     </a>
 
                                 </div>
@@ -128,13 +128,13 @@
 
                             <div class="adv">
                                 <div class="mbotn1" data-category="shopping">
-                                    <img src=" img/offers.png">
+                                    <img src=" adforest/img/offers.png">
                                     <span class="colored" title=" cars / rent"> offers / ab hotel</span>
                                 </div>
                                 <div class="cover">
 
                                     <a href="">
-                                        <img src=" img/car.png">
+                                        <img src=" adforest/img/car.png">
                                     </a>
 
                                 </div>
@@ -154,7 +154,7 @@
                                 <div class="cover">
 
                                     <a href="">
-                                        <img src=" img/ilan2.jpg">
+                                        <img src="adforest/img/ilan2.jpg">
                                     </a>
 
                                 </div>

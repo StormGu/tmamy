@@ -11,9 +11,9 @@
             <!-- Row -->
             <div class="row">
                 <!-- Middle Content Area -->
-                <div class="col-md-5 col-md-push-7 col-sm-6 col-xs-12">
+                <div class="col-md-8 col-md-push-2 col-sm-12 col-xs-12">
                     <!--  Form -->
-
+<div class="form-grid">
                     <form role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -53,41 +53,10 @@
                         <button class="btn btn-theme btn-lg btn-block">@lang('auth.login')</button>
                     </form>
 
+</div>
                     <!-- Form -->
                 </div>
-                <div class="col-md-7  col-md-pull-5  col-xs-12 col-sm-6">
-                    <div class="heading-panel">
-                        <h3 class="main-title text-left">
-                            Sign In to your account
-                        </h3>
-                    </div>
-                    <div class="content-info">
-                        <div class="features">
-                            <div class="features-icons">
-                                <img src="{{ asset('adforest/images/icons/chat.png') }}" alt="img">
-                            </div>
-                            <div class="features-text">
-                                <h3>Chat &amp; Messaging</h3>
-                                <p>
-                                    Access your chats and account info from any device.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="features">
-                            <div class="features-icons">
-                                <img src="{{ asset('adforest/images/icons/panel.png') }}" alt="img">
-                            </div>
-                            <div class="features-text">
-                                <h3>User Dashboard</h3>
-                                <p>
-                                    Maintain a wishlist by saving your favourite items.
-                                </p>
-                            </div>
-                        </div>
-                        <span class="arrowsign hidden-sm hidden-xs"><img src="{{ asset('adforest/images/arrow.png') }}"
-                                                                         alt=""></span>
-                    </div>
-                </div>
+                
                 <!-- Middle Content Area  End -->
             </div>
             <!-- Row End -->

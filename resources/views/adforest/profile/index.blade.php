@@ -54,7 +54,7 @@
                                             <div class="ad-archive-img">
                                                 <a href="#">
                                                     <div class="ribbon expired">Expired</div>
-                                                    <img src="{{ asset('mages/posting/2.jpg') }}" alt="">
+                                                    <img src="{{ asset('adforest/images/posting/2.jpg') }}" alt="">
                                                 </a>
                                             </div>
                                             <!-- Img Block -->
@@ -149,7 +149,7 @@
                                             <div class="ad-archive-img">
                                                 <a href="#">
                                                     <div class="ribbon expired">Expired</div>
-                                                    <img src="{{ asset('mages/posting/5.jpg') }}" alt="">
+                                                    <img src="{{ asset('adforest/images/posting/5.jpg') }}" alt="">
                                                 </a>
                                             </div>
                                             <!-- Img Block -->
@@ -244,7 +244,7 @@
                                             <div class="ad-archive-img">
                                                 <a href="#">
                                                     <div class="ribbon expired">Expired</div>
-                                                    <img src="{{ asset('mages/posting/4.jpg') }}" alt="">
+                                                    <img src="{{ asset('adforest/images/posting/4.jpg') }}" alt="">
                                                 </a>
                                             </div>
                                             <!-- Img Block -->
@@ -339,7 +339,7 @@
                                             <div class="ad-archive-img">
                                                 <a href="#">
                                                     <div class="ribbon expired">Expired</div>
-                                                    <img src="{{ asset('mages/posting/6.jpg') }}" alt="">
+                                                    <img src="{{ asset('adforest/images/posting/6.jpg') }}" alt="">
                                                 </a>
                                             </div>
                                             <!-- Img Block -->
@@ -433,7 +433,7 @@
                                             <div class="ad-archive-img">
                                                 <a href="#">
                                                     <div class="ribbon expired">Expired</div>
-                                                    <img src="{{ asset('mages/posting/1.jpg') }}" alt="">
+                                                    <img src="{{ asset('adforest/images/posting/1.jpg') }}" alt="">
                                                 </a>
                                             </div>
                                             <!-- Img Block -->
@@ -527,7 +527,7 @@
                                             <div class="ad-archive-img">
                                                 <a href="#">
                                                     <div class="ribbon expired">Expired</div>
-                                                    <img src="{{ asset('mages/posting/7.jpg') }}" alt="">
+                                                    <img src="{{ asset('adforest/images/posting/7.jpg') }}" alt="">
                                                 </a>
                                             </div>
                                             <!-- Img Block -->
@@ -622,7 +622,7 @@
                                             <div class="ad-archive-img">
                                                 <a href="#">
                                                     <div class="ribbon expired">Expired</div>
-                                                    <img src="{{ asset('mages/posting/8.jpg') }}" alt="">
+                                                    <img src="{{ asset('adforest/images/posting/8.jpg') }}" alt="">
                                                 </a>
                                             </div>
                                             <!-- Img Block -->
