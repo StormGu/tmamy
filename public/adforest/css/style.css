@@ -104,7 +104,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 a {
-	color: #f58936;
+	color: #06776f;
 	-webkit-transition: all .25s ease-in-out;
 	-moz-transition: all .25s ease-in-out;
 	-ms-transition: all .25s ease-in-out;
@@ -560,7 +560,7 @@ ul {
 	outline: none
 }
 .color-switcher ul li a.defualt {
-	background: #f58936;
+	background: #06776f;
 }
 .color-switcher ul li a.green {
 	background: #00a651;
@@ -577,6 +577,7 @@ ul {
 }
 
 .picker_close {
+	display: none;
 	width: 40px;
 	height: 40px;
 	position: absolute;
@@ -877,7 +878,7 @@ ul {
 	width: 23%;
 }
 .select2-container--classic .select2-selection--single:focus {
-	border: 1px solid #f58936;
+	border: 1px solid #06776f;
 }
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
 	color: #fff;
@@ -1627,7 +1628,7 @@ ul.category-list-style li a span {
 	color: #232323;
 }
 .white.category-grid-box-1 h3 a:hover {
-	color: #f58936;
+	color: #06776f;
 }
 .white.category-grid-box-1 .ad-info-1 {
 	border-top: 1px solid #e9e6e0;
@@ -2008,7 +2009,7 @@ ul.category-list-style li a span {
 	transform: scale(1);
 }
 .ad-listing .ad-status {
-	background-color: rgba(245, 137, 54, 0.8);
+	background-color: rgb(43, 211, 199);
 	color: #fff;
 	font-size: 12px;
 	font-weight: 600;
@@ -2847,7 +2848,7 @@ ul.add_info li i {
 	margin-bottom: 30px;
 }
 .adz-detail .heading-panel h3.main-title {
-	border-bottom: 2px solid #f58936;
+	border-bottom: 2px solid #06776f;
 	display: block;
 }
 .desc-points {
@@ -2879,7 +2880,7 @@ ul.add_info li i {
 	margin-right: 15px;
 }
 .single-details .owl-controls .owl-nav .owl-next, .single-details .owl-controls .owl-nav .owl-prev {
-	background-color: #f58936;
+	background-color: #06776f;
 	border-radius: 0;
 	font-size: 20px;
 	opacity: 1;
@@ -2975,7 +2976,7 @@ ul.add_info li i {
 }
 #accordion .panel-body.categories ul li a:hover {
 	text-decoration: none;
-	color: #f58936;
+	color: #06776f;
 }
 #accordion .panel-body a i {
 	color: #8e8b8b;
@@ -4168,8 +4169,7 @@ ul.category-list-data li:hover a span {
 }
 /* =-=-=-=-=-=-= Breadcrumbs =-=-=-=-=-=-= */
 .page-header-area {
-	background: rgba(0, 0, 0, 0) url("../images/breadcrumb.jpg") no-repeat scroll center center / cover;
-	padding: 50px 0;
+    background: #fff url(../images/footer-bg1.jpg) repeat-x scroll center bottom;	padding: 50px 0;
 	text-align: left;
 	position: relative;
 }
@@ -5155,6 +5155,7 @@ ul.category-list-data li:hover a span {
 	float: right;
 }
 .arrowsign {
+	display: none;
 	bottom: 170px;
 	left: 500px;
 	position: relative;
@@ -6012,8 +6013,8 @@ ul.category-list-data li:hover a span {
 	top: 17px;
 }
 .alert.alert-success {
-	background: #8ac249 none repeat scroll 0 0;
-	border: 1px solid #8ac249;
+	background: #28b7ac none repeat scroll 0 0;
+	border: 1px solid #28b7ac;
 }
 .alert.alert-success::after {
 	content: "";
@@ -6033,15 +6034,15 @@ ul.category-list-data li:hover a span {
 	content: "";
 }
 .alert.alert-danger {
-	background: #f34235 none repeat scroll 0 0;
-	border: 1px solid #f34235;
+	background: #28b7ac none repeat scroll 0 0;
+	border: 1px solid #28b7ac;
 }
 .alert.alert-danger::after {
 	content: "";
 }
 .alert.alert-success.alert-outline {
 	background: transparent;
-	border: 1px solid #8ac249;
+	border: 1px solid #28b7ac;
 	color: #232323;
 }
 .alert.alert-success::after {
@@ -6065,7 +6066,7 @@ ul.category-list-data li:hover a span {
 }
 .alert.alert-danger.alert-outline {
 	background: transparent;
-	border: 1px solid #f34235;
+	border: 1px solid #28b7ac;
 	color: #232323;
 }
 .alert.alert-danger::after {
@@ -6091,7 +6092,7 @@ ul.category-list-data li:hover a span {
 	opacity: 1;
 }
 .label.label-success {
-	background: #8ac249 none repeat scroll 0 0;
+	background: #28b7ac none repeat scroll 0 0;
 }
 .label.label-info {
 	background: #02a8f3 none repeat scroll 0 0;
@@ -6100,7 +6101,7 @@ ul.category-list-data li:hover a span {
 	background: #fe9700 none repeat scroll 0 0;
 }
 .label.label-danger {
-	background: #f34235 none repeat scroll 0 0;
+	background: #28b7ac none repeat scroll 0 0;
 }
 .popover {
 	background-clip: padding-box;
@@ -6150,6 +6151,7 @@ ul.category-list-data li:hover a span {
 /* =-=-=-=-=-=-= Sticky Post Ad Button  =-=-=-=-=-=-= */
 
 .sticky-post-button {
+	display: none;
 	border-radius: 50%;
 	bottom: 50px;
 	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
@@ -7246,7 +7248,7 @@ a.delete i {
 	color: #ed1c24;
 }
 .user-profile ul li.active span {
-	background-color: #f58936;
+	background-color: #06776f;
 }
 .ad-info-1 ul li i.delete {
 	color: #ed1c24 !important;
@@ -7302,11 +7304,11 @@ a.delete i {
 	transition: all 0.3s ease 0s;
 }
 .message-header .new-message .icon, .message-header .new-message .fa {
-	color: #f58936;
+	color: #06776f;
 	margin-right: 10px;
 }
 .message-header .new-message:hover {
-	color: #f58936;
+	color: #06776f;
 }
 .message-history {
 	border-top: 1px solid #d4d4d4;
@@ -8011,7 +8013,7 @@ footer#footer .widget-newsletter .fieldset P {
 	top: 0;
 }
 .footer-content .column h2:hover {
-	color: #f58936;
+	color: #06776f;
 	cursor: pointer;
 }
 
@@ -8052,7 +8054,7 @@ footer#footer .widget-newsletter .fieldset P {
 	font-size: 12px;
 }
 .social-links-two a:hover {
-	background: #f58936 none repeat scroll 0 0;
+	background: #06776f none repeat scroll 0 0;
 	color: #fff !important;
 }
 .footer-content .news-widget .news-post {
@@ -8279,7 +8281,7 @@ ul.filterAdType li a {
 	 font-family: "Merriweather",serif;
 }
 ul.filterAdType li.active a, ul.filterAdType li a:hover {
-    background: #f58936 none repeat scroll 0 0;
+    background: #06776f none repeat scroll 0 0;
     color: #fff;
 }
 ul.listingViewIcon li {

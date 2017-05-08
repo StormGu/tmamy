@@ -1073,7 +1073,7 @@ text-align: left;
     font-size: 14px;
     margin-bottom: 8px;
     margin-top: 10px;
-        height: 24px;
+        height: 33px;
     overflow: hidden;
 }
 .product-info a, .blog-info a {
@@ -3473,7 +3473,7 @@ i.grey {
       color: #888889;
     display: inline-block;
     float: left;
-    padding: 8px 0 0 12px;
+    padding: 3px 0 0 12px;
     position: relative;
     cursor: pointer;
 }
@@ -6712,7 +6712,8 @@ blockquote {
 .home-four .features-tab .arti::after, .home-five .features-tab .arti::after{    background: #ead4aa !important;}
 .comm{    color: #786a8d !important;}
 .home-four .features-tab .comm::after, .home-five .features-tab .comm::after{    background: #786a8d !important;}
-.owl-wrapper{      margin-bottom: 30px;padding-top: 15px;   background: #fff;
+.owl-wrapper{  overflow: hidden;
+    width: 100% !important;    margin-bottom: 30px;padding-top: 15px;   background: #fff;
     height: 265px; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.05);}
 .nivo-nextNav{    opacity: 0;}
@@ -7839,7 +7840,7 @@ ul.sub-menu {
    
     display: inline-block;
     font-size: 14px;
-    padding: 4px 9px;
+    padding: 0px 9px;
     transition: all 0.3s ease-in 0s;
    
     transition: background 0.3s ease 0s, color 0.2s ease 0s
@@ -13456,7 +13457,7 @@ blockquote {
 .more2{ background: #8db35e;}
 .more3{ background: #b171c6;}
 .more4{ background: #786a8d;}
-.hr-main{width: 65%;
+.hr-main{width: 55%;
     float: right;
     margin-top: 18px;
     margin-bottom: 0px !important;

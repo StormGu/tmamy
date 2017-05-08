@@ -1484,5 +1484,14 @@ th {
 .header-top-left p {
 	float:right;
 }
-
+.home-four .features-tab h3, .home-five .features-tab h3{float: right !important;}
+.img-icon {
+    
+    margin-left: 10px !important;
+}
+.rits {
+    float: left !important;}
+    .hr-main {
+    width: 50% !important;}
+.home-four #search-form input{     float: left!important;   text-align: left !important;}
 /*# sourceMappingURL=bootstrap-rtl.css.map */
