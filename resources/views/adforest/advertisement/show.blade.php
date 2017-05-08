@@ -1,10 +1,7 @@
 @extends('adforest.layout.master')
 
-@section('template_title', $object->title)
+@section('template_title')
 
-@section('breadcrumbs')
-    @include('adforest.partials.breadcrumbs', ['breadcrumbs' => $breadcrumbs])
-@endsection
 
 @section('content')
     <section class="section-padding error-page pattern-bgs gray ">
@@ -15,13 +12,14 @@
                 <!-- Middle Content Area -->
                 <div class="col-md-8 col-xs-12 col-sm-12">
                     <!-- Single Ad -->
+                    @foreach($advs as $adv)
                     <div class="single-ad">
                         <!-- Title -->
                         <div class="ad-box featured-border">
-                            <h1>{{ $object->title }}</h1>
+                            <h1>{{ $adv->title }}</h1>
                             <div class="short-history">
                                 <ul>
-                                    <li>@lang('advertisement.created_at'): <b>{{ \Carbon\Carbon::parse($object->created_at)->formatLocalized('%d %B %Y, %H:%M') }}</b></li>
+                                    <li>@lang('advertisement.created_at'): <b>{{ \Carbon\Carbon::parse($adv->created_at)->formatLocalized('%d %B %Y, %H:%M') }}</b></li>
                                     <li>@lang('advertisement.category'): <b><a href="#">Used Cars</a></b></li>
                                     <li>@lang('advertisement.location'): <b>London</b></li>
                                 </ul>
@@ -34,7 +32,7 @@
                         <div class="flexslider single-page-slider">
                             <div class="flex-viewport">
                                 <ul class="slides slide-main">
-                                    <li class=""><img alt="" src="{{ asset('adforest/images/single-page/1.jpg') }}" title=""></li>
+                                    <li class=""><img alt="" src="{{ url($adv->image_filename) }}" title=""></li>
                                     <li><img alt="" src="{{ asset('adforest/images/single-page/2.jpg') }}" title=""></li>
                                     <li class="flex-active-slide"><img alt="" src="{{ asset('adforest/images/single-page/3.jpg') }}" title="">
                                     </li>
@@ -82,7 +80,7 @@
                                     </h3>
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                                    <span><strong>@lang('advertisement.Condition')</strong> :</span>used
+                                    <span><strong>@lang('advertisement.Condition')</strong> :</span>@if($adv->advertisment_type_id  == 1) buy @else sell @endif
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
                                     <span><strong>@lang('advertisement.Brand')</strong> :</span> Nokia
@@ -94,10 +92,10 @@
                                     <span><strong>@lang('advertisement.productType')</strong>:</span> Mobile
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                                    <span><strong>@lang('advertisement.Date')</strong> :</span> 2014-10-06
+                                    <span><strong>@lang('advertisement.Date')</strong> :</span>{{ $adv->advertisment_date }}
                                 </div>
                                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                                    <span><strong>@lang('advertisement.Price')</strong> :</span> Rs. 22,000
+                                    <span><strong>@lang('advertisement.Price')</strong> :</span> {{ $adv->price }}$
                                 </div>
                             </div>
                             <!-- Short Features  -->
@@ -172,6 +170,7 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
+                    @endforeach
                     <!-- Single Ad End -->
                     <!-- Price Alert -->
                     <div class="alert-box-container  margin-top-30">
@@ -559,7 +558,7 @@
                         <!-- Contact info -->
                         
                         <!-- Price info block -->
-                        
+                    @foreach($advs as $advd)
                         <!-- User Info -->
                         <div class="white-bg user-contact-info">
                             <div class="user-info-card">
@@ -568,28 +567,31 @@
                                 </div>
                                 <div class="user-information no-padding col-md-8 col-sm-9 col-xs-8">
                                     <span class="user-name"><a class="hover-color"
-                                                               href="profile.html">Sonu Monu</a></span>
+                                                               href="profile.html">{{ $advd->user->name }}</a></span>
                                     <div class="item-date">
-                                        <span class="ad-pub">Published on: 10 Dec 2017</span><br>
+                                        <span class="ad-pub">Published on: {{ $adv->advertisment_date }}</span><br>
                                         <a href="#" class="link">More Ads</a>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
+
                             <div class="ad-listing-meta">
                                 <ul>
-                                    <li>@lang('advertisement.AdId'): <span class="color">4143</span></li>
-                                    <li>@lang('advertisement.categories'): <span class="color">Used Cars</span></li>
+                                    <li>@lang('advertisement.AdId'): <span class="color">{{ $advd->advertisementno }}</span></li>
+                                    <li>@lang('advertisement.categories'): <span class="color">{{ $advd->category->name }}</span></li>
                                     <li>@lang('advertisement.visits'): <span class="color">9</span></li>
-                                    <li>@lang('advertisement.location'): <span class="color">New York, USA</span></li>
+                                    <li>@lang('advertisement.location'): <span class="color">{{ $advd->country->name }}</span></li>
                                 </ul>
                             </div>
                             <div id="itemMap" style="width: 100%; height: 370px; margin-bottom:5px;"></div>
                         </div>
+
                         <!-- Featured Ads -->
 <div class="ad-listing-price">
-                            <p>Rs. 22,000</p>
+                            <p>{{ $advd->price }}$</p>
                         </div>
+                        @endforeach
                         <div class="widget">
                             <div class="widget-heading">
                                 <h4 class="panel-title"><a>@lang('advertisement.featuredAds')</a></h4>
