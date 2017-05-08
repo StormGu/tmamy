@@ -28,7 +28,7 @@ return [
     'adminThemesAdd' => 'إضافة موضوع جديد',
 
     'myAds' => 'إعلاناتي',
-
+    'myStores' => 'المتاجر',
     'stores' => 'متاجر',
     'ads' => 'إعلانات',
     'adminLogs' => 'ملفات التسجيل',

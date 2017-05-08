@@ -5,7 +5,5 @@ return [
     'category' => 'التصنيف',
     'customer' => 'زبون',
     'is_free' => 'بدون مقابل',
-    'created_at' => 'تاريخ الإنشاء',
-
-
+    'created_at' => 'تاريخ الإنشاء'
 ];

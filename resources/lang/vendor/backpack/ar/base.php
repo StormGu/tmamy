@@ -8,5 +8,8 @@ return [
     'stores' => 'متاجر',
     'advertisements' => 'إعلانات',
     'constants' => 'ثوابت',
-    'slider' => 'سلايدر'
+    'slider' => 'سلايدر',
+    'features' => 'ميزات',
+    'property' => 'خصائص',
+    'settings' => 'إعدادت',
 ];
