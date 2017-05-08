@@ -13,8 +13,8 @@ class ExtendCategoriesTable extends Migration
      */
     public function up() {
         Schema::table('categories', function (Blueprint $table) {
-            $table->string('image');
-            $table->string('bgcolor');
+            $table->string('image')->nullable();
+            $table->string('bgcolor')->nullable();
         });
     }
 

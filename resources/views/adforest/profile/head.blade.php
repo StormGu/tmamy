@@ -34,11 +34,14 @@
 
     <div class="dashboard-menu-container">
         <ul>
-            <li @if(Request::is('profile/ads*')) class="active" @endif><a href="{{ url('profile/ads') }}">
+            <li @if(Request::is('profile/ads*') || Request::is('profile')) class="active" @endif><a href="{{ url('profile/ads') }}">
                     <div class="menu-name"> @lang('profile.ads')</div>
                 </a></li>
             <li @if(Request::is('profile/store*')) class="active" @endif><a href="{{ url('profile/stores') }}">
                     <div class="menu-name">@lang('profile.stores')</div>
+                </a></li>
+            <li @if(Request::is('profile/upgrade*')) class="active" @endif><a href="{{ url('profile/upgrade') }}">
+                    <div class="menu-name">@lang('profile.upgrade')</div>
                 </a></li>
             <li class="pull-right @if(Request::is('profile/settings*')) active @endif"><a href="{{ url('profile/settings') }}">
                     <div class="menu-name">@lang('profile.settings')</div>
