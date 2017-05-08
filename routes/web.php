@@ -26,7 +26,7 @@ Route::group(['namespace' => 'Site'], function () {
     Route::post('PostAdv', 'AdvertisementController@PostAdv');
     Route::get('advertisement/{id}', 'AdvertisementController@get');
 
-
+    Route::get('category/{category_id}', 'CategoryController@index');
 });
 
 // Authentication Routes
