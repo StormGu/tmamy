@@ -77,6 +77,14 @@ return [
     'captchaRequire'    => 'كلمة التحقق مطلوبة',
     'CaptchaWrong'      => 'كلمة تحقق خاطئة,يرجى المحاولة مرة أخرى',
     'roleRequired'      => 'دور المستخدم مطلوب',
-    'social'      => 'اجتماعيات'
+    'social'      => 'اجتماعيات',
+    'roles'      => 'مهام',
+    'created_at'      => 'تاريخ الإنشاء',
 
+    'signup_ip_address'      => 'signup ip address',
+    'leave_password_blank_for_not_modification'      => 'ترك كلمة المرور فارغة لعدم التعديل',
+    'signup_confirmation_ip_address'      => 'signup confirmation ip address',
+    'admin_ip_address'      => 'admin ip address',
+    'updated_ip_address'      => 'updated ip address',
+    'deleted_ip_address'      => 'deleted ip address'
 ];

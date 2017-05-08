@@ -76,6 +76,14 @@ return [
     'captchaRequire'    => 'Captcha is required',
     'CaptchaWrong'      => 'Wrong captcha, please try again.',
     'roleRequired'      => 'User role is required.',
-    'social'      => 'social'
-
+    'social'      => 'social',
+    'roles'      => 'roles',
+    'created_at'      => 'created at',
+    /********************************/
+    'signup_ip_address'      => 'signup ip address',
+    'leave_password_blank_for_not_modification'      => 'leave password blank for not modification',
+    'signup_confirmation_ip_address'      => 'signup confirmation ip address',
+    'admin_ip_address'      => 'admin ip address',
+    'updated_ip_address'      => 'updated ip address',
+    'deleted_ip_address'      => 'deleted ip address',
 ];
