@@ -15,23 +15,24 @@
                     <div class="post-ad-form postdetails">
                         <div class="heading-panel">
                             <h3 class="main-title text-left">
-                                Post Your Ad
+                                @lang('advertisement.Post Your Ad')
                             </h3>
                         </div>
 
                         <form action="PostAdv" method="post" enctype="multipart/form-data" class="submit-form">
                             <!-- Title  -->
                             {{ csrf_field() }}
+                            <input name="user_id"  value="{{ Auth::id() }}" class="form-control" placeholder="uea +92-0321-123-456-789" type="hidden">
                             <div class="row">
                                 <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                    <label class="control-label">Ad Title <small>Enter a short title for your Ad</small></label>
+                                    <label class="control-label">@lang('advertisement.Ad Title') <small>@lang('advertisement.Enter a short title for your Ad')</small></label>
                                     <input name="title" class="form-control" placeholder="Brand new honda civic 2017 for sale" type="text">
                                 </div>
                             </div>
                             <div class="row">
                                 <!-- Category  -->
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">Category <small>Select suitable category for your ad</small></label>
+                                    <label class="control-label">@lang('advertisement.Category') <small>@lang('advertisement.Select suitable category for your ad')</small></label>
                                     <select name="category_id" class="category form-control">
                                         <option value="Select Option"></option>
                                          @foreach($cat as $key)
@@ -41,7 +42,7 @@
                                 </div>
 
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">Country <small>Select Country for your ad</small></label>
+                                    <label class="control-label">@lang('advertisement.Country') <small>@lang('advertisement.Select Country for your ad')</small></label>
                                     <select name="country_id" class="category form-control">
                                         <option label="Select Option"></option>
                                         @foreach($cou as $key)
@@ -52,7 +53,7 @@
 
                                 <!-- Price  -->
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">Price<small>USD only</small></label>
+                                    <label class="control-label">@lang('advertisement.Price')<small>@lang('advertisement.USD only')</small></label>
                                     <input name="price" class="form-control" placeholder="eg $350" type="text">
                                 </div>
                             </div>
@@ -60,7 +61,7 @@
                             <!-- Image Upload  -->
                             <div class="row">
                                 <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                    <label class="control-label">Photos for your ad <small>Please add images of your ad. (350x450)</small></label>
+                                    <label class="control-label">@lang('advertisement.Photos for your ad') <small>@lang('advertisement.Please add images of your ad. ') (350x450)</small></label>
                                     <input type="file" name="image_filename">
                                 </div>
                             </div>
@@ -70,7 +71,7 @@
                             <!-- Ad Description  -->
                             <div class="row">
                                 <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
-                                    <label class="control-label">Ad Description <small>Enter long description for your project</small></label>
+                                    <label class="control-label">@lang('advertisement.Ad Description') <small>@lang('advertisement.Post Your Ad')Enter long description for your project</small></label>
                                     <textarea name="details" id="editor1" rows="12" class="form-control" placeholder=""></textarea>
                                 </div>
                             </div>
@@ -81,16 +82,16 @@
                             <!-- Ad Type  -->
                             <div class="row">
                                 <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                    <label class="control-label">Type Of Ad<small>want to buy or sale</small></label>
+                                    <label class="control-label">@lang('advertisement.Type Of Ad')<small>@lang('advertisement.want to buy or sale')</small></label>
                                     <div class="skin-minimal">
                                         <ul class="list">
                                             <li>
                                                 <input tabindex="7" type="radio" id="minimal-radio-1" name="minimalradio" value="0">
-                                                <label  for="minimal-radio-1">I want to sell </label>
+                                                <label  for="minimal-radio-1">@lang('advertisement.I want to sell') </label>
                                             </li>
                                             <li>
                                                 <input tabindex="8" type="radio" id="minimal-radio-2" name="minimalradio" value="1" checked>
-                                                <label for="minimal-radio-2">I want to buy</label>
+                                                <label for="minimal-radio-2">@lang('advertisement.I want to buy')</label>
                                             </li>
                                         </ul>
                                     </div>
@@ -103,20 +104,20 @@
                             <!-- end row -->
                             <div class="row">
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">Mobile Number<small>number for conformation</small></label>
+                                    <label class="control-label">@lang('advertisement.Mobile Number')<small>@lang('advertisement.number for conformation')</small></label>
                                     <input name="mobile_no" class="form-control" placeholder="uea +92-0321-123-456-789" type="text">
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">Phone Number<small>number for conformation</small></label>
+                                    <label class="control-label">@lang('advertisement.Phone Number')<small>@lang('advertisement.number for conformation')</small></label>
                                     <input name="phone_no" class="form-control" placeholder="uea +92-0321-123-456-789" type="text">
                                 </div>
 
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">Advertisment Date</label>
+                                    <label class="control-label">@lang('advertisement.Advertisment Date')</label>
                                     <input name="advertisment_date" class="form-control" placeholder="uea +92-0321-123-456-789" type="date">
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">Expiry Date</label>
+                                    <label class="control-label">@lang('advertisement.Expiry Date')</label>
                                     <input name="expiry_date" class="form-control" placeholder="uea +92-0321-123-456-789" type="date">
                                 </div>
 
@@ -150,7 +151,7 @@
                                 </div>
                             </div>
                             <!-- end row -->
-                            <button type="submit" class="btn btn-theme pull-right">Publish My Ad</button>
+                            <button type="submit" class="btn btn-theme pull-right">@lang('advertisement.Publish My Ad')</button>
                         </form>
                     </div>
                     <!-- end post-ad-form-->
@@ -163,20 +164,20 @@
                         <!-- Categories -->
                         <div class="widget">
                             <div class="widget-heading">
-                                <h4 class="panel-title"><a>Saftey Tips </a></h4>
+                                <h4 class="panel-title"><a>@lang('advertisement.Saftey Tips') </a></h4>
                             </div>
                             <div class="widget-content">
-                                <p class="lead">Posting an ad on <a href="#">AdForest.com</a> is free! However, all ads must follow our rules:</p>
+                                <p class="lead">@lang('advertisement.Posting an ad on') <a href="#">@lang('advertisement.AdForest.com')</a> @lang('advertisement.is free! However, all ads must follow our rules'):</p>
                                 <ol>
-                                    <li>Make sure you post in the correct category.</li>
-                                    <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
-                                    <li>Do not upload pictures with watermarks.</li>
-                                    <li>Do not post ads containing multiple items unless it's a package deal.</li>
-                                    <li>Do not put your email or phone numbers in the title or description.</li>
-                                    <li>Make sure you post in the correct category.</li>
-                                    <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
-                                    <li>Do not upload pictures with watermarks.</li>
-                                    <li>Do not post ads containing multiple items unless it's a package deal.</li>
+                                    <li>@lang('advertisement.Make sure you post in the correct category').</li>
+                                    <li>@lang('advertisement.Do not post the same ad more than once or repost an ad within 48 hours').</li>
+                                    <li>@lang('advertisement.Do not upload pictures with watermarks').</li>
+                                    <li>@lang('advertisement.Do not post ads containing multiple items unless its a package deal').</li>
+                                    <li>@lang('advertisement.Do not put your email or phone numbers in the title or description').</li>
+                                    <li>@lang('advertisement.Make sure you post in the correct category').</li>
+                                    <li>@lang('advertisement.Do not post the same ad more than once or repost an ad within 48 hours').</li>
+                                    <li>@lang('advertisement.Do not upload pictures with watermarks').</li>
+                                    <li>@lang('advertisement.Do not post ads containing multiple items unless its a package deal').</li>
                                 </ol>
                             </div>
                         </div>

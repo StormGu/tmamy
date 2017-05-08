@@ -7,7 +7,11 @@ use App\Models\Store;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Category;
+use App\Models\Country;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
 class UserProfileController extends Controller
 {
 
@@ -62,6 +66,53 @@ class UserProfileController extends Controller
 
     }
 
+    public function poststores(){
+        $cat =  Category::where('parent_id', null)->get();
+
+        $cou =  Country::All();
+
+
+
+        return view('adforest.profile.PostStores', compact('cat','cou'));
+    }
+
+    public function Postnewstores(Request $request){
+        $stors = new Store;
+
+        $Input=$request->all();
+
+        $stors->category_id=$Input['category_id'];
+
+        $filelogo = $request->file('logo_file_name');
+        $logoName = time().'.'.$filelogo->getClientOriginalName();
+        $request->file('logo_file_name')->move("uploads/",$logoName);
+
+
+        $stors->title=$Input['title'];
+        $stors->company_name=$Input['company_name'];
+        $stors->category_id=$Input['category_id'];
+        $stors->country_id=$Input['country_id'];
+        $stors->user_id=$Input['user_id'];
+        $stors->description=$Input['description'];
+        $stors->mobile_no=$Input['mobile_no'];
+        $stors->phone_no=$Input['phone_no'];
+        $stors->start_date=$Input['start_date'];
+        $stors->expiry_date=$Input['expiry_date'];
+        $stors->address=$Input['address'];
+        $stors->email=$Input['email'];
+        $stors->url=$Input['url'];
+        $stors->pob=$Input['pob'];
+        $stors->fax=$Input['fax'];
+        $stors->logo_file_name='uploads/'. $logoName;
+        $stors->status= 'waiting_approval';
+
+
+
+
+        $stors->save();
+
+        return redirect()->back();
+    }
     public function notifications() {
     }
 
