@@ -14,6 +14,11 @@
                 <!-- Middle Content Area -->
                 @include('adforest.profile.head')
                 <br>
+                <div class="row margin-bottom-20">
+                    <div class="col-md-12">
+                        <a href="{{ url('/PostAdvertisement') }}">@lang('profile.ad_Post_ad')</a>
+                    </div>
+                </div>
                 <!-- Row -->
                 <div class="row">
 
@@ -22,7 +27,7 @@
                         <!-- Sidebar Widgets -->
                         <div class="user-profile widget">
                             <div class="widget-heading">
-                                <h4 class="panel-title">@lang('profile.status')</h4>
+                                <h4 class="panel-title"><a>@lang('profile.status')</a></h4>
                             </div>
                             <ul>
                                 <li @if(Request::is('profile/ads'))class="active"@endif><a
@@ -50,7 +55,7 @@
                     </div>
                     <div>
                         <button  type="button" class="btn btn-primary pull-right" >
-                            <a href="{{ url('/PostAdvertisement') }}">@lang('profile.ad_Post_ad')</a></button>
+                           </button>
                     </div>
                     <div class="col-md-8">
                         <!-- Row -->

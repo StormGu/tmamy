@@ -21,7 +21,15 @@
           <!-- ================================================ -->
 
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/home') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
-          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/users') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.users') }}</span></a></li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-group"></i> <span>{{ trans('backpack::base.users') }}, {{ trans('backpack::base.roles') }}, {{ trans('backpack::base.permissions') }} </span> <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/users') }}"><i class="fa fa-user"></i> <span>{{ trans('backpack::base.users') }}</span></a></li>
+              <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/role') }}"><i class="fa fa-group"></i> <span>{{ trans('backpack::base.roles') }}</span></a></li>
+              <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/permission') }}"><i class="fa fa-key"></i> <span>{{ trans('backpack::base.permissions') }}</span></a></li>
+            </ul>
+          </li>
+
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/advertisements') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.advertisements') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/categories') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.categories') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/stores') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.stores') }}</span></a></li>
@@ -36,6 +44,8 @@
           <!-- ======================================= -->
           <li class="header">{{ trans('backpack::base.user') }}</li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/logout') }}"><i class="fa fa-sign-out"></i> <span>{{ trans('backpack::base.logout') }}</span></a></li>
+          <!-- Users, Roles Permissions -->
+
         </ul>
       </section>
       <!-- /.sidebar -->

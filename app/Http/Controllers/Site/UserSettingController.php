@@ -6,6 +6,7 @@ use App\Http\Requests\UserSettingRequest;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Traits\CaptureIpTrait;
+use Backpack\PermissionManager\app\Models\Role;
 use Illuminate\Http\Request;
 
 class UserSettingController extends Controller
@@ -142,5 +143,24 @@ class UserSettingController extends Controller
         $data['object'] = \Auth::user();
 
         return View('adforest.profile.upgrade', $data);
+    }
+
+    public function updateUpgrade(Request $request){
+
+        $role = Role::find($request->input('roles'));
+
+        $user = User::findOrFail(\Auth::id());
+        if (!$user->hasRole($role->name) && $user->assignRole($role->name)) {
+
+            return back()->withMessage([
+                'type' => 'success',
+                'message' => trans('common.success_edit')
+            ]);
+        } else {
+            return back()->withMessage([
+                'type' => 'warning',
+                'message' => trans('common.you_have_this_role')
+            ]);
+        }
     }
 }

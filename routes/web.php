@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Site'], function () {
 
 });
 
+
 // Authentication Routes
 Auth::routes();
 
@@ -163,10 +164,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 //        'uses' => 'ProfilesController@deleteUserAccount'
 //    ]);
 
-    // Route to show user avatar
-    Route::get('images/profile/{id}/avatar/{image}', [
-        'uses' => 'ProfilesController@userProfileAvatar'
-    ]);
+
 
     Route::get('profile/ads/{type?}', 'Site\UserProfileController@advertisements');
     Route::get('profile/stores/{type?}', 'Site\UserProfileController@stores');
@@ -246,3 +244,9 @@ Route::get('lang/{lang}', function ($lang) {
 
     return Redirect::back();
 });
+
+
+// Route to show user avatar
+Route::get('images/profile/{id}/avatar/{image}', [
+    'uses' => 'ProfilesController@userProfileAvatar'
+]);

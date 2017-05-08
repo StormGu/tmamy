@@ -9,13 +9,15 @@ use Illuminate\Notifications\Notifiable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
 use Backpack\CRUD\CrudTrait;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use CrudTrait;
-    use HasRoleAndPermission;
+    //use HasRoleAndPermission;
     use Notifiable;
     use SoftDeletes;
+    use HasRoles;
 
     /**
      * The database table used by the model.
