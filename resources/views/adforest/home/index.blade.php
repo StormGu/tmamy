@@ -12,9 +12,9 @@
                     <aside class="widget widget-banner white-hover">
                         <div class="side-div">
                             <ul>
-                                <li><a class="active" href="">most category</a></li>
-                                @foreach(\App\Models\Category::parents()->has('advertisements')->pluck('name', 'id') as $category_id => $category_name)
-                                    <li><a href="#">{{ $category_name }}</a> <a href="#" class="rits">2455</a></li>
+                                <li><a class="active" href="">{{ __('common.main_categories') }}</a></li>
+                                @foreach(\App\Models\Category::parents()->has('advertisements')->withCount('advertisements')->get() as $category)
+                                    <li><a href="{{ url('category/'. $category->id) }}">{{ $category->name }}</a> <a href="#" class="rits">{{ $category->advertisements_count }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -35,10 +35,13 @@
                 <div class="col-lg-6 col-md-9 col-sm-12" style="width: 750px !important;">
                     <!--Features Fashion Tab Area Start-->
 
-                    @foreach(\App\Models\Category::parents()->has('advertisements')->pluck('name', 'id') as $category_id => $category_name)
+                    @foreach(\App\Models\Category::parents()->has('advertisements')->get() as $category)
                         <div class="features-tab clearfix">
-                            <h3 class="medic"><img src="adforest/icon/real-stat.png" alt="icon"
-                                                   class="img-icon">{{ $category_name }}</h3>
+                            <h3 class="medic" @if ($category->bgcolor != '') style="color: {{ $category->bgcolor }} !important;" @endif>
+                                @if($category->image != '')
+                                    <img src="{{ url($category->image) }}" alt="icon" class="img-icon">
+                                @endif
+                                {{ $category->name }}</h3>
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs navbar-right" role="tablist">
                                 <div class="more more2">@lang('common.more')</div>
@@ -53,7 +56,7 @@
                                 <div role="tabpanel" class="tab-pane" id="jewellery">
                                     <div class="row">
                                         <div class="single-p-slide">
-                                            @foreach (\App\Models\Advertisement::whereCategoryId($category_id)->approved()->get() as $adv)
+                                            @foreach (\App\Models\Advertisement::whereCategoryId($category->id)->approved()->get() as $adv)
                                                 <div class="col-md-4">
                                                     <div class="single-product">
                                                         <a href="{{ url('adv/'. $adv->id) }}">
@@ -88,12 +91,12 @@
 
                 <div class="col-lg-3 col-md-3 hidden-sm rtl"
                      style="    width: 270px !important;">
-                    <section class="button">
-                        <a href="#" class="btn bordered-style active">
-                            <i class="icon-plane"></i>
-                            Invite Friends
-                        </a>
-                    </section>
+                    {{--<section class="button">--}}
+                        {{--<a href="#" class="btn bordered-style active">--}}
+                            {{--<i class="icon-plane"></i>--}}
+                            {{--Invite Friends--}}
+                        {{--</a>--}}
+                    {{--</section>--}}
                     <aside id="promoted-adv" class="STICKY">
 
 
@@ -191,4 +194,4 @@
     </div>
     <!--End of Features Gift Tab Area-->
 
-    @endsection
+@endsection

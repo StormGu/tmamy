@@ -11,8 +11,7 @@ use Illuminate\Http\Request;
 
 class CategoryCrudController extends CrudController
 {
-    public function setup()
-    {
+    public function setup() {
 
         /*
         |--------------------------------------------------------------------------
@@ -52,17 +51,19 @@ class CategoryCrudController extends CrudController
         // ------ CRUD FIELDS
         $this->crud->addField([
             'name' => 'name',
-            'label' => 'Name',
+            'label' => __('category.name'),
         ]);
+
         $this->crud->addField([
             'name' => 'slug',
-            'label' => 'Slug (URL)',
+            'label' => __('category.slug'),
             'type' => 'text',
             'hint' => 'Will be automatically generated from your name, if left empty.',
             // 'disabled' => 'disabled'
         ]);
+
         $this->crud->addField([
-            'label' => 'Parent',
+            'label' => __('category.parent'),
             'type' => 'select2',
             'name' => 'parent_id',
             'entity' => 'parent',
@@ -70,6 +71,18 @@ class CategoryCrudController extends CrudController
             'model' => "App\\Models\\Category",
         ]);
 
+
+        $this->crud->addField([
+            'name' => 'bgcolor',
+            'label' => __('category.bgcolor'),
+            'type' => 'color_picker'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'image',
+            'label' => __('category.image'),
+            'type' => 'browse'
+        ]);
 
         // $this->crud->setFromDb();
 
@@ -144,8 +157,7 @@ class CategoryCrudController extends CrudController
     }
 
 
-    public function store(StoreRequest $request)
-    {
+    public function store(StoreRequest $request) {
 
         // your additional operations before save here
         $redirect_location = parent::storeCrud();
@@ -154,8 +166,7 @@ class CategoryCrudController extends CrudController
         return $redirect_location;
     }
 
-    public function update(UpdateRequest $request)
-    {
+    public function update(UpdateRequest $request) {
         // your additional operations before save here
         $redirect_location = parent::updateCrud();
         // your additional operations after save here
