@@ -28,7 +28,9 @@ Route::group(['namespace' => 'Site'], function () {
 
     Route::get('category/{category_id}', 'CategoryController@index');
     Route::get('search', 'SearchController@index');
+
     Route::post('search', 'SearchController@index');
+
 });
 
 // Authentication Routes
@@ -181,6 +183,9 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
     Route::get('profile/settings/social', 'Site\UserSettingController@social');
     Route::post('profile/settings/social', 'Site\UserSettingController@updateSocial');
+
+    Route::get('profile/upgrade', 'Site\UserSettingController@upgrade');
+    Route::post('profile/upgrade', 'Site\UserSettingController@updateUpgrade');
 
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);
