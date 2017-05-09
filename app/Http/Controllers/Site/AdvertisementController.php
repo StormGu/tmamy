@@ -6,6 +6,7 @@ use App\Models\Advertisement;
 use App\Models\AdvertisementInfoCareersJob;
 use App\Models\AdvertisementInfoCareersJobRequirement;
 use App\Models\Country;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -89,7 +90,14 @@ class AdvertisementController extends Controller
 
 
         $adv->save();
+        $user =  $Input['user_id'];
 
+
+        $flight = User::find($user);
+
+        $flight->Points =  $flight->Points - 300;
+
+        $flight->save();
         return redirect('/');
     }
 
