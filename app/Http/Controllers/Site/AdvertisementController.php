@@ -21,6 +21,7 @@ use App\Models\AdvertisementInfoServicesCost;
 use App\Models\AdvertisementInfoTender;
 use App\Models\AdvertisementInfoWholesaler;
 use App\Models\Country;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -139,8 +140,21 @@ class AdvertisementController extends Controller
         $adv->price = $Input['price'];
         $adv->image_filename = 'uploads/' . $logoName;
 
+        $user = User::find($Input['user_id']);
 
-        $adv->save();
+
+        if ($user->Points == 0) {
+            echo "error";
+        }
+        else {
+            $flight = User::find($Input['user_id']);
+            $flight->Points = $flight->Points - 300;
+
+            $flight->save();
+
+            $adv->save();
+        }
+
 
         return redirect('/');
     }

@@ -16,9 +16,11 @@
                 <br>
                 <div class="row margin-bottom-20">
                     <div class="col-md-12">
-                        <a href="{{ url('/PostAdvertisement') }}">@lang('profile.ad_Post_ad')</a>
+                        <a href="{{ url('/PostAdvertisement') }}"
+                           class="btn btn-primary pull-right">@lang('profile.ads_Post_ads')</a>
                     </div>
                 </div>
+
                 <!-- Row -->
                 <div class="row">
 
@@ -53,10 +55,7 @@
                         </div>
 
                     </div>
-                    <div>
-                        <button  type="button" class="btn btn-primary pull-right" >
-                           </button>
-                    </div>
+
                     <div class="col-md-8">
                         <!-- Row -->
                         <div class="row">
@@ -93,7 +92,7 @@
                                                     <!-- Price -->
                                                     <div class="ad-price"> {{ isset($object->currency->value) ? $object->currency->value : '' }} {{ number_format( $object->price, 2) }}</div>
                                                     <!-- Title -->
-                                                    <h3>{{ $object->title }}</h3>
+                                                    <h3><a href="{{ url('adv/'. $object->id) }}">{{ $object->title }}</a></h3>
                                                     <!-- Category -->
                                                     <div class="category-title"><span><a
                                                                     href="#">{{ $object->category->title }}</a></span>
@@ -114,10 +113,11 @@
                                                                 : {{ \Carbon\Carbon::parse($object->created_at)->diffForHumans() }}</div>
                                                         @endif
                                                         <div class="ad-meta">
-                                                            <a class="btn btn-danger"><i
+                                                            <a href="{{ url('profile/adDelet') }}/{{ $object->id }}" class="btn btn-danger"><i
                                                                         class="fa fa-times"></i> @lang('common.delete')
                                                             </a>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                                 <!-- Ad Desc End -->

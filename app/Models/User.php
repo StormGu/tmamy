@@ -17,7 +17,7 @@ class User extends Authenticatable
     //use HasRoleAndPermission;
     use Notifiable;
     use SoftDeletes;
-    use HasRoles;
+   // use HasRoles;
 
     /**
      * The database table used by the model.
