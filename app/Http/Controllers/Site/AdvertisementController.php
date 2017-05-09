@@ -88,16 +88,24 @@ class AdvertisementController extends Controller
         $adv->price = $Input['price'];
         $adv->image_filename = 'uploads/' . $logoName;
 
-
-        $adv->save();
-        $user =  $Input['user_id'];
+        $user = User::find($Input['user_id']);
 
 
-        $flight = User::find($user);
 
-        $flight->Points =  $flight->Points - 300;
 
-        $flight->save();
+
+        if ($user->Points == 0){
+            echo "error";
+        }else{
+            $flight = User::find($Input['user_id']);
+            $flight->Points =  $flight->Points - 300;
+
+            $flight->save();
+
+            $adv->save();
+        }
+
+        
         return redirect('/');
     }
 

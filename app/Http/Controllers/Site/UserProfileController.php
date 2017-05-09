@@ -109,7 +109,24 @@ class UserProfileController extends Controller
 
 
 
-        $stors->save();
+
+
+        $user = User::find($Input['user_id']);
+
+
+
+
+
+        if ($user->Points == 0){
+         echo "error";
+        }else{
+            $flight = User::find($Input['user_id']);
+            $flight->Points =  $flight->Points - 1000;
+
+            $flight->save();
+
+            $stors->save();
+        }
 
         return redirect()->back();
     }
