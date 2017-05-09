@@ -7,11 +7,11 @@ use App\Models\Advertisement;
 
 class AdvertisementInfoExhibition extends Model
 {
-       /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
+    /*
+ |--------------------------------------------------------------------------
+ | GLOBAL VARIABLES
+ |--------------------------------------------------------------------------
+ */
     protected $table = 'advertisement_info_exhibition';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
@@ -37,33 +37,35 @@ class AdvertisementInfoExhibition extends Model
         'start_date',
         'end_date'
     ];
+
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
-    */ 
-     public function advertisement()
-    {
+    */
+
+    public function advertisement() {
         return $this->belongsTo(Advertisement::class);
     }
 
-    public function VenueCountry()
-    {
+    public function VenueCountry() {
 
     }
-    public function VenueCity()
-    {
+
+    public function VenueCity() {
 
     }
-    public function currency()
-    {
 
+    public function currency() {
+        return $this->belongsTo(Constant::class, 'currency_id', 'id');
     }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

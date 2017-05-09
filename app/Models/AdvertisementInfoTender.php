@@ -56,24 +56,24 @@ class AdvertisementInfoTender extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function advertisement (){
+    public function advertisement() {
         return $this->belongsTo(Advertisement::class);
     }
 
-    public function tender_value_currency(){
-
+    public function value_currency() {
+        return $this->belongsTo(Constant::class, 'tender_value_currency_id', 'id');
     }
 
-    public function document_cost_currency(){
-
+    public function cost_currency() {
+        return $this->belongsTo(Constant::class, 'document_cost_currency_id', 'id');
     }
 
-    public function organisation_country(){
-            return $this->belongsTo(Country::class)
+    public function organisation_country() {
+        return $this->belongsTo(Country::class);
     }
 
-    public function organisation_city(){
-          return $this->belongsTo(City::class);
+    public function organisation_city() {
+        return $this->belongsTo(City::class);
     }
 
     /*

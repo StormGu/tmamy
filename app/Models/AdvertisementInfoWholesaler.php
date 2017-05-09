@@ -38,11 +38,11 @@ class AdvertisementInfoWholesaler extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function advertisement (){
+    public function advertisement() {
         return $this->belongsTo(Advertisement::class);
     }
 
-    public function term_delivery (){
+    public function term_delivery() {
 
     }
 

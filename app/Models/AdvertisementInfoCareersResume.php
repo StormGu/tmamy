@@ -7,11 +7,11 @@ use App\Models\Advertisement;
 
 class AdvertisementInfoCareersResume extends Model
 {
-         /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
+    /*
+|--------------------------------------------------------------------------
+| GLOBAL VARIABLES
+|--------------------------------------------------------------------------
+*/
     protected $table = 'advertisement_info_careers_resume';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
@@ -40,31 +40,29 @@ class AdvertisementInfoCareersResume extends Model
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
-    */ 
-     public function advertisement()
-    {
-        return $this->belongsTo(Advertisement::class);
+    */
+    public function advertisement() {
+        return $this->belongsTo(Advertisement::class, 'advertisement_id', 'id');
     }
 
-    public function gender()
-    {
-
+    public function gender() {
+        return $this->belongsTo(Constant::class, 'gender_id', 'id');
     }
 
-    public function education()
-    {
-
+    public function education_level() {
+        return $this->belongsTo(Constant::class, 'education_level_id', 'id');
     }
 
-    public function country()
-    {
+    public function country() {
         return $this->belongsTo(Country::class);
     }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
     |--------------------------------------------------------------------------
     */
+
     /*
     |--------------------------------------------------------------------------
     | ACCESORS

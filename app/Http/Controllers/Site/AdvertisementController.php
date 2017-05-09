@@ -5,6 +5,21 @@ namespace App\Http\Controllers\Site;
 use App\Models\Advertisement;
 use App\Models\AdvertisementInfoCareersJob;
 use App\Models\AdvertisementInfoCareersJobRequirement;
+use App\Models\AdvertisementInfoCareersResume;
+use App\Models\AdvertisementInfoCareersResumeEducation;
+use App\Models\AdvertisementInfoCareersResumeExperience;
+use App\Models\AdvertisementInfoExhibition;
+use App\Models\AdvertisementInfoHealth;
+use App\Models\AdvertisementInfoHealthDoctorClinic;
+use App\Models\AdvertisementInfoHealthDoctorClinicSchedule;
+use App\Models\AdvertisementInfoHealthDoctorEducation;
+use App\Models\AdvertisementInfoHealthDoctorMembership;
+use App\Models\AdvertisementInfoHealthHospitalSchedule;
+use App\Models\AdvertisementInfoHealthHospitalSpecialty;
+use App\Models\AdvertisementInfoService;
+use App\Models\AdvertisementInfoServicesCost;
+use App\Models\AdvertisementInfoTender;
+use App\Models\AdvertisementInfoWholesaler;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -34,21 +49,58 @@ class AdvertisementController extends Controller
         }
 
         $data['object'] = $object;
+        $data['features'] = $object->features()->get();
 
         switch ($object->category_id) {
             case 73:
 
                 return $this->infoCareerJob($id, $data);
                 break;
+
+            case 74:
+
+                return $this->infoCareerResume($id, $data);
+                break;
+
+            case 10:
+
+                return $this->infoExhibition($id, $data);
+                break;
+
+            case 32:
+
+                return $this->infoHealthDoctorClinic($id, $data);
+                break;
+
+            case 36:
+
+                return $this->infoHealthHospital($id, $data);
+                break;
+
+            case 8:
+
+                return $this->infoService($id, $data);
+                break;
+
+            case 11:
+
+                return $this->infoTender($id, $data);
+                break;
+
+            case 9:
+
+                return $this->infoWholesaler($id, $data);
+                break;
+
             default:
 
-                $data['features'] = $object->features()->get();
+                $data['advs'] = Advertisement::where('id', $id)->get();
+
                 return View('adforest.advertisement.show', $data);
         }
 
-        $advs = Advertisement::where('id', $id)->get();
 
-        return View('adforest.advertisement.show', compact('advs'));
+        return View('adforest.advertisement.show', $data);
     }
 
     public function PostAdvertisement() {
@@ -114,47 +166,69 @@ class AdvertisementController extends Controller
         return View('adforest.advertisement.info.infoCareerJob', $data);
     }
 
-    public function infoCareerResume() {
+    public function infoCareerResume($id, $data) {
 
-        return View('adforest.advertisement.info.infoCareerResume');
+        $data['resume'] = AdvertisementInfoCareersResume::whereAdvertisementId($id)->first();
+        $data['experiences'] = AdvertisementInfoCareersResumeExperience::whereAdvertisementId($id)->get();
+        $data['educations'] = AdvertisementInfoCareersResumeEducation::whereAdvertisementId($id)->get();
+
+        return View('adforest.advertisement.info.infoCareerResume', $data);
+
     }
 
-    public function infoExhibition() {
+    public function infoExhibition($id, $data) {
 
-        return View('adforest.advertisement.info.infoExhibition');
+        $data['exhibition'] = AdvertisementInfoExhibition::whereAdvertisementId($id)->first();
+
+        return View('adforest.advertisement.info.infoExhibition', $data);
     }
 
-    public function infoHealth() {
+    public function infoHealthDoctorClinic($id, $data) {
 
-        return View('adforest.advertisement.info.infoHealth');
+        $data['health'] = AdvertisementInfoHealth::whereAdvertisementId($id)->first();
+        $data['educations'] = AdvertisementInfoHealthDoctorEducation::whereAdvertisementId($id)->get();
+        $data['memberships'] = AdvertisementInfoHealthDoctorMembership::whereAdvertisementId($id)->get();
+        $data['clinics'] = AdvertisementInfoHealthDoctorClinic::whereAdvertisementId($id)->get();
+
+        return View('adforest.advertisement.info.infoHealthDoctorClinic', $data);
     }
 
-    public function infoHealthDoctorClinic() {
-        return View('adforest.advertisement.info.infoHealthDoctorClinic');
-    }
+    public function infoHealthHospital($id, $data) {
 
-    public function infoHealthHospital() {
-        return View('adforest.advertisement.info.infoHealthHospital');
+        $data['health'] = AdvertisementInfoHealth::whereAdvertisementId($id)->first();
+        $data['schedules'] = AdvertisementInfoHealthHospitalSchedule::whereAdvertisementId($id)->get();
+        $data['specialties'] = AdvertisementInfoHealthHospitalSpecialty::whereAdvertisementId($id)->get();
+
+        return View('adforest.advertisement.info.infoHealthHospital', $data);
     }
 
     public function infoOffer() {
         return View('adforest.advertisement.info.infoOffer');
     }
 
-    public function infoService() {
-        return View('adforest.advertisement.info.infoService');
+    public function infoService($id, $data) {
+
+        $data['service'] = AdvertisementInfoService::whereAdvertisementId($id)->first();
+        $data['costs'] = AdvertisementInfoServicesCost::whereAdvertisementId($id)->get();
+
+        return View('adforest.advertisement.info.infoService', $data);
     }
 
     public function infoRestaurant() {
         return View('adforest.advertisement.info.infoRestaurant');
     }
 
-    public function infoTender() {
-        return View('adforest.advertisement.info.infoTender');
+    public function infoTender($id, $data) {
+        $data['tender'] = AdvertisementInfoTender::whereAdvertisementId($id)->first();
+
+        return View('adforest.advertisement.info.infoTender', $data);
     }
 
-    public function infoWholesaler() {
-        return View('adforest.advertisement.info.infoWholesaler');
+    public function infoWholesaler($id, $data) {
+
+        $data['wholesaler'] = AdvertisementInfoWholesaler::whereAdvertisementId($id)->first();
+
+        return View('adforest.advertisement.info.infoWholesaler', $data);
     }
 
 }
