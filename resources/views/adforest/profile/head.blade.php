@@ -9,8 +9,7 @@
                     <h4 class="search-result-item-heading"><a href="#">{{ $object->name }}</a></h4>
                     <p class="info">{{ $object->email }}</p>
                     <p class="description">{{ $object->profile->bio }}</p>
-                    <p>Points :{{ $object->Points }}</p>
-
+                    <p>@lang('profile.points') : <span class="label label-success">{{ $object->profile->points }}</span></p>
                 </div>
 
                 <div class="col-md-7 col-sm-12 col-xs-12">

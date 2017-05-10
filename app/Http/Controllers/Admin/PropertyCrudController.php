@@ -10,8 +10,7 @@ use App\Http\Requests\PropertyRequest as UpdateRequest;
 
 class PropertyCrudController extends CrudController
 {
-    public function setup()
-    {
+    public function setup() {
 
         /*
         |--------------------------------------------------------------------------
@@ -30,6 +29,11 @@ class PropertyCrudController extends CrudController
 
         // $this->crud->setFromDb();
         $this->crud->addField([
+            'name' => 'label',
+            'label' => __('property.label')
+        ]);
+
+        $this->crud->addField([
             'name' => 'name',
             'label' => __('property.name')
         ]);
@@ -41,6 +45,29 @@ class PropertyCrudController extends CrudController
             'entity' => 'category',
             'attribute' => 'name',
             'model' => "App\\Models\\Category",
+        ]);
+
+        $this->crud->addField([
+            'name' => 'type',
+            'label' => __('property.type'),
+            'type' => 'select_from_array',
+            'options' => ['text' => __('property.text'), 'select' => __('property.select')],
+            'allows_null' => false,
+        ]);
+
+        $constants = \App\Models\Constant::pluck('key', 'key');
+
+        $this->crud->addField([
+            'name' => 'key',
+            'label' => __('property.key'),
+            'type' => 'select_from_array',
+            'options' => $constants,
+            'allows_null' => true,
+        ]);
+
+        $this->crud->addColumn([
+            'label' => __('property.label'),
+            'name' => 'label'
         ]);
 
         $this->crud->addColumn([
@@ -126,8 +153,7 @@ class PropertyCrudController extends CrudController
         // $this->crud->limit();
     }
 
-    public function store(StoreRequest $request)
-    {
+    public function store(StoreRequest $request) {
         // your additional operations before save here
         $redirect_location = parent::storeCrud();
         // your additional operations after save here
@@ -135,8 +161,7 @@ class PropertyCrudController extends CrudController
         return $redirect_location;
     }
 
-    public function update(UpdateRequest $request)
-    {
+    public function update(UpdateRequest $request) {
         // your additional operations before save here
         $redirect_location = parent::updateCrud();
         // your additional operations after save here

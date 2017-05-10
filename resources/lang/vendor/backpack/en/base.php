@@ -2,7 +2,8 @@
 
 return [
     'coupons' => 'Coupons',
-    'users' => 'Users Administration',
+    'users_admin' => 'Users & Roles & Permissions',
+    'users' => 'Users',
     'routes' => 'Routes',
     'categories' => 'Categories',
     'stores' => 'Stores',
@@ -12,4 +13,6 @@ return [
     'features' => 'features',
     'property' => 'property',
     'settings' => 'settings',
+    'roles' => 'Roles',
+    'permissions' => 'Permissions',
 ];

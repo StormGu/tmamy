@@ -59,6 +59,16 @@ class FeatureListCrudController extends CrudController
             'model' => "App\\Models\\FeatureList",
         ]);
 
+        $this->crud->addField([
+            'label' => __('featurelist.categories'),
+            'type' => 'select2_multiple',
+            'name' => 'categories',
+            'entity' => 'categories', // the method that defines the relationship in your Model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'model' => "App\\Models\\Category", // foreign key model
+            'pivot' => true,
+        ]);
+
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');

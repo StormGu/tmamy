@@ -29,7 +29,8 @@ return [
     'categories' => 'التصنيفات',
     'visits' => 'الزيارات',
     'recent_ads' => 'الإعلانات الحالية',
-    'settings'      => 'إعدادات',
-    'approved' => 'تم الموافقة'
+    'settings' => 'إعدادات',
+    'approved' => 'تم الموافقة',
+    'what_you_are_listing' => 'أين تود أن يكون إعلانك؟'
 
 ];

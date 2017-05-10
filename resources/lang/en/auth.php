@@ -43,6 +43,7 @@ return [
     'first_name'        => 'First Name',
     'last_name'         => 'Last Name',
     'confirmPassword'   => 'Confirm Password',
+    'agree'             => 'I agree the Terms of Services',
     'register'          => 'Register',
 
     // Placeholders

@@ -22,7 +22,7 @@
 
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/home') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-group"></i> <span>{{ trans('backpack::base.users') }}, {{ trans('backpack::base.roles') }}, {{ trans('backpack::base.permissions') }} </span> <i class="fa fa-angle-left pull-right"></i></a>
+            <a href="#"><i class="fa fa-group"></i> <span>{{ trans('backpack::base.users_admin') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
               <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/users') }}"><i class="fa fa-user"></i> <span>{{ trans('backpack::base.users') }}</span></a></li>
               <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/role') }}"><i class="fa fa-group"></i> <span>{{ trans('backpack::base.roles') }}</span></a></li>
@@ -33,6 +33,7 @@
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/advertisements') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.advertisements') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/categories') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.categories') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/stores') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.stores') }}</span></a></li>
+          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/constantkey') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.constantkey') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/constants') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.constants') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/slider') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.slider') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/routes') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.routes') }}</span></a></li>

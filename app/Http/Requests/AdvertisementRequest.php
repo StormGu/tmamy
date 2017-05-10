@@ -6,15 +6,9 @@ use App\Http\Requests\Request;
 
 class AdvertisementRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        // only allow updates if the user is logged in
-        return \Auth::check();
+
+    public function authorize() {
+        return true;
     }
 
     /**
@@ -22,11 +16,17 @@ class AdvertisementRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
+
         return [
-            // 'name' => 'required|min:5|max:255'
+            'title' => 'required',
+            'price' => 'required|numeric',
+            'mobile' => 'required',
+            'currency_id' => 'required',
+            'image' => 'required',
+            'after_points' => 'required|min:0'
         ];
+
     }
 
     /**
@@ -34,10 +34,13 @@ class AdvertisementRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
      *
      * @return array
      */
-    public function attributes()
-    {
+    public function attributes() {
         return [
-            //
+            'title' => __('advertisement.title'),
+            'price' => __('advertisement.price'),
+            'mobile' => __('advertisement.mobile'),
+            'image' => __('advertisement.image'),
+            'currency_id' => __('advertisement.currency_id')
         ];
     }
 
@@ -46,10 +49,8 @@ class AdvertisementRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
      *
      * @return array
      */
-    public function messages()
-    {
-        return [
-            //
+    public function messages() {
+        return [//
         ];
     }
 }

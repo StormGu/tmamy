@@ -173,6 +173,7 @@
 <!-- main js
 ============================================ -->
 <script src="{{ asset('adforest/tmamy/js/main.js') }}"></script>
+
 <script type="text/javascript">
     function fetch_select(val)
     {
@@ -284,5 +285,7 @@
         return false;
     });
 </script>
+
+@yield('custom_js')
 </body>
 </html>

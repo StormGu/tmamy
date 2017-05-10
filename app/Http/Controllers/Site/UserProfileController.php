@@ -42,7 +42,7 @@ class UserProfileController extends Controller
             $objects->whereStatus($type);
         }
 
-        $data['objects'] =  $objects->whereUserId(\Auth::id())->get();
+        $data['objects'] =  $objects->whereUserId(\Auth::id())->orderBy('id', 'desc')->get();
 
         return View('adforest.profile.my_ads', $data);
     }
@@ -70,8 +70,6 @@ class UserProfileController extends Controller
         $cat =  Category::where('parent_id', null)->get();
 
         $cou =  Country::All();
-
-
 
         return view('adforest.profile.PostStores', compact('cat','cou'));
     }
