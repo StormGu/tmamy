@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -80,9 +81,10 @@ class Advertisement extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function user(){
+    public function user() {
         return $this->belongsTo(User::class);
     }
+
     public function currency() {
         return $this->belongsTo(Constant::class, 'currency_id', 'id');
     }
@@ -90,9 +92,11 @@ class Advertisement extends Model
     public function category() {
         return $this->belongsTo(Category::class);
     }
+
     public function country() {
         return $this->belongsTo(Country::class);
     }
+
     public function customer() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
@@ -109,6 +113,9 @@ class Advertisement extends Model
         return $this->belongsToMany(FeatureList::class, 'advertisement_feature', 'advertisement_id', 'feature_list_id');
     }
 
+    public function properties() {
+        return $this->belongsToMany(Property::class, 'advertisement_property', 'advertisement_id', 'property_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

@@ -31,6 +31,12 @@ Route::group(['namespace' => 'Site'], function () {
 
     Route::post('search', 'SearchController@index');
 
+    // Ismail Add Adv Routes
+    Route::get('AddAdv', 'AdvertisementController@AddAdvertisementStep1');
+    Route::get('AddAdv/{category_id}', 'AdvertisementController@AddAdvertisementStep2');
+    Route::get('AddAdv/{category_id}/{subcategory_id}', 'AdvertisementController@AddAdvertisementStep3');
+    Route::post('CreateAdv', 'AdvertisementController@CreateAdvertisement');
+
 });
 
 
@@ -69,6 +75,8 @@ Route::group([
 
     CRUD::resource('coupons', 'CouponCrudController');
     CRUD::resource('settings', '\Backpack\Settings\app\Http\Controllers\SettingCrudController');
+
+    CRUD::resource('constantkey', 'ConstantKeyCrudController');
 
     Route::get('routes', 'AdminDetailsController@listRoutes');
 });

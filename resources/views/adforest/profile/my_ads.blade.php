@@ -14,16 +14,17 @@
                 <!-- Middle Content Area -->
                 @include('adforest.profile.head')
                 <br>
+
+                @include('adforest.common.message')
+
                 <div class="row margin-bottom-20">
                     <div class="col-md-12">
-                        <a href="{{ url('/PostAdvertisement') }}"
-                           class="btn btn-primary pull-right">@lang('profile.ads_Post_ads')</a>
+                        <a href="{{ url('AddAdv') }}"
+                           class="btn btn-primary pull-right">@lang('profile.post_free_advertisement')</a>
                     </div>
                 </div>
-
                 <!-- Row -->
                 <div class="row">
-
                     <!-- Middle Content Area -->
                     <div class="col-md-4 leftbar-stick blog-sidebar">
                         <!-- Sidebar Widgets -->

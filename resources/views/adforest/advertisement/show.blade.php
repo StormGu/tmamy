@@ -64,7 +64,7 @@
                                         @lang('advertisement.properties')
                                     </h3>
                                 </div>
-                                
+
                                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
                                     <span><strong></strong> :</span>
                                 </div>

@@ -66,16 +66,16 @@ class ActivateController extends Controller
             Log::info('Activated user attempted to visit ' . $currentRoute . '. ', [$user]);
 
             if ($user->isAdmin()) {
-                return redirect()
-                    ->route(self::getAdminHomeRoute())
-                    ->with('status', 'info')
-                    ->with('message', trans('auth.alreadyActivated'));
+                return redirect()->route(self::getAdminHomeRoute())->with('message', [
+                        'type' => 'info',
+                        'message' => trans('auth.alreadyActivated'),
+                    ]);
             }
 
-            return redirect()
-                ->route(self::getUserHomeRoute())
-                ->with('status', 'info')
-                ->with('message', trans('auth.alreadyActivated'));
+            return redirect()->route(self::getUserHomeRoute())->with('message', [
+                    'type' => 'info',
+                    'message' => trans('auth.alreadyActivated'),
+                ]);
         }
 
         return false;
@@ -118,7 +118,7 @@ class ActivateController extends Controller
         if ($user->activated == false) {
 
             $activationsCount = Activation::where('user_id', $user->id)->where('created_at', '>=', Carbon::now()
-                    ->subHours(config('settings.timePeriod')))->count();
+                ->subHours(config('settings.timePeriod')))->count();
 
             if ($activationsCount > config('settings.timePeriod')) {
 
@@ -155,7 +155,10 @@ class ActivateController extends Controller
         $role = Role::where('name', '=', 'user')->first();
         $profile = new Profile;
 
+        $profile->points = config('settings.basic_user_points');
+
         $rCheck = $this->activeRedirect($user, $currentRoute);
+
         if ($rCheck) {
             return $rCheck;
         }
@@ -166,10 +169,10 @@ class ActivateController extends Controller
 
             Log::info('Registered user attempted to activate with an invalid token: ' . $currentRoute . '. ', [$user]);
 
-            return redirect()
-                ->route(self::getActivationRoute())
-                ->with('status', 'danger')
-                ->with('message', trans('auth.invalidToken'));
+            return redirect()->route(self::getActivationRoute())->with('message', [
+                    'type' => 'danger',
+                    'message' => trans('auth.invalidToken'),
+                ]);
         }
 
         $user->activated = true;
@@ -187,16 +190,17 @@ class ActivateController extends Controller
         Log::info('Registered user successfully activated. ' . $currentRoute . '. ', [$user]);
 
         if ($user->isAdmin()) {
-            return redirect()
-                ->route(self::$getAdminHomeRoute())
-                ->with('status', 'success')
-                ->with('message', trans('auth.successActivated'));
+            return redirect()->route(self::$getAdminHomeRoute())->with('message', [
+                    'type' => 'success',
+                    'message' => trans('auth.successActivated'),
+                ]);
+
         }
 
-        return redirect()
-            ->route(self::getUserHomeRoute())
-            ->with('status', 'success')
-            ->with('message', trans('auth.successActivated'));
+        return redirect()->route(self::getUserHomeRoute())->with('message', [
+                'type' => 'success',
+                'message' => trans('auth.successActivated'),
+            ]);
 
     }
 
@@ -209,7 +213,7 @@ class ActivateController extends Controller
         if ($user->activated == false) {
 
             $activationsCount = Activation::where('user_id', $user->id)->where('created_at', '>=', Carbon::now()
-                    ->subHours(config('settings.timePeriod')))->count();
+                ->subHours(config('settings.timePeriod')))->count();
 
             if ($activationsCount >= config('settings.maxAttempts')) {
 
@@ -249,7 +253,7 @@ class ActivateController extends Controller
         $timePeriod = config('settings.timePeriod');
         $lastActivation = Activation::where('user_id', $user->id)->get()->last();
         $activationsCount = Activation::where('user_id', $user->id)->where('created_at', '>=', Carbon::now()
-                ->subHours($timePeriod))->count();
+            ->subHours($timePeriod))->count();
 
         if ($activationsCount >= config('settings.maxAttempts')) {
 

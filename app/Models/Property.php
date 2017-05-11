@@ -11,20 +11,20 @@ class Property extends Model
     use CrudTrait;
     use HasTranslations;
 
-     /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
+    /*
+   |--------------------------------------------------------------------------
+   | GLOBAL VARIABLES
+   |--------------------------------------------------------------------------
+   */
 
     //protected $table = 'propertys';
     //protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['name', 'category_id'];
+    protected $fillable = ['type', 'key', 'name', 'label', 'category_id'];
     // protected $hidden = [];
     // protected $dates = [];
-    public $translatable = ['name'];
+    public $translatable = ['label'];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
@@ -37,8 +37,12 @@ class Property extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function category(){
+    public function category() {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function advertisements() {
+        return $this->belongsToMany(Advertisement::class, 'advertisement_property', 'property_id', 'advertisement_id');
     }
 
     /*

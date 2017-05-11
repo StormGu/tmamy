@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Http\Requests\AdvertisementRequest;
 use App\Models\Advertisement;
 use App\Models\AdvertisementInfoCareersJob;
 use App\Models\AdvertisementInfoCareersJobRequirement;
@@ -21,6 +22,9 @@ use App\Models\AdvertisementInfoServicesCost;
 use App\Models\AdvertisementInfoTender;
 use App\Models\AdvertisementInfoWholesaler;
 use App\Models\Country;
+use App\Models\FeatureList;
+use App\Models\Profile;
+use App\Models\Property;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -244,5 +248,97 @@ class AdvertisementController extends Controller
 
         return View('adforest.advertisement.info.infoWholesaler', $data);
     }
+
+    // Ismail Advertisement Add Form
+    public function AddAdvertisementStep1() {
+
+        $data['breadcrumbs'][__('advertisement.add_advertisement')] = '#';
+
+        return View('adforest.advertisement.form.step1', $data);
+    }
+
+    public function AddAdvertisementStep2($category_id) {
+
+        $data['breadcrumbs'][__('advertisement.add_advertisement')] = '#';
+        $data['parentCategory'] = Category::find($category_id);
+        $data['categories'] = Category::whereParentId($category_id)->get();
+
+        return View('adforest.advertisement.form.step2', $data);
+    }
+
+    public function AddAdvertisementStep3($category_id, $subcategory_id = null) {
+
+        $data['breadcrumbs'][__('advertisement.add_advertisement')] = '#';
+
+        $data['category_id'] = $category_id;
+        $data['subcategory_id'] = $subcategory_id;
+
+        $data['properties'] = Property::whereCategoryId($category_id)->get();
+        $data['features'] = Category::find($category_id)->features()->get();
+
+        $data['current_points'] = \Auth::user()->profile->points;
+        $data['after_points'] = \Auth::user()->profile->points - 300;
+
+        return View('adforest.advertisement.form.step3', $data);
+    }
+
+    public function CreateAdvertisement(AdvertisementRequest $request) {
+
+        $advertisement = new Advertisement();
+        $advertisement->fill($request->except('_token', 'points'));
+        $advertisement->user_id = \Auth::id();
+        $advertisement->status = 'waiting_approval';
+
+        if (\Input::hasFile('image')) {
+            $currentUser = \Auth::user();
+            $image = \Input::file('image');
+            $filename = md5($image) . '.' . $image->getClientOriginalExtension();
+            //$save_path = storage_path() . '/users/id/' . $currentUser->id . '/uploads/advertisements/';
+            $save_path = 'uploads';
+
+            // Make the user a folder and set permissions
+            \File::makeDirectory($save_path, $mode = 0755, true, true);
+
+            // Save the file to the server
+            \Image::make($image)->save($save_path . DIRECTORY_SEPARATOR . $filename);
+
+            $advertisement->image_filename = $save_path . DIRECTORY_SEPARATOR . $filename;
+        }
+
+
+        if ($advertisement->save()) {
+
+            $profile = Profile::whereUserId(\Auth::id())->first();
+            $profile->points = $request->input('points');
+            $profile->save();
+
+            if ($request->input('properties'))
+                foreach ($request->input('properties') as $key => $value) {
+                    $property = Property::where('key', '=', $key)
+                        ->whereCategoryId($request->input('category_id'))
+                        ->first();
+                    $property->advertisements()->attach($advertisement->id, ['property_value' => $value]);
+                }
+
+            if ($request->input('features'))
+                foreach ($request->input('features') as $key => $value) {
+
+                    $feature = FeatureList::find($value);
+                    $feature->advertisements()->attach($advertisement->id);
+                }
+
+            return redirect('profile/ads')->withMessage([
+                'type' => 'success',
+                'message' => trans('common.success_added')
+            ]);
+        }
+        else {
+            return back()->withMessage([
+                'type' => 'warning',
+                'message' => trans('common.failed_added')
+            ]);
+        }
+    }
+
 
 }

@@ -14,7 +14,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use CrudTrait;
-    //use HasRoleAndPermission;
+    use HasRoleAndPermission;
     use Notifiable;
     use SoftDeletes;
    // use HasRoles;
@@ -89,6 +89,7 @@ class User extends Authenticatable
      * Build Social Relationships
      *
      * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function social() {
         return $this->hasMany('App\Models\Social');
@@ -98,6 +99,7 @@ class User extends Authenticatable
      * User Profile Relationships
      *
      * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function profile() {
         return $this->hasOne(Profile::class, 'user_id', 'id');

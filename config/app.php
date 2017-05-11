@@ -193,7 +193,7 @@ return [
         Backpack\CRUD\CrudServiceProvider::class,
         Backpack\Settings\SettingsServiceProvider::class,
         Spatie\Translatable\TranslatableServiceProvider::class,
-       // Backpack\PermissionManager\PermissionManagerServiceProvider::class,
+        Backpack\PermissionManager\PermissionManagerServiceProvider::class,
 
     ],
 
@@ -243,16 +243,16 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Form'      => \Collective\Html\FormFacade::class,
-        'HTML'      => \Collective\Html\HtmlFacade::class,
+        'Form' => \Collective\Html\FormFacade::class,
+        'HTML' => \Collective\Html\HtmlFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Input' => Illuminate\Support\Facades\Input::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
 
+        'CRUD' => Backpack\CRUD\CrudServiceProvider::class,
 
-        'CRUD' => Backpack\CRUD\CrudServiceProvider::class,        
     ],
 
 ];

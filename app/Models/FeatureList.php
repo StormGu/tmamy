@@ -38,18 +38,20 @@ class FeatureList extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function parent()
-    {
+    public function parent() {
         return $this->belongsTo(FeatureList::class, 'parent_id');
     }
 
-    public function children()
-    {
+    public function children() {
         return $this->hasMany(FeatureList::class, 'parent_id');
     }
 
-    public function features(){
+    public function advertisements() {
         return $this->belongsToMany(Advertisement::class, 'advertisement_feature', 'feature_list_id', 'advertisement_id');
+    }
+
+    public function categories(){
+        return $this->belongsToMany(Category::class, 'category_feature', 'feature_id', 'category_id');
     }
 
     /*
@@ -58,11 +60,8 @@ class FeatureList extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function scopeFirstLevelItems($query)
-    {
-        return $query->where('depth', '1')
-            ->orWhere('depth', null)
-            ->orderBy('lft', 'ASC');
+    public function scopeFirstLevelItems($query) {
+        return $query->where('depth', '1')->orWhere('depth', null)->orderBy('lft', 'ASC');
     }
 
     /*

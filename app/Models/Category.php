@@ -55,6 +55,10 @@ class Category extends Model
         return $this->hasMany(Property::class, 'category_id', 'id');
     }
 
+    public function features() {
+        return $this->belongsToMany(FeatureList::class, 'category_feature', 'category_id', 'feature_id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

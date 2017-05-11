@@ -2,6 +2,24 @@
 
 return [
 
+    'heading_title' => 'Add Advertisement',
+
+    'title' => 'Title',
+    'price' => 'Price',
+    'currency_id' => 'Currency',
+    'mobile' => 'Mobile',
+    'phone' => 'Phone',
+    'details' => 'Details',
+    'image' => 'Image',
+
+    'submit' => 'Submit',
+
+    'waiting_approval' => 'Waiting Approval',
+    'approved' => 'Approved',
+    'blocked' => 'Blocked',
+    'expired' => 'Expired',
+    'rejected' => 'Rejected',
+
     'created_at' => 'Created At',
     'updated_at' => 'Updated At',
     'category' => 'Category',
@@ -37,6 +55,9 @@ return [
 
 
 
+
+    'what_you_are_listing' => 'What you are listing for?',
+    'choose_one_subcategory' => 'Choose One Subcategory'
 
 
 ];

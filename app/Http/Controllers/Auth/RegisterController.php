@@ -112,13 +112,13 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'token' => str_random(64),
             'signup_ip_address' => $ipAddress->getClientIp(),
-            'activated' => !config('settings.activation')
+            'activated' => !config('settings.activation'),
+            'points' => 0
         ]);
 
         $user->attachRole($role);
         $this->initiateEmailActivation($user);
 
         return $user;
-
     }
 }
