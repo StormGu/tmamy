@@ -11,4 +11,7 @@ return [
     'search' => 'search',
     'searchPlaceholder' => 'search place holder',
     'success_edit' => 'success edit',
-];
+    'follow' => 'follow',
+    'message' => 'message',
+
+    ];

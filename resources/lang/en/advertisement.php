@@ -49,6 +49,12 @@ return [
     'visits' => 'Visits',
     'recent_ads' => 'Recent Ads',
     'approved' => 'approved',
+    'properties' => 'Properties',
+    'features' => 'Features',
+
+
+
+
 
     'what_you_are_listing' => 'What you are listing for?',
     'choose_one_subcategory' => 'Choose One Subcategory'

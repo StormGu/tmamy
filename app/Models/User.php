@@ -66,7 +66,7 @@ class User extends Authenticatable
         'googleplus',
         'linkedin',
         'pinterest',
-
+        'Points'
     ];
 
     /**
