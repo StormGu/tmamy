@@ -260,3 +260,6 @@ Route::get('lang/{lang}', function ($lang) {
 Route::get('images/profile/{id}/avatar/{image}', [
     'uses' => 'ProfilesController@userProfileAvatar'
 ]);
+/** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
+Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
+    ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
