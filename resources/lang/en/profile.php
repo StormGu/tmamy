@@ -287,8 +287,11 @@ return [
     'pinterest' => 'pinterest',
     'ad_Post_ad' => 'Post Ad',
     'upgrade' => 'upgrade',
-
-    'post_free_advertisement' => 'Post Free AD'
+    'post_free_advertisement' => 'Post Free AD',
+    'points' => 'Points',
+    'roles' => 'Roles',
+    'upgrade_account' => 'upgrade account',
+    'post_free_advertisement' => 'post free ad',
 
 
 
