@@ -57,45 +57,45 @@ class AdvertisementController extends Controller
         $data['features'] = $object->features()->get();
 
         switch ($object->category_id) {
-            case 73:
-
-                return $this->infoCareerJob($id, $data);
-                break;
-
-            case 74:
-
-                return $this->infoCareerResume($id, $data);
-                break;
-
-            case 10:
-
-                return $this->infoExhibition($id, $data);
-                break;
-
-            case 32:
-
-                return $this->infoHealthDoctorClinic($id, $data);
-                break;
-
-            case 36:
-
-                return $this->infoHealthHospital($id, $data);
-                break;
-
-            case 8:
-
-                return $this->infoService($id, $data);
-                break;
-
-            case 11:
-
-                return $this->infoTender($id, $data);
-                break;
-
-            case 9:
-
-                return $this->infoWholesaler($id, $data);
-                break;
+//            case 73:
+//
+//                return $this->infoCareerJob($id, $data);
+//                break;
+//
+//            case 74:
+//
+//                return $this->infoCareerResume($id, $data);
+//                break;
+//
+//            case 10:
+//
+//                return $this->infoExhibition($id, $data);
+//                break;
+//
+//            case 32:
+//
+//                return $this->infoHealthDoctorClinic($id, $data);
+//                break;
+//
+//            case 36:
+//
+//                return $this->infoHealthHospital($id, $data);
+//                break;
+//
+//            case 8:
+//
+//                return $this->infoService($id, $data);
+//                break;
+//
+//            case 11:
+//
+//                return $this->infoTender($id, $data);
+//                break;
+//
+//            case 9:
+//
+//                return $this->infoWholesaler($id, $data);
+//                break;
 
             default:
 
