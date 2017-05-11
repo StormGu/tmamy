@@ -1,94 +1,93 @@
- 
 
-/*-----------------------------------------------------------------------------------
+                                                                /*-----------------------------------------------------------------------------------
 
-    Template Name: Theme name
-    web developer name: khaled mofeed
-    Template URI: http://bootexperts.com
-    Description: This is html5 template
-    Author: BootExperts
-    Author URI: http://bootexperts.com
-    Version: 1.0
+                                                                    Template Name: Theme name
+                                                                    web developer name: khaled mofeed
+                                                                    Template URI: http://bootexperts.com
+                                                                    Description: This is html5 template
+                                                                    Author: BootExperts
+                                                                    Author URI: http://bootexperts.com
+                                                                    Version: 1.0
 
 
------------------------------------------------------------------------------------
+                                                                -----------------------------------------------------------------------------------
 
-    CSS INDEX
-    ===================
+                                                                    CSS INDEX
+                                                                    ===================
 
-    1. Theme Default CSS (body, link color, section etc)
-    2. Header Area
-    3. Mainmenu Area
-        3.1 Dropdown Menu
-        3.2 Mega Menu
-    4. Slider Area
-    5. Category Service Area
-    6. New Arrivals Carousel Area
-    7. Features Tab Area
-    8. Featured Bottom Tab Area
-    9. Sidebar and Promotion Area
-    10. Blog Area
-    11. Brand Area
-    12. Footer Widget Area
-    13. Footer Area
-    14. Homepage Two Start
-        14.1 Homepage Two Header
-        14.2 Homepage Two Slider Area
-        14.3 Homepage Two Product Banner Area
-        14.4 Homepage Two New Arrival Carousel Area
-        14.5 Homepage Two Full Width Banner Area
-        14.6 Homepage Two Features Tab Area
-        14.7 Homepage Two Sidebar Promotion Area
-    15. Homepage Three Start
-        15.1 Homepage Three Mainmenu Area
-        15.2 Homepage Three Header Area
-        15.3 Homepage Three Slider Area
-        15.4 Homepage Three Product Service Area
-        15.5 Homepage Three Banner Cart Text Area
-        15.6 Homepage Three Features Tab Area
-        15.7 Homepage Three Product Mix Banner Area
-        15.8 Homepage Three Brand Area
-        15.9 Homepage Three Blog Area
-        15.10 Homepage Three Newsletter feature Area
-        15.11 Homepage Three Footer Widget Area
-    16. Homepage Four Start
-        16.1 Homepage Four Header Top Area
-        16.2 Homepage Four Header Area
-        16.3 Homepage Four Mainmenu Area
-        16.4 Homepage Four Main Slider Area
-        16.5 Homepage Four Product Banner Area
-        16.6 Homepage Four Features Tab Area
-        16.7 Homepage Four Service Area
-        16.8 Homepage Four Newsletter Area
-        16.9 Homepage Four Blog Feature Area
-    17. Homepage Five Start
-        17.1 Homepage Five Header Area
-        17.2 Homepage Five Mainmenu Area
-        17.3 Homepage Five Sidebar Cart Area
-        17.4 Homepage Five Main Slider Area
-        17.5 Homepage Five Features Tab Timer Area
-        17.6 Homepage Five Features Tab Area
-        17.7 Homepage Five Service Area
-        17.8 Homepage Five Top Categories Area
-    18. Shop Grid/List Page Start
-    19. Product Details Page Start
-    20. Cart Page Start
-    21. Checkout Page Start
-    22. Wishlist Page Start
-    23. My Account Page Start
-    24. Contact Page Start
-    25. About Page Start
-    26. 404 Page Start
-    27. Mobile Menu Start
-    28. Scroll Up Start
------------------------------------------------------------------------------------*/
+                                                                    1. Theme Default CSS (body, link color, section etc)
+                                                                    2. Header Area
+                                                                    3. Mainmenu Area
+                                                                        3.1 Dropdown Menu
+                                                                        3.2 Mega Menu
+                                                                    4. Slider Area
+                                                                    5. Category Service Area
+                                                                    6. New Arrivals Carousel Area
+                                                                    7. Features Tab Area
+                                                                    8. Featured Bottom Tab Area
+                                                                    9. Sidebar and Promotion Area
+                                                                    10. Blog Area
+                                                                    11. Brand Area
+                                                                    12. Footer Widget Area
+                                                                    13. Footer Area
+                                                                    14. Homepage Two Start
+                                                                        14.1 Homepage Two Header
+                                                                        14.2 Homepage Two Slider Area
+                                                                        14.3 Homepage Two Product Banner Area
+                                                                        14.4 Homepage Two New Arrival Carousel Area
+                                                                        14.5 Homepage Two Full Width Banner Area
+                                                                        14.6 Homepage Two Features Tab Area
+                                                                        14.7 Homepage Two Sidebar Promotion Area
+                                                                    15. Homepage Three Start
+                                                                        15.1 Homepage Three Mainmenu Area
+                                                                        15.2 Homepage Three Header Area
+                                                                        15.3 Homepage Three Slider Area
+                                                                        15.4 Homepage Three Product Service Area
+                                                                        15.5 Homepage Three Banner Cart Text Area
+                                                                        15.6 Homepage Three Features Tab Area
+                                                                        15.7 Homepage Three Product Mix Banner Area
+                                                                        15.8 Homepage Three Brand Area
+                                                                        15.9 Homepage Three Blog Area
+                                                                        15.10 Homepage Three Newsletter feature Area
+                                                                        15.11 Homepage Three Footer Widget Area
+                                                                    16. Homepage Four Start
+                                                                        16.1 Homepage Four Header Top Area
+                                                                        16.2 Homepage Four Header Area
+                                                                        16.3 Homepage Four Mainmenu Area
+                                                                        16.4 Homepage Four Main Slider Area
+                                                                        16.5 Homepage Four Product Banner Area
+                                                                        16.6 Homepage Four Features Tab Area
+                                                                        16.7 Homepage Four Service Area
+                                                                        16.8 Homepage Four Newsletter Area
+                                                                        16.9 Homepage Four Blog Feature Area
+                                                                    17. Homepage Five Start
+                                                                        17.1 Homepage Five Header Area
+                                                                        17.2 Homepage Five Mainmenu Area
+                                                                        17.3 Homepage Five Sidebar Cart Area
+                                                                        17.4 Homepage Five Main Slider Area
+                                                                        17.5 Homepage Five Features Tab Timer Area
+                                                                        17.6 Homepage Five Features Tab Area
+                                                                        17.7 Homepage Five Service Area
+                                                                        17.8 Homepage Five Top Categories Area
+                                                                    18. Shop Grid/List Page Start
+                                                                    19. Product Details Page Start
+                                                                    20. Cart Page Start
+                                                                    21. Checkout Page Start
+                                                                    22. Wishlist Page Start
+                                                                    23. My Account Page Start
+                                                                    24. Contact Page Start
+                                                                    25. About Page Start
+                                                                    26. 404 Page Start
+                                                                    27. Mobile Menu Start
+                                                                    28. Scroll Up Start
+                                                                -----------------------------------------------------------------------------------*/
 
-/*----------------------------------------*/
-/*  1.  Theme default CSS
-/*----------------------------------------*/
-html, body {
-    height: 100%;
-}
+                                                                /*----------------------------------------*/
+                                                                /*  1.  Theme default CSS
+                                                                /*----------------------------------------*/
+                                                            html, body {
+                                                                height: 100%;
+                                                            }
 .floatleft {
     float:left
 }
@@ -199,15 +198,15 @@ header {
     display: inline-block
 }
 .header-r-cart > li > a, .header-r-account > li > a {
-  background: #06776f none repeat scroll 0 0;
-  border-radius: 30px;
-  color: #ffffff;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 8px 17px;
-  position: relative;
-  text-transform: uppercase;
+    background: #06776f none repeat scroll 0 0;
+    border-radius: 30px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 17px;
+    position: relative;
+    text-transform: uppercase;
 }
 .header-r-cart > li:hover > a, .header-r-account > li:hover > a {
     color: #06776f;
@@ -887,7 +886,7 @@ ul.sub-menu {
     top: 15px;
     transform: scale3d(1, 1, 1);
 }
-.white-hover a {  
+.white-hover a {
 }
 .white-hover a:before {
     background-color: rgba(45, 44, 40, 0.17);
@@ -911,7 +910,7 @@ ul.sub-menu {
     width: 0;
 }
 .white-hover a:hover:before, .white-hover a:hover:after {
-   
+
 }
 .banner-text {
     color: #ffffff;
@@ -1050,8 +1049,8 @@ ul.sub-menu {
     margin-bottom: 5px !important;
 }
 .single-product a img {
-  background: #fff;
-       transition: all 0.3s ease-out 0s;
+    background: #fff;
+    transition: all 0.3s ease-out 0s;
     width: 180px;
     height: 180px;
     box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.2), 0px 0px 10px 0px rgba(0, 0, 0, 0.19);
@@ -1067,13 +1066,13 @@ ul.sub-menu {
     opacity: 1;
 }
 .product-info h4 {
-text-align: left;
+    text-align: left;
     float: left;
     width: 47%;
     font-size: 14px;
     margin-bottom: 8px;
     margin-top: 10px;
-        height: 33px;
+    height: 33px;
     overflow: hidden;
 }
 .product-info a, .blog-info a {
@@ -1095,15 +1094,15 @@ text-align: left;
 
     width: 49%;
     float: right;
-    
-        margin-bottom: 20px;
+
+    margin-bottom: 20px;
     border-radius: 23px;
-   
+
     display: inline-block;
     font-size: 14px;
     padding: 4px 9px;
     transition: all 0.3s ease-in 0s;
-   
+
     transition: background 0.3s ease 0s, color 0.2s ease 0s
 }
 .n-a-btn i {
@@ -1131,7 +1130,7 @@ text-align: left;
     transform: scale(1);
 }
 .single-product:hover .n-a-btn, .tab-buttons .n-a-btn:hover {
-        color: #444444 !important;
+    color: #444444 !important;
     background: #ffffff none repeat scroll 0 0 !important;
     border: 1px solid #e6e8e9 !important;
 }
@@ -1779,8 +1778,8 @@ p.comment span a:hover {
     font-weight: 700;
 }
 .footer-widget > p {
-  color: #dddddd;
-  line-height: 21px;
+    color: #dddddd;
+    line-height: 21px;
 }
 .footer-widget > p {
     line-height: 21px;
@@ -2420,7 +2419,7 @@ footer a {
     color: #232323;
 }
 .home-three .header-right-menu li a:hover {
-  color: #9c8f6e !important;
+    color: #9c8f6e !important;
 }
 .home-three .header-search li.search-menu:hover i {
     color: #9c8f6e;
@@ -2747,7 +2746,7 @@ footer a {
     vertical-align: middle;
 }
 .single-service:hover .s-icon {
-  background: #e6e8e9;
+    background: #e6e8e9;
     color: #232323
 }
 .s-information {
@@ -3006,13 +3005,13 @@ i.grey {
     width: 100%;
 }
 .home-three .banner-product-list {
-  background: #ffffff none repeat scroll 0 0;
-  bottom: -1px;
-  left: 0;
-  opacity: 0.9;
-  padding: 18px 0 30px;
-  position: absolute;
-  width: 242px;
+    background: #ffffff none repeat scroll 0 0;
+    bottom: -1px;
+    left: 0;
+    opacity: 0.9;
+    padding: 18px 0 30px;
+    position: absolute;
+    width: 242px;
 }
 .home-three .single-mix-banner {
     position: relative;
@@ -3470,7 +3469,7 @@ i.grey {
 
 }
 .home-four .categories {
-      color: #888889;
+    color: #888889;
     display: inline-block;
     float: left;
     padding: 3px 0 0 12px;
@@ -3539,7 +3538,7 @@ i.grey {
     width: 71%;
 }
 .home-four .search-form > form {
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
     border: 1px solid #e6e8e9;
     border-radius: 30px;
     display: block;
@@ -3853,7 +3852,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
 }
 .home-four .single-product {
     margin-bottom: 0;
-text-align: center;
+    text-align: center;
 }
 .home-four .features-tab ul li, .home-five .features-tab ul li {
     display: inline-block;
@@ -3914,7 +3913,7 @@ text-align: center;
     padding-top: 50px;
 }
 .home-four .features-tab-area.gift {
-  padding: 50px 0;
+    padding: 50px 0;
 }
 /*----------------------------------------*/
 /*  16.7 Homepage Four Service Area
@@ -3955,9 +3954,9 @@ text-align: center;
     position: relative;
 }
 .home-four #news-form > input, .home-five #news-form > input {
-  border: 1px solid #e6e8e9;
-  color: #b6b6ba;
-  outline: none;
+    border: 1px solid #e6e8e9;
+    color: #b6b6ba;
+    outline: none;
 }
 .home-four .newsletter-area #news-form > button, .home-five .newsletter-area #news-form > button {
     border-radius: 0 30px 30px 0;
@@ -4900,7 +4899,7 @@ h3.sidebar-sub-title {
     padding-top: 25px;
 }
 .product-list .single-product h4 {
-   color:  #252525
+    color:  #252525
 }
 .product-list .single-product > a {
     display: inline-block;
@@ -6695,11 +6694,11 @@ blockquote {
 .p-head{    color: #06776f;
     font-weight: bold;}
 .ddd{     border-left: 0px dashed #E6E8E7 !important;
-     border-right: 0px dashed #E6E8E7 !important;
-     border-bottom: 0px dashed #E6E8E7 !important;
+    border-right: 0px dashed #E6E8E7 !important;
+    border-bottom: 0px dashed #E6E8E7 !important;
     padding: 35px 0 35px 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.01) !important;}
-.banner-img{     
+.banner-img{
     padding: 10px;  margin-top: 5px;    margin-bottom: 5px;}
 .img-icon{    height: 40px;
     margin-right: 10px;}
@@ -6714,12 +6713,12 @@ blockquote {
 .home-four .features-tab .comm::after, .home-five .features-tab .comm::after{    background: #786a8d !important;}
 .owl-wrapper{  overflow: hidden;
     width: 100% !important;    margin-bottom: 30px;padding-top: 15px;   background: #fff;
-    height: 265px; 
+    height: 265px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.05);}
 .nivo-nextNav{    opacity: 0;}
 .nivo-prevNav{opacity: 0;}
 .product-info{    margin-top: 15px;}
-.more{     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0.05) !important;  
+.more{     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0.05) !important;
     color: #fff;
     padding-left: 25px;
     padding-right: 25px;
@@ -6729,104 +6728,104 @@ blockquote {
 .more2{ background: #93dee3;}
 .more3{ background: #93dee3;}
 .more4{ background: #93dee3;}
- 
 
 
-Saving Ã¢â‚¬Å“tmamy-style.cssÃ¢â‚¬Â Ã¢â‚¬Â¦
+
+Saving ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œtmamy-style.cssÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦
 
 
-Editing:  
+Editing:
 /home1/hdswe/public_html/demo/tmamy/public/tmamy-style.css
- Encoding:    Re-open Use Code Editor     Close  Save Changes
+                                           Encoding:    Re-open Use Code Editor     Close  Save Changes
 
-/*-----------------------------------------------------------------------------------
+                                               /*-----------------------------------------------------------------------------------
 
-    Template Name: Theme name
-    Template URI: http://bootexperts.com
-    Description: This is html5 template
-    Author: BootExperts
-    Author URI: http://bootexperts.com
-    Version: 1.0
+                                                   Template Name: Theme name
+                                                   Template URI: http://bootexperts.com
+                                                   Description: This is html5 template
+                                                   Author: BootExperts
+                                                   Author URI: http://bootexperts.com
+                                                   Version: 1.0
 
 
------------------------------------------------------------------------------------
+                                               -----------------------------------------------------------------------------------
 
-    CSS INDEX
-    ===================
+                                                   CSS INDEX
+                                                   ===================
 
-    1. Theme Default CSS (body, link color, section etc)
-    2. Header Area
-    3. Mainmenu Area
-        3.1 Dropdown Menu
-        3.2 Mega Menu
-    4. Slider Area
-    5. Category Service Area
-    6. New Arrivals Carousel Area
-    7. Features Tab Area
-    8. Featured Bottom Tab Area
-    9. Sidebar and Promotion Area
-    10. Blog Area
-    11. Brand Area
-    12. Footer Widget Area
-    13. Footer Area
-    14. Homepage Two Start
-        14.1 Homepage Two Header
-        14.2 Homepage Two Slider Area
-        14.3 Homepage Two Product Banner Area
-        14.4 Homepage Two New Arrival Carousel Area
-        14.5 Homepage Two Full Width Banner Area
-        14.6 Homepage Two Features Tab Area
-        14.7 Homepage Two Sidebar Promotion Area
-    15. Homepage Three Start
-        15.1 Homepage Three Mainmenu Area
-        15.2 Homepage Three Header Area
-        15.3 Homepage Three Slider Area
-        15.4 Homepage Three Product Service Area
-        15.5 Homepage Three Banner Cart Text Area
-        15.6 Homepage Three Features Tab Area
-        15.7 Homepage Three Product Mix Banner Area
-        15.8 Homepage Three Brand Area
-        15.9 Homepage Three Blog Area
-        15.10 Homepage Three Newsletter feature Area
-        15.11 Homepage Three Footer Widget Area
-    16. Homepage Four Start
-        16.1 Homepage Four Header Top Area
-        16.2 Homepage Four Header Area
-        16.3 Homepage Four Mainmenu Area
-        16.4 Homepage Four Main Slider Area
-        16.5 Homepage Four Product Banner Area
-        16.6 Homepage Four Features Tab Area
-        16.7 Homepage Four Service Area
-        16.8 Homepage Four Newsletter Area
-        16.9 Homepage Four Blog Feature Area
-    17. Homepage Five Start
-        17.1 Homepage Five Header Area
-        17.2 Homepage Five Mainmenu Area
-        17.3 Homepage Five Sidebar Cart Area
-        17.4 Homepage Five Main Slider Area
-        17.5 Homepage Five Features Tab Timer Area
-        17.6 Homepage Five Features Tab Area
-        17.7 Homepage Five Service Area
-        17.8 Homepage Five Top Categories Area
-    18. Shop Grid/List Page Start
-    19. Product Details Page Start
-    20. Cart Page Start
-    21. Checkout Page Start
-    22. Wishlist Page Start
-    23. My Account Page Start
-    24. Contact Page Start
-    25. About Page Start
-    26. 404 Page Start
-    27. Mobile Menu Start
-    28. Scroll Up Start
------------------------------------------------------------------------------------*/
+                                                   1. Theme Default CSS (body, link color, section etc)
+                                                   2. Header Area
+                                                   3. Mainmenu Area
+                                                       3.1 Dropdown Menu
+                                                       3.2 Mega Menu
+                                                   4. Slider Area
+                                                   5. Category Service Area
+                                                   6. New Arrivals Carousel Area
+                                                   7. Features Tab Area
+                                                   8. Featured Bottom Tab Area
+                                                   9. Sidebar and Promotion Area
+                                                   10. Blog Area
+                                                   11. Brand Area
+                                                   12. Footer Widget Area
+                                                   13. Footer Area
+                                                   14. Homepage Two Start
+                                                       14.1 Homepage Two Header
+                                                       14.2 Homepage Two Slider Area
+                                                       14.3 Homepage Two Product Banner Area
+                                                       14.4 Homepage Two New Arrival Carousel Area
+                                                       14.5 Homepage Two Full Width Banner Area
+                                                       14.6 Homepage Two Features Tab Area
+                                                       14.7 Homepage Two Sidebar Promotion Area
+                                                   15. Homepage Three Start
+                                                       15.1 Homepage Three Mainmenu Area
+                                                       15.2 Homepage Three Header Area
+                                                       15.3 Homepage Three Slider Area
+                                                       15.4 Homepage Three Product Service Area
+                                                       15.5 Homepage Three Banner Cart Text Area
+                                                       15.6 Homepage Three Features Tab Area
+                                                       15.7 Homepage Three Product Mix Banner Area
+                                                       15.8 Homepage Three Brand Area
+                                                       15.9 Homepage Three Blog Area
+                                                       15.10 Homepage Three Newsletter feature Area
+                                                       15.11 Homepage Three Footer Widget Area
+                                                   16. Homepage Four Start
+                                                       16.1 Homepage Four Header Top Area
+                                                       16.2 Homepage Four Header Area
+                                                       16.3 Homepage Four Mainmenu Area
+                                                       16.4 Homepage Four Main Slider Area
+                                                       16.5 Homepage Four Product Banner Area
+                                                       16.6 Homepage Four Features Tab Area
+                                                       16.7 Homepage Four Service Area
+                                                       16.8 Homepage Four Newsletter Area
+                                                       16.9 Homepage Four Blog Feature Area
+                                                   17. Homepage Five Start
+                                                       17.1 Homepage Five Header Area
+                                                       17.2 Homepage Five Mainmenu Area
+                                                       17.3 Homepage Five Sidebar Cart Area
+                                                       17.4 Homepage Five Main Slider Area
+                                                       17.5 Homepage Five Features Tab Timer Area
+                                                       17.6 Homepage Five Features Tab Area
+                                                       17.7 Homepage Five Service Area
+                                                       17.8 Homepage Five Top Categories Area
+                                                   18. Shop Grid/List Page Start
+                                                   19. Product Details Page Start
+                                                   20. Cart Page Start
+                                                   21. Checkout Page Start
+                                                   22. Wishlist Page Start
+                                                   23. My Account Page Start
+                                                   24. Contact Page Start
+                                                   25. About Page Start
+                                                   26. 404 Page Start
+                                                   27. Mobile Menu Start
+                                                   28. Scroll Up Start
+                                               -----------------------------------------------------------------------------------*/
 
-/*----------------------------------------*/
-/*  1.  Theme default CSS
-/*----------------------------------------*/
-html, body {
-    height: 100%;
-}
+                                               /*----------------------------------------*/
+                                               /*  1.  Theme default CSS
+                                               /*----------------------------------------*/
+                                           html, body {
+                                               height: 100%;
+                                           }
 .floatleft {
     float:left
 }
@@ -6937,15 +6936,15 @@ header {
     display: inline-block
 }
 .header-r-cart > li > a, .header-r-account > li > a {
-  background: #06776f none repeat scroll 0 0;
-  border-radius: 30px;
-  color: #ffffff;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 8px 17px;
-  position: relative;
-  text-transform: uppercase;
+    background: #06776f none repeat scroll 0 0;
+    border-radius: 30px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 17px;
+    position: relative;
+    text-transform: uppercase;
 }
 .header-r-cart > li:hover > a, .header-r-account > li:hover > a {
     color: #06776f;
@@ -7625,7 +7624,7 @@ ul.sub-menu {
     top: 15px;
     transform: scale3d(1, 1, 1);
 }
-.white-hover a {  
+.white-hover a {
 }
 .white-hover a:before {
     background-color: rgba(45, 44, 40, 0.17);
@@ -7649,7 +7648,7 @@ ul.sub-menu {
     width: 0;
 }
 .white-hover a:hover:before, .white-hover a:hover:after {
-  
+
 }
 .banner-text {
     color: #ffffff;
@@ -7788,9 +7787,9 @@ ul.sub-menu {
     margin-bottom: 5px !important;
 }
 .single-product a img {
-  background: #fff;
-       transition: all 0.3s ease-out 0s;
-      width: 180px;
+    background: #fff;
+    transition: all 0.3s ease-out 0s;
+    width: 180px;
     height: 159px;
     box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.2), 0px 0px 10px 0px rgba(0, 0, 0, 0.19);
 }
@@ -7812,7 +7811,7 @@ ul.sub-menu {
     margin-bottom: 6px;
     margin-top: 10px;
     margin-left: 5px;
-        height: 24px;
+    height: 24px;
     overflow: hidden;
 }
 .product-info a, .blog-info a {
@@ -7834,15 +7833,15 @@ ul.sub-menu {
 
     width: 49%;
     float: right;
-    
-        margin-bottom: 20px;
+
+    margin-bottom: 20px;
     border-radius: 23px;
-   
+
     display: inline-block;
     font-size: 14px;
     padding: 0px 9px;
     transition: all 0.3s ease-in 0s;
-   
+
     transition: background 0.3s ease 0s, color 0.2s ease 0s
 }
 .n-a-btn i {
@@ -7870,7 +7869,7 @@ ul.sub-menu {
     transform: scale(1);
 }
 .single-product:hover .n-a-btn, .tab-buttons .n-a-btn:hover {
-        color: #444444 !important;
+    color: #444444 !important;
     background: #ffffff none repeat scroll 0 0 !important;
     border: 1px solid #e6e8e9 !important;
 }
@@ -8508,8 +8507,8 @@ p.comment span a:hover {
     font-weight: 700;
 }
 .footer-widget > p {
-  color: #dddddd;
-  line-height: 21px;
+    color: #dddddd;
+    line-height: 21px;
 }
 .footer-widget > p {
     line-height: 21px;
@@ -9149,7 +9148,7 @@ footer a {
     color: #232323;
 }
 .home-three .header-right-menu li a:hover {
-  color: #9c8f6e !important;
+    color: #9c8f6e !important;
 }
 .home-three .header-search li.search-menu:hover i {
     color: #9c8f6e;
@@ -9476,7 +9475,7 @@ footer a {
     vertical-align: middle;
 }
 .single-service:hover .s-icon {
-  background: #e6e8e9;
+    background: #e6e8e9;
     color: #232323
 }
 .s-information {
@@ -9735,13 +9734,13 @@ i.grey {
     width: 100%;
 }
 .home-three .banner-product-list {
-  background: #ffffff none repeat scroll 0 0;
-  bottom: -1px;
-  left: 0;
-  opacity: 0.9;
-  padding: 18px 0 30px;
-  position: absolute;
-  width: 242px;
+    background: #ffffff none repeat scroll 0 0;
+    bottom: -1px;
+    left: 0;
+    opacity: 0.9;
+    padding: 18px 0 30px;
+    position: absolute;
+    width: 242px;
 }
 .home-three .single-mix-banner {
     position: relative;
@@ -10124,7 +10123,7 @@ i.grey {
     padding: 0 0 0 11px;
 }
 .header-contact-info i {
-   background: #06776f none repeat scroll 0 0;
+    background: #06776f none repeat scroll 0 0;
     border-radius: 50%;
     color: #ffffff;
     display: inline-block;
@@ -10199,7 +10198,7 @@ i.grey {
 
 }
 .home-four .categories {
-      color: #888889;
+    color: #888889;
     display: inline-block;
     float: left;
     padding: 8px 0 0 12px;
@@ -10268,7 +10267,7 @@ i.grey {
     width: 71%;
 }
 .home-four .search-form > form {
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
     border: 1px solid #e6e8e9;
     border-radius: 30px;
     display: block;
@@ -10373,7 +10372,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
     color: #06776f !important;
 }
 .home-four .megamenu .border-list {
-       border-left: 1px dashed #E6E8E7;
+    border-left: 1px dashed #E6E8E7;
     border-right: 1px dashed #E6E8E7;
     border-bottom: 1px dashed #E6E8E7;
     padding: 0px 0 1px 19px;
@@ -10582,7 +10581,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
 }
 .home-four .single-product {
     margin-bottom: 0;
-text-align: center;
+    text-align: center;
 }
 .home-four .features-tab ul li, .home-five .features-tab ul li {
     display: inline-block;
@@ -10643,7 +10642,7 @@ text-align: center;
     padding-top: 50px;
 }
 .home-four .features-tab-area.gift {
-  padding: 50px 0;
+    padding: 50px 0;
 }
 /*----------------------------------------*/
 /*  16.7 Homepage Four Service Area
@@ -10684,9 +10683,9 @@ text-align: center;
     position: relative;
 }
 .home-four #news-form > input, .home-five #news-form > input {
-  border: 1px solid #e6e8e9;
-  color: #b6b6ba;
-  outline: none;
+    border: 1px solid #e6e8e9;
+    color: #b6b6ba;
+    outline: none;
 }
 .home-four .newsletter-area #news-form > button, .home-five .newsletter-area #news-form > button {
     border-radius: 0 30px 30px 0;
@@ -11629,7 +11628,7 @@ h3.sidebar-sub-title {
     padding-top: 25px;
 }
 .product-list .single-product h4 {
-   color:  #252525
+    color:  #252525
 }
 .product-list .single-product > a {
     display: inline-block;
@@ -13424,11 +13423,11 @@ blockquote {
 .p-head{    color: #06776f;
     font-weight: bold;}
 .ddd{     border-left: 0px dashed #E6E8E7 !important;
-     border-right: 0px dashed #E6E8E7 !important;
-     border-bottom: 0px dashed #E6E8E7 !important;
+    border-right: 0px dashed #E6E8E7 !important;
+    border-bottom: 0px dashed #E6E8E7 !important;
     padding: 35px 0 35px 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.01) !important;}
-.banner-img{     
+.banner-img{
     padding: 10px;  margin-top: 5px;    margin-bottom: 5px;}
 .img-icon{    height: 40px;
     margin-right: 10px;}
@@ -13442,12 +13441,12 @@ blockquote {
 .comm{    color: #786a8d !important;}
 .home-four .features-tab .comm::after, .home-five .features-tab .comm::after{    background: #786a8d !important;}
 .owl-wrapper{      margin-bottom: 30px;padding-top: 15px;   background: #fcfcfc;
-    height: 240px; 
+    height: 240px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.05);}
 .nivo-nextNav{    opacity: 0;}
 .nivo-prevNav{opacity: 0;}
 .product-info{        margin-top: 15px;}
-.more{   
+.more{
     color: #fff;
     padding-left: 25px;
     padding-right: 20px;
@@ -13462,9 +13461,9 @@ blockquote {
     margin-top: 18px;
     margin-bottom: 0px !important;
     margin-right: 10px;
-    }
+}
 .hr1{border-top: 1px solid #93dee3 !important;
-    width: 70%;}   
+    width: 70%;}
 .hr2{border-top: 1px solid #8db35e !important;}
 .hr3{border-top: 1px solid #b171c6 !important;}
 .hr4{border-top: 1px solid #786a8d !important;
@@ -13476,8 +13475,8 @@ blockquote {
     float: none !important;
     height: 36px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);}
 
-    .whitehover2{
-   background: #fff;
+.whitehover2{
+    background: #fff;
     border-radius: 2px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
     display: inline-block;
@@ -13520,7 +13519,7 @@ blockquote {
     border-top: 1px solid #178faf !important;
 }
 .home-four .features-tab .resturant::after, .home-five .features-tab .resturant::after
- {
+{
     background: #a8734c !important;
 }
 .home-four .features-tab .resturant::after, .home-five .features-tab .resturant::after {
@@ -13528,7 +13527,7 @@ blockquote {
 }
 
 .more2rest {
-        background: #178faf;
+    background: #178faf;
 }
 
 
@@ -13541,7 +13540,7 @@ blockquote {
     width: 65%;
 }
 .home-four .features-tab .comm32::after, .home-five .features-tab .comm32::after
- {
+{
     border-top: 1px solid #c33178 !important;
     width: 45%;
 }
@@ -13551,7 +13550,7 @@ blockquote {
 }
 
 .more2comm32 {
-        background: #c33178;
+    background: #c33178;
 }
 
 .home-four .features-tab h3::after, .home-five .features-tab h3::after {
@@ -13573,7 +13572,7 @@ blockquote {
     width: 67%;
 }
 .home-four .features-tab .comm33::after, .home-five .features-tab .comm33::after
- {
+{
     border-top: 1px solid #83aa7d !important;
     width: 45%;
     background: #83aa7d;
@@ -13584,7 +13583,7 @@ blockquote {
 }
 
 .more2comm33 {
-        background: #83aa7d;
+    background: #83aa7d;
 }
 .home-four .com3 h3::after, .home-five .com3 h3::after{
     bottom: -3px;
@@ -13602,7 +13601,7 @@ blockquote {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    
+
 }
 
 .side-div li a {
@@ -13610,7 +13609,7 @@ blockquote {
     color: #00BCD4;
     padding: 8px 16px;
     text-decoration: none;
-        text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .side-div li a.active {
@@ -13619,15 +13618,15 @@ blockquote {
 }
 
 .side-div li a:hover:not(.active) {
-    
+
 }
 .rits{float: right;    margin-top: -35px;}
 .app-img{    text-align: center;
     margin-top: 40px;}
 
-    #promoted-adv {
+#promoted-adv {
     float: right;
-    
+
     margin-bottom: 31px;
     padding-top: 20px;
 }
@@ -13651,7 +13650,7 @@ blockquote {
 }
 #promoted-adv .new {
     color: #fff;
-    background: #06776f;
+
     font-size: 13px;
     display: inline-block;
     padding: 0 18px;
@@ -13666,11 +13665,11 @@ blockquote {
 .btn.bordered-style {
     background-color: transparent;}
 
-    .sponsored {
+.sponsored {
     border-radius: 4px;
     overflow: hidden;
     padding: 0;
-  
+
     margin: auto;
     margin-top: 10px;
 }
@@ -13685,7 +13684,7 @@ blockquote {
     line-height: 20px;
 }
 .sponsored .category-title>i {
-    color: #4e1084;
+    color: #06776f;
     width: 26px;
     display: inline-block;
     height: 26px;
@@ -13772,4 +13771,1477 @@ blockquote {
 .mbotn1{ color: #7995c0;    text-transform: uppercase;}
 .cover{    padding: 19px;
     text-align: center;}
-    .cover img{width: 100%;}
+.cover img{width: 100%;}
+
+
+
+
+
+
+
+
+.profile-data {
+    position: relative;
+    height: 110px;
+    background-color: #fff;
+    box-shadow: 0px 0px 0px 1px #f8f8f8 inset, 0px -55px 0px 5px #f8f8f8;
+    z-index: 1;
+    margin-bottom: 20px;
+}
+
+#store-view .profile-data .image {
+    background-image: url(../img/store.png);
+    background-size: 62%;
+    background-color: #f8f8f8;
+}
+.profile-data .image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    position: absolute;
+    top: -130px;
+
+    z-index: 2;
+    box-shadow: 0px 0px 0px 7px rgba(255, 255, 255, 0.2);
+    background: url(../img/avatar.jpg) #fff center center no-repeat;
+    background-size: contain;
+    background-clip: content-box;
+}
+.profile-data .image img {
+    width: 142px;
+    border-radius: 50%;
+    height: 142px;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+}
+.editable-image {
+    cursor: pointer;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.74);
+    opacity: 0;
+    transition: 500ms;
+    top: 0;
+    left: 0;
+    text-align: center;
+    padding: 20px;
+    padding-top: 20px;
+    font-size: 12px;
+    line-height: normal;
+    display: none;
+    border-radius: 50%;
+}
+.editable-image i {
+    font-size: 45px;
+    position: relative;
+    transition: 300ms;
+    top: -80px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.editable-image a {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    transition: 300ms;
+    left: -130px;
+    color: #fff;
+}
+.editable-image a:nth-of-type(2) {
+    left: initial;
+    right: -130px;
+}
+#store-view .profile-data .details {
+    height: 90px;
+}
+.profile-data .details {
+    width: 40%;
+    padding-top: 25px;
+    height: 98px;
+    overflow: hidden;
+    float: left;
+}
+.profile-data .details h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+.profile-data .details p {
+    font-size: 12px;
+    color: #999;
+    line-height: 1.5;
+}
+.st-social {
+    color: #fff;
+    position: absolute;
+    top: -60px;
+    left: 250px;
+    text-align: center;
+}
+.st-social li {
+    height: 60px;
+    display: inline-block;
+    padding-right: 40px;
+    padding-top: 13px;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.inner .st-social em {
+    color: #06776f;
+}
+.st-social em {
+    display: block;
+    font-style: normal;
+    margin-bottom: 5px;
+    color: #06776f;
+    font-size: 16px;
+}
+.st-social span {
+    text-transform: uppercase;
+    font-size: 11px;
+    display: block;
+}
+.profile-data .sc, .profile-data .socail-share {
+    width: 60%;
+    text-align: right;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    float: right;
+    padding: 0;
+    height: auto;
+}
+.socail-share li {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: #bbb;
+    color: #fff;
+    overflow: hidden;
+    font-size: 11px;
+    line-height: 20px;
+    cursor: pointer;
+    margin: 0 2px;
+    text-align: center;
+}
+.socail-share li a {
+    line-height: 24px;
+    display: inline-block;
+}
+.socail-share i {
+    color: #fff;
+    font-size: 15px;
+}
+.profile-data .info {
+    float: right;
+}
+.profile-data .info p {
+    color: #bbb;
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 12px;
+}
+.profile-data .info p i {
+    font-size: 17px;
+    vertical-align: sub;
+    margin-right: 5px;
+}
+.scrl{height: 630px;
+    overflow-y: scroll;}
+
+#style-2::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar
+{
+    width: 5px;
+    background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-image: linear-gradient(to bottom,#06776f 0,#bcbcbc 100%) !important
+}
+
+
+/* Profile sidebar */
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: #f1f1f1;
+}
+
+.profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+.profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+    margin-right: 0px;
+}
+
+.profile-usermenu {
+    margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+    border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+    color: #93a3b5;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+    background-color: #fafcfd;
+    color: #06776f;
+}
+
+.profile-usermenu ul li.active {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+    color: #06776f;
+    background-color: #f6f9fb;
+    border-left: 2px solid #06776f;
+    margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+}
+.rig100{ float: right !important;
+    right: 100px !important;}
+.rig{ float: right;}
+.rig1{float: right;
+    margin-right: 10px;}
+
+.profile-admin-menu {
+    background-color: #f8f8f8;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px #ddd;
+}
+.st-bar-menu {
+    float: left;
+}
+.st-bar-menu li {
+    float: left;
+}
+.st-bar-menu a {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    color: #999;
+    padding: 0 10px;
+    border-bottom: 3px solid transparent;
+}
+.st-bar-menu li.menusettings {
+    position: absolute;
+    right: 100px;
+
+}
+.st-bar-menu li.menusettings a {
+    padding: 0;
+}
+.st-bar-menu li span {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 26px;
+    margin: 0 5px;
+}
+.ps-admin-sidemenu {
+    width: 220px;
+    float: left;
+    background: #fff;
+    box-shadow: 0 1px 1px #ddd;
+    overflow: hidden;
+    border-radius: 4px;
+}
+.ps-admin-sidemenu h4 {
+    background-color: #f8f8f8;
+    height: 55px;
+    line-height: 55px;
+    padding: 0 20px;
+    color: #666;
+}
+.ps-admin-sidemenu ul>li {
+    position: relative;
+}
+.ps-admin-sidemenu ul>li.active>a {
+    background: #06776f;
+    color: #fff;
+    border-color: #06776f;
+}
+.ps-admin-sidemenu ul>li>a {
+    color: #666;
+    font-size: 13px;
+    padding: 0 20px;
+    border-bottom: 1px solid #eee;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    text-transform: capitalize;
+}
+.hidden-menu>ul>li[data-count]:after, .ps-admin-sidemenu ul>li[data-count]:after{    position: absolute;
+    content: attr(data-count);
+    right: 20px;
+    color: #bbb;
+    font-size: 12px;
+    border: 1px solid #eee;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 5px;
+    border-radius: 16px;
+    top: 15px;
+    background-color: #fff;}
+.pf-content {
+    width: 623px;
+    float: left;
+    min-height: 500px;
+    padding-left: 15px;
+}
+#profile #promoted-adv, #store-view #promoted-adv {
+    padding-top: 0;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#promoted-adv {
+    float: right;
+    width: 280px;
+    margin-bottom: 31px;
+    padding-top: 20px;
+}
+#profile #promoted-adv .promoted-adv-title, #store-view #promoted-adv .promoted-adv-title{    height: 35px;}
+.promoted-adv-title {
+    color: #999;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 5px;
+    display: inline-block;
+}
+.uppercase {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.promoted-adv-title>span {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    font-size: 24px;
+}
+.friends-box {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 0 1px 1px #ddd;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.friends-box .friend {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    padding-right: 80px;
+}
+.friend {
+    overflow: hidden;
+    position: relative;
+}
+.friend .image {
+    background: url(../img/avatar.jpg);
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    overflow: hidden;
+    background-size: contain;
+    margin-right: 10px;
+}
+.friend .image img {
+    width: 100%;
+}
+img {
+    border: none;
+}
+.friend h3 {
+    font-size: 13px;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+}
+.friend p {
+    color: #bbb;
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    height: 14px;
+}
+.friend a.btn.bordered-style {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+    border-radius: 24px;
+    font-size: 11px;
+    color: #bbb;
+    text-transform: uppercase;
+}
+.btn.bordered-style {
+    border: 1px solid #ddd;
+    cursor: pointer;
+    background-color: transparent;
+    color: #06776f;
+}
+
+.friends-box .button {
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+.friends-box .button .btn {
+    display: block;
+    text-align: center;
+    height: 44px;
+    border-radius: 4px;
+    line-height: 30px;
+    position: relative;
+}
+.btn.bordered-style.active, .btn.bordered-style:hover, .btn.bordered-style:active{    border-color:  #06776f!important;
+    color: #fff!important;
+    background: #06776f!important;}
+.btn.bordered-style{    border: 1px solid #ddd;
+    cursor: pointer;
+    background-color: transparent;
+    color: #06776f;}
+.friends-box .button .btn i {
+    vertical-align: middle;
+    font-size: 20px;
+    margin-right: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+#profile #promoted-adv .promoted-adv-title, #store-view #promoted-adv .promoted-adv-title{    height: 35px;}
+.promoted-adv-title {
+    color: #999;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 5px;
+    display: inline-block;
+}
+.uppercase {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+#promoted-adv .new {
+    color: #aaa;
+    font-size: 13px;
+    display: inline-block;
+    padding: 0 14px;
+    border-radius: 32px;
+    height: 32px;
+    line-height: 20px;
+    cursor: pointer;
+    text-align: center;
+    float: right;
+    border: 1px solid #ddd;
+}
+.sponsored {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 0;
+    width: 280px;
+    box-shadow: 0 1px 1px #ddd;
+    margin: auto;
+    margin-top: 10px;
+}
+.sponsored .adv {
+    margin: 0;
+    border-radius: 0;
+    padding-bottom: 10px;
+}
+.sponsored>div {
+    border-bottom: 1px solid #eee;
+    box-shadow: none;
+}
+.adv {
+    background: #fff;
+    box-sizing: border-box;
+    padding: 10px;
+    padding-bottom: 7px;
+    border-radius: 3px;
+    position: relative;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+.sponsored .category-title {
+    -webkit-filter: grayscale(100%);
+    opacity: .5;
+    transition: 200ms;
+}
+.sponsored .category-title {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 30px;
+    line-height: 30px;
+}
+.category-title {
+    overflow: hidden;
+    margin-bottom: 10px;
+    margin-top: 16px;
+    height: 0px;
+}
+.category-title li a i{    line-height: 2;}
+.sponsored .category-title>i {
+    color: #06776f;
+    width: 26px;
+    display: inline-block;
+    height: 26px;
+    border-radius: 50%;
+    vertical-align: top;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 5px;
+}
+[data-category="shopping"]>.icon {
+    background-color: #c33178;
+}
+.sponsored .category-title .colored {
+    padding: 0;
+    background: none;
+    font-size: 11px;
+    float: none;
+    height: auto;
+    vertical-align: middle;
+    line-height: 20px;
+}
+.category-title .colored {
+    position: relative;
+    z-index: 1;
+    padding: 0 20px 0 40px;
+    text-transform: uppercase;
+    float: left;
+    overflow: hidden;
+    font-size: 13px;
+    height: 100%;
+    line-height: 32px;
+}
+[data-category="shopping"] .colored, .main-category-menu>li[data-category="shopping"]:hover>i, .main-category-menu>li[data-category="shopping"].active>i{color: #c33178;}
+.colored {
+    color: #06776f;
+}
+#promoted-adv .cover, .ex-link .image {
+    background: #f3f3f3 url(../img/no-image.png) no-repeat center center;
+    height: 120px;
+    position: relative;
+    overflow: hidden;
+    clear: both;
+    border-radius: 2px;
+}
+.sponsored .adv .image, .sponsored .adv .cover {
+    height: 160px;
+}
+.sponsored .cover img, .ex-link .image img {
+    width: 100%;
+    height: 100%;
+    color: #f3f3f3;
+}
+.adv h3 a {
+    color: #444;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    overflow: hidden;
+    transition: 300ms;
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.adv .attr-user, .adv .attr-location {
+    max-width: 140px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.adv .attr {
+    color: #bbb;
+    height: 18px;
+    line-height: 18px;
+    display: inline-block;
+    padding-right: 10px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+.adv .attr i {
+    font-size: 15px;
+    vertical-align: middle;
+}
+.adv .attr-price {
+    display: block;
+}
+.account-filter {
+    padding-bottom: 9px;
+    padding-top: 8px;
+    height: 55px;
+    margin-bottom:9px;
+}
+.btn-default1{border-radius: 40px !important;
+    background: #06776f;
+    color: #fff;
+
+    margin-top: 15px;}
+.btn-default1:hover{    border-radius: 40px !important;
+    border: 1px solid #eee;
+    background: #ffffff;
+}
+.btn {
+
+    padding: 6px 12px !important;}
+
+
+.account-filter h4 {
+    float: left;
+    vertical-align: middle;
+    padding: 0;
+    height: 39px;
+    line-height: 30px;
+    text-transform: capitalize;
+}
+.pf-content-header h4 {
+    color: #666;
+    font-size: 15px;
+    height: 40px;
+    font-weight: 400;
+    line-height: 54px;
+}
+.filter-select {
+    float: right;
+    width: 185px;
+    position: relative;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-right: 20px;
+    top: 10px;
+}
+label[for*=ddl] {
+    display: none!important;
+}
+.filter-select .select2-container {
+    position: relative!important;
+    color: #999;
+    top: initial!important;
+    left: initial!important;
+}
+.select2-container {
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    position: relative;
+    vertical-align: middle;
+    color: #777;
+}
+.filter-select .selection {
+    position: relative;
+}
+.filter-select .select2-selection {
+    height: 30px;
+    background: transparent;
+    border-color: #ddd;
+}
+.select2-container--default .select2-selection--single {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 45px;
+    position: relative;
+}
+.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 31px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.filter-select .select2-selection--single .select2-selection__rendered {
+    line-height: 29px;
+    text-transform: uppercase;
+    font-size: 11px;
+    padding-right: 20px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    height: 100%;
+    line-height: 30px;
+}
+.select2-container .select2-selection--single .select2-selection__rendered {
+    display: block;
+    overflow: hidden;
+    padding-left: 15px;
+    padding-right: 40px;
+    text-overflow: ellipsis;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100%;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 40px;
+}
+.filter-select .select2-selection__arrow {
+    width: 30px!important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b:before {
+    margin-top: -10px;
+    border-color: transparent transparent #bbb transparent;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b:before, .select2-container--default .select2-selection--single .select2-selection__arrow b:after {
+    content: "";
+    border-color: #bbb transparent transparent transparent;
+    border-style: solid;
+    border-width: 4px;
+    height: 0;
+    margin-left: -4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b:after {
+    margin-top: 2px;
+}
+.filter-search {
+    float: right;
+    width: 185px;
+    position: relative;
+    vertical-align: middle;
+    top: 10px
+}
+.filter-search i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    line-height: 29px;
+    width: 30px;
+    text-align: center;
+    color: #999;
+    font-size: 15px;
+}
+.filter-search label {
+    top: 9px;
+    color: #999;
+    left: 30px;
+    font-weight: normal !important;
+}
+.placeholder {
+    white-space: nowrap;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    pointer-events: none;
+    color: #777;
+}
+.filter-search input {
+    background: transparent;
+    height: 31px;
+    width: 100%;
+    padding: 0 15px;
+    padding-left: 30px;
+}
+input[type=text], input[type=password], textarea {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    resize: none;
+    font-family: inherit;
+    z-index: 2;
+    transition: 300ms;
+    color: #666;
+}
+.account-filter:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.midtype {
+    float: left;
+    width: 100%;
+    padding: 0 20px 0 0px;
+}
+.midtype > div {
+    float: none !important;
+    width: auto !important;
+}
+.form-type {
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 1px 0px #ddd;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    position: relative;
+}
+.orders-list {
+}
+.order {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    height: 140px;
+    position: relative;
+
+}
+.order-image {
+    float: left;
+    width: 120px;
+    height: 100px;
+    background: url(ilan.jpg) no-repeat center center #f8f8f8;
+    background-size: contain;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.order-title {
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+}
+.order-desc {
+    font-size: 13px;
+    color: #999;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+}
+.order-price {
+    font-size: 13px;
+}
+.order-settings {
+    position: absolute;
+    top: 36px;
+    right: 20px;
+}
+.order-image img {
+    width: 100%;
+    border-radius: 5px;
+}
+.order-price span {
+    color: #06776f;
+    margin-right: 20px;
+}
+.order-price .rating {
+    display: inline-block;
+}
+.rating {
+    cursor: pointer;
+    word-spacing: -4px;
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    text-align: left;
+}
+.order-price span {
+    color: #06776f;
+    margin-right: 20px;
+}
+.rating::before {
+    content: attr(data-rate);
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 13px;
+    color: #999;
+    line-height: 16px;
+    vertical-align: middle;
+}
+.rating i {
+    font-style: normal;
+    font-size: 16px;
+    color: #bbb;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.mr{    margin-right: 10px;}
+
+.user-list .adv-advertiser {
+    min-height: initial;
+    width: 200px;
+    margin-right: 20px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.adv-advertiser {
+    width: 280px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 1px 1px 0 rgba(0,0,0,.05);
+    float: right;
+    margin-top: 20px;
+    min-height: 496px;
+    position: relative;
+}
+.user-list .cover-data {
+    height: 120px;
+    margin-bottom: -65px;
+}
+.cover-data {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    height: 400px;
+    background: url(../img/cover.png);
+}
+.cover-data img {
+    width: 100%;
+    position: absolute;
+    display: block;
+    min-height: 100%;
+    z-index: 10;
+}
+.adv-advertiser .image {
+    width: 85px;
+    height: 85px;
+    margin: 20px auto 10px auto;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    background: #f8f8f8 url(../img/avatar.jpg);
+    background-size: contain;
+}
+.adv-advertiser .image img {
+    width: 100%;
+    display: block;
+    border-radius: 50%;
+}
+.adv-advertiser .username {
+    text-align: center;
+    font-size: 14px;
+    height: 45px;
+    line-height: 30px;
+}
+.adv-advertiser .username a {
+    color: #444;
+}
+.btn.bordered-style.active, .btn.bordered-style:hover, .btn.bordered-style:active {
+    border-color: #06776f!important;
+    color: #fff!important;
+    background: #06776f!important;
+}
+.user-list .btn {
+    display: block;
+    margin: 20px auto;
+    width: 60%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 35px;
+}
+.btn.bordered-style {
+    border: 1px solid #ddd;
+    cursor: pointer;
+    background-color: transparent;
+    color: #06776f;
+}
+button, input[type=search] {
+    font-family: inherit;
+}
+.user-list .following, .user-list .follower {
+    border-top: 1px solid #eee;
+}
+.adv-advertiser .following, .adv-advertiser .follower {
+    float: left;
+    text-transform: uppercase;
+    width: 50%;
+    height: 60px;
+    font-size: 10px;
+    color: #aaa;
+    text-align: center;
+    padding: 16px;
+}
+.adv-advertiser .following {
+    border-right: 1px solid #eee;
+}
+.adv-advertiser .following .num, .adv-advertiser .follower .num {
+    display: block;
+    line-height: 100%;
+    color: #444;
+    font-size: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.adv-advertiser .following, .adv-advertiser .follower {
+    float: left;
+    text-transform: uppercase;
+    width: 50%;
+    height: 60px;
+    font-size: 10px;
+    color: #aaa;
+    text-align: center;
+    padding: 16px;
+}
+.user-list .following, .user-list .follower {
+    border-top: 1px solid #eee;
+}
+.adv-advertiser .following, .adv-advertiser .follower {
+    float: left;
+    text-transform: uppercase;
+    width: 50%;
+    height: 60px;
+    font-size: 10px;
+    color: #aaa;
+    text-align: center;
+    padding: 16px;
+}
+.adv-advertiser .following .num, .adv-advertiser .follower .num {
+    display: block;
+    line-height: 100%;
+    color: #444;
+    font-size: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.adv-advertiser .following, .adv-advertiser .follower {
+    float: left;
+    text-transform: uppercase;
+    width: 50%;
+    height: 60px;
+    font-size: 10px;
+    color: #aaa;
+    text-align: center;
+    padding: 16px;
+}
+.user-list .adv-advertiser:after {
+    right: 60px;
+    z-index: 1;
+    top: 140px;
+    border-radius: 50%;
+    font-size: 12px;
+}
+[data-type="B"]:after {
+    background: #00a8e9;
+}
+[data-type]:after {
+    content: attr(data-type);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: 90px;
+    color: #fff;
+    border-radius: 3px;
+    line-height: 23px;
+    text-align: center;
+}
+
+
+.cu-background {
+    background: #2c2f31;
+}
+.category-breadcrumb {
+    height: 52px;
+    line-height: 52px;
+    white-space: nowrap;
+    margin-right: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+ul, ol {
+    list-style: none;
+}
+.category-breadcrumb li {
+    display: inline-block;
+    vertical-align: middle;
+}
+.category-breadcrumb li a, .category-breadcrumb li span {
+    color: #fff;
+    font-size: 14px;
+    margin-left: 2px;
+    line-height: 52px;
+}
+.category-breadcrumb li:not(:last-child) a:after, .help-breadcrumb li:not(:last-child) a:after {
+    content: "î™";
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display:none;
+}
+#help {
+    padding-bottom: 30px;
+}
+.wHeader {
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1), 0 -60px 0 #f8f8f8 inset;
+    margin-bottom: 30px;
+}
+.helpcenter {
+    height: 130px;
+    padding: 30px 0;
+    overflow: hidden;
+}
+.helpcenter i {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    color: #06776f;
+    border: 2px solid #06776f;
+    background: #fff;
+    font-size: 32px;
+    text-align: center;
+    line-height: 57px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+}
+.icon {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.helpcenter h3 {
+    line-height: 36px;
+    font-size: 24px;
+    font-weight: 400;
+}
+.helpcenter p {
+    color: #666;
+}
+.icon-info:before {
+
+}
+.help-search {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    color: #999;
+}
+.placeholder {
+    white-space: nowrap;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    pointer-events: none;
+    color: #777;
+}
+.help-search input[type=text] {
+    width: 400px;
+    padding-right: 44px;
+    height: 44px;
+    padding-left: 15px;
+}
+input[type=text], input[type=password], textarea {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    resize: none;
+    font-family: inherit;
+    z-index: 2;
+    transition: 300ms;
+    color: #666;
+}
+
+.help-search i {
+    font-size: 25px;
+    position: absolute;
+    top: 10px;
+    right: 12px;
+}
+.icon-search:before {
+    content: "î˜¼";
+}
+input[type=submit] {
+    font-family: inherit;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.help-breadcrumb li {
+    display: inline-block;
+}
+.help-breadcrumb li a {
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    margin-right: 0;
+    color: #999;
+    font-size: 13px;
+}
+.category-breadcrumb li:not(:last-child) a:after, .help-breadcrumb li:not(:last-child) a:after {
+    content: "/";
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.help-breadcrumb li:last-child a {
+    pointer-events: none;
+    cursor: default;
+}
+.help-sidemenu {
+    width: 22%;
+    margin-right: 1%;
+    float: left;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+.help-sidemenu li:last-child>a {
+    border: none;
+}
+.help-sidemenu a {
+    display: none;
+    height: 50px;
+    line-height: 50px;
+    background: #fff;
+    color: #666;
+    position: relative;
+    cursor: pointer;
+    padding: 0 40px 0 20px;
+    border-bottom: 1px solid #eee;
+}
+.help-sidemenu a i {
+    width: 40px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 50px;
+    color: #bbb;
+}
+.help-sidemenu a {
+    display: none;
+    height: 50px;
+    line-height: 50px;
+    background: #fff;
+    color: #666;
+    position: relative;
+    cursor: pointer;
+    padding: 0 40px 0 20px;
+    border-bottom: 1px solid #eee;
+}
+a, a:link {
+    text-decoration: none;
+}
+.help-sidemenu li.active>ul>li>a {
+    display: block;
+}
+.help-sidemenu .curr>a {
+    color: #fff;
+    background: #06776f;
+    border-color: #06776f;
+}
+.help-content {
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+.help-content {
+    width: 77%;
+    float: left;
+    min-height: 200px;
+    background: #fff;
+}
+.help-content .title {
+    padding: 20px;
+    background: #f8f8f8;
+}
+.help-content .title h5 {
+    color: #666;
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.help-content .title p {
+    color: #999;
+}
+.qanda-list {
+    padding: 20px;
+}
+.qanda {
+    border-bottom: 1px dashed #ddd;
+}
+.accordion {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.qanda.active h6 {
+    color: #06776f;
+}
+.qanda h6 {
+    height: 45px;
+    line-height: 45px;
+    color: #666;
+}
+.accordion-head {
+    cursor: pointer;
+}
+.qanda.active h6 i {
+    transform: rotate(90deg);
+}
+.qanda h6 i {
+    color: #bbb;
+    font-size: 20px;
+    vertical-align: sub;
+    display: inline-block;
+}
+.accordion.active .accordion-content {
+    display: block;
+}
+.qanda-content {
+    padding-bottom: 30px;
+}
+.qanda .desc {
+    padding: 0 20px;
+    line-height: 1.5;
+    color: #999;
+    font-size: 13px;
+    text-align: justify;
+}
+.qanda-list .answer {
+    margin: 20px;
+    padding: 10px;
+    background: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    color: #666;
+    font-size: 13px;
+}
+.qanda-list .answer input {
+    background: transparent;
+    border: none;
+    color: #06776f;
+    padding: 0 5px;
+    cursor: pointer;
+}
+input[type=submit] {
+    font-family: inherit;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+
+
+
+

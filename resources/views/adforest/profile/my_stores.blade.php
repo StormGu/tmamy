@@ -77,10 +77,10 @@
                                             <div class="short-description-1 ">
                                                 <!-- Category Title -->
                                                 <div class="category-title"><span><a
-                                                                href="#">{{ $object->category->name }}</a></span></div>
+                                                                href="{{ url('ShowStoresDetails/'.$object->id ) }}">{{ $object->category->name }}</a></span></div>
                                                 <!-- Ad Title -->
                                                 <h3>
-                                                    <a target="_blank" href="#">{{ $object->title }}</a>
+                                                    <a target="" href="{{ url('profile/ShowStoresDetails/'.$object->id ) }}">{{ $object->title }}</a>
                                                 </h3>
                                                 <!-- Location -->
                                             </div>

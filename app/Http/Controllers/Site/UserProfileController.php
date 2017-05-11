@@ -138,6 +138,13 @@ class UserProfileController extends Controller
 
         return redirect()->back();
     }
+
+    public function showstores($id){
+
+        $Adve = Advertisement::where('store_id', $id)->get();
+
+        return view('adforest.profile.showdst', compact('Adve'));
+    }
     public function notifications() {
     }
 
