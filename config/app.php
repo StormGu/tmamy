@@ -194,6 +194,8 @@ return [
         Backpack\Settings\SettingsServiceProvider::class,
         Spatie\Translatable\TranslatableServiceProvider::class,
         Backpack\PermissionManager\PermissionManagerServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
+        Backpack\PageManager\PageManagerServiceProvider::class,
 
     ],
 

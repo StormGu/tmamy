@@ -166,6 +166,11 @@ return [
     'Publish_My_Store' => 'افتح المتجر',
     'Enter_a_short_title_for_your_Store' => 'أدخل عنوانا قصيرا لمتجرك',
     'number_for_conformation.' => 'رقم التأكيد',
+    'points' => 'النقاط',
+    'roles' => 'نوع المستخدم',
+    'upgrade_account' => 'ترقية الحساب',
+    'post_free_advertisement' => 'إعلان مجاني',
+
 
 
     ];

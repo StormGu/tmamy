@@ -15,4 +15,6 @@ return [
     'settings' => 'settings',
     'roles' => 'Roles',
     'permissions' => 'Permissions',
+    'constantkey' => 'Constant Key',
+    'Pages' => 'Pages',
 ];

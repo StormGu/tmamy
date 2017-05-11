@@ -28,6 +28,7 @@ return [
     'success_edit' => 'تم التعديل بنجاح',
     'follow' => 'متابعة',
     'message' => 'رسالة',
+    'main_categories' => 'التصنيفات الرئيسية',
 
 
 
