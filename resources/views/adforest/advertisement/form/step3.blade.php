@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+
     <section class="section-padding gray">
         <div class="container">
             <div class="row">
@@ -146,14 +147,12 @@
                             </tr>
                             </thead>
                         </table>
-                        <hr>
-                        <br><br>
-
                         {!! Form::hidden('after_points', $after_points) !!}
-
                         @if ($errors->has('after_points'))
                             <span class="text-danger">{{ $errors->first('after_points') }}</span>
                         @endif
+                        <hr>
+                        <br><br>
 
                         <div>
                             <button href="#" class="btn btn-success pull-right">@lang('advertisement.submit')</button>
