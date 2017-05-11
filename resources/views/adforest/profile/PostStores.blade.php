@@ -27,7 +27,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                    <label class="control-label">@lang('profile.company name')<small>@lang('profile.Enter_a_company_name_for_your_Store')</small></label>
+                                    <label class="control-label">@lang('profile.companyName')<small>@lang('profile.Enter_a_company_name_for_your_Store')</small></label>
                                     <input name="company_name" class="form-control" placeholder="Brand new honda civic 2017 for sale" type="text">
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                                     <label class="control-label">@lang('profile.Category') <small>@lang('profile.Select_suitable_category_for_your_Store')</small></label>
                                     <select name="category_id" class="category form-control">
-                                        <option label="Select Option"></option>
+                                        <option label=@lang('profile.SelectOption')></option>
                                         @foreach($cat as $key)
                                             <option value="{{ $key->id }}">{{ $key->name }}</option>
                                         @endforeach
@@ -46,7 +46,7 @@
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                                     <label class="control-label">@lang('profile.Country') <small>@lang('profile.Select_Country_for_your_Store')</small></label>
                                     <select name="country_id" class="category form-control">
-                                        <option label="Select Option"></option>
+                                        <option label=@lang('profile.SelectOption')></option>
                                         @foreach($cou as $key)
                                             <option value="{{ $key->id }}">{{ $key->name }}</option>
                                         @endforeach
@@ -70,7 +70,7 @@
                             <!-- Store Description  -->
                             <div class="row">
                                 <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
-                                    <label class="control-label">@lang('profile.Store Description.') <small>@lang('profile.Enter_long_description_for_your_project.')</small></label>
+                                    <label class="control-label">@lang('profile.StoreDescription.') <small>@lang('profile.Enter_long_description_for_your_project.')</small></label>
                                     <textarea name="description" id="editor1" rows="12" class="form-control" placeholder=""></textarea>
                                 </div>
                             </div>
@@ -88,11 +88,11 @@
                             <!-- end row -->
                             <div class="row">
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">@lang('profile.Mobile Number.')<small>@lang('profile.number_for_conformation.')</small></label>
+                                    <label class="control-label">@lang('profile.MobileNumber.')<small>@lang('profile.number_for_conformation.')</small></label>
                                     <input name="mobile_no" class="form-control" placeholder="uea +92-0321-123-456-789" type="text">
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">@lang('profile.Phone Number')<small>@lang('profile.number_for_conformation')</small></label>
+                                    <label class="control-label">@lang('profile.PhoneNumber')<small>@lang('profile.number_for_conformation')</small></label>
                                     <input name="phone_no" class="form-control" placeholder="uea +92-0321-123-456-789" type="text">
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
@@ -100,7 +100,7 @@
                                     <input name="address" class="form-control" placeholder="address" type="text">
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">@lang('profile.email')email<small>@lang('profile.email_for_conformation')</small></label>
+                                    <label class="control-label">@lang('profile.email')<small>@lang('profile.email_for_conformation')</small></label>
                                     <input name="email" class="form-control" placeholder="email" type="email">
                                 </div>
 
@@ -109,11 +109,11 @@
                                     <input name="url" class="form-control" placeholder="url" type="text">
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">@lang('profile.pob Number')<small>@lang('profile.pob_number_for_conformation') </small></label>
+                                    <label class="control-label">@lang('profile.pob_Number')<small>@lang('profile.pob_number_for_conformation') </small></label>
                                     <input name="pob" class="form-control" placeholder="uea +92-0321-123-456-789" type="text">
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                    <label class="control-label">@lang('profile.fax_Number')<small>@lang('profile.fax number_for_conformation') </small></label>
+                                    <label class="control-label">@lang('profile.fax_Number')<small>@lang('profile.fax_number_for_conformation') </small></label>
                                     <input name="fax" class="form-control" placeholder="uea +92-0321-123-456-789" type="text">
                                 </div>
 

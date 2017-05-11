@@ -109,35 +109,18 @@
                         <div class="sponsored" data-id="PromoteResult">
 
 
-                            <div class="adv">
-                                <div class="mbotn" data-category="shopping">
-                                    <img src="adforest/img/carr.png">
-                                    <span class="colored"
-                                          title=" cars / rent"> Cars / Rent</span>
-                                </div>
-                                <div class="cover">
-
-                                    <a href="">
-                                        <img src=" adforest/img/car.png">
-                                    </a>
-
-                                </div>
-                                <a id="ContentPlaceHolder1_Promoted_HLPromote"
-                                   class="new btn bordered-style"
-                                   href="">Show Store</a>
-
-                            </div>
+                       @foreach(\App\Models\Store::where('store_account_type_id', 1)->limit(3)->get() as $advm )
 
 
                             <div class="adv">
                                 <div class="mbotn1" data-category="shopping">
-                                    <img src=" adforest/img/offers.png">
+                                    <img src="">
                                     <span class="colored" title=" cars / rent"> offers / ab hotel</span>
                                 </div>
                                 <div class="cover">
 
                                     <a href="">
-                                        <img src=" adforest/img/car.png">
+                                        <img src="{{ url('image/190×244/' . $advm->logo_file_name) }}">
                                     </a>
 
                                 </div>
@@ -146,8 +129,7 @@
                                    href="">Show Store</a>
 
                             </div>
-
-
+                            @endforeach
                             <div class="adv">
                                 <div class="category-title" data-category="shopping">
                                     <i class="fa fa-opencart" aria-hidden="true"></i>

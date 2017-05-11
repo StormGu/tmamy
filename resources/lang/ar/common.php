@@ -26,6 +26,8 @@ return [
     'search' => 'بحث',
     'searchPlaceholder' => 'مكان البحث',
     'success_edit' => 'تم التعديل بنجاح',
+    'follow' => 'متابعة',
+    'message' => 'رسالة',
 
 
 

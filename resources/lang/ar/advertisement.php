@@ -30,6 +30,9 @@ return [
     'visits' => 'الزيارات',
     'recent_ads' => 'الإعلانات الحالية',
     'settings'      => 'إعدادات',
-    'approved' => 'تم الموافقة'
+    'approved' => 'تم الموافقة',
+    'properties' => 'خصائص',
+    'features' => 'ميزات',
+
 
 ];

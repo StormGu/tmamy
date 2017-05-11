@@ -31,6 +31,12 @@ return [
     'visits' => 'Visits',
     'recent_ads' => 'Recent Ads',
     'approved' => 'approved',
+    'properties' => 'Properties',
+    'features' => 'Features',
+
+
+
+
 
 
 ];
