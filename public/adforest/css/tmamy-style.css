@@ -1,93 +1,93 @@
 
-                                                                /*-----------------------------------------------------------------------------------
+/*-----------------------------------------------------------------------------------
 
-                                                                    Template Name: Theme name
-                                                                    web developer name: khaled mofeed
-                                                                    Template URI: http://bootexperts.com
-                                                                    Description: This is html5 template
-                                                                    Author: BootExperts
-                                                                    Author URI: http://bootexperts.com
-                                                                    Version: 1.0
+    Template Name: Theme name
+    web developer name: khaled mofeed
+    Template URI: http://bootexperts.com
+    Description: This is html5 template
+    Author: BootExperts
+    Author URI: http://bootexperts.com
+    Version: 1.0
 
 
-                                                                -----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 
-                                                                    CSS INDEX
-                                                                    ===================
+    CSS INDEX
+    ===================
 
-                                                                    1. Theme Default CSS (body, link color, section etc)
-                                                                    2. Header Area
-                                                                    3. Mainmenu Area
-                                                                        3.1 Dropdown Menu
-                                                                        3.2 Mega Menu
-                                                                    4. Slider Area
-                                                                    5. Category Service Area
-                                                                    6. New Arrivals Carousel Area
-                                                                    7. Features Tab Area
-                                                                    8. Featured Bottom Tab Area
-                                                                    9. Sidebar and Promotion Area
-                                                                    10. Blog Area
-                                                                    11. Brand Area
-                                                                    12. Footer Widget Area
-                                                                    13. Footer Area
-                                                                    14. Homepage Two Start
-                                                                        14.1 Homepage Two Header
-                                                                        14.2 Homepage Two Slider Area
-                                                                        14.3 Homepage Two Product Banner Area
-                                                                        14.4 Homepage Two New Arrival Carousel Area
-                                                                        14.5 Homepage Two Full Width Banner Area
-                                                                        14.6 Homepage Two Features Tab Area
-                                                                        14.7 Homepage Two Sidebar Promotion Area
-                                                                    15. Homepage Three Start
-                                                                        15.1 Homepage Three Mainmenu Area
-                                                                        15.2 Homepage Three Header Area
-                                                                        15.3 Homepage Three Slider Area
-                                                                        15.4 Homepage Three Product Service Area
-                                                                        15.5 Homepage Three Banner Cart Text Area
-                                                                        15.6 Homepage Three Features Tab Area
-                                                                        15.7 Homepage Three Product Mix Banner Area
-                                                                        15.8 Homepage Three Brand Area
-                                                                        15.9 Homepage Three Blog Area
-                                                                        15.10 Homepage Three Newsletter feature Area
-                                                                        15.11 Homepage Three Footer Widget Area
-                                                                    16. Homepage Four Start
-                                                                        16.1 Homepage Four Header Top Area
-                                                                        16.2 Homepage Four Header Area
-                                                                        16.3 Homepage Four Mainmenu Area
-                                                                        16.4 Homepage Four Main Slider Area
-                                                                        16.5 Homepage Four Product Banner Area
-                                                                        16.6 Homepage Four Features Tab Area
-                                                                        16.7 Homepage Four Service Area
-                                                                        16.8 Homepage Four Newsletter Area
-                                                                        16.9 Homepage Four Blog Feature Area
-                                                                    17. Homepage Five Start
-                                                                        17.1 Homepage Five Header Area
-                                                                        17.2 Homepage Five Mainmenu Area
-                                                                        17.3 Homepage Five Sidebar Cart Area
-                                                                        17.4 Homepage Five Main Slider Area
-                                                                        17.5 Homepage Five Features Tab Timer Area
-                                                                        17.6 Homepage Five Features Tab Area
-                                                                        17.7 Homepage Five Service Area
-                                                                        17.8 Homepage Five Top Categories Area
-                                                                    18. Shop Grid/List Page Start
-                                                                    19. Product Details Page Start
-                                                                    20. Cart Page Start
-                                                                    21. Checkout Page Start
-                                                                    22. Wishlist Page Start
-                                                                    23. My Account Page Start
-                                                                    24. Contact Page Start
-                                                                    25. About Page Start
-                                                                    26. 404 Page Start
-                                                                    27. Mobile Menu Start
-                                                                    28. Scroll Up Start
-                                                                -----------------------------------------------------------------------------------*/
+    1. Theme Default CSS (body, link color, section etc)
+    2. Header Area
+    3. Mainmenu Area
+        3.1 Dropdown Menu
+        3.2 Mega Menu
+    4. Slider Area
+    5. Category Service Area
+    6. New Arrivals Carousel Area
+    7. Features Tab Area
+    8. Featured Bottom Tab Area
+    9. Sidebar and Promotion Area
+    10. Blog Area
+    11. Brand Area
+    12. Footer Widget Area
+    13. Footer Area
+    14. Homepage Two Start
+        14.1 Homepage Two Header
+        14.2 Homepage Two Slider Area
+        14.3 Homepage Two Product Banner Area
+        14.4 Homepage Two New Arrival Carousel Area
+        14.5 Homepage Two Full Width Banner Area
+        14.6 Homepage Two Features Tab Area
+        14.7 Homepage Two Sidebar Promotion Area
+    15. Homepage Three Start
+        15.1 Homepage Three Mainmenu Area
+        15.2 Homepage Three Header Area
+        15.3 Homepage Three Slider Area
+        15.4 Homepage Three Product Service Area
+        15.5 Homepage Three Banner Cart Text Area
+        15.6 Homepage Three Features Tab Area
+        15.7 Homepage Three Product Mix Banner Area
+        15.8 Homepage Three Brand Area
+        15.9 Homepage Three Blog Area
+        15.10 Homepage Three Newsletter feature Area
+        15.11 Homepage Three Footer Widget Area
+    16. Homepage Four Start
+        16.1 Homepage Four Header Top Area
+        16.2 Homepage Four Header Area
+        16.3 Homepage Four Mainmenu Area
+        16.4 Homepage Four Main Slider Area
+        16.5 Homepage Four Product Banner Area
+        16.6 Homepage Four Features Tab Area
+        16.7 Homepage Four Service Area
+        16.8 Homepage Four Newsletter Area
+        16.9 Homepage Four Blog Feature Area
+    17. Homepage Five Start
+        17.1 Homepage Five Header Area
+        17.2 Homepage Five Mainmenu Area
+        17.3 Homepage Five Sidebar Cart Area
+        17.4 Homepage Five Main Slider Area
+        17.5 Homepage Five Features Tab Timer Area
+        17.6 Homepage Five Features Tab Area
+        17.7 Homepage Five Service Area
+        17.8 Homepage Five Top Categories Area
+    18. Shop Grid/List Page Start
+    19. Product Details Page Start
+    20. Cart Page Start
+    21. Checkout Page Start
+    22. Wishlist Page Start
+    23. My Account Page Start
+    24. Contact Page Start
+    25. About Page Start
+    26. 404 Page Start
+    27. Mobile Menu Start
+    28. Scroll Up Start
+-----------------------------------------------------------------------------------*/
 
-                                                                /*----------------------------------------*/
-                                                                /*  1.  Theme default CSS
-                                                                /*----------------------------------------*/
-                                                            html, body {
-                                                                height: 100%;
-                                                            }
+/*----------------------------------------*/
+/*  1.  Theme default CSS
+/*----------------------------------------*/
+html, body {
+    height: 100%;
+}
 .floatleft {
     float:left
 }
@@ -148,7 +148,7 @@ li {
     text-decoration: none
 }
 .section-padding {
-    padding: 50px 0
+    padding: 0px 0 !important;
 }
 /*----------------------------------------*/
 /*  2. Header Area
@@ -13861,10 +13861,12 @@ blockquote {
 }
 .profile-data .details {
     width: 40%;
-    padding-top: 25px;
-    height: 98px;
+    padding-top: 16px;
+    height: 106px;
     overflow: hidden;
     float: left;
+    position: relative;
+    left: 105px;
 }
 .profile-data .details h3 {
     font-size: 18px;
@@ -13874,7 +13876,7 @@ blockquote {
 .profile-data .details p {
     font-size: 12px;
     color: #999;
-    line-height: 1.5;
+    line-height: 0.5;
 }
 .st-social {
     color: #fff;
@@ -13915,6 +13917,8 @@ blockquote {
     float: right;
     padding: 0;
     height: auto;
+    position: relative;
+    right: 100px;
 }
 .socail-share li {
     display: inline-block;
@@ -13939,7 +13943,7 @@ blockquote {
     font-size: 15px;
 }
 .profile-data .info {
-    float: right;
+    /* float: right; */
 }
 .profile-data .info p {
     color: #bbb;
