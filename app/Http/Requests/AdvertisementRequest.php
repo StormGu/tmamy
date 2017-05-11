@@ -16,7 +16,7 @@ class AdvertisementRequest extends CrudRequest
             return ($value >= 0) ? true : false;
         };
 
-        $errorMessage = __('advertisement.points_expired');
+        $errorMessage = __('advertisement.points_expired', ['url' => url('profile')]);
 
         $factory->extend($name, $test, $errorMessage);
     }

@@ -14,4 +14,5 @@ return [
     'follow' => 'follow',
     'message' => 'message',
 
-    ];
+    'success_added' => 'Added Successfully. Waiting for Administration Approval.',
+];

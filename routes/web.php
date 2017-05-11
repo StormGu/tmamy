@@ -31,6 +31,14 @@ Route::group(['namespace' => 'Site'], function () {
 
     Route::post('search', 'SearchController@index');
 
+});
+
+// Homepage Route
+Route::group([
+    'namespace' => 'Site',
+    'middleware' => ['auth', 'activated']
+], function () {
+
     // Ismail Add Adv Routes
     Route::get('AddAdv', 'AdvertisementController@AddAdvertisementStep1');
     Route::get('AddAdv/{category_id}', 'AdvertisementController@AddAdvertisementStep2');
@@ -38,7 +46,6 @@ Route::group(['namespace' => 'Site'], function () {
     Route::post('CreateAdv', 'AdvertisementController@CreateAdvertisement');
 
 });
-
 
 // Authentication Routes
 Auth::routes();
@@ -139,10 +146,10 @@ Route::group(['middleware' => ['auth', 'activated']], function () {
     // Route::get('/profile', ['as' => 'public.home', 'uses' => 'UserController@index']);
 
     // Show users profile - viewable by other users.
-//    Route::get('profile/{id}', [
-//        'as' => '{id}',
-//        'uses' => 'ProfilesController@show'
-//    ]);
+    //    Route::get('profile/{id}', [
+    //        'as' => '{id}',
+    //        'uses' => 'ProfilesController@show'
+    //    ]);
 
 });
 
@@ -151,27 +158,26 @@ Route::group(['middleware' => ['auth', 'activated']], function () {
 Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function () {
 
     // User Profile and Account Routes
-//    Route::resource('profile', 'ProfilesController', [
-//            'only' => [
-//                'show',
-//                'edit',
-//                'update',
-//                'create'
-//            ]
-//        ]);
-//    Route::put('profile/{username}/updateUserAccount', [
-//        'as' => '{username}',
-//        'uses' => 'ProfilesController@updateUserAccount'
-//    ]);
-//    Route::put('profile/{username}/updateUserPassword', [
-//        'as' => '{username}',
-//        'uses' => 'ProfilesController@updateUserPassword'
-//    ]);
-//    Route::delete('profile/{username}/deleteUserAccount', [
-//        'as' => '{username}',
-//        'uses' => 'ProfilesController@deleteUserAccount'
-//    ]);
-
+    //    Route::resource('profile', 'ProfilesController', [
+    //            'only' => [
+    //                'show',
+    //                'edit',
+    //                'update',
+    //                'create'
+    //            ]
+    //        ]);
+    //    Route::put('profile/{username}/updateUserAccount', [
+    //        'as' => '{username}',
+    //        'uses' => 'ProfilesController@updateUserAccount'
+    //    ]);
+    //    Route::put('profile/{username}/updateUserPassword', [
+    //        'as' => '{username}',
+    //        'uses' => 'ProfilesController@updateUserPassword'
+    //    ]);
+    //    Route::delete('profile/{username}/deleteUserAccount', [
+    //        'as' => '{username}',
+    //        'uses' => 'ProfilesController@deleteUserAccount'
+    //    ]);
 
 
     Route::get('profile/ads/{type?}', 'Site\UserProfileController@advertisements');
@@ -201,9 +207,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 });
 
 
-
 Route::group(['middleware' => ['auth', 'activated']], function () {
-//Site\UserProfileController@show
+    //Site\UserProfileController@show
     //Route::get('/profile', ['as' => 'public.home', 'uses' => 'Site\UserProfileController@show']);
     Route::get('/profile', ['as' => 'public.home', 'uses' => 'Site\UserProfileController@advertisements']);
 
@@ -216,7 +221,8 @@ Route::get('image/{size}/{name}', function ($size = null, $name = null) {
     if (!is_null($size) && !is_null($name)) {
 
         if (strstr($size, '&times;'))
-            $size = explode('&times;', $size); else
+            $size = explode('&times;', $size);
+        else
             $size = explode('×', $size);
 
         $cache_image = Image::cache(function ($image) use ($size, $name) {
@@ -225,12 +231,12 @@ Route::get('image/{size}/{name}', function ($size = null, $name = null) {
         }, 10);
 
         return Response::make($cache_image, 200, ['Content-Type' => 'image']);
-    } else {
+    }
+    else {
         abort(404);
     }
 
 })->where('name', '([A-z\d-\/_.]+)?');
-
 
 
 // Change Locale Route
@@ -247,7 +253,8 @@ Route::get('lang/{lang}', function ($lang) {
     if (in_array($lang, $available_locales)) {
 
         \Session::put('locale', $lang);
-    } else {
+    }
+    else {
 
         \Session::put('locale', \Config::get('locale'));
     }

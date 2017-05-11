@@ -3,6 +3,7 @@
 return [
 
     'heading_title' => 'Add Advertisement',
+    'post_free_ad' => 'Post Free AD',
 
     'title' => 'Title',
     'price' => 'Price',
@@ -19,6 +20,16 @@ return [
     'blocked' => 'Blocked',
     'expired' => 'Expired',
     'rejected' => 'Rejected',
+
+    'billing' => 'Billing Info',
+    'points' => 'Points',
+    'add_advertisement' => 'Add New Advertisement',
+
+    'balance' => 'Balance',
+    'current_balance' => 'Current Balance of Points',
+    'new_balance' => 'New Balance of Points',
+
+    'points_expired' => 'Expired Points!. <a target="_blank" href=":url">Add Points Now</a>',
 
     'created_at' => 'Created At',
     'updated_at' => 'Updated At',
@@ -51,9 +62,6 @@ return [
     'approved' => 'approved',
     'properties' => 'Properties',
     'features' => 'Features',
-
-
-
 
 
     'what_you_are_listing' => 'What you are listing for?',
