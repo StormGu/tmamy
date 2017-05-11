@@ -13,5 +13,6 @@ return [
     'success_edit' => 'success edit',
     'follow' => 'follow',
     'message' => 'message',
+    'main_categories' => 'main categories',
 
     ];

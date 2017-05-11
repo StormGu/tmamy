@@ -12,4 +12,6 @@ return [
     'features' => 'ميزات',
     'property' => 'خصائص',
     'settings' => 'إعدادت',
+    'constantkey' => 'مفاتيح الثوابت',
+    'Pages' => 'صفحات',
 ];
