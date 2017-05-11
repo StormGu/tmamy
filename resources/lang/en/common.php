@@ -15,4 +15,5 @@ return [
     'message' => 'message',
     'main_categories' => 'main categories',
 
-    ];
+    'success_added' => 'Added Successfully. Waiting for Administration Approval.',
+];

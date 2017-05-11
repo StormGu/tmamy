@@ -2,13 +2,17 @@
 <header>
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 rtl">
+            <div class="col-md-3 rtl">
                 <div class="logo">
                     <a href="{{ url('/') }}"><img src="{{ url(config('settings.site_logo')) }}" /></a>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-md-offset-3 hidden-xs ltr">
+            <div class="col-md-7 ltr">
                 @include('adforest.partials.search')
+            </div>
+            <div class="col-md-2 ltr" >
+
+                <a class="btn btn-danger margin-top-30" href="{{ url('AddAdv') }}" style="padding: 15px 12px !important;">@lang('advertisement.post_free_ad')</a>
             </div>
         </div>
     </div>
