@@ -63,9 +63,16 @@ return [
     'properties' => 'Properties',
     'features' => 'Features',
 
-
     'what_you_are_listing' => 'What you are listing for?',
-    'choose_one_subcategory' => 'Choose One Subcategory'
+    'choose_one_subcategory' => 'Choose One Subcategory',
+
+    'add_advertisement' => 'Add advertisement',
+    'billing' => 'Billing',
+    'points' => 'Points',
+    'balance' => 'Balance',
+    'current_balance' => 'current balance',
+    'new_balance' => 'new  balance',
+    'add_to_main_caetgory' => 'add to main caetgory',
 
 
 ];

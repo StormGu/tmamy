@@ -187,6 +187,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::get('profile/poststores', 'Site\UserProfileController@poststores');
     Route::post('postnewstores', 'Site\UserProfileController@postnewstores');
 
+    Route::get('profile/ShowStoresDetails/{id}', 'Site\UserProfileController@showstores');
+
     Route::get('profile/adDelet/{id}', 'Site\UserProfileController@deletads');
 
     Route::get('profile/settings', 'Site\UserSettingController@index');
@@ -267,3 +269,6 @@ Route::get('lang/{lang}', function ($lang) {
 Route::get('images/profile/{id}/avatar/{image}', [
     'uses' => 'ProfilesController@userProfileAvatar'
 ]);
+/** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
+Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
+    ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);

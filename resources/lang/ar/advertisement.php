@@ -37,7 +37,15 @@ return [
 
     'settings' => 'إعدادات',
     'approved' => 'تم الموافقة',
-    'what_you_are_listing' => 'أين تود أن يكون إعلانك؟'
+    'what_you_are_listing' => 'أين تود أن يكون إعلانك؟',
 
+
+     'add_advertisement' => 'إضافة إعلان',
+    'billing' => 'الدفع',
+    'points' => 'النقاط',
+    'balance' => 'الرصيد',
+    'current_balance' => 'الرصيد الحالي',
+    'new_balance' => 'الرصيد الجديد',
+    'add_to_main_caetgory' => 'إضافة إلى التصنيف  الرئيسي',
 
 ];
