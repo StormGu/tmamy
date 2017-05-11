@@ -309,7 +309,7 @@ class AdvertisementController extends Controller
         if ($advertisement->save()) {
 
             $profile = Profile::whereUserId(\Auth::id())->first();
-            $profile->after_points = $request->input('points');
+            $profile->points = $request->input('after_points');
             $profile->save();
 
             if ($request->input('properties'))
