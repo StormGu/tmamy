@@ -37,7 +37,8 @@
         </ul>
 
         <ul class="st-social rig100">
-            <button type="button" class="btn btn-default1 rig">Like Store</button>
+
+            <button type="button" class="btn btn-default1 rig">Follow</button>
             <button type="button" class="btn btn-default1 rig1">Messages</button>
         </ul>
         <ul class="socail-share">
@@ -73,6 +74,12 @@
         <p class="info">{{ $object->email }}</p>
         <p class="description">{{ $object->profile->bio }}</p>
         <p>@lang('profile.points') : <span class="label label-success">{{ $object->profile->points }}</span></p>
+        <form action="">
+
+            <input type="hidden" name="user_id" value=" {{ $object->id }} ">
+            <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
+            <input type="submit" >
+        </form>
     </div>
     </div>
 </div>

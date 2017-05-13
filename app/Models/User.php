@@ -143,4 +143,18 @@ class User extends Authenticatable
 
         return $this->first_name . ' ' . $this->last_name;
     }
+
+
+    function followers()
+    {
+        return $this->belongsToMany('App\Models\User', 'user_followers', 'user_id', 'user_followers_id');
+    }
+
+    function follow(User $user) {
+        $this->followers()->attach($user->id);
+    }
+
+    function unfollow(User $user) {
+        $this->followers()->detach($user->id);
+    }
 }

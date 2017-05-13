@@ -273,6 +273,3 @@ Route::get('images/profile/{id}/avatar/{image}', [
 //Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
  //   ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
 
-Route::get('ibrs', function (){
-    return view('adforest.profile.kkk');
-});
