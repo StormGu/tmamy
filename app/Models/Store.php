@@ -132,4 +132,11 @@ class Store extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
+
+
+    public function children()
+    {
+        return $this->hasMany(Advertisement::class,'store_id');
+    }
 }
