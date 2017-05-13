@@ -31,6 +31,9 @@ Route::group(['namespace' => 'Site'], function () {
 
     Route::post('search', 'SearchController@index');
 
+    Route::get('page/{page}/{subs?}', ['uses' => 'PageController@index'])
+        ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
+
 });
 
 // Homepage Route
@@ -272,7 +275,5 @@ Route::get('lang/{lang}', function ($lang) {
 Route::get('images/profile/{id}/avatar/{image}', [
     'uses' => 'ProfilesController@userProfileAvatar'
 ]);
-/** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
-//Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
- //   ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
+
 
