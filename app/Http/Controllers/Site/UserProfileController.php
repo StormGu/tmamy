@@ -173,24 +173,32 @@ class UserProfileController extends Controller
 
     public function follower(Request $request){
 
-        $Input = $request->all();
 
-        $userfollowers = new UserFollower();
+
+         $userfollowers = new UserFollower();
          $Input = $request->all();
+
          $userfollowers->user_id = $Input['user_id'];
-         $userfollowers->user_followers_id = $Input['user_id'];
+         $userfollowers->user_followers_id = $Input['user_followers_id'];
 
 
         $userfollowers->save();
 
-
+         return redirect()->back();
     }
 
     public function showprofile($id)
     {
-         $user = Profile::where('user_id', $id)->get();
+        $data['breadcrumbs'][trans('titles.myProfile')] = '#';
 
-         return view('adforest.profile.showprofile');
+        $id = ($id) ? $id : \Auth::id();
+
+         $data['object'] = User::with('profile')->find($id);
+
+        $countuserfollower = UserFollower::where('user_id', $id)->count();
+
+
+         return view('adforest.profile.showprofile', $data , compact('countuserfollower'));
     }
 
 }

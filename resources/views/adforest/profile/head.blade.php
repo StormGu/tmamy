@@ -18,7 +18,7 @@
 
         <ul class="st-social">
             <li><em>6</em><span>ADS</span></li>
-            <li><em>128</em><span>Views</span></li>
+            <li><em>{{ $countuserfollower }}</em><span>follower</span></li>
             <li>
                 <em class="MyCounter">11</em>
                 <span>
@@ -27,8 +27,13 @@
         </ul>
 
         <ul class="st-social rig100">
+            <form action="{{ url('profile/follower')}}" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="user_id" value="{{ $object->id }}">
+                <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
+                <button type="submit" class="btn btn-default1 rig">Follow</button>
+            </form>
 
-            <button type="button" class="btn btn-default1 rig">Follow</button>
             <button type="button" class="btn btn-default1 rig1">Messages</button>
         </ul>
         <ul class="socail-share">
@@ -63,13 +68,10 @@
 
 
     <div class="details">
+        <p>{{ $object->name }}</p>
+        <p>xcxcvxc</p>
+        <p>xcxcvx</p>
 
-        <form action="follower" method="post">
-            {{ csrf_field() }}
-            <input type="hidden" name="user_id" value=" {{ $object->id }} ">
-            <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
-            <input class="btn btn-danger" type="submit" >
-        </form>
     </div>
 </div>
 </div>
