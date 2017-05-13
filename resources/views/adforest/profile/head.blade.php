@@ -1,54 +1,95 @@
-<div class="col-md-12 col-xs-12 col-sm-12">
-    <section class="search-result-item">
-        <a class="image-link" href="#"><img class="image" alt=""
-                                            src="@if ($object->profile->avatar_status == 1){{ url($object->profile->avatar) }}@else {{ Gravatar::get($object->email) }} @endif"
-                                            alt="{{ $object->name }}"> </a>
-        <div class="search-result-item-body">
-            <div class="row">
-                <div class="col-md-5 col-sm-12 col-xs-12">
-                    <h4 class="search-result-item-heading"><a href="#">{{ $object->name }}</a></h4>
-                    <p class="info">{{ $object->email }}</p>
-                    <p class="description">{{ $object->profile->bio }}</p>
-                    <p>@lang('profile.points') : <span class="label label-success">{{ $object->profile->points }}</span></p>
-                </div>
 
-                <div class="col-md-7 col-sm-12 col-xs-12">
-                    <div class="row ad-history">
-                        <div class="col-md-4 col-sm-4 col-xs-12 pull-right">
-                            <div class="user-stats">
-                                <h2>{{ \App\Models\Advertisement::whereUserId($object->id)->count() }}</h2>
-                                <small>@lang('titles.ads')</small>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 pull-right">
-                            <div class="user-stats">
-                                <h2>{{ \App\Models\Store::whereUserId($object->id)->count() }}</h2>
-                                <small>@lang('titles.stores')</small>
-                            </div>
-                        </div>
-                    </div>
+
+@include('adforest.home.slider')
+<div style="margin-bottom: 0px !important;" class="profile-data">
+    <div class="container">
+
+        <div class="image" data-user="avatar" data-type="B">
+            <img id="imgAvatar" src="khaled.jpg">
+            <div class="editable-image">
+                <div class="hover-button">
+                    <i class="icon icon-camera"></i>
+                    <a href="javascript:;" data-modal="changeAvatar">
+                        Change Image</a>
+                    <a data-do="delete">
+                        Remove Image</a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <div class="dashboard-menu-container">
-        <ul>
-            <li @if(Request::is('profile/ads*') || Request::is('profile')) class="active" @endif><a href="{{ url('profile/ads') }}">
-                    <div class="menu-name"> @lang('profile.ads')</div>
-                </a></li>
-            <li @if(Request::is('profile/store*')) class="active" @endif><a href="{{ url('profile/stores') }}">
-                    <div class="menu-name">@lang('profile.stores')</div>
-                </a></li>
-            <li @if(Request::is('profile/upgrade*')) class="active" @endif><a href="{{ url('profile/upgrade') }}">
-                    <div class="menu-name">@lang('profile.upgrade')</div>
-                </a></li>
-            <li class="pull-right @if(Request::is('profile/settings*')) active @endif"><a href="{{ url('profile/settings') }}">
-                    <div class="menu-name">@lang('profile.settings')</div>
-                </a></li>
+
+
+
+
+
+
+
+
+        </div>
+        <ul class="st-social">
+            <li><em>6</em><span>ADS</span></li>
+            <li><em>128</em><span>Views</span></li>
+            <li>
+                <em class="MyCounter">11</em>
+                <span>
+                                        Likes</span>
+            </li>
         </ul>
+
+        <ul class="st-social rig100">
+            <button type="button" class="btn btn-default1 rig">Like Store</button>
+            <button type="button" class="btn btn-default1 rig1">Messages</button>
+        </ul>
+        <ul class="socail-share">
+            <li>
+                <a href="javascript:;" target="_blank">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" target="_blank">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" target="_blank">
+                    <i class="fa fa-google" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" target="_blank">
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" target="_blank">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+
+    <div class="details">
+        <h3>{{ $object->name }}</h3>
+        <p class="info">{{ $object->email }}</p>
+        <p class="description">{{ $object->profile->bio }}</p>
+        <p>@lang('profile.points') : <span class="label label-success">{{ $object->profile->points }}</span></p>
+    </div>
     </div>
 </div>
-<!-- Middle Content Area  End -->
+
+<div class="dashboard-menu-container">
+    <ul>
+        <li class="active"><a href="http://localhost/laravel/inn/tmamy/public/profile/ads">
+                <div class="menu-name"> ads</div>
+            </a></li>
+        <li><a href="http://localhost/laravel/inn/tmamy/public/profile/stores">
+                <div class="menu-name">stores</div>
+            </a></li>
+        <li><a href="http://localhost/laravel/inn/tmamy/public/profile/upgrade">
+                <div class="menu-name">upgrade</div>
+            </a></li>
+        <li class="pull-right "><a href="http://localhost/laravel/inn/tmamy/public/profile/settings">
+                <div class="menu-name">settings</div>
+            </a></li>
+    </ul>
 </div>
-<!-- Row End -->

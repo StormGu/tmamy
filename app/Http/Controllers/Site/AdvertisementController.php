@@ -36,9 +36,6 @@ use Illuminate\Support\Facades\Input;
 class AdvertisementController extends Controller
 {
 
-    public function __construct() {
-    }
-
     public function index($categoryId) {
     }
 
@@ -57,45 +54,45 @@ class AdvertisementController extends Controller
         $data['features'] = $object->features()->get();
 
         switch ($object->category_id) {
-//            case 73:
-//
-//                return $this->infoCareerJob($id, $data);
-//                break;
-//
-//            case 74:
-//
-//                return $this->infoCareerResume($id, $data);
-//                break;
-//
-//            case 10:
-//
-//                return $this->infoExhibition($id, $data);
-//                break;
-//
-//            case 32:
-//
-//                return $this->infoHealthDoctorClinic($id, $data);
-//                break;
-//
-//            case 36:
-//
-//                return $this->infoHealthHospital($id, $data);
-//                break;
-//
-//            case 8:
-//
-//                return $this->infoService($id, $data);
-//                break;
-//
-//            case 11:
-//
-//                return $this->infoTender($id, $data);
-//                break;
-//
-//            case 9:
-//
-//                return $this->infoWholesaler($id, $data);
-//                break;
+            case 73:
+
+                return $this->infoCareerJob($id, $data);
+                break;
+
+            case 74:
+
+                return $this->infoCareerResume($id, $data);
+                break;
+
+            case 10:
+
+                return $this->infoExhibition($id, $data);
+                break;
+
+            case 32:
+
+                return $this->infoHealthDoctorClinic($id, $data);
+                break;
+
+            case 36:
+
+                return $this->infoHealthHospital($id, $data);
+                break;
+
+            case 8:
+
+                return $this->infoService($id, $data);
+                break;
+
+            case 11:
+
+                return $this->infoTender($id, $data);
+                break;
+
+            case 9:
+
+                return $this->infoWholesaler($id, $data);
+                break;
 
             default:
 
@@ -252,14 +249,13 @@ class AdvertisementController extends Controller
     // Ismail Advertisement Add Form
     public function AddAdvertisementStep1() {
 
-        $data['breadcrumbs'][__('advertisement.add_advertisement')] = '#';
+        $data['breadcrumbs'][__('advertisement.heading_title')] = '#';
 
         return View('adforest.advertisement.form.step1', $data);
     }
 
     public function AddAdvertisementStep2($category_id) {
 
-        $data['breadcrumbs'][__('advertisement.add_advertisement')] = '#';
         $data['parentCategory'] = Category::find($category_id);
         $data['categories'] = Category::whereParentId($category_id)->get();
 
@@ -268,13 +264,23 @@ class AdvertisementController extends Controller
 
     public function AddAdvertisementStep3($category_id, $subcategory_id = null) {
 
-        $data['breadcrumbs'][__('advertisement.add_advertisement')] = '#';
+
+        $data['breadcrumbs'][__('advertisement.heading_title')] = '#';
 
         $data['category_id'] = $category_id;
         $data['subcategory_id'] = $subcategory_id;
 
         $data['properties'] = Property::whereCategoryId($category_id)->get();
         $data['features'] = Category::find($category_id)->features()->get();
+
+        $health_doctor_categories = explode(',', config('settings.health_doctor_categories'));
+
+        if (in_array($subcategory_id, $health_doctor_categories)) {
+            $data['additional_info'] = View('adforest.advertisement.form.infoHealthDoctor');
+        }
+        else {
+            $data['additional_info'] = '';
+        }
 
         $data['current_points'] = \Auth::user()->profile->points;
         $data['after_points'] = \Auth::user()->profile->points - 300;
@@ -339,6 +345,5 @@ class AdvertisementController extends Controller
             ]);
         }
     }
-
 
 }
