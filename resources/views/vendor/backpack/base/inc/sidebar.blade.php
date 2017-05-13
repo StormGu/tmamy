@@ -38,7 +38,7 @@
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/slider') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.slider') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/routes') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.routes') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/coupons') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.coupons') }}</span></a></li>
-          <li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>{{ trans('backpack::base.Pages') }}</span></a></li>
+          <li><a href="{{ url(config('backpack.base.route_prefix').'page') }}"><i class="fa fa-file-o"></i> <span>{{ trans('backpack::base.Pages') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/features') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.features') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/property') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.property') }}</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/settings') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.settings') }}</span></a></li>
