@@ -52,7 +52,7 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        $store = Store::find($id);
+        $store = Store::find($id)->with('children')->get();;
 
         if(count($store))
             $this->is_success= true;
