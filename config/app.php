@@ -197,6 +197,8 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Backpack\PageManager\PageManagerServiceProvider::class,
 
+
+
     ],
 
     /*
@@ -254,6 +256,7 @@ return [
         'Uuid' => Webpatser\Uuid\Uuid::class,
 
         'CRUD' => Backpack\CRUD\CrudServiceProvider::class,
+
 
     ],
 

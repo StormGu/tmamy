@@ -37,6 +37,9 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('AddAdv/{category_id}/{subcategory_id}', 'AdvertisementController@AddAdvertisementStep3');
     Route::post('CreateAdv', 'AdvertisementController@CreateAdvertisement');
 
+    /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
+//    Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
+//        ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
 });
 
 
@@ -260,6 +263,3 @@ Route::get('lang/{lang}', function ($lang) {
 Route::get('images/profile/{id}/avatar/{image}', [
     'uses' => 'ProfilesController@userProfileAvatar'
 ]);
-/** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
-Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
-    ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
