@@ -31,7 +31,7 @@ Route::group(['namespace' => 'Site'], function () {
 
     Route::post('search', 'SearchController@index');
 
-    Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
+    Route::get('page/{page}/{subs?}', ['uses' => 'PageController@index'])
         ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
 
 });
