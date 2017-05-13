@@ -110,7 +110,7 @@ class SocialController extends Controller
                     $user->profile->github_username = $socialUserObject->nickname;
                 }
                 if ($socialData->provider == 'twitter') {
-                    $user->profile()->twitter_username = $socialUserObject->username;
+                    $user->profile()->twitter_username = isset($socialUserObject->username)?$socialUserObject->username:'';
                 }
                 $user->profile->save();
 

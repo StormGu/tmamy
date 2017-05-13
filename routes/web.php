@@ -97,16 +97,16 @@ Route::group([
     'prefix' => 'admin',
     'middleware' => ['auth', 'activated', 'role:admin']
 ], function () {
-
-    Route::resource('/users/deleted', 'SoftDeletesController', [
-        'only' => [
-            'index',
-            'show',
-            'update',
-            'destroy',
-        ]
-    ]);
-
+//
+//    Route::resource('/users/deleted', 'SoftDeletesController', [
+//        'only' => [
+//            'index',
+//            'show',
+//            'update',
+//            'destroy',
+//        ]
+//    ]);
+//
 
 });
 
