@@ -12,6 +12,8 @@ use App\Models\Country;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use App\Models\UserFollower;
+use App\Models\Profile;
 class UserProfileController extends Controller
 {
 
@@ -167,6 +169,28 @@ class UserProfileController extends Controller
     }
 
     public function upgrade() {
+    }
+
+    public function follower(Request $request){
+
+        $Input = $request->all();
+
+        $userfollowers = new UserFollower();
+         $Input = $request->all();
+         $userfollowers->user_id = $Input['user_id'];
+         $userfollowers->user_followers_id = $Input['user_id'];
+
+
+        $userfollowers->save();
+
+
+    }
+
+    public function showprofile($id)
+    {
+         $user = Profile::where('user_id', $id)->get();
+
+         return view('adforest.profile.showprofile');
     }
 
 }

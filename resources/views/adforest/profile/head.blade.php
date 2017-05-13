@@ -15,18 +15,7 @@
             </div>
         </div>
     </div>
-    <ul class="st-social">
-        <li><em>6</em><span>ADS</span></li>
-        <li><em>128</em><span>Views</span></li>
-        <li>
-            <em class="MyCounter">11</em>
-            <span> Likes</span>
-        </li>
-    </ul>
 
-
-
-        </div>
         <ul class="st-social">
             <li><em>6</em><span>ADS</span></li>
             <li><em>128</em><span>Views</span></li>
@@ -38,9 +27,7 @@
         </ul>
 
         <ul class="st-social rig100">
-            <form action="">
-                <input type="hidden" value="{{ $object->id }}">
-            </form>
+
             <button type="button" class="btn btn-default1 rig">Follow</button>
             <button type="button" class="btn btn-default1 rig1">Messages</button>
         </ul>
@@ -74,12 +61,15 @@
 
 
 
-    <div class="details">
-        <h3>{{ $object->name }}</h3>
-        <p class="info">{{ $object->email }}</p>
-        <p class="description">{{ $object->profile->bio }}</p>
-        <p>@lang('profile.points') : <span class="label label-success">{{ $object->profile->points }}</span></p>
 
+    <div class="details">
+
+        <form action="follower" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="user_id" value=" {{ $object->id }} ">
+            <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
+            <input class="btn btn-danger" type="submit" >
+        </form>
     </div>
 </div>
 </div>

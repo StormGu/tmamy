@@ -29,10 +29,13 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('category/{category_id}', 'CategoryController@index');
     Route::get('search', 'SearchController@index');
 
+
+
     Route::post('search', 'SearchController@index');
 
     Route::get('page/{page}/{subs?}', ['uses' => 'PageController@index'])
         ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
+
 
 });
 
@@ -186,16 +189,18 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::get('profile/ads/{type?}', 'Site\UserProfileController@advertisements');
     Route::get('profile/stores/{type?}', 'Site\UserProfileController@stores');
 
-
+    Route::get('profile/{id}','Site\UserProfileController@showprofile');
     Route::get('profile/poststores', 'Site\UserProfileController@poststores');
     Route::post('postnewstores', 'Site\UserProfileController@postnewstores');
 
     Route::get('profile/ShowStoresDetails/{id}', 'Site\UserProfileController@showstores');
-
+    Route::post('follower', 'Site\UserProfileController@follower');
     Route::get('profile/adDelet/{id}', 'Site\UserProfileController@deletads');
 
     Route::get('profile/settings', 'Site\UserSettingController@index');
     Route::post('profile/settings', 'Site\UserSettingController@update');
+
+
 
     Route::get('profile/settings/password', 'Site\UserSettingController@password');
     Route::post('profile/settings/password', 'Site\UserSettingController@updateUserPassword');
@@ -208,6 +213,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);
+
+
 
 });
 
@@ -272,5 +279,4 @@ Route::get('lang/{lang}', function ($lang) {
 Route::get('images/profile/{id}/avatar/{image}', [
     'uses' => 'ProfilesController@userProfileAvatar'
 ]);
-
 
