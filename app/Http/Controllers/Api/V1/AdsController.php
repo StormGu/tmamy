@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
+use App\Models\Category;
 class AdsController extends Controller
 {
     /**
@@ -93,5 +94,16 @@ class AdsController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function getadsbasedcat()
+    {
+        $cat = Category::where('parent_id',NULL)->with('adchildren')->get();
+
+
+
+        if(count($cat))
+            $this->is_success= true;
+
+        return response()->json(['success'=>$this->is_success ,'message' =>[],'data'=>$cat]);
     }
 }

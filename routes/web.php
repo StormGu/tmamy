@@ -14,7 +14,7 @@
 */
 
 // Homepage Route
-Route::group(['namespace' => 'Site'], function () {
+Route::group(['namespace' => 'Site', 'middleware' => 'adpoints'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@index');
     Route::get('contact', 'ContactController@index');
@@ -29,20 +29,12 @@ Route::group(['namespace' => 'Site'], function () {
     Route::post('search', 'SearchController@index');
 
     Route::get('page/{page}/{subs?}', ['uses' => 'PageController@index'])->where([
-            'page' => '^((?!admin).)*$',
-            'subs' => '.*'
-        ]);
-
-});
-
-Route::group([
-    'namespace' => 'Site',
-    'middleware' => 'adpoints'
-], function () {
+        'page' => '^((?!admin).)*$',
+        'subs' => '.*'
+    ]);
 
     Route::get('adv/{id}', 'AdvertisementController@get');
     Route::get('advertisement/{id}', 'AdvertisementController@get');
-
 
 });
 
