@@ -19,7 +19,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="to_user_id" value="{{ $object->id }}">
                     <input type="hidden" name="form_user_id" value="{{ Auth::id() }}">
-                    <textarea class="form-control" rows="5" id="comment" placeholder="Enter Your Message"></textarea>
+                    <textarea name="messages" class="form-control" rows="5" id="comment" placeholder="Enter Your Message"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default1 rig1" data-dismiss="modal"><a>Close</a></button>
@@ -50,10 +50,10 @@
     </div>
 
         <ul class="st-social">
-            <li><em>6</em><span>ADS</span></li>
-            <li><em></em><span>follower</span></li>
+            <li><em>{{ \App\Models\Advertisement::where('user_id', $object->id)->count() }}</em><span>ADS</span></li>
+            <li><em>{{ \App\Models\UserFollower::where('user_id', $object->id)->count() }}</em><span>follower</span></li>
             <li>
-                <em class="MyCounter">11</em>
+                <em class="MyCounter">{{ \App\Models\StoreLike::where('user_id', $object->id)->count() }}</em>
                 <span>
                                         Likes</span>
             </li>
@@ -67,7 +67,7 @@
                 @if(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() == 0)
                     <button type="submit" class="btn btn-default1 rig"> Follow </button>
                 @elseif(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() > 0)
-
+            </form>
                     <form action="{{ url('profile/unfollower') }}" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="user_id" value="{{ $object->id }}">
@@ -113,8 +113,8 @@
 
     <div class="details">
         <p>{{ $object->name }}</p>
-        <p>xcxcvxc</p>
-        <p>xcxcvx</p>
+        <p>{{ $object->email }}</p>
+        <a href="{{ url('profile/Message/'. Auth::id()) }}">My messages</a>
 
     </div>
 </div>
@@ -122,7 +122,7 @@
 
 <div class="dashboard-menu-container">
     <ul>
-        <li class="active"><a href="http://localhost/laravel/inn/tmamy/public/profile/ads">
+        <li class="active"><a href="{{ url('profile/ads') }}">
                 <div class="menu-name"> ads</div>
             </a></li>
         <li><a href="{{ url('profile/stores') }}">

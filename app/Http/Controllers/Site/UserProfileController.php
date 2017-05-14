@@ -258,8 +258,5 @@ class UserProfileController extends Controller
         return redirect()->back();
     }
 
-    public function msg(){
-        return view('adforest.profile.Message');
-    }
 
 }

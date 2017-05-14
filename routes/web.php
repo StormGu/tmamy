@@ -205,6 +205,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::post('profile/settings', 'Site\UserSettingController@update');
 
     Route::post('profile/Message', 'Site\MessageController@postmsg');
+    Route::get('profile/Message/{id}', 'Site\MessageController@getmsg');
 
     Route::get('profile/settings/password', 'Site\UserSettingController@password');
     Route::post('profile/settings/password', 'Site\UserSettingController@updateUserPassword');
