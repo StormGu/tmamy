@@ -2,26 +2,24 @@
 
 namespace App\Models;
 
-use App\Models\Store;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
-class StoreSubscription extends Model
+class StoreLike extends Model
 {
     /*
-  |--------------------------------------------------------------------------
-  | GLOBAL VARIABLES
-  |--------------------------------------------------------------------------
-  */
+|--------------------------------------------------------------------------
+| GLOBAL VARIABLES
+|--------------------------------------------------------------------------
+*/
 
-     protected $table = 'store_subscription';
+     protected $table = 'store_like';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-      protected $fillable = [
-          'store_id',
-          'user_id'
-      ];
+     protected $fillable = [
+         'user_id',
+         'store_id'
+     ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -36,13 +34,7 @@ class StoreSubscription extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-        public function user(){
-            return $this->belongsTo(User::class);
-        }
 
-        public function store(){
-            return $this->belongsTo(Store::class);
-        }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

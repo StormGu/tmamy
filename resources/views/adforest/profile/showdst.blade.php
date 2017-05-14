@@ -48,8 +48,21 @@
             </ul>
 
             <ul class="st-social rig100">
-                <button type="button" class="btn btn-default1 rig">Like Store</button>
-                <button type="button" class="btn btn-default1 rig1">Messages</button>
+                <form action="{{ url('profile/SubscribeStore')}}" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="store_id" value="{{ $store_id }}">
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                    <button type="submit" class="btn btn-default1 rig">@if(\App\Models\UserFollower::where('user_id', Auth::id())->count() == 0)<a style="" href="{{ url('profile/disSubscribeStore/'. Auth::id() )}}">Unsubscribe Store </a> @else
+                            Subscribe Store  @endif </button>
+                </form>
+                <form action="{{ url('profile/likeStore')}}" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="store_id" value="{{ $store_id }}">
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                    <button type="submit" class="btn btn-default1 rig">@if(\App\Models\StoreLike::where('user_id', Auth::id())->count() == 0)<a style="" href="{{ url('profile/dislikeStore/'. Auth::id() )}}"> DisLike Store </a> @else
+                            Like Store  @endif </button></button>
+                </form>
+
             </ul>
             <ul class="socail-share">
                 <li>

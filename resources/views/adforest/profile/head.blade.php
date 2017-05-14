@@ -18,7 +18,7 @@
 
         <ul class="st-social">
             <li><em>6</em><span>ADS</span></li>
-            <li><em>{{ $countuserfollower }}</em><span>follower</span></li>
+            <li><em></em><span>follower</span></li>
             <li>
                 <em class="MyCounter">11</em>
                 <span>
@@ -31,10 +31,11 @@
                 {{ csrf_field() }}
                 <input type="hidden" name="user_id" value="{{ $object->id }}">
                 <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
-                <button type="submit" class="btn btn-default1 rig">Follow</button>
+                <button type="submit" class="btn btn-default1 rig">@if(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() == 0) Follow @elseif(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() > 0)
+                        <a href="{{ url('/profile/unfollower/'. Auth::id() ) }}">UnFollow</a> @endif</button>
             </form>
 
-            <button type="button" class="btn btn-default1 rig1">Messages</button>
+            <button href="{{ url('profile/Messages') }}" type="button" class="btn btn-default1 rig1">Messages</button>
         </ul>
         <ul class="socail-share">
             <li>
@@ -81,13 +82,13 @@
         <li class="active"><a href="http://localhost/laravel/inn/tmamy/public/profile/ads">
                 <div class="menu-name"> ads</div>
             </a></li>
-        <li><a href="http://localhost/laravel/inn/tmamy/public/profile/stores">
+        <li><a href="{{ url('profile/stores') }}">
                 <div class="menu-name">stores</div>
             </a></li>
-        <li><a href="http://localhost/laravel/inn/tmamy/public/profile/upgrade">
+        <li><a href="{{ url('profile/upgrade') }}">
                 <div class="menu-name">upgrade</div>
             </a></li>
-        <li class="pull-right "><a href="http://localhost/laravel/inn/tmamy/public/profile/settings">
+        <li class="pull-right "><a href="{{ url('/profile/settings') }}">
                 <div class="menu-name">settings</div>
             </a></li>
     </ul>

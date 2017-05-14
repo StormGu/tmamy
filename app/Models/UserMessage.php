@@ -1,27 +1,26 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
-use App\Models\Store;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
-class StoreSubscription extends Model
+class UserMessage extends Model
 {
     /*
-  |--------------------------------------------------------------------------
-  | GLOBAL VARIABLES
-  |--------------------------------------------------------------------------
-  */
+|--------------------------------------------------------------------------
+| GLOBAL VARIABLES
+|--------------------------------------------------------------------------
+*/
 
-     protected $table = 'store_subscription';
+     protected $table = 'user_messages';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-      protected $fillable = [
-          'store_id',
-          'user_id'
-      ];
+     protected $fillable = [
+         'to_user_id',
+         'from_user_id',
+         'messages'
+     ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -36,13 +35,7 @@ class StoreSubscription extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-        public function user(){
-            return $this->belongsTo(User::class);
-        }
 
-        public function store(){
-            return $this->belongsTo(Store::class);
-        }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
