@@ -53,18 +53,13 @@
                             <button class="btn btn-theme btn-lg btn-block">@lang('auth.login')</button>
                         </form>
 
-                        <div class="row margin-top-20">
-                            <div class="col-md-12">
-                                <div class="col-md-3">
-                                    <a href="{{ route('social.redirect', ['provider' => 'facebook']) }}"
-                                       class="btn btn-lg btn-primary btn-block facebook">Facebook</a>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="{{ route('social.redirect', ['provider' => 'twitter']) }}"
-                                       class="btn btn-lg btn-primary btn-block twitter">Twitter</a>
-                                </div>
-                            </div>
-                        </div>
+
+                        <p class="text-center margin-bottom-3">
+                            Or Login with
+                        </p>
+
+                        @include('partials.socials-icons')
+
                     </div>
                     <!-- Form -->
                 </div>
