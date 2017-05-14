@@ -203,9 +203,9 @@ class UserProfileController extends Controller
          $data['object'] = User::with('profile')->find($id);
 
         $countuserfollower = UserFollower::where('user_id', $id)->count();
+        $user_id = \Auth::id();
 
-
-         return view('adforest.profile.showprofile', $data , compact('countuserfollower'));
+         return view('adforest.profile.showprofile', $data , compact('countuserfollower','user_id'));
     }
 
 
@@ -243,13 +243,12 @@ class UserProfileController extends Controller
     }
 
     public function disLikeStore($id){
-        dd($id);
+
         DB::table('store_like')->where('user_id', $id)->delete();
 
     }
 
-    public function Message(){
-
+    public function msg(){
         return view('adforest.profile.Message');
     }
 

@@ -20,21 +20,28 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('contact', 'ContactController@index');
     Route::post('contact', 'ContactController@store');
 
-    Route::get('adv/{id}', 'AdvertisementController@get');
-
     Route::get('/PostAdvertisement', 'AdvertisementController@PostAdvertisement');
     Route::post('PostAdv', 'AdvertisementController@PostAdv');
-    Route::get('advertisement/{id}', 'AdvertisementController@get');
 
     Route::get('category/{category_id}', 'CategoryController@index');
     Route::get('search', 'SearchController@index');
 
-
-
     Route::post('search', 'SearchController@index');
 
-    Route::get('page/{page}/{subs?}', ['uses' => 'PageController@index'])
-        ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
+    Route::get('page/{page}/{subs?}', ['uses' => 'PageController@index'])->where([
+            'page' => '^((?!admin).)*$',
+            'subs' => '.*'
+        ]);
+
+});
+
+Route::group([
+    'namespace' => 'Site',
+    'middleware' => 'adpoints'
+], function () {
+
+    Route::get('adv/{id}', 'AdvertisementController@get');
+    Route::get('advertisement/{id}', 'AdvertisementController@get');
 
 
 });
@@ -103,16 +110,16 @@ Route::group([
     'prefix' => 'admin',
     'middleware' => ['auth', 'activated', 'role:admin']
 ], function () {
-
-    Route::resource('/users/deleted', 'SoftDeletesController', [
-        'only' => [
-            'index',
-            'show',
-            'update',
-            'destroy',
-        ]
-    ]);
-
+    //
+    //    Route::resource('/users/deleted', 'SoftDeletesController', [
+    //        'only' => [
+    //            'index',
+    //            'show',
+    //            'update',
+    //            'destroy',
+    //        ]
+    //    ]);
+    //
 
 });
 
@@ -197,18 +204,18 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::get('profile/disSubscribeStore/{id}', 'Site\UserProfileController@disSubscribeStore');
     Route::post('profile/likeStore', 'Site\UserProfileController@likeStore');
     Route::get('profile/dislikeStore/{id}', 'Site\UserProfileController@disLikeStore');
-    Route::get('profile/{id}','Site\UserProfileController@showprofile');
+    Route::get('profile/{id}', 'Site\UserProfileController@showprofile');
     Route::get('profile/poststores', 'Site\UserProfileController@poststores');
     Route::post('postnewstores', 'Site\UserProfileController@postnewstores');
 
     Route::get('profile/ShowStoresDetails/{id}', 'Site\UserProfileController@showstores');
 
     Route::get('profile/adDelet/{id}', 'Site\UserProfileController@deletads');
-
+    Route::get('Message', 'Site\UserProfileController@msg');
     Route::get('profile/settings', 'Site\UserSettingController@index');
     Route::post('profile/settings', 'Site\UserSettingController@update');
 
-    Route::get('Message', 'Site\UserProfileController@Message');
+    Route::get('profile/Message', 'Site\UserProfileController@Message');
 
     Route::get('profile/settings/password', 'Site\UserSettingController@password');
     Route::post('profile/settings/password', 'Site\UserSettingController@updateUserPassword');
@@ -221,7 +228,6 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);
-
 
 
 });
@@ -281,7 +287,6 @@ Route::get('lang/{lang}', function ($lang) {
 
     return Redirect::back();
 });
-
 
 // Route to show user avatar
 Route::get('images/profile/{id}/avatar/{image}', [
