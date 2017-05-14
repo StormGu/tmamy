@@ -35,7 +35,7 @@
 </div>
 
 
-<div style="margin-bottom: 0px !important;" class="profile-data">
+<div style="margin-bottom: 0px !important;height: 129px;" class="profile-data">
     <div class="container">
 
         <div class="image" data-user="avatar" data-type="B">
@@ -44,8 +44,65 @@
         </div>
     </div>
 
+
     <ul class="st-social">
-        <li><em>6</em><span>@lang('profile.follower')</span></li>
+        <li><em>{{ \App\Models\Advertisement::where('user_id', $object->id)->count() }}</em><span>ADS</span></li>
+        <li><em>{{ \App\Models\UserFollower::where('user_id', $object->id)->count() }}</em><span>follower</span></li>
+        <li>
+            <em class="MyCounter">{{ \App\Models\StoreLike::where('user_id', $object->id)->count() }}</em>
+            <span>
+                                        Likes</span>
+        </li>
+    </ul>
+
+    <ul class="st-social rig100">
+        <form action="{{ url('profile/follower')}}" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="user_id" value="{{ $object->id }}">
+            <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
+            @if(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() == 0)
+                <button type="submit" class="btn btn-default1 rig"> Follow</button>
+            @elseif(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() > 0)
+        </form>
+        <form action="{{ url('profile/unfollower') }}" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="user_id" value="{{ $object->id }}">
+            <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
+            <button type="submit" class="btn btn-default1 rig"> unFollow</button>
+        </form>
+        @endif
+
+
+        <button type="button" class="btn btn-default1 rig1" data-toggle="modal" data-target="#myModal"><a>Messages</a>
+        </button>
+    </ul>
+    <ul class="socail-share">
+        <li>
+            <a href="{{ url( Config('settings.facebook_url')) }}" target="_blank">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url( Config('settings.twitter_url')) }}" target="_blank">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url( Config('settings.google_url')) }}" target="_blank">
+                <i class="fa fa-google" aria-hidden="true"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url( Config('settings.linkedin_url')) }}" target="_blank">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url( Config('settings.instagram_url')) }}" target="_blank">
+                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+            </a>
+        </li>
     </ul>
 
     <ul class="st-social rig100">
@@ -99,10 +156,11 @@
     </ul>
 
 
-    <div class="details">
+    <div class="details" style="height: 116px;">
         <p>{{ $object->name }}</p>
-        <p>xcxcvxc</p>
-        <p>xcxcvx</p>
+        <p><a href="{{ url('profile/Message/'. Auth::id()) }}">My messages</a></p>
+        <p>{{ $object->email }}</p>
+
 
     </div>
 </div>
@@ -130,5 +188,6 @@
                 <div class="menu-name">@lang('profile.settings')</div>
             </a>
         </li>
+
     </ul>
 </div>

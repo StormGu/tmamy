@@ -38,10 +38,10 @@
 
             </div>
             <ul class="st-social">
-                <li><em>6</em><span>ADS</span></li>
-                <li><em>128</em><span>Views</span></li>
+                <li><em>{{ \App\Models\Advertisement::where('user_id', Auth::id())->count() }}</em><span>ADS</span></li>
+                <li><em>{{ \App\Models\StoreSubscription::where('user_id', Auth::id())->count() }}</em><span>Views</span></li>
                 <li>
-                    <em class="MyCounter">11</em>
+                    <em class="MyCounter">{{ \App\Models\StoreLike::where('user_id', Auth::id())->count() }}</em>
                     <span>
                                         Likes</span>
                 </li>
