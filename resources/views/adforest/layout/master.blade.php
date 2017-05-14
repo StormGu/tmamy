@@ -29,8 +29,8 @@
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
         <link rel="stylesheet" href="{{ asset('adforest/rtl_css/bootstrap.css') }}">
         <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
-{{--        <link rel="stylesheet" href="{{ asset('adforest/rtl_css/style.css') }}">--}}
-        <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
+        {{--        <link rel="stylesheet" href="{{ asset('adforest/rtl_css/style.css') }}">--}}
+    <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
         <link rel="stylesheet" href="{{ asset('adforest/rtl_css/font-awesome.css') }}" type="text/css">
         <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
         <link href="{{ asset('adforest/rtl_css/flaticon.css') }}" rel="stylesheet">
@@ -52,6 +52,11 @@
         <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/rtl_css/owl.carousel.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/rtl_css/owl.theme.css') }}">
+<<<<<<< HEAD
+        <link href="{{ asset('adforest/rtl_css/owl.transitions.css') }}" rel="stylesheet" >
+=======
+        <link href="{{ asset('adforest/rtl_css/owl.transitions.css') }}" rel="stylesheet" > 
+>>>>>>> 9ca43e414967080d81bb05b53df7750318db4269
         <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
         <link href="{{ asset('adforest/skins/minimal/minimal.css') }}" rel="stylesheet">
         <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
@@ -63,7 +68,7 @@
         <link rel="stylesheet" href="{{ asset('adforest/css/bootstrap.css') }}">
         <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
         {{--<link rel="stylesheet" href="{{ asset('adforest/css/style.css') }}">--}}
-        <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
+    <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
         <link rel="stylesheet" href="{{ asset('adforest/css/font-awesome.css') }}" type="text/css">
         <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
         <link href="{{ asset('adforest/css/flaticon.css') }}" rel="stylesheet">
@@ -82,21 +87,34 @@
         <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/css/owl.carousel.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/css/owl.theme.css') }}">
+<<<<<<< HEAD
+        <link href="{{ asset('adforest/css/owl.transitions.css') }}" rel="stylesheet" >
+=======
+        <link href="{{ asset('adforest/css/owl.transitions.css') }}" rel="stylesheet" > 
+>>>>>>> 9ca43e414967080d81bb05b53df7750318db4269
         <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
         <link href="{{ asset('adforest/skins/minimal/minimal.css') }}" rel="stylesheet">
         <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
         <link href="{{ asset('adforest/css/responsive-media.css') }}" rel="stylesheet">
         <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
-        
+
     @endif
 
     <link href="{{ asset('adforest/lib/nivo-slider/css/nivo-slider.css') }}" rel="stylesheet" >
     <link href="{{ asset('adforest/lib/nivo-slider/css/preview.css') }}" rel="stylesheet" >
     <link href="{{ asset('adforest/css/tmamy-style.css') }}" rel="stylesheet" >
     <link href="{{ asset('adforest/css/style.css') }}" rel="stylesheet" >
+<<<<<<< HEAD
+    <link rel="stylesheet" id="color" href="{{ asset('adforest/css/colors/defualt.css') }}">
+    <link href="{{ asset('adforest/css/responsive.css') }}" rel="stylesheet" >
+    <link href=" {{ asset('adforest/css/mystyle.css') }}" rel="stylesheet" >
+=======
 <link rel="stylesheet" id="color" href="{{ asset('adforest/css/colors/defualt.css') }}">
+<link href="{{ asset('adforest/css/responsive.css') }}" rel="stylesheet" >
+<link href=" {{ asset('adforest/css/mystyle.css') }}" rel="stylesheet" >
+>>>>>>> 9ca43e414967080d81bb05b53df7750318db4269
     <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
- 
+
     <!-- JavaScripts -->
     <script src="{{ asset('adforest/js/modernizr.js') }}"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

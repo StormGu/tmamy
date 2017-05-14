@@ -1,4 +1,4 @@
-@extends('adforest.layout.master')
+@extends('adforest.layout.oldmaster')
 
 @section('content')
     @include('adforest.home.slider')
@@ -52,17 +52,34 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="store_id" value="{{ $store_id }}">
                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                    <button type="submit" class="btn btn-default1 rig">@if(\App\Models\UserFollower::where('user_id', Auth::id())->count() == 0)  Subscribe Store @else
-                            <a style="" href="{{ url('profile/disSubscribeStore/'. Auth::id() )}}">Unsubscribe Store </a>     @endif </button>
+
+                    @if(\App\Models\StoreSubscription::where('user_id', Auth::id())->count() == 0)
+                        <button type="submit" class="btn btn-default1 rig">  Subscribe Store</button>
+                    @elseif(\App\Models\StoreSubscription::where('user_id', Auth::id())->count() > 0)
                 </form>
+                <form action="{{ url('profile/disSubscribeStore') }}" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="store_id" value="{{ $store_id }}">
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                    <button type="submit" class="btn btn-default1 rig">  Unsubscribe Store </button>
+                </form>
+
+                @endif
                 <form action="{{ url('profile/likeStore')}}" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="store_id" value="{{ $store_id }}">
                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                    <button type="submit" class="btn btn-default1 rig">@if(\App\Models\StoreLike::where('user_id', Auth::id())->count() == 0) Like Store @else
-                              <a style="" href="{{ url('profile/dislikeStore/'. Auth::id() )}}"> DisLike Store </a> @endif </button></button>
+                    @if(\App\Models\StoreLike::where('user_id', Auth::id())->count() == 0)
+                        <button type="submit" class="btn btn-default1 rig"> Like Store </button>
+                     @elseif(\App\Models\StoreLike::where('user_id', Auth::id())->count() > 0)
                 </form>
-
+                        <form action="{{ url('profile/dislikeStore') }}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="store_id" value="{{ $store_id }}">
+                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                        <button type="submit" class="btn btn-default1 rig"> DisLike Store </button>
+                </form>
+                @endif
             </ul>
             <ul class="socail-share">
                 <li>

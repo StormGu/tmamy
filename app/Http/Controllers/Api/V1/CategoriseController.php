@@ -25,6 +25,7 @@ class CategoriseController extends Controller
         return response()->json(['success'=>$is_success ,'message' => [],'data'=>$category], 200);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
