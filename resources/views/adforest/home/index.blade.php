@@ -103,7 +103,11 @@
                                 {{ $category->name }}
                             </h3>
                             <ul class="nav nav-tabs navbar-right" role="tablist">
-                                <div><img src="{{ asset('adforest/logo/more11.png') }}" style="width: 30px;"></div>
+                                <div>
+                                    <a href="{{ url('category/' . $category->id) }}">
+                                    <img src="{{ asset('adforest/logo/more11.png') }}" style="width: 30px;">
+                                    </a>
+                                </div>
                             </ul>
                             <hr class="hr-main hr2">
                         </div>

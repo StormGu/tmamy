@@ -44,7 +44,7 @@ class AdvertisementController extends Controller
 
         $object = Advertisement::whereId($id)->whereStatus('approved')->first();
 
-        $data['breadcrumbs'][$object->title] = '#';
+        $data['breadcrumbs'][] = '#';
 
         if (!$object) {
             return redirect('home');

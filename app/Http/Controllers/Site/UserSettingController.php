@@ -138,6 +138,7 @@ class UserSettingController extends Controller
 
 
     public function upgrade(){
+
         $data['breadcrumbs'][trans('profile.upgrade')] = '#';
 
         $data['object'] = \Auth::user();
