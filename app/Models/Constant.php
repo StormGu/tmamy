@@ -45,6 +45,8 @@ class Constant extends Model
     public function ownerships(){
         return $this->hasMany(PersonHouse::class);
     }
+
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

@@ -22,6 +22,13 @@ class StoreController extends Controller
 
         return response()->json(['success'=>$is_success ,'message' => [],'data'=>$store], 200);
     }
+    public function document()
+    {
+
+
+        return View('adforest.advertisement.info.infoCareerJob');
+
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -52,7 +59,7 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        $store = Store::find($id)->with('children')->get();;
+        $store = Store::where('id',$id)->with('children')->get();
 
         if(count($store))
             $this->is_success= true;

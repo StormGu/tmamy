@@ -35,31 +35,32 @@
                         <a href="{{ url('/profile/unfollower/'. Auth::id() ) }}">UnFollow</a> @endif</button>
             </form>
 
-            <button href="{{ url('profile/Messages') }}" type="button" class="btn btn-default1 rig1">Messages</button>
+            <button  type="button" class="btn btn-default1 rig1"><a href="{{ url('Messages') }}">Messages</a></button>
         </ul>
         <ul class="socail-share">
             <li>
-                <a href="javascript:;" target="_blank">
+                <a href="{{ url( Config('settings.facebook_url')) }}" target="_blank">
                     <i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
             <li>
-                <a href="javascript:;" target="_blank">
+                <a href="{{ url( Config('settings.twitter_url')) }}" target="_blank">
                     <i class="fa fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
             <li>
-                <a href="javascript:;" target="_blank">
+                <a href="{{ url( Config('settings.google_url')) }}" target="_blank">
                     <i class="fa fa-google" aria-hidden="true"></i>
                 </a>
             </li>
+
             <li>
-                <a href="javascript:;" target="_blank">
-                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                <a href="{{ url( Config('settings.linkedin_url')) }}" target="_blank">
+                    <i  class="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
             </li>
             <li>
-                <a href="javascript:;" target="_blank">
+                <a href="{{ url( Config('settings.instagram_url')) }}" target="_blank">
                     <i class="fa fa-pinterest-p" aria-hidden="true"></i>
                 </a>
             </li>

@@ -21,9 +21,9 @@
                     <h4>Contact Us</h4>
                     <ul class="single-widget-list">
                         <li>Digital Plus Company</li>
-                        <li>Al Qarhoud, Dubai</li>
-                        <li>(+971) 42541227</li>
-                        <li><a href="#">info@digitalplus.ae</a></li>
+                        <li>{{ config('settings.address') }}</li>
+                        <li>{{ config('settings.mobile_no') }}</li>
+                        <li><a href="#">{{ config('settings.contact_email') }}</a></li>
                     </ul>
                 </div>
             </div>

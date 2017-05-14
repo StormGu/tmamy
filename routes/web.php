@@ -200,11 +200,11 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::get('profile/ShowStoresDetails/{id}', 'Site\UserProfileController@showstores');
 
     Route::get('profile/adDelet/{id}', 'Site\UserProfileController@deletads');
-
+    Route::get('Message', 'Site\UserProfileController@msg');
     Route::get('profile/settings', 'Site\UserSettingController@index');
     Route::post('profile/settings', 'Site\UserSettingController@update');
 
-    Route::get('Message', 'Site\UserProfileController@Message');
+    Route::get('profile/Message', 'Site\UserProfileController@Message');
 
     Route::get('profile/settings/password', 'Site\UserSettingController@password');
     Route::post('profile/settings/password', 'Site\UserSettingController@updateUserPassword');
@@ -276,7 +276,6 @@ Route::get('lang/{lang}', function ($lang) {
 
     return Redirect::back();
 });
-
 
 // Route to show user avatar
 Route::get('images/profile/{id}/avatar/{image}', [
