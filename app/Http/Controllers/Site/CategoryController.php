@@ -30,7 +30,8 @@ class CategoryController extends Controller
 
         $data['sponsored'] = Advertisement::approved()->sponsered()->inRandomOrder()->limit(4)->get();
 
-        return View('adforest.category.index', $data);
+        $cat_id =  $category_id;
+        return View('adforest.category.index', $data, compact('cat_id'));
 
     }
 

@@ -196,11 +196,11 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::get('profile/ads/{type?}', 'Site\UserProfileController@advertisements');
     Route::get('profile/stores/{type?}', 'Site\UserProfileController@stores');
     Route::post('profile/follower', 'Site\UserProfileController@follower');
-    Route::get('profile/unfollower/{id}', 'Site\UserProfileController@unfollow');
+    Route::post('profile/unfollower', 'Site\UserProfileController@unfollow');
     Route::post('profile/SubscribeStore', 'Site\UserProfileController@SubscribeStore');
-    Route::get('profile/disSubscribeStore/{id}', 'Site\UserProfileController@disSubscribeStore');
+    Route::post('profile/disSubscribeStore', 'Site\UserProfileController@disSubscribeStore');
     Route::post('profile/likeStore', 'Site\UserProfileController@likeStore');
-    Route::get('profile/dislikeStore/{id}', 'Site\UserProfileController@disLikeStore');
+    Route::post('profile/dislikeStore', 'Site\UserProfileController@disLikeStore');
     Route::get('profile/{id}', 'Site\UserProfileController@showprofile');
     Route::get('profile/poststores', 'Site\UserProfileController@poststores');
     Route::post('postnewstores', 'Site\UserProfileController@postnewstores');
@@ -212,7 +212,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::get('profile/settings', 'Site\UserSettingController@index');
     Route::post('profile/settings', 'Site\UserSettingController@update');
 
-    Route::get('profile/Message', 'Site\UserProfileController@Message');
+    Route::post('profile/Message', 'Site\MessageController@postmsg');
 
     Route::get('profile/settings/password', 'Site\UserSettingController@password');
     Route::post('profile/settings/password', 'Site\UserSettingController@updateUserPassword');

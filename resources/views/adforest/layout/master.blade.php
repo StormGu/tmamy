@@ -52,6 +52,7 @@
         <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/rtl_css/owl.carousel.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/rtl_css/owl.theme.css') }}">
+        <link href="{{ asset('adforest/rtl_css/owl.transitions.css') }}" rel="stylesheet" > 
         <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
         <link href="{{ asset('adforest/skins/minimal/minimal.css') }}" rel="stylesheet">
         <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
@@ -82,6 +83,7 @@
         <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/css/owl.carousel.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/css/owl.theme.css') }}">
+        <link href="{{ asset('adforest/css/owl.transitions.css') }}" rel="stylesheet" > 
         <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
         <link href="{{ asset('adforest/skins/minimal/minimal.css') }}" rel="stylesheet">
         <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
@@ -95,6 +97,8 @@
     <link href="{{ asset('adforest/css/tmamy-style.css') }}" rel="stylesheet" >
     <link href="{{ asset('adforest/css/style.css') }}" rel="stylesheet" >
 <link rel="stylesheet" id="color" href="{{ asset('adforest/css/colors/defualt.css') }}">
+<link href="{{ asset('adforest/css/responsive.css') }}" rel="stylesheet" >
+<link href=" {{ asset('adforest/css/mystyle.css') }}" rel="stylesheet" >
     <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
  
     <!-- JavaScripts -->

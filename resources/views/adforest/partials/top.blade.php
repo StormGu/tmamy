@@ -1,7 +1,7 @@
 <div class="header-top">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-5 rtl">
+            <div class="col-lg-5 col-md-5 col-sm-5 rtl">
                 <ul class="header-left-top header-menu">
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -36,9 +36,21 @@
                     @endif
                 </ul>
             </div>
-            <div class="col-lg-7 col-md-7 col-sm-7 ltr">
-
-            </div>
+             <div class="col-lg-7 col-md-7 col-sm-7 ltr">
+                        <div class="header-right-top">
+                            <div class="header-s-icons">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <a href="#"><i class="fa fa-flickr"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                            </div>
+                            <div class="header-contact-info">
+                                <p><i class="fa fa-mobile"></i>Phone: <span>(+1)866-550-3669</span></p>
+                            </div>
+                        </div>
+                    </div>
         </div>
     </div>
 </div>
