@@ -107,7 +107,7 @@
                                  alt="{{ $object->customer->name }}" width="100" height="100"/>
                             <br>
                             <br>
-                            <h3>{{ $object->customer->name }}</h3>
+                            <a href="{{ url('profile/'.$object->customer->id) }}">{{ $object->customer->name }}</a>
                             <br>
                             <a href="#" class="btn btn-primary btn-sm">@lang('common.follow')</a><br><br>
                             <a href="#" class="btn btn-default btn-sm">@lang('common.message')</a><br><br>
