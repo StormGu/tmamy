@@ -1,7 +1,7 @@
 <div class="header-top">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-5 rtl">
+            <div class="col-md-6 rtl">
                 <ul class="header-left-top header-menu">
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -17,27 +17,51 @@
                         </ul>
                     </li>
                     @if (Auth::check())
-                        {{--<li><a href="{{ url('/add_credit') }}">@lang('titles.addCredit')</a></li>--}}
-<!--                         <li><a href="{{ url('/profile') }}">@lang('titles.myProfile')</a></li>
- -->                        <li><a href="{{ url('/logout') }}">@lang('titles.logout')</a></li>
+                        <li class="dropdown">
+                            <a href="{{ url('AddAdv') }}">@lang('advertisement.post_free_ad')</a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">
-                                <i class="icon-profile-male" aria-hidden="true"></i> {{ \Auth::user()->name }}
+                                <i class="fa fa-user" aria-hidden="true"></i> {{ \Auth::user()->name }}
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ url('profile') }}">@lang('titles.myAccount')</a></li>
                             </ul>
                         </li>
+                        <li><a href="{{ url('/logout') }}">@lang('titles.logout')</a></li>
                     @else
                         <li><a href="{{ url('/login') }}"><i class="fa fa-sign-in"></i> @lang('titles.login')</a></li>
-                        <li><a href="{{ url('/register') }}"><i class="fa fa-unlock" aria-hidden="true"></i> @lang('titles.register')</a></li>
+                        <li><a href="{{ url('/register') }}"><i class="fa fa-unlock"
+                                                                aria-hidden="true"></i> @lang('titles.register')</a>
+                        </li>
                     @endif
                 </ul>
             </div>
-            <div class="col-lg-7 col-md-7 col-sm-7 ltr">
+            <div class="col-md-6 ltr">
+                <div class="header-right-top">
+                    <div class="header-s-icons">
+                        @if(Config('settings.facebook_url'))
+                            <a href="{{ url( Config('settings.facebook_url')) }}"><i class="fa fa-facebook"></i></a>
+                        @endif
+                        @if(Config('settings.twitter_url'))
+                            <a href="{{ url( Config('settings.twitter_url')) }}"><i class="fa fa-twitter"></i></a>
+                        @endif
+                        @if(Config('settings.linkedin_url'))
+                            <a href="{{ url( Config('settings.linkedin_url')) }}"><i class="fa fa-linkedin"></i></a>
+                        @endif
+                        @if(Config('settings.google_url'))
+                            <a href="{{ url( Config('settings.googleplus_url')) }}"><i
+                                        class="fa fa-google-plus"></i></a>
+                        @endif
 
+                    </div>
+                    <div class="header-contact-info">
+                        <p><i class="fa fa-mobile"></i>@lang('advertisement.phone'):
+                            <span>{{ Config('settings.mobile_no') }}</span></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

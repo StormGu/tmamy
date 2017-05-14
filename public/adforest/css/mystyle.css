@@ -1,0 +1,149 @@
+
+.myimg{
+max-width: 150px;
+    padding: 0px 8px 0px 0px;
+    max-height: 130px;
+    min-width: 180px;
+    height: 120px;
+    }
+
+    .detail-sec{
+
+border-top: 1px solid #ddd;
+
+    }
+
+.adv{
+	border:1px solid #ddd;
+	    width: 240px;
+    margin-left: 52px;
+}
+.promoted-adv-title{
+
+	    margin-left: 50px;
+
+}
+
+.adv h3 a{font-family: sans-serif;}
+
+.sponsored .category-title .colored {
+      padding: 0;
+    background: none;
+    font-size: 15px;
+    float: none;
+    height: auto;
+    vertical-align: middle;
+    line-height: -3px;
+    color: #000;
+}
+.category-title .colored {
+    position: relative;
+    z-index: 1;
+    padding: 0 20px 0 40px;
+    text-transform: uppercase;
+    float: left;
+    overflow: hidden;
+    font-size: 13px;
+    height: 100%;
+    line-height: 32px;
+}
+[data-category="restaurants"] .colored, .main-category-menu>li[data-category="restaurants"]:hover>i, .main-category-menu>li[data-category="restaurants"].active>i {
+    color: #f49ac1;
+}
+.adv .attr-user, .adv .attr-location {
+    max-width: 140px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.adv .attr {
+       color: #6b6363;
+    height: 18px;
+    line-height: 18px;
+    display: inline-block;
+    padding-right: 10px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+.adv .attr i {
+    font-size: 15px;
+    vertical-align: middle;
+}
+.country{
+font-size: 14px;
+
+}
+.city{
+font-size: 14px;
+
+}
+.amount{
+
+	    font-size: 14px;
+}
+.currency{
+	font-size: 14px;
+
+}
+
+[data-category="realestate"]:hover{
+
+	background-color: #6e6f72;
+}
+
+[data-category="shopping"]:hover{
+
+	background-color: #7e4dc4;
+}
+[data-category="healths"]:hover{
+
+	background-color: #1aaf94;
+}
+[data-category="indus"]:hover{
+
+	background-color: #808990;
+}
+[data-category="agricul"]:hover{
+
+	background-color: #6cbd45;
+}
+
+[data-category="Careers"]:hover{
+
+	background-color: #6b6fb3;
+}
+
+[data-category="serv"]:hover{
+
+	background-color: #454391;
+}
+[data-category="whols"]:hover{
+
+	background-color: #ecad6d;
+}
+[data-category="exhiob"]:hover{
+
+	background-color: #42a4d4;
+}
+[data-category="tende"]:hover{
+
+	background-color: #52c0ed;
+}
+[data-category="restu"]:hover{
+
+	background-color: #f49ac1;
+}
+[data-category="vechcl"]:hover{
+
+	background-color: #636494;
+}
+[data-category="Offerss"]:hover{
+
+	background-color: #da202f;
+}
+.boder-b-footer{
+
+	font-size: 14px;
+}
+.single-widget-list > li{padding: 1px 0;}padding: 1px 0;
