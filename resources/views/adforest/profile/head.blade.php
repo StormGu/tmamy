@@ -32,7 +32,7 @@
 </div>
 
 
-<div style="margin-bottom: 0px !important;" class="profile-data">
+<div style="margin-bottom: 0px !important;height: 129px;" class="profile-data" >
     <div class="container">
 
         <div class="image" data-user="avatar" data-type="B">
@@ -111,10 +111,11 @@
 
 
 
-    <div class="details">
+    <div class="details" style="height: 116px;">
         <p>{{ $object->name }}</p>
+        <p> <a href="{{ url('profile/Message/'. Auth::id()) }}">My messages</a></p>
         <p>{{ $object->email }}</p>
-        <a href="{{ url('profile/Message/'. Auth::id()) }}">My messages</a>
+
 
     </div>
 </div>
