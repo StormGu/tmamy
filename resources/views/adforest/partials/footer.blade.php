@@ -1,4 +1,4 @@
-<div class="footer-widget-area" style="height: 240px;">
+<div class="footer-widget-area">
     <div class="container" style="margin-top: -12px;">
         <div class="row boder-b-footer">
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
@@ -53,8 +53,6 @@
                     </ul>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
