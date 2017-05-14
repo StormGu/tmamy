@@ -1,4 +1,4 @@
-@extends('adforest.layout.master')
+@extends('adforest.layout.oldmaster')
 
 @section('template_title', $object->title)
 
@@ -85,7 +85,7 @@
 
                                 <div class="panel-collapse">
                                     <div class="panel-body" style="padding:  0px !important">
-                                        @forelse($sponsored as $object)
+                                        @forelse(\App\Models\Advertisement::where('category_id', $cat_id)->where('advertisment_type_id', 1)->limit(2)->get() as $object)
                                             @include('adforest.advertisement.adv_grid')
                                         @empty
 

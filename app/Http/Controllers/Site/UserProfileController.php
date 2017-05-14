@@ -190,8 +190,12 @@ class UserProfileController extends Controller
          return redirect()->back();
     }
 
-    public function unfollow($id){
-        DB::table('user_followers')->where('user_followers_id', $id)->delete();
+    public function unfollow(Request $request){
+        $Input=$request->all();
+
+        DB::table('user_followers')->where('user_followers_id', $Input['user_followers_id'])->delete();
+
+        return redirect()->back();
     }
 
     public function showprofile($id)
@@ -223,9 +227,13 @@ class UserProfileController extends Controller
         return redirect()->back();
     }
 
-    public function disSubscribeStore($id){
+    public function disSubscribeStore(Request $request){
+        $Input=$request->all();
 
-        DB::table('store_subscription')->where('user_id', $id)->delete();
+
+        DB::table('store_subscription')->where('user_id', $Input['user_id'])->delete();
+
+        return redirect()->back();
     }
 
     public function likeStore(Request $request)
@@ -242,10 +250,12 @@ class UserProfileController extends Controller
         return redirect()->back();
     }
 
-    public function disLikeStore($id){
+    public function disLikeStore(Request $request){
+        $Input=$request->all();
 
-        DB::table('store_like')->where('user_id', $id)->delete();
+        DB::table('store_like')->where('user_id', $Input['user_id'])->delete();
 
+        return redirect()->back();
     }
 
     public function msg(){

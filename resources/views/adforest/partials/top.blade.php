@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 rtl">
+
                 <ul class="header-left-top header-menu">
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -17,9 +18,7 @@
                         </ul>
                     </li>
                     @if (Auth::check())
-                        <li class="dropdown">
-                            <a href="{{ url('AddAdv') }}">@lang('advertisement.post_free_ad')</a>
-                        </li>
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">
@@ -42,6 +41,9 @@
             <div class="col-md-6 ltr">
                 <div class="header-right-top">
                     <div class="header-s-icons">
+                        (
+                        <a href="{{ url('AddAdv') }}" style="color:white; font-weight: bold">@lang('advertisement.post_free_ad')</a>
+                        )
                         @if(Config('settings.facebook_url'))
                             <a href="{{ url( Config('settings.facebook_url')) }}"><i class="fa fa-facebook"></i></a>
                         @endif
@@ -58,7 +60,7 @@
 
                     </div>
                     <div class="header-contact-info">
-                        <p><i class="fa fa-mobile"></i>@lang('advertisement.phone'):
+                        <p><i class="fa fa-mobile"></i> <span>@lang('advertisement.phone')</span>:
                             <span>{{ Config('settings.mobile_no') }}</span></p>
                     </div>
                 </div>

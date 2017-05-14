@@ -1,4 +1,4 @@
-@extends('adforest.layout.master')
+@extends('adforest.layout.oldmaster')
 
 @section('content')
     <section class="section-padding error-page pattern-bgs gray ">
