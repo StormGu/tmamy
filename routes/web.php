@@ -201,16 +201,12 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
     Route::get('profile/adDelet/{id}', 'Site\UserProfileController@deletads');
     Route::get('Message', 'Site\UserProfileController@msg');
-<<<<<<< HEAD
-    Route::get('profile/settings/index', 'Site\UserSettingController@index');
-    Route::post('profile/settings/index', 'Site\UserSettingController@update');
-=======
+
     Route::get('profile/settings', 'Site\UserSettingController@index');
     Route::post('profile/settings', 'Site\UserSettingController@update');
 
     Route::post('profile/Message', 'Site\MessageController@postmsg');
     Route::get('profile/Message/{id}', 'Site\MessageController@getmsg');
->>>>>>> 44384f0c11dc569eb4c409000f035fd6a7e20eb6
 
     Route::get('profile/settings/password', 'Site\UserSettingController@password');
     Route::post('profile/settings/password', 'Site\UserSettingController@updateUserPassword');
