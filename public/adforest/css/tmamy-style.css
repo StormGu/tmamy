@@ -14078,7 +14078,7 @@ blockquote {
     background: #fff;
     min-height: 460px;
 }
-.rig100{ float: right !important;
+.rig100{    z-index: 9999999 !important; float: right !important;
     right: 100px !important;}
 .rig{ float: right;}
 .rig1{float: right;
@@ -15245,7 +15245,7 @@ input[type=submit] {
     border-radius: 4px;
 }
 
-
+.nivo-caption{    z-index: 0 !important;}
 
 
 

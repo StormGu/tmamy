@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Site;
-
+use DB;
 use App\Models\Advertisement;
 use App\Models\Store;
+use App\Models\StoreLike;
 use App\Models\User;
+use App\Models\StoreSubscription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -12,6 +14,8 @@ use App\Models\Country;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use App\Models\UserFollower;
+use App\Models\Profile;
 class UserProfileController extends Controller
 {
 
@@ -62,7 +66,7 @@ class UserProfileController extends Controller
 
         $data['objects'] =  $objects->whereUserId(\Auth::id())->get();
 
-        return View('adforest.profile.my_stores', $data);
+        return View('adforest.profile.my_stores', $data, compact('countuserfollower'));
 
     }
 
@@ -142,8 +146,9 @@ class UserProfileController extends Controller
     public function showstores($id){
 
         $Adve = Advertisement::where('store_id', $id)->get();
-
-        return view('adforest.profile.showdst', compact('Adve'));
+        $countuserfollower = UserFollower::where('user_id', $id)->count();
+        $store_id = $id;
+        return view('adforest.profile.showdst', compact('Adve','countuserfollower','store_id'));
     }
     public function notifications() {
     }
@@ -167,6 +172,85 @@ class UserProfileController extends Controller
     }
 
     public function upgrade() {
+    }
+
+    public function follower(Request $request){
+
+
+
+         $userfollowers = new UserFollower();
+         $Input = $request->all();
+
+         $userfollowers->user_id = $Input['user_id'];
+         $userfollowers->user_followers_id = $Input['user_followers_id'];
+
+
+        $userfollowers->save();
+
+         return redirect()->back();
+    }
+
+    public function unfollow($id){
+        DB::table('user_followers')->where('user_followers_id', $id)->delete();
+    }
+
+    public function showprofile($id)
+    {
+        $data['breadcrumbs'][trans('titles.myProfile')] = '#';
+
+        $id = ($id) ? $id : \Auth::id();
+
+         $data['object'] = User::with('profile')->find($id);
+
+        $countuserfollower = UserFollower::where('user_id', $id)->count();
+
+
+         return view('adforest.profile.showprofile', $data , compact('countuserfollower'));
+    }
+
+
+       public function SubscribeStore(Request $request)
+    {
+        $store_subscription = new StoreSubscription();
+        $Input = $request->all();
+
+        $store_subscription->user_id = $Input['user_id'];
+        $store_subscription->store_id = $Input['store_id'];
+
+
+        $store_subscription->save();
+
+        return redirect()->back();
+    }
+
+    public function disSubscribeStore($id){
+
+        DB::table('store_subscription')->where('user_id', $id)->delete();
+    }
+
+    public function likeStore(Request $request)
+    {
+        $likeStore = new StoreLike();
+        $Input = $request->all();
+
+        $likeStore->user_id = $Input['user_id'];
+        $likeStore->store_id = $Input['store_id'];
+
+
+        $likeStore->save();
+
+        return redirect()->back();
+    }
+
+    public function disLikeStore($id){
+        dd($id);
+        DB::table('store_like')->where('user_id', $id)->delete();
+
+    }
+
+    public function Message(){
+
+        return view('adforest.profile.Message');
     }
 
 }
