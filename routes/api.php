@@ -24,6 +24,5 @@ Route::get('v1/getadvabsedcategorise/{id}', 'Api\V1\CategoriseController@show');
 Route::get('v1/getallstore', 'Api\V1\StoreController@index');
 Route::get('v1/getstore/{id}', 'Api\V1\StoreController@show');
 
-
 //
 Route::get('v1/getadsbasedcat', 'Api\V1\AdsController@getadsbasedcat');

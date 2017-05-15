@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use App\Models\Category;
+
 class AdsController extends Controller
 {
     /**
@@ -15,14 +16,13 @@ class AdsController extends Controller
      */
     private $is_success;
 
-    public function index()
-    {
-        $advertisement  = Advertisement::orderBy('id','desc')->paginate(20)->toArray();
+    public function index() {
+        $advertisement = Advertisement::orderBy('id', 'desc')->paginate(20)->toArray();
 
-        if(count($advertisement))
+        if (count($advertisement))
             $is_success = true;
 
-        return response()->json(['success'=>$is_success ,'message' => [],'data'=>$advertisement], 200);
+        return response()->json(['success' => $is_success, 'message' => [], 'data' => $advertisement], 200);
     }
 
     /**
@@ -30,80 +30,77 @@ class AdsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $advertisement = Advertisement::find($id);
 
-        if(count($advertisement))
-            $this->is_success= true;
+        if (count($advertisement))
+            $this->is_success = true;
 
-        return response()->json(['success'=>$this->is_success ,'message' =>[],'data'=>$advertisement]);
+        return response()->json(['success' => $this->is_success, 'message' => [], 'data' => $advertisement]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int                      $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
-    public function getadsbasedcat()
-    {
-        $cat = Category::where('parent_id',NULL)->with('adchildren')->get();
 
+    public function getadsbasedcat() {
 
+        $cat = Category::parents()->with([
+            'advertisements' => function ($query) {
+                return $query->limit(5);
+            }
+        ])->get();
 
-        if(count($cat))
-            $this->is_success= true;
+        if (count($cat))
+            $this->is_success = true;
 
-        return response()->json(['success'=>$this->is_success ,'message' =>[],'data'=>$cat]);
+        return response()->json(['success' => $this->is_success, 'message' => [], 'data' => $cat]);
     }
 }
