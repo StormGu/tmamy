@@ -44,7 +44,6 @@
         </div>
     </div>
 
-
     <ul class="st-social">
         <li><em>{{ \App\Models\Advertisement::where('user_id', $object->id)->count() }}</em><span>ADS</span></li>
         <li><em>{{ \App\Models\UserFollower::where('user_id', $object->id)->count() }}</em><span>follower</span></li>
@@ -52,56 +51,6 @@
             <em class="MyCounter">{{ \App\Models\StoreLike::where('user_id', $object->id)->count() }}</em>
             <span>
                                         Likes</span>
-        </li>
-    </ul>
-
-    <ul class="st-social rig100">
-        <form action="{{ url('profile/follower')}}" method="post">
-            {{ csrf_field() }}
-            <input type="hidden" name="user_id" value="{{ $object->id }}">
-            <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
-            @if(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() == 0)
-                <button type="submit" class="btn btn-default1 rig"> Follow</button>
-            @elseif(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() > 0)
-        </form>
-        <form action="{{ url('profile/unfollower') }}" method="post">
-            {{ csrf_field() }}
-            <input type="hidden" name="user_id" value="{{ $object->id }}">
-            <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
-            <button type="submit" class="btn btn-default1 rig"> unFollow</button>
-        </form>
-        @endif
-
-
-        <button type="button" class="btn btn-default1 rig1" data-toggle="modal" data-target="#myModal"><a>Messages</a>
-        </button>
-    </ul>
-    <ul class="socail-share">
-        <li>
-            <a href="{{ url( Config('settings.facebook_url')) }}" target="_blank">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-        </li>
-        <li>
-            <a href="{{ url( Config('settings.twitter_url')) }}" target="_blank">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-        </li>
-        <li>
-            <a href="{{ url( Config('settings.google_url')) }}" target="_blank">
-                <i class="fa fa-google" aria-hidden="true"></i>
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ url( Config('settings.linkedin_url')) }}" target="_blank">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-            </a>
-        </li>
-        <li>
-            <a href="{{ url( Config('settings.instagram_url')) }}" target="_blank">
-                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-            </a>
         </li>
     </ul>
 
@@ -128,28 +77,28 @@
     </ul>
     <ul class="socail-share">
         <li>
-            <a href="{{ url( Config('settings.facebook_url')) }}" target="_blank">
+            <a href="{{ $object->facebook }}" target="_blank">
                 <i class="fa fa-facebook" aria-hidden="true"></i>
             </a>
         </li>
         <li>
-            <a href="{{ url( Config('settings.twitter_url')) }}" target="_blank">
+            <a href="{{ $object->twitter }}" target="_blank">
                 <i class="fa fa-twitter" aria-hidden="true"></i>
             </a>
         </li>
         <li>
-            <a href="{{ url( Config('settings.google_url')) }}" target="_blank">
+            <a href="{{ $object->google }}" target="_blank">
                 <i class="fa fa-google" aria-hidden="true"></i>
             </a>
         </li>
 
         <li>
-            <a href="{{ url( Config('settings.linkedin_url')) }}" target="_blank">
+            <a href="{{ $object->linkedin }}" target="_blank">
                 <i class="fa fa-linkedin" aria-hidden="true"></i>
             </a>
         </li>
         <li>
-            <a href="{{ url( Config('settings.instagram_url')) }}" target="_blank">
+            <a href="{{ $object->pinterest }}" target="_blank">
                 <i class="fa fa-pinterest-p" aria-hidden="true"></i>
             </a>
         </li>

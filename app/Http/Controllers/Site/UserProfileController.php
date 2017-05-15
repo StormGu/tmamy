@@ -168,7 +168,6 @@ class UserProfileController extends Controller
     public function powerAdvs() {
     }
 
-
     public function follower(Request $request) {
 
 
@@ -205,7 +204,6 @@ class UserProfileController extends Controller
 
         return view('adforest.profile.showprofile', $data, compact('countuserfollower', 'user_id'));
     }
-
 
     public function SubscribeStore(Request $request) {
         $store_subscription = new StoreSubscription();

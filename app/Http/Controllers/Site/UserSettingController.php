@@ -120,12 +120,13 @@ class UserSettingController extends Controller
 
         $validator = \Validator::make($request->all(), [
             'facebook' => '',
+            'twitter' => '',
         ]);
 
         if ($validator->fails()) {
             $this->throwValidationException($request, $validator);
         }
-
+        $user->fill($request->except('_token'));
         $user->updated_ip_address = $ipAddress->getClientIp();
 
         $user->save();

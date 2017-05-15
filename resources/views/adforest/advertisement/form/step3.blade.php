@@ -119,6 +119,14 @@
                         @endif
 
                         <hr>
+                        <h1>@lang('advertisement.hotselling')</h1>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-md-12">@if(\Request::input('hot') == 1) {!! Form::checkbox('hotselling', 1 , ['checked' => 'checked']) !!} @else  {!! Form::checkbox('hotselling', 1 ) !!} @endif @lang('advertisement.hotselling')</div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <hr>
                         <h1>@lang('advertisement.billing')</h1>
                         <hr>
                         <h3>@lang('advertisement.points')</h3>
@@ -132,8 +140,14 @@
                             <tbody>
                             <tr>
                                 <td>@lang('advertisement.add_advertisement')</td>
-                                <td>300</td>
+                                <td>{{ config('settings.normal_adv') }}</td>
                             </tr>
+                            @if (isset($hot))
+                                <tr>
+                                    <td>@lang('advertisement.hot_advertisement')</td>
+                                    <td>{{ config('settings.hot_adv') }}</td>
+                                </tr>
+                            @endif
                             </tbody>
                         </table>
                         <h3>@lang('advertisement.balance')</h3>
@@ -169,4 +183,18 @@
                 </div>
             </div>
     </section>
+@endsection
+
+@section('custom_js')
+    <script type="text/javascript">
+        $(function () {
+            $(document).on('change', "input[type='checkbox']", function () {
+                if ($(this).is(':checked')) {
+                    window.location.href = '{{ Request::url() }}?hot=1';
+                } else {
+                    window.location.href = '{{ Request::url() }}';
+                }
+            });
+        });
+    </script>
 @endsection
