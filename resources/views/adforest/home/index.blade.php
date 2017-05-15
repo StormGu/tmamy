@@ -124,7 +124,7 @@
     min-height: 133px;">
                                                             <a href="{{ url('adv/'. $adv->id) }}">
                                                                 <img class="img-responsive myimg"
-                                                                     src="{{ url('image/190×244/' . $adv->image_filename) }}">
+                                                                     src="{{ url('image/190×140/' . $adv->image_filename) }}">
                                                             </a>
                                                         </div>
                                                         <div class="detail-sec">

@@ -7,15 +7,15 @@
 @section('content')
 
     <section class="section-padding gray">
-    @include('adforest.profile.head')
-    <!-- Main Container -->
+        <!-- Main Container -->
         <div class="container">
+
             <!-- Row -->
             <div class="row">
-                <!-- Middle Content Area -->
+            @include('adforest.profile.head')
 
+            <!-- Middle Content Area -->
                 <br>
-
                 @include('adforest.common.message')
 
                 <div class="row margin-bottom-20">
