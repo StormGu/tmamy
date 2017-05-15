@@ -13,8 +13,8 @@ class MessageController extends Controller
 
            $msg->to_user_id = $Input['to_user_id'];
            $msg->from_user_id = $Input['form_user_id'];
-          $msg->messages = $Input['messages'];
-          $msg->save();
+           $msg->messages = $Input['messages'];
+           $msg->save();
 
           return redirect()->back();
 

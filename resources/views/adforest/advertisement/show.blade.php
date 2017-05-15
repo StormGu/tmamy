@@ -1,6 +1,33 @@
 @extends('adforest.layout.oldmaster')
 
 @section('content')
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <form action="{{ url('profile/Message') }}" method="post">
+                    <!-- Modal content-->
+                    {{ csrf_field() }}
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h4 class="modal-title">Message</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="to_user_id" value="{{ $object->user_id }}">
+                            <input type="hidden" name="form_user_id" value="{{ Auth::id() }}">
+                            <textarea name="messages" class="form-control" rows="5" id="comment"
+                                      placeholder="Enter Your Message"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default1 rig1" data-dismiss="modal"><a>Close</a></button>
+                            <button type="submit" class="btn btn-default1 rig1"><a>Send</a></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <section class="section-padding error-page pattern-bgs gray ">
         <div class="container">
             <div class="row">
@@ -122,8 +149,25 @@
                             <br>
                             <a href="{{ url('profile/'.$object->customer->id) }}">{{ $object->customer->name }}</a>
                             <br>
-                            <a href="#" class="btn btn-primary btn-sm">@lang('common.follow')</a><br><br>
-                            <a href="#" class="btn btn-default btn-sm">@lang('common.message')</a><br><br>
+                            <form action="{{ url('profile/follower')}}" method="post">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="user_id" value="{{ $object->user_id }}">
+                                <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
+                                @if(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() == 0)
+                                    <button type="submit" class="btn btn-default btn-sm "> @lang('common.follow')</button>
+                                @elseif(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() > 0)
+                            </form>
+                            <form action="{{ url('profile/unfollower') }}" method="post">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="user_id" value="{{ $object->user_id }}">
+                                <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
+                                <button type="submit" class="btn btn-default btn-sm"> unFollow</button>
+                            </form>
+                            @endif
+
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Messages</button>
+
+
                         </div>
                         <div class="ad-listing-meta">
                             <ul>
@@ -144,4 +188,48 @@
             </div>
         </div>
     </section>
+    <div class="container">
+        <div class="row">
+
+        </div><!-- /row -->
+        <div class="row">
+      @foreach(\App\Models\Comment::where('advertisement_id', $object->id )->get() as $key)
+            <div class="col-sm-1">
+                <div class="thumbnail">
+                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                </div><!-- /thumbnail -->
+            </div><!-- /col-sm-1 -->
+
+            <div class="col-sm-11">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>{{ $key->user->name }}</strong> <span class="text-muted">{{ $key->created_at }}</span>
+                    </div>
+                    <div class="panel-body">
+                        {{ $key->text }}
+                    </div><!-- /panel-body -->
+                </div><!-- /panel panel-default -->
+            </div><!-- /col-sm-5 -->
+        </div><!-- /row -->
+       @endforeach
+    </div><!-- /container -->
+
+    <div class="container">
+        <div class="panel panel-default">
+            <form action="{{url('comment')}}" method="post">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <input type="hidden" name="advertisement_id" value="{{ $object->id }}">
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                    <textarea name="comment" class="form-control" rows="5" id="comment"
+                              placeholder="Enter Your Message"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+
+    </div>
+
+
 @endsection
