@@ -1,4 +1,4 @@
-@extends('adforest.layout.oldmaster')
+@extends('adforest.layout.master')
 
 
 @section('breadcrumbs')
@@ -38,7 +38,7 @@
                 <div class="col-md-8">
                     @include('adforest.common.message')
                     <div class="profile-section margin-bottom-20">
-                        {!! Form::model($object, ['url' => 'profile/settings', 'method' => 'post', 'files' => true]) !!}
+                        {!! Form::model($object, ['url' => 'profile/settings/index', 'method' => 'post', 'files' => true]) !!}
                         <div class="row">
                             <div class="form-group col-md-12 {{ $errors->has('avatar') ? ' has-error' : '' }}">
                                 {!! Form::label('avatar', __('profile.avatar')) !!}

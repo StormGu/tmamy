@@ -44,7 +44,7 @@ class AdvertisementController extends Controller
 
         $object = Advertisement::whereId($id)->whereStatus('approved')->first();
 
-        $data['breadcrumbs'][$object->title] = '#';
+        $data['breadcrumbs'][] = '#';
 
         if (!$object) {
             return redirect('home');
@@ -52,47 +52,47 @@ class AdvertisementController extends Controller
 
         $data['object'] = $object;
         $data['features'] = $object->features()->get();
-
+        $data['properties'] = $object->properties()->withPivot('property_value')->get();
         switch ($object->category_id) {
-            case 73:
-
-                return $this->infoCareerJob($id, $data);
-                break;
-
-            case 74:
-
-                return $this->infoCareerResume($id, $data);
-                break;
-
-            case 10:
-
-                return $this->infoExhibition($id, $data);
-                break;
-
-            case 32:
-
-                return $this->infoHealthDoctorClinic($id, $data);
-                break;
-
-            case 36:
-
-                return $this->infoHealthHospital($id, $data);
-                break;
-
-            case 8:
-
-                return $this->infoService($id, $data);
-                break;
-
-            case 11:
-
-                return $this->infoTender($id, $data);
-                break;
-
-            case 9:
-
-                return $this->infoWholesaler($id, $data);
-                break;
+            //            case 73:
+            //
+            //                return $this->infoCareerJob($id, $data);
+            //                break;
+            //
+            //            case 74:
+            //
+            //                return $this->infoCareerResume($id, $data);
+            //                break;
+            //
+            //            case 10:
+            //
+            //                return $this->infoExhibition($id, $data);
+            //                break;
+            //
+            //            case 32:
+            //
+            //                return $this->infoHealthDoctorClinic($id, $data);
+            //                break;
+            //
+            //            case 36:
+            //
+            //                return $this->infoHealthHospital($id, $data);
+            //                break;
+            //
+            //            case 8:
+            //
+            //                return $this->infoService($id, $data);
+            //                break;
+            //
+            //            case 11:
+            //
+            //                return $this->infoTender($id, $data);
+            //                break;
+            //
+            //            case 9:
+            //
+            //                return $this->infoWholesaler($id, $data);
+            //                break;
 
             default:
 
@@ -262,8 +262,7 @@ class AdvertisementController extends Controller
         return View('adforest.advertisement.form.step2', $data);
     }
 
-    public function AddAdvertisementStep3($category_id, $subcategory_id = null) {
-
+    public function AddAdvertisementStep3(Request $request, $category_id, $subcategory_id = null) {
 
         $data['breadcrumbs'][__('advertisement.heading_title')] = '#';
 
@@ -283,7 +282,12 @@ class AdvertisementController extends Controller
         }
 
         $data['current_points'] = \Auth::user()->profile->points;
-        $data['after_points'] = \Auth::user()->profile->points - 300;
+        $data['after_points'] = \Auth::user()->profile->points - config('settings.normal_adv');
+
+        if ($request->get('hot')) {
+            $data['hot'] = 1;
+            $data['after_points'] -= 4000;
+        }
 
         return View('adforest.advertisement.form.step3', $data);
     }
@@ -346,4 +350,14 @@ class AdvertisementController extends Controller
         }
     }
 
+    public function change_status($id, $new_status) {
+
+        if (Advertisement::find($id)->update(['status' => $new_status])) {
+            return redirect('profile/ads')->withMessage([
+                'type' => 'success',
+                'message' => __('advertisement.status_changed_successfully')
+            ]);
+        }
+
+    }
 }

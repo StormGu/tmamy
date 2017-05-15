@@ -103,7 +103,11 @@
                                 {{ $category->name }}
                             </h3>
                             <ul class="nav nav-tabs navbar-right" role="tablist">
-                                <div><img src="{{ asset('adforest/logo/more11.png') }}" style="width: 30px;"></div>
+                                <div>
+                                    <a href="{{ url('category/' . $category->id) }}">
+                                    <img src="{{ asset('adforest/logo/more11.png') }}" style="width: 30px;">
+                                    </a>
+                                </div>
                             </ul>
                             <hr class="hr-main hr2">
                         </div>
@@ -120,7 +124,7 @@
     min-height: 133px;">
                                                             <a href="{{ url('adv/'. $adv->id) }}">
                                                                 <img class="img-responsive myimg"
-                                                                     src="{{ url('image/190×244/' . $adv->image_filename) }}">
+                                                                     src="{{ url('image/190×140/' . $adv->image_filename) }}">
                                                             </a>
                                                         </div>
                                                         <div class="detail-sec">
@@ -165,13 +169,13 @@
                         <div class="sponsored" data-id="PromoteResult">
 
 
-                            @foreach(\App\Models\Store::where('store_account_type_id', 1)->limit(3)->get() as $advm )
+                            @foreach(\App\Models\Store::where('store_account_type_id', 1)->limit(2)->get() as $advm )
 
 
                                 <div class="adv">
                                     <div class="mbotn1" data-category="shopping">
                                         <img src="">
-                                        <span class="colored" title=" cars / rent"> offers / ab hotel</span>
+                                        <span class="colored" title=" cars / rent"> {{ $advm->category->name }}</span>
                                     </div>
                                     <div class="cover">
 
@@ -182,7 +186,7 @@
                                     </div>
                                     <a id="ContentPlaceHolder1_Promoted_HLPromote"
                                        class="new btn bordered-style"
-                                       href="">Show Store</a>
+                                       href="{{ url('profile/ShowStoresDetails/' . $advm->id) }}">Show Store</a>
 
                                 </div>
                             @endforeach

@@ -41,48 +41,61 @@
                             </div>
                         </div>
 
-                        <div class="ad-share text-center">
-                            <div class="ad-box col-md-4 col-sm-4 col-xs-12">
-                                <i class="fa fa-share-alt"></i>
-                                <span class="hidetext">@lang('advertisement.Share')</span>
+                        <div class="example_parent_element" style="margin:0 auto; width:900px;">
+
+                            <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style"
+                                 style="margin-left:-100px; top:150px;">
+                                <a class="a2a_button_facebook"></a>
+                                <a class="a2a_button_twitter"></a>
+                                <a class="a2a_button_google_plus"></a>
+                                <a class="a2a_button_pinterest"></a>
+                                <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
                             </div>
-                            <a class="ad-box col-md-4 col-sm-4 col-xs-12" href="#">
-                                <i class="fa fa-star active"></i>
-                                <span class="hidetext">@lang('advertisement.add')</span>
-                            </a>
-                            <div class="ad-box col-md-4 col-sm-4 col-xs-12">
-                                <i class="fa fa-warning"></i>
-                                <span class="hidetext">@lang('advertisement.Report')</span>
-                            </div>
+
+                            <script async src="https://static.addtoany.com/menu/page.js"></script>
+
                         </div>
+
                         <div class="clearfix"></div>
 
+
                         <div class="ad-box">
-                            <div class="short-features">
-                                <div class="heading-panel">
-                                    <h3 class="main-title text-left">
-                                        @lang('advertisement.properties')
-                                    </h3>
-                                </div>
 
-                                <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                                    <span><strong></strong> :</span>
-                                </div>
-
-                            </div>
-                            <!-- Short Features  -->
-                            <h3 class="main-title text-left">
-                                @lang('advertisement.features')
-                            </h3>
-                            <div class="desc-points">
-                                <ul>
-                                    @foreach($features as $feature)
-                                        <li>{{ $feature->name }}</li>
+                            @if($features->count())
+                                <div class="short-features">
+                                    <div class="heading-panel">
+                                        <h3 class="main-title text-left">
+                                            @lang('advertisement.properties')
+                                        </h3>
+                                    </div>
+                                    @foreach($properties as $property)
+                                        <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+                                            <span><strong>{{ $property->label }}</strong>: {{ $property->pivot->property_value }}</span>
+                                        </div>
                                     @endforeach
-                                </ul>
-                            </div>
+                                </div>
+                        @endif
 
-                            <!-- Ad Specifications -->
+                        @if($features->count())
+                            <!-- Short Features  -->
+                                <div class="short-features">
+                                    <div class="heading-panel">
+                                        <h3 class="main-title text-left">
+                                            @lang('advertisement.properties')
+                                        </h3>
+                                    </div>
+
+                                    <div class="desc-points">
+                                        <ul>
+                                            @foreach($features as $feature)
+                                                <li>{{ $feature->name }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                        @endif
+
+                        <!-- Ad Specifications -->
                             <div class="specification">
                                 <!-- Heading Area -->
                                 <div class="heading-panel">

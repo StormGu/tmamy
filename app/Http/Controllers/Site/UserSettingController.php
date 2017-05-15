@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Requests\UserSettingRequest;
+use App\Models\Coupon;
+use App\Models\Profile;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Traits\CaptureIpTrait;
@@ -58,7 +60,7 @@ class UserSettingController extends Controller
         }
     }
 
-    public function password(){
+    public function password() {
         $data['breadcrumbs'][trans('auth.password')] = '#';
 
         $data['object'] = \Auth::user();
@@ -105,7 +107,7 @@ class UserSettingController extends Controller
     }
 
 
-    public function social(){
+    public function social() {
         $data['breadcrumbs'][trans('auth.social')] = '#';
 
         $data['object'] = \Auth::user();
@@ -120,12 +122,13 @@ class UserSettingController extends Controller
 
         $validator = \Validator::make($request->all(), [
             'facebook' => '',
+            'twitter' => '',
         ]);
 
         if ($validator->fails()) {
             $this->throwValidationException($request, $validator);
         }
-
+        $user->fill($request->except('_token'));
         $user->updated_ip_address = $ipAddress->getClientIp();
 
         $user->save();
@@ -137,7 +140,8 @@ class UserSettingController extends Controller
     }
 
 
-    public function upgrade(){
+    public function upgrade() {
+
         $data['breadcrumbs'][trans('profile.upgrade')] = '#';
 
         $data['object'] = \Auth::user();
@@ -145,18 +149,36 @@ class UserSettingController extends Controller
         return View('adforest.profile.upgrade', $data);
     }
 
-    public function updateUpgrade(Request $request){
+    public function updateUpgrade(Request $request) {
+
+        $coupon = Coupon::where('code', $request->get('coupon'))->where('expire_date', '>', date('Y-m-d'))->get();
+
+        if (!$coupon->count()) {
+            return back()->withMessage([
+                'type' => 'warning',
+                'message' => trans('common.wrong_copoun')
+            ]);
+        }
 
         $role = Role::find($request->input('roles'));
 
         $user = User::findOrFail(\Auth::id());
-        if (!$user->hasRole($role->name) && $user->assignRole($role->name)) {
+
+        if (!$user->hasRole($role->id)) {
+
+
+            $user->attachRole($role->id);
+
+            $updatePoints = Profile::where('user_id', $user->id)->first();
+            $updatePoints->points += config('settings.business_points');
+            $updatePoints->save();
 
             return back()->withMessage([
                 'type' => 'success',
                 'message' => trans('common.success_edit')
             ]);
-        } else {
+        }
+        else {
             return back()->withMessage([
                 'type' => 'warning',
                 'message' => trans('common.you_have_this_role')

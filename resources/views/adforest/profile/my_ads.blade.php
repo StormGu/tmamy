@@ -7,15 +7,15 @@
 @section('content')
 
     <section class="section-padding gray">
-    @include('adforest.profile.head')
         <!-- Main Container -->
         <div class="container">
+
             <!-- Row -->
             <div class="row">
-                <!-- Middle Content Area -->
+            @include('adforest.profile.head')
 
+            <!-- Middle Content Area -->
                 <br>
-
                 @include('adforest.common.message')
 
                 <div class="row margin-bottom-20">
@@ -94,7 +94,9 @@
                                                     <!-- Price -->
                                                     <div class="ad-price"> {{ isset($object->currency->value) ? $object->currency->value : '' }} {{ number_format( $object->price, 2) }}</div>
                                                     <!-- Title -->
-                                                    <h3><a href="{{ url('adv/'. $object->id) }}">{{ $object->title }}</a></h3>
+                                                    <h3>
+                                                        <a href="{{ url('adv/'. $object->id) }}">{{ $object->title }}</a>
+                                                    </h3>
                                                     <!-- Category -->
                                                     <div class="category-title"><span><a
                                                                     href="#">{{ $object->category->title }}</a></span>
@@ -115,10 +117,18 @@
                                                                 : {{ \Carbon\Carbon::parse($object->created_at)->diffForHumans() }}</div>
                                                         @endif
                                                         <div class="ad-meta">
-                                                            <a href="{{ url('profile/adDelet') }}/{{ $object->id }}" class="btn btn-danger"><i
+                                                            <a href="{{ url('profile/adDelet') }}/{{ $object->id }}"
+                                                               class="btn btn-danger"><i
                                                                         class="fa fa-times"></i> @lang('common.delete')
                                                             </a>
+                                                            @hasrole('admin')
+                                                            <a href="{{ url('adv/change_status/' . $object->id . '/approved') }}/{{ $object->id }}"
+                                                               class="btn btn-success">
+                                                                <i class="fa fa-apply"></i> @lang('common.approve')
+                                                            </a>
+                                                            @endhasrole
                                                         </div>
+
 
                                                     </div>
                                                 </div>

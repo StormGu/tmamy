@@ -52,11 +52,8 @@
         <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/rtl_css/owl.carousel.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/rtl_css/owl.theme.css') }}">
-<<<<<<< HEAD
         <link href="{{ asset('adforest/rtl_css/owl.transitions.css') }}" rel="stylesheet" >
-=======
-        <link href="{{ asset('adforest/rtl_css/owl.transitions.css') }}" rel="stylesheet" > 
->>>>>>> 9ca43e414967080d81bb05b53df7750318db4269
+
         <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
         <link href="{{ asset('adforest/skins/minimal/minimal.css') }}" rel="stylesheet">
         <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
@@ -87,11 +84,8 @@
         <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/css/owl.carousel.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('adforest/css/owl.theme.css') }}">
-<<<<<<< HEAD
+
         <link href="{{ asset('adforest/css/owl.transitions.css') }}" rel="stylesheet" >
-=======
-        <link href="{{ asset('adforest/css/owl.transitions.css') }}" rel="stylesheet" > 
->>>>>>> 9ca43e414967080d81bb05b53df7750318db4269
         <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
         <link href="{{ asset('adforest/skins/minimal/minimal.css') }}" rel="stylesheet">
         <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
@@ -104,15 +98,10 @@
     <link href="{{ asset('adforest/lib/nivo-slider/css/preview.css') }}" rel="stylesheet" >
     <link href="{{ asset('adforest/css/tmamy-style.css') }}" rel="stylesheet" >
     <link href="{{ asset('adforest/css/style.css') }}" rel="stylesheet" >
-<<<<<<< HEAD
     <link rel="stylesheet" id="color" href="{{ asset('adforest/css/colors/defualt.css') }}">
     <link href="{{ asset('adforest/css/responsive.css') }}" rel="stylesheet" >
     <link href=" {{ asset('adforest/css/mystyle.css') }}" rel="stylesheet" >
-=======
-<link rel="stylesheet" id="color" href="{{ asset('adforest/css/colors/defualt.css') }}">
-<link href="{{ asset('adforest/css/responsive.css') }}" rel="stylesheet" >
-<link href=" {{ asset('adforest/css/mystyle.css') }}" rel="stylesheet" >
->>>>>>> 9ca43e414967080d81bb05b53df7750318db4269
+
     <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
 
     <!-- JavaScripts -->

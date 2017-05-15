@@ -52,7 +52,16 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                    <label class="control-label">@lang('profile.Store Type') <small>@lang('profile.Select_suitable_category_for_your_Store')</small></label>
+                                    <select name="store_account_type_id" class="category form-control">
+                                        <option label=@lang('profile.SelectOption')></option>
 
+                                            <option value="1">Financed</option>
+                                            <option value="1">Free</option>
+
+                                    </select>
+                                </div>
 
 
                             </div>

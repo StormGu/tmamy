@@ -8,12 +8,11 @@
 @section('content')
 
     <section class="section-padding gray">
-        @include('adforest.profile.head')
 
         <div class="container">
             <div class="row">
-                <!-- Middle Content Area -->
-            <!-- Row End -->
+
+                @include('adforest.profile.head')
                 <br>
                 <div class="row">
                     <!-- Middle Content Area -->
@@ -22,13 +21,31 @@
                         @include('adforest.common.message')
                         <div class="profile-section margin-bottom-20">
                             {!! Form::model($object, ['url' => 'profile/upgrade', 'method' => 'post', 'files' => true]) !!}
+
                             <div class="row">
+                                <div class="form-group col-md-12 {{ $errors->has('roles') ? ' has-error' : '' }}">
+                                    {!! Form::label('current_roles', __('profile.current_roles')) !!}
+                                    <ul>
+                                        @foreach(\Auth::user()->roles as $role)
+                                            <li>{{ $role->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+
                                 <div class="form-group col-md-12 {{ $errors->has('roles') ? ' has-error' : '' }}">
                                     {!! Form::label('roles', __('profile.roles')) !!}
 
                                     {!! Form::select('roles', \jeremykenedy\LaravelRoles\Models\Role::whereNotIn('id', \Auth::user()->roles()->pluck('role_user.id'))->whereLevel(1)->pluck('name', 'id'), null, ['class' => 'form-control']) !!}
                                     @if ($errors->has('roles'))
                                         <span class="text-danger">{{ $errors->first('roles') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group col-md-12 {{ $errors->has('roles') ? ' has-error' : '' }}">
+                                    {!! Form::label('coupon', __('profile.coupon')) !!}
+                                    {!! Form::text('coupon', null, ['class' => 'form-control']) !!}
+                                    @if ($errors->has('coupon'))
+                                        <span class="text-danger">{{ $errors->first('coupon') }}</span>
                                     @endif
                                 </div>
 

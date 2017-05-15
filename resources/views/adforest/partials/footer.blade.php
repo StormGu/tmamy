@@ -1,4 +1,4 @@
-<div class="footer-widget-area" style="height: 240px;">
+<div class="footer-widget-area">
     <div class="container" style="margin-top: -12px;">
         <div class="row boder-b-footer">
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
@@ -10,9 +10,9 @@
                 <div class="footer-widget">
                     <h4>About Us</h4>
                     <ul class="single-widget-list">
-                        <li><a href="#">Digital Plus Company</a></li>
-                        <li><a href="#">Tmamy Business Gate</a></li>
-                        <li><a href="#">Tamamy Stores</a></li>
+                        <li><a href="{{ url('page/Digital Plus Company') }}">Digital Plus Company</a></li>
+                        <li><a href="{{ url('page/Tmamy Business Gate') }}">Tmamy Business Gate</a></li>
+                        <li><a href="{{ url('page/Tamamy Stores') }}">Tamamy Stores</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,8 +53,6 @@
                     </ul>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
