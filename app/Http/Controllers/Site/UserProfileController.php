@@ -107,24 +107,28 @@ class UserProfileController extends Controller
         $stors->url = $Input['url'];
         $stors->pob = $Input['pob'];
         $stors->fax = $Input['fax'];
+        $stors->store_account_type_id = $Input['store_account_type_id'];
+
         $stors->logo_file_name = 'uploads/' . $logoName;
         $stors->status = 'waiting_approval';
+        $stors->main_category =  1;
+        $stors->name = "ibrss";
+        $stors->background_file_name = 'uploads/' . $logoName;
+        $stors->cr_no = 15;
+        $stors->background_color = "sdfsdf";
+        $stors->facebook = "facebook";
+        $stors->twitter = "twitter";
+        $stors->google_plus = "google_plus";
+        $stors->linkedin = "linkedin";
+        $stors->pinterest = "pinterest";
 
 
-        $user = User::find($Input['user_id']);
 
 
-        if ($user->Points == 0) {
-            echo "error";
-        }
-        else {
-            $flight = User::find($Input['user_id']);
-            $flight->Points = $flight->Points - 1000;
 
-            $flight->save();
 
             $stors->save();
-        }
+
 
         return redirect()->back();
     }
