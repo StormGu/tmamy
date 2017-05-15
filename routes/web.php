@@ -35,6 +35,7 @@ Route::group(['namespace' => 'Site', 'middleware' => 'adpoints'], function () {
 
     Route::get('adv/{id}', 'AdvertisementController@get');
     Route::get('advertisement/{id}', 'AdvertisementController@get');
+    Route::post('comment', 'AdvertisementController@comment');
 
 });
 

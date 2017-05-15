@@ -29,6 +29,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
@@ -358,6 +359,19 @@ class AdvertisementController extends Controller
                 'message' => __('advertisement.status_changed_successfully')
             ]);
         }
+
+    }
+
+    public function comment(Request $request){
+
+        $comment = new Comment();
+        $Input = $request->all();
+        $comment->advertisement_id = $Input['advertisement_id'];
+        $comment->user_id = $Input['user_id'];
+        $comment->text = $Input['comment'];
+        $comment->save();
+
+        return redirect()->back();
 
     }
 }
