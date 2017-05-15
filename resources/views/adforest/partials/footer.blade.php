@@ -10,9 +10,9 @@
                 <div class="footer-widget">
                     <h4>About Us</h4>
                     <ul class="single-widget-list">
-                        <li><a href="#">Digital Plus Company</a></li>
-                        <li><a href="#">Tmamy Business Gate</a></li>
-                        <li><a href="#">Tamamy Stores</a></li>
+                        <li><a href="{{ url('page/Digital Plus Company') }}">Digital Plus Company</a></li>
+                        <li><a href="{{ url('page/Tmamy Business Gate') }}">Tmamy Business Gate</a></li>
+                        <li><a href="{{ url('page/Tamamy Stores') }}">Tamamy Stores</a></li>
                     </ul>
                 </div>
             </div>
