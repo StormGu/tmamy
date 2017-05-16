@@ -20,7 +20,8 @@
                                       placeholder="Enter Your Message"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default1 rig1" data-dismiss="modal"><a>Close</a></button>
+                            <button type="button" class="btn btn-default1 rig1" data-dismiss="modal"><a>Close</a>
+                            </button>
                             <button type="submit" class="btn btn-default1 rig1"><a>Send</a></button>
                         </div>
                     </div>
@@ -101,17 +102,15 @@
                                         </div>
                                     @endforeach
                                 </div>
-                        @endif
+                            @endif
 
-                        @if($features->count())
-                            <!-- Short Features  -->
+                            @if($features->count())
                                 <div class="short-features">
                                     <div class="heading-panel">
                                         <h3 class="main-title text-left">
                                             @lang('advertisement.properties')
                                         </h3>
                                     </div>
-
                                     <div class="desc-points">
                                         <ul>
                                             @foreach($features as $feature)
@@ -135,7 +134,32 @@
                                 </p>
 
                             </div>
+
                             <div class="clearfix"></div>
+                                <!-- Short Features  -->
+                                <div id="disqus_thread"></div>
+                                <script>
+
+                                    /**
+                                     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                                     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                                    /*
+                                     var disqus_config = function () {
+                                     this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                                     this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                     };
+                                     */
+                                    (function () { // DON'T EDIT BELOW THIS LINE
+                                        var d = document, s = d.createElement('script');
+                                        s.src = 'https://tmamystore.disqus.com/embed.js';
+                                        s.setAttribute('data-timestamp', +new Date());
+                                        (d.head || d.body).appendChild(s);
+                                    })();
+                                </script>
+                                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                                        powered by Disqus.</a></noscript>
+
+
                         </div>
                     </div>
                 </div>
@@ -154,7 +178,8 @@
                                 <input type="hidden" name="user_id" value="{{ $object->user_id }}">
                                 <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
                                 @if(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() == 0)
-                                    <button type="submit" class="btn btn-default btn-sm "> @lang('common.follow')</button>
+                                    <button type="submit"
+                                            class="btn btn-default btn-sm "> @lang('common.follow')</button>
                                 @elseif(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() > 0)
                             </form>
                             <form action="{{ url('profile/unfollower') }}" method="post">
@@ -165,7 +190,9 @@
                             </form>
                             @endif
 
-                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Messages</button>
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal"
+                                    data-target="#myModal">Messages
+                            </button>
 
 
                         </div>
@@ -192,44 +219,44 @@
         <div class="row">
 
         </div><!-- /row -->
-        <div class="row">
-      @foreach(\App\Models\Comment::where('advertisement_id', $object->id )->get() as $key)
-            <div class="col-sm-1">
-                <div class="thumbnail">
-                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                </div><!-- /thumbnail -->
-            </div><!-- /col-sm-1 -->
+        {{--@foreach(\App\Models\Comment::where('advertisement_id', $object->id )->get() as $key)--}}
+        {{--<div class="row">--}}
 
-            <div class="col-sm-11">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong>{{ $key->user->name }}</strong> <span class="text-muted">{{ $key->created_at }}</span>
-                    </div>
-                    <div class="panel-body">
-                        {{ $key->text }}
-                    </div><!-- /panel-body -->
-                </div><!-- /panel panel-default -->
-            </div><!-- /col-sm-5 -->
-        </div><!-- /row -->
-       @endforeach
+        {{--<div class="col-sm-1">--}}
+        {{--<div class="thumbnail">--}}
+        {{--<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">--}}
+        {{--</div><!-- /thumbnail -->--}}
+        {{--</div><!-- /col-sm-1 -->--}}
+
+        {{--<div class="col-sm-11">--}}
+        {{--<div class="panel panel-default">--}}
+        {{--<div class="panel-heading">--}}
+        {{--<strong>{{ $key->user->name }}</strong> <span--}}
+        {{--class="text-muted">{{ $key->created_at }}</span>--}}
+        {{--</div>--}}
+        {{--<div class="panel-body">--}}
+        {{--{{ $key->text }}--}}
+        {{--</div><!-- /panel-body -->--}}
+        {{--</div><!-- /panel panel-default -->--}}
+        {{--</div><!-- /col-sm-5 -->--}}
+        {{--</div><!-- /row -->--}}
+        {{--@endforeach--}}
+        {{----}}
     </div><!-- /container -->
 
-    <div class="container">
-        <div class="panel panel-default">
-            <form action="{{url('comment')}}" method="post">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <input type="hidden" name="advertisement_id" value="{{ $object->id }}">
-                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                    <textarea name="comment" class="form-control" rows="5" id="comment"
-                              placeholder="Enter Your Message"></textarea>
-                </div>
+    {{--<div class="container">--}}
+        {{--<div class="panel panel-default">--}}
+            {{--<form action="{{url('comment')}}" method="post">--}}
+                {{--{{ csrf_field() }}--}}
+                {{--<div class="form-group">--}}
+                    {{--<input type="hidden" name="advertisement_id" value="{{ $object->id }}">--}}
+                    {{--<input type="hidden" name="user_id" value="{{ Auth::id() }}">--}}
+                    {{--<textarea name="comment" class="form-control" rows="5" id="comment"--}}
+                              {{--placeholder="Enter Your Message"></textarea>--}}
+                {{--</div>--}}
 
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-        </div>
-
-    </div>
-
-
+                {{--<button type="submit" class="btn btn-default">Submit</button>--}}
+            {{--</form>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 @endsection

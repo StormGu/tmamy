@@ -50,9 +50,9 @@ class Category extends Model
     public function children() {
         return $this->hasMany(Category::class, 'parent_id');
     }
-    public function adchildren()
-    {
-        return $this->hasMany(Advertisement::class,'category_id');
+
+    public function adchildren() {
+        return $this->hasMany(Advertisement::class, 'category_id');
     }
 
 
