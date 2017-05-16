@@ -97,8 +97,11 @@ class AdsController extends Controller
     }
     public function getadsbasedcat()
     {
-        $cat = Category::where('parent_id',NULL)->with('adchildren')->get();
-
+        $cat = Category::parents()->with([
+            'advertisements' => function ($query) {
+                return $query->limit(2);
+            }
+        ])->get();
 
 
         if(count($cat))
