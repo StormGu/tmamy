@@ -89,14 +89,16 @@ class AdsController extends Controller
     public function destroy($id) {
         //
     }
-
-    public function getadsbasedcat() {
-
+    public function getadsbasedcat()
+    {
         $cat = Category::parents()->with([
             'advertisements' => function ($query) {
-                return $query->limit(5);
+                return $query->limit(2);
             }
         ])->get();
+
+
+
 
         if (count($cat))
             $this->is_success = true;
