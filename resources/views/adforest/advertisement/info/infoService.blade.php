@@ -10,7 +10,6 @@
     <section class="section-padding error-page pattern-bgs gray ">
         <div class="container">
             <div class="row margin-bottom-20">
-
                 <div class="col-md-12">
                     <div class="ad-box">
                         <div class="col-md-2">

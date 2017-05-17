@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Requests\AdvertisementRequest;
+use App\Http\Requests\CreateServiceRequest;
 use App\Models\Advertisement;
 use App\Models\AdvertisementInfoCareersJob;
 use App\Models\AdvertisementInfoCareersJobRequirement;
@@ -45,7 +46,7 @@ class AdvertisementController extends Controller
 
         $object = Advertisement::whereId($id)->whereStatus('approved')->first();
 
-        $data['breadcrumbs'][] = '#';
+        $data['breadcrumbs'][$object->title] = '#';
 
         if (!$object) {
             return redirect('home');
@@ -54,7 +55,10 @@ class AdvertisementController extends Controller
         $data['object'] = $object;
         $data['features'] = $object->features()->get();
         $data['properties'] = $object->properties()->withPivot('property_value')->get();
-        switch ($object->category_id) {
+
+
+
+        // switch ($object->category_id) {
             //            case 73:
             //
             //                return $this->infoCareerJob($id, $data);
@@ -95,13 +99,15 @@ class AdvertisementController extends Controller
             //                return $this->infoWholesaler($id, $data);
             //                break;
 
-            default:
+         //   default:
 
-                $data['advs'] = Advertisement::where('id', $id)->get();
+//                $data['advs'] = Advertisement::where('id', $id)->get();
 
-                return View('adforest.advertisement.show', $data);
+  //              return View('adforest.advertisement.show', $data);
+    //    }
+        if (in_array($object->category_id, explode(',', config('settings.services_categories')))){
+            return $this->infoService($id, $data);
         }
-
 
         return View('adforest.advertisement.show', $data);
     }
@@ -267,8 +273,8 @@ class AdvertisementController extends Controller
 
         $data['breadcrumbs'][__('advertisement.heading_title')] = '#';
 
-        $data['category_id'] = $category_id;
-        $data['subcategory_id'] = $subcategory_id;
+        // $data['category_id'] = $category_id;
+        $data['category_id'] = $subcategory_id;
 
         $data['properties'] = Property::whereCategoryId($category_id)->get();
         $data['features'] = Category::find($category_id)->features()->get();
@@ -288,6 +294,10 @@ class AdvertisementController extends Controller
         if ($request->get('hot')) {
             $data['hot'] = 1;
             $data['after_points'] -= 4000;
+        }
+
+        if (in_array($subcategory_id, explode(',', config('settings.services_categories')))) {
+            return View('adforest.advertisement.form.infoService', $data);
         }
 
         return View('adforest.advertisement.form.step3', $data);
@@ -315,7 +325,6 @@ class AdvertisementController extends Controller
 
             $advertisement->image_filename = $save_path . DIRECTORY_SEPARATOR . $filename;
         }
-
 
         if ($advertisement->save()) {
 
@@ -362,7 +371,7 @@ class AdvertisementController extends Controller
 
     }
 
-    public function comment(Request $request){
+    public function comment(Request $request) {
 
         $comment = new Comment();
         $Input = $request->all();
@@ -373,5 +382,62 @@ class AdvertisementController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function CreateService(CreateServiceRequest $request) {
+
+        $advertisement = new Advertisement();
+        $advertisement->fill($request->except('_token', 'points'));
+        $advertisement->user_id = \Auth::id();
+        $advertisement->status = 'waiting_approval';
+
+
+        if (\Input::hasFile('image')) {
+            $currentUser = \Auth::user();
+            $image = \Input::file('image');
+            $filename = md5($image) . '.' . $image->getClientOriginalExtension();
+            //$save_path = storage_path() . '/users/id/' . $currentUser->id . '/uploads/advertisements/';
+            $save_path = 'uploads';
+
+            // Make the user a folder and set permissions
+            \File::makeDirectory($save_path, $mode = 0755, true, true);
+
+            // Save the file to the server
+            \Image::make($image)->save($save_path . DIRECTORY_SEPARATOR . $filename);
+
+            $advertisement->image_filename = $save_path . DIRECTORY_SEPARATOR . $filename;
+        }
+
+        if ($advertisement->save()) {
+
+            $service = new AdvertisementInfoService;
+            $service->fill($request->except('_token', 'points'));
+            $service->advertisement()->associate($advertisement);
+            $service->save();
+
+            if (null !== $request->get('cost_of_services')) {
+                foreach ($request->get('cost_of_services') as $key => $value) {
+                    $service_cost = new AdvertisementInfoServicesCost();
+                    $service_cost->fill($value);
+                    $service_cost->advertisement()->associate($advertisement);
+                    $service_cost->save();
+                }
+            }
+
+            $profile = Profile::whereUserId(\Auth::id())->first();
+            $profile->points = $request->input('after_points');
+            $profile->save();
+
+            return redirect('profile/ads')->withMessage([
+                'type' => 'success',
+                'message' => trans('common.success_added')
+            ]);
+        }
+        else {
+            return back()->withMessage([
+                'type' => 'warning',
+                'message' => trans('common.failed_added')
+            ]);
+        }
     }
 }
