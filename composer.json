@@ -11,6 +11,7 @@
         "backpack/permissionmanager": "^2.1",
         "backpack/settings": "^2.0",
         "barryvdh/laravel-debugbar": "^2.3",
+        "cornford/googlmapper": "^2.25",
         "creativeorange/gravatar": "~1.0",
         "doctrine/dbal": "^2.5",
         "google/recaptcha": "^1.1",
@@ -28,6 +29,7 @@
         "socialiteproviders/twitch": "^3.0",
         "socialiteproviders/youtube": "^3.0",
         "spatie/laravel-translatable": "^1.2",
+        "toin0u/geocoder-laravel": "^1.0",
         "webpatser/laravel-uuid": "^2.0"
     },
     "require-dev": {

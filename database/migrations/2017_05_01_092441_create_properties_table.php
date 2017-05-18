@@ -11,12 +11,15 @@ class CreatePropertiesTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('id');
+
             $table->string('name');
-            $table->integer('category_id');
+            $table->string('type')->nullable();
+            $table->string('key')->nullable();
+            $table->string('label')->nullable();
+
             $table->timestamps();
         });
     }
@@ -26,8 +29,7 @@ class CreatePropertiesTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('properties');
     }
 }

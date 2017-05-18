@@ -24,7 +24,7 @@ class AdvertisementInfoServicesCost extends Model
     ];
     // protected $hidden = [];
     // protected $dates = [];
-
+    protected $touches = ['advertisement'];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS

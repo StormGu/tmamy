@@ -11,19 +11,23 @@ class CreateAdvertisementInfoResturantTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('advertisement_info_resturant', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('advertisement_id')->nullable();
-            $table->string('resturant_details');
-            $table->string('address_main');
-            $table->string('address_details');
-            $table->string('fax');
-            $table->string('phone_no');
-            $table->string('web');
-            $table->string('email');
+            $table->integer('advertisement_id')->unsigned();
+            $table->foreign('advertisement_id', 'air_adv_id_foreign')
+                ->references('id')
+                ->on('advertisement')
+                ->onDelete('cascade');
+
+            $table->string('resturant_details')->nullable();
+            $table->string('address_main')->nullable();
+            $table->string('address_details')->nullable();
+            $table->string('fax')->nullable();
+            $table->string('phone_no')->nullable();
+            $table->string('web')->nullable();
+            $table->string('email')->nullable();
 
             $table->timestamps();
         });
@@ -34,8 +38,7 @@ class CreateAdvertisementInfoResturantTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('advertisement_info_resturant');
     }
 }

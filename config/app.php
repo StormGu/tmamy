@@ -199,6 +199,10 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Backpack\PageManager\PageManagerServiceProvider::class,
 
+
+        Cornford\Googlmapper\MapperServiceProvider::class,
+
+
     ],
 
     /*
@@ -256,7 +260,7 @@ return [
         'Uuid' => Webpatser\Uuid\Uuid::class,
 
         'CRUD' => Backpack\CRUD\CrudServiceProvider::class,
-
+        'Mapper'         => Cornford\Googlmapper\Facades\MapperFacade::class,
     ],
 
 ];

@@ -11,15 +11,13 @@ class CreateAdvertisementInfoHealthDoctorTitleTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('advertisement_info_health_doctor_title', function (Blueprint $table) {
             $table->increments('id');
-            
 
             $table->string('title');
-            $table->text('Description');
-            
+            $table->text('description')->nullable();
+
             $table->timestamps();
         });
     }
@@ -29,8 +27,7 @@ class CreateAdvertisementInfoHealthDoctorTitleTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('advertisement_info_health_doctor_title');
     }
 }

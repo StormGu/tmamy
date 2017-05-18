@@ -76,7 +76,8 @@
                     </div>
                 </div>
                 <div class="ad-box margin-top-10">
-                    <h3>@lang('advertisement.cost_of_services')</h3>
+
+                    <h3 class="moon">@lang('advertisement.cost_of_services')</h3>
                     <hr>
                     <div class="clearfix"></div>
                     <div class="row">
@@ -96,6 +97,29 @@
 
                         </div>
                     </div>
+                </div>
+                <div class="ad-box margin-top-10">
+                    <h1>@lang('advertisement.Address')</h1>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div align="center" style="width: 100%; height: 400px;">
+                                        {!! Mapper::render() !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {!! Form::hidden('lon', old('lon'), ['id' => 'hdnLon']) !!}
+                    {!! Form::hidden('lat', old('lat'), ['id' => 'hdnLat']) !!}
+                    @if ($errors->has('lon') || $errors->has('lon'))
+                        <span class="text-danger">{{ $errors->first('lon') }}</span>
+                    @endif
+
                 </div>
                 <div class="ad-box margin-top-10">
                     <hr>
@@ -147,6 +171,8 @@
                 {!! Form::close() !!}
             </div>
     </section>
+
+
 @endsection
 
 @section('custom_js')
@@ -160,5 +186,12 @@
                 }
             });
         });
+
+        function createCompany(event) {
+            $('input[name=lat]').val(event.latLng.lat());
+            $('input[name=lon]').val(event.latLng.lng());
+        }
     </script>
+
+    {!! Mapper::renderJavascript() !!}
 @endsection

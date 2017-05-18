@@ -16,7 +16,9 @@ class CreateResturantItemTable extends Migration
         Schema::create('resturant_item', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('store_id')->nullable();
+            $table->integer('store_id')->unsigned();
+            $table->foreign('store_id')->references('id')->on('store')->onDelete('cascade');
+
             $table->string('title');
             $table->float('price')->nullable();
             $table->boolean('is_deleted')->nullable();

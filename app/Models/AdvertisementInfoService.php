@@ -23,6 +23,7 @@ class AdvertisementInfoService extends Model
     ];
     // protected $hidden = [];
     // protected $dates = [];
+    protected $touches = ['advertisement'];
 
     /*
     |--------------------------------------------------------------------------
