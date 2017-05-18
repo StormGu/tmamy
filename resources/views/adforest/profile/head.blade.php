@@ -41,7 +41,7 @@
 
         <div class="image" data-user="avatar" data-type="B">
             <img id="imgAvatar"
-                 src="">
+                 src="@if (\Auth::user()->profile->avatar_status == 1){{ url(\Auth::user()->profile->avatar) }} @else {{ Gravatar::get(\Auth::user()->email) }} @endif">
         </div>
     </div>
 

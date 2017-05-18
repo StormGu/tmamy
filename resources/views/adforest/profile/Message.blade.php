@@ -14,23 +14,23 @@
                            <ul class="message-history">
                               <!-- LIST ITEM -->
                 @foreach(\App\Models\UserMessage::where('to_user_id', Auth::id())->get() as $key)
-                              <li href= "#" class="message-grid">
-                                 <a href="{{ url('profile/Message/getformmsg/'. $key->from_user_id)}}">
-                                    <div class="image">
-                                       <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="">
-                                    </div>
-                                    <div class="user-name">
-                                       <div class="author">
-                                          <span>{{ $user_nm }}</span><div class=""></div>
-                                       </div>
-                                       <p>Xperia Z5 For Sale</p>
-                                       <div class="time">
-                                           <span>7 days ago</span>
-                                       </div>
-                                    </div>
-                                 </a>
-                              </li>
-                             @endforeach
+                    <li href= "#" class="message-grid">
+                       <a href="{{ url('profile/Message/getformmsg/'. $key->from_user_id)}}">
+                          <div class="image">
+                             <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="">
+                          </div>
+                          <div class="user-name">
+                             <div class="author">
+                                <span>{{ $key->from_name}}</span><div class=""></div>
+                             </div>
+                             <p>Xperia Z5 For Sale</p>
+                             <div class="time">
+                                 <span>7 days ago</span>
+                             </div>
+                          </div>
+                       </a>
+                    </li>
+                 @endforeach
                            </ul>
                         </div>
                      </div>
@@ -56,7 +56,7 @@
                                  </div>
                               </li>
                               @foreach(\App\Models\UserMessage::where('from_user_id', $ms->to_user_id)->get() as $myms)
-                              <li class="friend-message clearfix">
+                                <li class="friend-message clearfix">
                                  <figure class="profile-picture">
                                     <img src="images/users/2.jpg" class="img-circle" alt="Profile Pic">
                                  </figure>

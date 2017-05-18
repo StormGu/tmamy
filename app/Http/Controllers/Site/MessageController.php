@@ -24,8 +24,8 @@ class MessageController extends Controller
       }
 
       public function getmsg($id){
-           $user_msg = Message::where('from_user_id', $id)->get();
-             $user_name = User::where('id', $id)->get();
+           $user_msg = Message::where('to_user_id', $id)->get();
+           $user_name = User::where('id', $id)->get();
             foreach ($user_name as $key) {
               $key->name;
               $key->id;
@@ -33,6 +33,8 @@ class MessageController extends Controller
            
            $user_nm = $key->name;
            $user_id = $key->id;
+
+           
            return view('adforest.profile.Message', compact('user_msg','user_nm','user_id'));
       }
 

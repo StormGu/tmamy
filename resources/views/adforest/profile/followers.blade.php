@@ -76,25 +76,25 @@
 
             <div class="adv-advertiser" data-cardcontainer="" data-type="B">
                 <div class="cover-data">
-                  <img src="eew.jpg" alt="Customers Support" style="display: block;"> 
+                  <img src="" alt="" style="display: block;"> 
                 </div>
                 <div class="image"><a href="{{ url('profile/'. $key->user_followers_id) }}">
-                  <img src="eeq.jpg" alt="Customers Support" style="display: block;"> </a>
+                  <img src="{{ url('images/profile/1/avatar/avatar.jpg')}}" alt="Customers Support" style="display: block;"> </a>
                 </div>
                 <div class="username">
-                   <a href="{{ url('profile/'. $key->user_followers_id) }}"> {{ $key->user_followers_name }}</a>
+                   <a href="{{ url('profile/'. $key->user_followers_id) }}"> {{ $key->user_followers_name }} </a>
                 </div>
                        
-                <button data-action="Follow" data-followbtn="" class="btn bordered-style active" data-id="807" data-active="false" data-alttext="Following">Follow</button>
+                
                 <div class="following">
-                    <span class="num">0</span>
+                    <span class="num">{{ \App\Models\UserFollower::where('user_id', $key->user_id)->count()}}</span>
                     <span class="type">Following</span>
                 </div>
-<div class="follower">
-                    <span class="num" data-followercounter="">3</span>
+                <div class="follower">
+                    <span class="num" data-followercounter="">{{ \App\Models\UserFollower::where('user_id', $key->user_followers_id)->count()}}</span>
                     <span class="type">Follower</span>
                 </div>
-            </div>
+             </div>
    @endforeach
 </div>
     <div class="user-list" data-tab="Following" style="display: none;">
