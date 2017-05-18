@@ -101,7 +101,7 @@
     <link rel="stylesheet" id="color" href="{{ asset('adforest/css/colors/defualt.css') }}">
     <link href="{{ asset('adforest/css/responsive.css') }}" rel="stylesheet" >
     <link href=" {{ asset('adforest/css/mystyle.css') }}" rel="stylesheet" >
-
+    <link href=" {{ asset('adforest/css/messages.css') }}" rel="stylesheet" >
     <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
 
     <!-- JavaScripts -->

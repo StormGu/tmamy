@@ -19,8 +19,9 @@
                         <h4 class="modal-title">Message</h4>
                     </div>
                     <div class="modal-body">
+                        <input type="hidden" name="from_name" value="{{ \Auth::user()->name }}">
                         <input type="hidden" name="to_user_id" value="{{ $object->id }}">
-                        <input type="hidden" name="form_user_id" value="{{ Auth::id() }}">
+                        <input type="hidden" name="from_user_id" value="{{ Auth::id() }}">
                         <textarea name="messages" class="form-control" rows="5" id="comment"
                                   placeholder="Enter Your Message"></textarea>
                     </div>
@@ -59,6 +60,7 @@
             {{ csrf_field() }}
             <input type="hidden" name="user_id" value="{{ $object->id }}">
             <input type="hidden" name="user_followers_id" value="{{ Auth::id() }}">
+            <input type="hidden" name="user_followers_name" value="{{ \Auth::user()->name }}">
             @if(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() == 0)
                 <button type="submit" class="btn btn-default1 rig"> Follow</button>
             @elseif(\App\Models\UserFollower::where('user_followers_id', Auth::id())->count() > 0)
@@ -125,6 +127,11 @@
         <li>
             <a href="{{ url('profile/stores') }}">
                 <div class="menu-name">@lang('profile.stores')</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('profile/getfollower/'.  $object->id) }}">
+                <div class="menu-name">@lang('profile.getfollower')</div>
             </a>
         </li>
         <li>

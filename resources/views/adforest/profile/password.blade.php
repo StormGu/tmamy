@@ -7,10 +7,11 @@
 @section('content')
 
     <section class="section-padding gray">
+    @include('adforest.profile.head')
         <div class="container">
             <div class="row">
                 <!-- Middle Content Area -->
-                @include('adforest.profile.head')
+                
             <!-- Row End -->
             <br>
             <div class="row">
