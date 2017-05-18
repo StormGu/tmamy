@@ -16,8 +16,11 @@ class CreateResturantChoicesItemTable extends Migration
         Schema::create('resturant_choices_item', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('store_id')->nullable();
-            $table->integer('advertisement_id')->nullable();
+            $table->integer('store_id')->unsigned();
+            $table->foreign('store_id')->references('id')->on('store')->onDelete('cascade');
+            $table->integer('advertisement_id')->unsigned();
+            $table->foreign('advertisement_id')->references('id')->on('advertisement')->onDelete('cascade');
+
             $table->integer('choice_id')->nullable();
             $table->integer('item_id')->nullable();
             $table->float('price');

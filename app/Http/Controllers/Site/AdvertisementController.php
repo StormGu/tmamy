@@ -34,15 +34,12 @@ use App\Models\Comment;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
 class AdvertisementController extends Controller
 {
 
-    public function index($categoryId) {
-    }
-
     public function get($id) {
-
 
         $object = Advertisement::whereId($id)->whereStatus('approved')->first();
 
@@ -56,56 +53,62 @@ class AdvertisementController extends Controller
         $data['features'] = $object->features()->get();
         $data['properties'] = $object->properties()->withPivot('property_value')->get();
 
-
+        Mapper::map($object->lat, $object->lon, [
+            'zoom' => 5,
+            'center' => true,
+            'marker' => true,
+            'draggable' => false,
+            'locate' => false
+        ]);
 
         // switch ($object->category_id) {
-            //            case 73:
-            //
-            //                return $this->infoCareerJob($id, $data);
-            //                break;
-            //
-            //            case 74:
-            //
-            //                return $this->infoCareerResume($id, $data);
-            //                break;
-            //
-            //            case 10:
-            //
-            //                return $this->infoExhibition($id, $data);
-            //                break;
-            //
-            //            case 32:
-            //
-            //                return $this->infoHealthDoctorClinic($id, $data);
-            //                break;
-            //
-            //            case 36:
-            //
-            //                return $this->infoHealthHospital($id, $data);
-            //                break;
-            //
-            //            case 8:
-            //
-            //                return $this->infoService($id, $data);
-            //                break;
-            //
-            //            case 11:
-            //
-            //                return $this->infoTender($id, $data);
-            //                break;
-            //
-            //            case 9:
-            //
-            //                return $this->infoWholesaler($id, $data);
-            //                break;
+        //            case 73:
+        //
+        //                return $this->infoCareerJob($id, $data);
+        //                break;
+        //
+        //            case 74:
+        //
+        //                return $this->infoCareerResume($id, $data);
+        //                break;
+        //
+        //            case 10:
+        //
+        //                return $this->infoExhibition($id, $data);
+        //                break;
+        //
+        //            case 32:
+        //
+        //                return $this->infoHealthDoctorClinic($id, $data);
+        //                break;
+        //
+        //            case 36:
+        //
+        //                return $this->infoHealthHospital($id, $data);
+        //                break;
+        //
+        //            case 8:
+        //
+        //                return $this->infoService($id, $data);
+        //                break;
+        //
+        //            case 11:
+        //
+        //                return $this->infoTender($id, $data);
+        //                break;
+        //
+        //            case 9:
+        //
+        //                return $this->infoWholesaler($id, $data);
+        //                break;
 
-         //   default:
+        //   default:
 
-//                $data['advs'] = Advertisement::where('id', $id)->get();
+        //                $data['advs'] = Advertisement::where('id', $id)->get();
 
-  //              return View('adforest.advertisement.show', $data);
-    //    }
-        if (in_array($object->category_id, explode(',', config('settings.services_categories')))){
+        //              return View('adforest.advertisement.show', $data);
+        //    }
+        if (in_array($object->category_id, explode(',', config('settings.services_categories')))) {
             return $this->infoService($id, $data);
         }
 
@@ -296,6 +299,28 @@ class AdvertisementController extends Controller
             $data['after_points'] -= 4000;
         }
 
+        // Google Mapper
+
+
+        if (old('lon') && old('lat')) {
+            Mapper::map(old('lat'), old('lon'), [
+                'zoom' => 10,
+                'center' => true,
+                'marker' => true,
+                'draggable' => true,
+                'eventDragEnd' => 'createCompany(event);'
+            ]);
+        }
+        else {
+            Mapper::location('gaza strip')->map([
+                'zoom' => 10,
+                'center' => true,
+                'marker' => true,
+                'draggable' => true,
+                'eventDragEnd' => 'createCompany(event);'
+            ]);
+        }
+
         if (in_array($subcategory_id, explode(',', config('settings.services_categories')))) {
             return View('adforest.advertisement.form.infoService', $data);
         }
@@ -440,4 +465,5 @@ class AdvertisementController extends Controller
             ]);
         }
     }
+
 }

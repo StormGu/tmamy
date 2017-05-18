@@ -11,18 +11,23 @@ class CreateAdvertisementInfoCareersResumeExperienceTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('advertisement_info_careers_resume_experience', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('advertisement_id')->nullable();
-            $table->string('company_name');
-            $table->string('company_position');
+
+            $table->integer('advertisement_id')->unsigned();
+            $table->foreign('advertisement_id', 'aicrex_id_foreign')
+                ->references('id')
+                ->on('advertisement')
+                ->onDelete('cascade');
+
+            $table->string('company_name')->nullable();
+            $table->string('company_position')->nullable();
             $table->integer('country_id')->nullable();
             $table->integer('city_id')->nullable();
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->text('description');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -32,8 +37,7 @@ class CreateAdvertisementInfoCareersResumeExperienceTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('advertisement_info_careers_resume_experience');
     }
 }

@@ -11,12 +11,16 @@ class CreateAdvertisementPropertyTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('advertisement_property', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('advertisement_id')->nullable();
+            $table->integer('advertisement_id')->unsigned();
+            $table->foreign('advertisement_id', 'apr_adv_id_foreign')
+                ->references('id')
+                ->on('advertisement')
+                ->onDelete('cascade');
+
             $table->integer('property_id')->nullable();
             $table->string('property_value');
             $table->integer('list_of_value_details_id')->nullable();
@@ -30,8 +34,7 @@ class CreateAdvertisementPropertyTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('advertisement_property');
     }
 }

@@ -14,6 +14,7 @@
 */
 
 // Homepage Route
+
 Route::group(['namespace' => 'Site'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@index');
@@ -36,6 +37,7 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('adv/{id}', 'AdvertisementController@get');
     Route::get('advertisement/{id}', 'AdvertisementController@get');
     Route::post('comment', 'AdvertisementController@comment');
+
 
 });
 
@@ -93,6 +95,9 @@ Route::group([
     CRUD::resource('constantkey', 'ConstantKeyCrudController');
 
     Route::get('routes', 'AdminDetailsController@listRoutes');
+
+    CRUD::resource('country', 'CountryCrudController');
+    CRUD::resource('zone', 'ZoneCrudController');
 });
 
 // Registered, activated, and is admin routes.
@@ -238,6 +243,28 @@ Route::group(['middleware' => ['auth', 'activated']], function () {
 });
 
 // Resize Image
+
+Route::get('image/{size}/{id}/{name}', function ($size = null, $id = null, $name = null) {
+
+    if (!is_null($size) && !is_null($name)) {
+
+        if (strstr($size, '&times;'))
+            $size = explode('&times;', $size);
+        else
+            $size = explode('×', $size);
+
+        $cache_image = Image::cache(function ($image) use ($size, $id, $name) {
+            return $image->make(storage_path() . '/advertisements/' . $id . '/' . $name)->fit($size[0], $size[1]);
+
+           // return $image->make(url('/' . $name))->fit($size[0], $size[1]);
+        }, 10);
+        return Response::make($cache_image, 200, ['Content-Type' => 'image']);
+    }
+    else {
+        abort(404);
+    }
+})->where('name', '([A-z\d-\/_.]+)?')->where('id', '[0-9]+');
+
 Route::get('image/{size}/{name}', function ($size = null, $name = null) {
 
     if (!is_null($size) && !is_null($name)) {
@@ -248,22 +275,17 @@ Route::get('image/{size}/{name}', function ($size = null, $name = null) {
             $size = explode('×', $size);
 
         $cache_image = Image::cache(function ($image) use ($size, $name) {
-
             return $image->make(url('/' . $name))->fit($size[0], $size[1]);
         }, 10);
-
         return Response::make($cache_image, 200, ['Content-Type' => 'image']);
     }
     else {
         abort(404);
     }
-
 })->where('name', '([A-z\d-\/_.]+)?');
-
 
 // Change Locale Route
 Route::get('lang/{lang}', function ($lang) {
-
 
     // Get Available Languages
     $available_locales = array_column(json_decode(json_encode(\DB::table('languages')
@@ -273,11 +295,9 @@ Route::get('lang/{lang}', function ($lang) {
         ->get()), true), 'code');
 
     if (in_array($lang, $available_locales)) {
-
         \Session::put('locale', $lang);
     }
     else {
-
         \Session::put('locale', \Config::get('locale'));
     }
 
@@ -288,4 +308,3 @@ Route::get('lang/{lang}', function ($lang) {
 Route::get('images/profile/{id}/avatar/{image}', [
     'uses' => 'ProfilesController@userProfileAvatar'
 ]);
-

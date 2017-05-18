@@ -53,7 +53,8 @@
                             <div class="flex-viewport">
                                 <ul class="slides slide-main">
                                     <li class="flex-active-slide"><img
-                                                src="{{ url('image/700×400/' . $object->image_filename) }}"/></li>
+                                                src="{{ url('image/700×400/' . $object->id.'/'. $object->image_filename) }}"/>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -63,7 +64,7 @@
                                 <ul class="slides slide-thumbnail">
                                     <li class="flex-active-slide">
                                         <img draggable="false"
-                                             src="{{ url('image/120×90/' . $object->image_filename) }}">
+                                             src="{{ url('image/120×90/' .  $object->id.'/'.$object->image_filename) }}">
                                     </li>
                                 </ul>
                             </div>
@@ -136,28 +137,28 @@
                             </div>
 
                             <div class="clearfix"></div>
-                                <!-- Short Features  -->
-                                <div id="disqus_thread"></div>
-                                <script>
+                            <!-- Short Features  -->
+                            <div id="disqus_thread"></div>
+                            <script>
 
-                                    /**
-                                     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                                     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-                                    /*
-                                     var disqus_config = function () {
-                                     this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                                     this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                                     };
-                                     */
-                                    (function () { // DON'T EDIT BELOW THIS LINE
-                                        var d = document, s = d.createElement('script');
-                                        s.src = 'https://tmamystore.disqus.com/embed.js';
-                                        s.setAttribute('data-timestamp', +new Date());
-                                        (d.head || d.body).appendChild(s);
-                                    })();
-                                </script>
-                                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
-                                        powered by Disqus.</a></noscript>
+                                /**
+                                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                                /*
+                                 var disqus_config = function () {
+                                 this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                 };
+                                 */
+                                (function () { // DON'T EDIT BELOW THIS LINE
+                                    var d = document, s = d.createElement('script');
+                                    s.src = 'https://tmamystore.disqus.com/embed.js';
+                                    s.setAttribute('data-timestamp', +new Date());
+                                    (d.head || d.body).appendChild(s);
+                                })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                                    powered by Disqus.</a></noscript>
 
 
                         </div>
@@ -209,6 +210,9 @@
                                             class="color">{{ $object->customer->email }}</span>
                                 </li>
                             </ul>
+                            <div id="itemMap" style="width: 100%; height: 370px; margin-bottom:5px;">
+                                {!! Mapper::render() !!}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -245,18 +249,18 @@
     </div><!-- /container -->
 
     {{--<div class="container">--}}
-        {{--<div class="panel panel-default">--}}
-            {{--<form action="{{url('comment')}}" method="post">--}}
-                {{--{{ csrf_field() }}--}}
-                {{--<div class="form-group">--}}
-                    {{--<input type="hidden" name="advertisement_id" value="{{ $object->id }}">--}}
-                    {{--<input type="hidden" name="user_id" value="{{ Auth::id() }}">--}}
-                    {{--<textarea name="comment" class="form-control" rows="5" id="comment"--}}
-                              {{--placeholder="Enter Your Message"></textarea>--}}
-                {{--</div>--}}
+    {{--<div class="panel panel-default">--}}
+    {{--<form action="{{url('comment')}}" method="post">--}}
+    {{--{{ csrf_field() }}--}}
+    {{--<div class="form-group">--}}
+    {{--<input type="hidden" name="advertisement_id" value="{{ $object->id }}">--}}
+    {{--<input type="hidden" name="user_id" value="{{ Auth::id() }}">--}}
+    {{--<textarea name="comment" class="form-control" rows="5" id="comment"--}}
+    {{--placeholder="Enter Your Message"></textarea>--}}
+    {{--</div>--}}
 
-                {{--<button type="submit" class="btn btn-default">Submit</button>--}}
-            {{--</form>--}}
-        {{--</div>--}}
+    {{--<button type="submit" class="btn btn-default">Submit</button>--}}
+    {{--</form>--}}
+    {{--</div>--}}
     {{--</div>--}}
 @endsection

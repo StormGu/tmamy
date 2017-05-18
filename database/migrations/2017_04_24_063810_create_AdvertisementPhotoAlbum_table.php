@@ -11,12 +11,16 @@ class CreateAdvertisementPhotoAlbumTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('advertisement_photo_album', function (Blueprint $table) {
             $table->increments('id');
-            
-            $table->integer('advertisement_id')->nullable();
+
+            $table->integer('advertisement_id')->unsigned();
+            $table->foreign('advertisement_id', 'apa_adv_id_foreign')
+                ->references('id')
+                ->on('advertisement')
+                ->onDelete('cascade');
+
             $table->string('album_title');
 
             $table->timestamps();
@@ -28,8 +32,7 @@ class CreateAdvertisementPhotoAlbumTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('advertisement_photo_album');
     }
 }
