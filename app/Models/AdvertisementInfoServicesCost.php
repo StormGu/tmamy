@@ -18,7 +18,6 @@ class AdvertisementInfoServicesCost extends Model
     // public $timestamps = false;
     // protected $guarded = ['id'];
     protected $fillable = [
-        'advertisement_id',
         'currency_id',
         'service_title',
         'service_cost',

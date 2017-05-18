@@ -50,6 +50,7 @@ Route::group([
     Route::get('AddAdv/{category_id}', 'AdvertisementController@AddAdvertisementStep2');
     Route::get('AddAdv/{category_id}/{subcategory_id}', 'AdvertisementController@AddAdvertisementStep3');
     Route::post('CreateAdv', 'AdvertisementController@CreateAdvertisement');
+    Route::post('CreateService', 'AdvertisementController@CreateService');
 
 });
 

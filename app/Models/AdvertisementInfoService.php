@@ -17,8 +17,6 @@ class AdvertisementInfoService extends Model
     // public $timestamps = false;
     // protected $guarded = ['id'];
     protected $fillable = [
-        'advertisement_id',
-        'gender_id',
         'advertiser_name',
         'email',
         'my_services',
@@ -38,8 +36,8 @@ class AdvertisementInfoService extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function advertisement (){
-        return $this->belongsTo(Advertisement::class);
+    public function advertisement() {
+        return $this->belongsTo(Advertisement::class, 'advertisement_id', 'id');
     }
 
     public function gender() {
