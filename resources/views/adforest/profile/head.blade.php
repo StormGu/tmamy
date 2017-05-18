@@ -47,7 +47,7 @@
 
     <ul class="st-social">
         <li><em>{{ \App\Models\Advertisement::where('user_id', $object->id)->count() }}</em><span>ADS</span></li>
-        <li><em><a href="{{ url('profile/getfollower/'.  $object->id) }}">{{ \App\Models\UserFollower::where('user_id', $object->id)->count() }}</a></em><span>follower</span></li>
+        <li><em><a href="{{ url('profile/getfollower/'.  $object->id) }}">{{ \App\Models\UserFollower::where('user_id', $object->id)->count() }}</a></em><span><a href="{{ url('profile/getfollower/'.  $object->id) }}">follower</a></span></li>
         <li>
             <em class="MyCounter">{{ \App\Models\StoreLike::where('user_id', $object->id)->count() }}</em>
             <span>
