@@ -14,7 +14,7 @@
 */
 
 // Homepage Route
-Route::group(['namespace' => 'Site', 'middleware' => 'adpoints'], function () {
+Route::group(['namespace' => 'Site'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@index');
     Route::get('contact', 'ContactController@index');
@@ -208,14 +208,15 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
     Route::post('profile/Message', 'Site\MessageController@postmsg');
     Route::get('profile/Message/{id}', 'Site\MessageController@getmsg');
-
+    Route::get('profile/Message/getformmsg/{id}', 'Site\MessageController@getformmsg');
+    Route::get('profile/getfollower/{id}', 'Site\UserProfileController@getfollower');
     Route::get('profile/settings/password', 'Site\UserSettingController@password');
     Route::post('profile/settings/password', 'Site\UserSettingController@updateUserPassword');
 
     Route::get('profile/settings/social', 'Site\UserSettingController@social');
     Route::post('profile/settings/social', 'Site\UserSettingController@updateSocial');
 
-    Route::post('profile/Message', 'Site\MessageController@postmsg');
+    
 
     Route::get('profile/upgrade', 'Site\UserSettingController@upgrade');
     Route::post('profile/upgrade', 'Site\UserSettingController@updateUpgrade');

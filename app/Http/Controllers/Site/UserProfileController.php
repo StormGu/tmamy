@@ -180,7 +180,7 @@ class UserProfileController extends Controller
 
         $userfollowers->user_id = $Input['user_id'];
         $userfollowers->user_followers_id = $Input['user_followers_id'];
-
+        $userfollowers->user_followers_name = $Input['user_followers_name'];
 
         $userfollowers->save();
 
@@ -202,11 +202,11 @@ class UserProfileController extends Controller
 
         $data['object'] = User::with('profile')->find($id);
 
-        $countuserfollower = UserFollower::where('user_id', $id)->count();
+       
 
         $user_id = \Auth::id();
 
-        return view('adforest.profile.showprofile', $data, compact('countuserfollower', 'user_id'));
+        return view('adforest.profile.showprofile', $data, compact('user_id'));
     }
 
     public function SubscribeStore(Request $request) {
@@ -254,6 +254,20 @@ class UserProfileController extends Controller
 
     public function msg() {
         return view('adforest.profile.Message');
+    }
+
+    public function getfollower($id){
+        
+        $data['breadcrumbs'][trans('titles.myProfile')] = '#';
+
+        $id = ($id) ? $id : \Auth::id();
+
+        $data['object'] = User::with('profile')->find($id);
+
+       
+
+        
+        return view('adforest.profile.followers',$data);
     }
 
 }

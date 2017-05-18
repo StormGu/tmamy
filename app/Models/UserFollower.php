@@ -19,7 +19,8 @@ class UserFollower extends Model
     // protected $guarded = ['id'];
      protected $fillable = [
          'user_id',
-         'user_followers_id'
+         'user_followers_id',
+         'user_followers_name'
      ];
     // protected $hidden = [];
     // protected $dates = [];
