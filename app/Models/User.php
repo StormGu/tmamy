@@ -145,6 +145,7 @@ class User extends Authenticatable
     }
 
 
+
     function followers()
     {
         return $this->belongsToMany('App\Models\User', 'user_followers', 'user_id', 'user_followers_id');
@@ -157,4 +158,32 @@ class User extends Authenticatable
     function unfollow(User $user) {
         $this->followers()->detach($user->id);
     }
+
+
+    /**
+     * User Profile Relationships
+     *
+     * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function stores() {
+        return $this->hasMany(Store::class);
+    }
+
+
+        /**
+     * User Profile Relationships
+     *
+     * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function advertisements() {
+        return $this->hasMany(Advertisement::class);
+    }
+
+
+
+
+
+
 }
