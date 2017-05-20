@@ -24,36 +24,29 @@
                             </div>
                             <div class="col-lg-2" align="right" style="margin-top: 2px;">
                                 <div style="position: relative;" align="right">
-                                    <a href="#"> <img src="{{ asset('adforest/logo/11.png') }}" class="img-responsive"
-                                                      style="    width: 176px;
-        margin-top: -4px;
-    height: 43px;">
-
+                                    <a href="{{ url('AddAdv') }}">
+                                        <img src="{{ asset('adforest/logo/11.png') }}" class="img-responsive"
+                                             style="width: 176px;margin-top: -4px;height: 43px;">
                                     </a>
                                 </div>
-
                             </div>
 
                             <div class="col-lg-2" align="left" style="margin-top: 2px;">
-                                <a href="#"> <img src="{{ asset('adforest/logo/22.png') }}" class="img-responsive"
-                                                  style="    width: 176px;
-        margin-top: -4px;
-    height: 43px;">
-
+                                <a href="#">
+                                    <img src="{{ asset('adforest/logo/22.png') }}" class="img-responsive"
+                                         style="width: 176px;margin-top: -4px;height: 43px;">
                                 </a>
                             </div>
                             <div class="col-lg-2" style="margin-top: 2px;">
-                                <a href="#"> <img src="{{ asset('adforest/logo/33.png') }}" class="img-responsive"
-                                                  style="    width: 176px;
-        margin-top: -4px;
-    height: 43px;">
+                                <a href="#">
+                                    <img src="{{ asset('adforest/logo/33.png') }}" class="img-responsive"
+                                         style="width: 176px;margin-top: -4px;height: 43px;">
                                 </a>
                             </div>
                             <div class="col-lg-2" style="margin-top: 2px;">
-                                <a href="#"> <img src="{{ asset('adforest/logo/44.png') }}" class="img-responsive"
-                                                  style="    width: 176px;
-        margin-top: -4px;
-    height: 43px;">
+                                <a href="#">
+                                    <img src="{{ asset('adforest/logo/44.png') }}" class="img-responsive"
+                                         style="width: 176px;margin-top: -4px;height: 43px;">
                                 </a>
                             </div>
                             <div class="col-lg-2">

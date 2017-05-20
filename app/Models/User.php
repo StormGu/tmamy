@@ -52,21 +52,7 @@ class User extends Authenticatable
         'admin_ip_address',
         'updated_ip_address',
         'deleted_ip_address',
-        'bio',
-        'gender_id',
-        'language_id',
-        'country_id',
-        'city_id',
-        'address',
-        'dob',
-        'mobile_no',
 
-        'facebook',
-        'twitter',
-        'googleplus',
-        'linkedin',
-        'pinterest',
-        'Points'
     ];
 
     /**

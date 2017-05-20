@@ -47,9 +47,9 @@ class createadvertisementtable extends migration
             $table->integer('currency_id')->nullable();
             $table->double('discount')->nullable();
             $table->integer('language_id')->nullable();
-            $table->biginteger('visits')->nullable();
-            $table->biginteger('love_count')->nullable();
-            $table->biginteger('view_count')->nullable();
+            $table->biginteger('visits')->default(0);
+            $table->biginteger('love_count')->default(0);
+            $table->biginteger('view_count')->default(0);
             $table->double('rating_avg')->nullable();
             $table->integer('rating_count')->nullable();
             $table->boolean('show_mobile_no')->nullable();

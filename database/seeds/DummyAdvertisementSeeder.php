@@ -13,7 +13,7 @@ class DummyAdvertisementSeeder extends Seeder
 
         $faker = Faker\Factory::create();
 
-        foreach (range(1, 5) as $i) {
+        foreach (range(1, 20) as $i) {
             $userId = User::inRandomOrder()->first()->id;
 
             $id = DB::table('advertisement')->insertGetId([

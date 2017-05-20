@@ -8,11 +8,11 @@
 @section('content')
 
     <section class="section-padding gray">
-         @include('adforest.profile.head')
+
         <div class="container">
             <div class="row">
+                @include('adforest.profile.head')
 
-                
                 <br>
                 <div class="row">
                     <!-- Middle Content Area -->
@@ -20,7 +20,7 @@
                     <div class="col-md-12">
                         @include('adforest.common.message')
                         <div class="profile-section margin-bottom-20">
-                            {!! Form::model($object, ['url' => 'profile/upgrade', 'method' => 'post', 'files' => true]) !!}
+                            {!! Form::model($user, ['url' => 'profile/upgrade', 'method' => 'post', 'files' => true]) !!}
 
                             <div class="row">
                                 <div class="form-group col-md-12 {{ $errors->has('roles') ? ' has-error' : '' }}">

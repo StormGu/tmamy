@@ -17,7 +17,7 @@
 						<span class="badge badge-primary pull-right">{{ count($routes) }} routes</span>
 					</div>
 					<div class="panel-body">
-						<div class="table-responsive">
+						<div class="table-responsive" style="overflow: scroll">
 							<table class="table table-striped table-condensed data-table">
 								<thead>
 									<tr class="success">
