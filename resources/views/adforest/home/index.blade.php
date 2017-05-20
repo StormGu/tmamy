@@ -172,26 +172,26 @@
                             @foreach(\App\Models\Store::where('store_account_type_id', 1)->limit(2)->get() as $advm )
 
 
-                                <div class="adv">
-                                    <div class="mbotn1" data-category="shopping">
-                                          
-                                        <img src="{{ url($advm->category->image) }}">
-                                        <span class="colored" title=" cars / rent"> {{ $advm->category->name }}</span>
-                                        
-                                    </div>
-                                    <div class="cover">
-                                       
-                                        <a href="{{ url('profile/ShowStoresDetails/' . $advm->id) }}">
-                                            <img src="{{ url('image/190×244/' . $advm->logo_file_name) }}">
-                                        </a>
+                                {{--<div class="adv">--}}
+                                    {{--<div class="mbotn1" data-category="shopping">--}}
 
-                                    </div>
-                                    <p>{{ $advm->name }}</p>
-                                    <a id="ContentPlaceHolder1_Promoted_HLPromote"
-                                       class="new btn bordered-style"
-                                       href="{{ url('profile/ShowStoresDetails/' . $advm->id) }}">Show Store</a>
+                                        {{--<img src="{{ url($advm->category->image) }}">--}}
+                                        {{--<span class="colored" title=" cars / rent"> {{ $advm->category->name }}</span>--}}
 
-                                </div>
+                                    {{--</div>--}}
+                                    {{--<div class="cover">--}}
+
+                                        {{--<a href="{{ url('profile/ShowStoresDetails/' . $advm->id) }}">--}}
+                                            {{--<img src="{{ url('image/190×244/' . $advm->logo_file_name) }}">--}}
+                                        {{--</a>--}}
+
+                                    {{--</div>--}}
+                                    {{--<p>{{ $advm->name }}</p>--}}
+                                    {{--<a id="ContentPlaceHolder1_Promoted_HLPromote"--}}
+                                       {{--class="new btn bordered-style"--}}
+                                       {{--href="{{ url('profile/ShowStoresDetails/' . $advm->id) }}">Show Store</a>--}}
+
+                                {{--</div>--}}
                             @endforeach
                             <div class="adv">
                                 <div class="category-title" data-category="shopping">

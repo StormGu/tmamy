@@ -204,10 +204,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::post('profile/likeStore', 'Site\UserProfileController@likeStore');
     Route::post('profile/dislikeStore', 'Site\UserProfileController@disLikeStore');
     Route::get('profile/{id}', 'Site\UserProfileController@show')->where('id', '[0-9]+');
-    Route::get('profile/poststores', 'Site\UserProfileController@poststores');
-    Route::post('postnewstores', 'Site\UserProfileController@postnewstores');
 
-    Route::get('profile/ShowStoresDetails/{id}', 'Site\UserProfileController@showstores');
 
     Route::get('profile/adDelet/{id}', 'Site\UserProfileController@deletads');
     Route::get('Message', 'Site\UserProfileController@msg');
@@ -226,12 +223,17 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::get('profile/settings/social', 'Site\UserSettingController@social');
     Route::post('profile/settings/social', 'Site\UserSettingController@updateSocial');
 
-
     Route::get('profile/upgrade', 'Site\UserSettingController@upgrade');
     Route::post('profile/upgrade', 'Site\UserSettingController@updateUpgrade');
 
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);
+
+    // Store Routes
+    Route::get('stores/{user_id}', 'Site\StoreController@index');
+    Route::get('store/{id}', 'Site\StoreController@show');
+    Route::get('store/create', 'Site\StoreController@create');
+    Route::post('store', 'Site\StoreController@store');
 
 
 });
@@ -247,7 +249,7 @@ Route::group(['middleware' => ['auth', 'activated']], function () {
 
 // Resize Image
 
-Route::get('image/{size}/{id}/{name}', function ($size = null, $id = null, $name = null) {
+Route::get('image/{size}/{folder}/{id}/{name}', function ($size = null, $folder = 'advertisement', $id = null, $name = null) {
 
     if (!is_null($size) && !is_null($name)) {
 
@@ -256,8 +258,9 @@ Route::get('image/{size}/{id}/{name}', function ($size = null, $id = null, $name
         else
             $size = explode('×', $size);
 
-        $cache_image = Image::cache(function ($image) use ($size, $id, $name) {
-            return $image->make(storage_path() . '/advertisements/' . $id . '/' . $name)->fit($size[0], $size[1]);
+        $cache_image = Image::cache(function ($image) use ($size, $id, $name, $folder) {
+            // dd(storage_path() . '/' . $folder . '/' . $id . '/' . $name);
+            return $image->make(storage_path() . '/' . $folder . '/' . $id . '/' . $name)->fit($size[0], $size[1]);
 
             // return $image->make(url('/' . $name))->fit($size[0], $size[1]);
         }, 10);
@@ -269,7 +272,7 @@ Route::get('image/{size}/{id}/{name}', function ($size = null, $id = null, $name
 })->where('name', '([A-z\d-\/_.]+)?')->where('id', '[0-9]+');
 
 Route::get('image/{size}/{name}', function ($size = null, $name = null) {
-
+    dd(1);
     if (!is_null($size) && !is_null($name)) {
 
         if (strstr($size, '&times;'))

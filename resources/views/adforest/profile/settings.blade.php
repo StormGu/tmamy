@@ -6,13 +6,13 @@
 @endsection
 
 @section('content')
-
+    @include('adforest.profile.head')
     <section class="section-padding gray">
 
         <div class="container">
             <div class="row">
                 <!-- Middle Content Area -->
-            @include('adforest.profile.head')
+
             <!-- Row End -->
                 <br>
                 <div class="row">

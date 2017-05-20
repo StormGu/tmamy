@@ -1,11 +1,11 @@
 @extends('adforest.layout.master')
 
 @section('content')
-
+    @include('adforest.profile.show_head')
     <section class="section-padding gray">
         <div class="container">
             <div class="row">
-                @include('adforest.profile.show_head')
+
                 <br>
                 @include('adforest.common.message')
                 <div class="row">
@@ -15,15 +15,12 @@
                                 <div class="col-md-12 col-xs-12 col-sm-12 user-archives">
 
                                     @forelse ($objects as $object)
-                                        <div class="row">
-                                            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12  ">
-                                                @include('adforest.advertisement.adv_grid')
-                                            </div>
-                                            @if($loop->iteration %4 ==0 )
+                                        <div class="col-md-3 ">
+                                            @include('adforest.advertisement.adv_grid')
                                         </div>
-                                        <div class="row">
-                                            @endif
-                                        </div>
+                                        @if($loop->iteration %4 ==0 )
+                                            <div class="clearfix"></div>
+                                        @endif
                                     @empty
                                         <section class="advertising">
                                             <div class="banner">
