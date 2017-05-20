@@ -6,12 +6,15 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
+//use App\Traits\BaseModel;
+use App\Traits\NPerGroup;
 
 
 class Advertisement extends Model
 {
     use CrudTrait;
     use softDeletes;
+    use NPerGroup;
 
     /*
   |--------------------------------------------------------------------------
@@ -116,6 +119,16 @@ class Advertisement extends Model
     public function properties() {
         return $this->belongsToMany(Property::class, 'advertisement_property', 'advertisement_id', 'property_id');
     }
+
+    public function photos() {
+        return $this->hasMany(AdvertisementPhoto::class);
+    }
+
+
+    
+
+
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

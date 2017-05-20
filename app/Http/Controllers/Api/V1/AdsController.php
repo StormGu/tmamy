@@ -14,7 +14,7 @@ class AdsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    private $is_success;
+    private $is_success = false;
 
     public function index() {
         $advertisement = Advertisement::orderBy('id', 'desc')->paginate(20)->toArray();
@@ -51,7 +51,7 @@ class AdsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $advertisement = Advertisement::find($id);
+        $advertisement = Advertisement::with(['photos','user'])->find($id);
 
         if (count($advertisement))
             $this->is_success = true;
@@ -91,14 +91,13 @@ class AdsController extends Controller
     }
     public function getadsbasedcat()
     {
-        $cat = Category::parents()->with([
-            'advertisements' => function ($query) {
-                return $query->limit(2);
+       
+       $cat = Category::parents()->with([
+            'latestAdvertisements' => function ($query) {
+             $query->where('is_free',0);
+             $query->with('user' ); 
             }
         ])->get();
-
-
-
 
         if (count($cat))
             $this->is_success = true;
