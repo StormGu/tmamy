@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +19,7 @@ class UserMessage extends Model
      protected $fillable = [
          'to_user_id',
          'from_user_id',
+         'form_name',
          'messages'
      ];
     // protected $hidden = [];
@@ -35,7 +36,10 @@ class UserMessage extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+           public function user()
+           {
+             return $this->belongsTo(User::class);
+           }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

@@ -15,8 +15,13 @@ class CreateAdLovesTable extends Migration
     {
         Schema::create('ad_loves', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('advertisement_id');
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->integer('advertisement_id')->unsigned();
+            $table->foreign('advertisement_id')->references('id')->on('advertisement')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

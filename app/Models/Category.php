@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 use Backpack\CRUD\ModelTraits\SpatieTranslatable\HasTranslations;
+use App\Traits\NPerGroup;
 
 class Category extends Model
 {
 
     use CrudTrait;
     use HasTranslations;
+    use NPerGroup;
 
     /*
     |--------------------------------------------------------------------------
@@ -43,18 +45,26 @@ class Category extends Model
         return $this->hasMany(Advertisement::class, 'category_id', 'id');
     }
 
+
+    public function latestAdvertisements()
+    {
+         return $this->advertisements()->latest()->nPerGroup('category_id', 2);
+    }
+
+
     public function parent() {
         return $this->belongsTo(Category::class, 'parent_id');
     }
 
+
+
     public function children() {
         return $this->hasMany(Category::class, 'parent_id');
     }
-    public function adchildren()
-    {
-        return $this->hasMany(Advertisement::class,'category_id');
-    }
 
+    public function adchildren() {
+        return $this->hasMany(Advertisement::class, 'category_id');
+    }
 
     public function properties() {
         return $this->hasMany(Property::class, 'category_id', 'id');

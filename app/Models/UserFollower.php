@@ -19,7 +19,8 @@ class UserFollower extends Model
     // protected $guarded = ['id'];
      protected $fillable = [
          'user_id',
-         'user_followers_id'
+         'user_followers_id',
+         'user_followers_name'
      ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -36,10 +37,13 @@ class UserFollower extends Model
     |--------------------------------------------------------------------------
     */
         public function user(){
-            return $this->belongsTo(User::class);
+            return $this->belongsTo(User::class, 'user_followers_id');
         }
 
-
+         
+        public function profile(){
+            return $this->belongsTo(Profile::class);
+        }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

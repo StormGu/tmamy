@@ -11,12 +11,16 @@ class CreateAdvertisementInfoOfferTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('advertisement_info_offer', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('advertisement_id')->nullable();
+            $table->integer('advertisement_id')->unsigned();
+            $table->foreign('advertisement_id', 'aio_adv_id_foreign')
+                ->references('id')
+                ->on('advertisement')
+                ->onDelete('cascade');
+
             $table->float('new_price')->nullable();
             $table->float('saving_price')->nullable();
             $table->float('discount_ratio')->nullable();
@@ -39,8 +43,7 @@ class CreateAdvertisementInfoOfferTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('advertisement_info_offer');
     }
 }

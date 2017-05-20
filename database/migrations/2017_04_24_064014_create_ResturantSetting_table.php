@@ -6,17 +6,14 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateResturantSettingTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
+
+    public function up() {
         Schema::create('resturant_setting', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('store_id')->nullable();
+            $table->integer('store_id')->unsigned();
+            $table->foreign('store_id')->references('id')->on('store')->onDelete('cascade');
+
             $table->integer('language_id')->nullable();
             $table->integer('currency_id')->nullable();
             $table->float('minimum_order_amount')->nullable();
@@ -36,8 +33,7 @@ class CreateResturantSettingTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('resturant_setting');
     }
 }

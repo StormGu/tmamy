@@ -14,7 +14,8 @@
 */
 
 // Homepage Route
-Route::group(['namespace' => 'Site', 'middleware' => 'adpoints'], function () {
+
+Route::group(['namespace' => 'Site'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@index');
     Route::get('contact', 'ContactController@index');
@@ -37,6 +38,7 @@ Route::group(['namespace' => 'Site', 'middleware' => 'adpoints'], function () {
     Route::get('advertisement/{id}', 'AdvertisementController@get');
     Route::post('comment', 'AdvertisementController@comment');
 
+
 });
 
 // Homepage Route
@@ -50,6 +52,7 @@ Route::group([
     Route::get('AddAdv/{category_id}', 'AdvertisementController@AddAdvertisementStep2');
     Route::get('AddAdv/{category_id}/{subcategory_id}', 'AdvertisementController@AddAdvertisementStep3');
     Route::post('CreateAdv', 'AdvertisementController@CreateAdvertisement');
+    Route::post('CreateService', 'AdvertisementController@CreateService');
 
     /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
 //    Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
@@ -95,6 +98,9 @@ Route::group([
     CRUD::resource('constantkey', 'ConstantKeyCrudController');
 
     Route::get('routes', 'AdminDetailsController@listRoutes');
+
+    CRUD::resource('country', 'CountryCrudController');
+    CRUD::resource('zone', 'ZoneCrudController');
 });
 
 // Registered, activated, and is admin routes.
@@ -211,14 +217,15 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
     Route::post('profile/Message', 'Site\MessageController@postmsg');
     Route::get('profile/Message/{id}', 'Site\MessageController@getmsg');
-
+    Route::get('profile/Message/getformmsg/{id}', 'Site\MessageController@getformmsg');
+    Route::get('profile/getfollower/{id}', 'Site\UserProfileController@getfollower');
     Route::get('profile/settings/password', 'Site\UserSettingController@password');
     Route::post('profile/settings/password', 'Site\UserSettingController@updateUserPassword');
 
     Route::get('profile/settings/social', 'Site\UserSettingController@social');
     Route::post('profile/settings/social', 'Site\UserSettingController@updateSocial');
 
-    Route::post('profile/Message', 'Site\MessageController@postmsg');
+    
 
     Route::get('profile/upgrade', 'Site\UserSettingController@upgrade');
     Route::post('profile/upgrade', 'Site\UserSettingController@updateUpgrade');
@@ -239,6 +246,28 @@ Route::group(['middleware' => ['auth', 'activated']], function () {
 });
 
 // Resize Image
+
+Route::get('image/{size}/{id}/{name}', function ($size = null, $id = null, $name = null) {
+
+    if (!is_null($size) && !is_null($name)) {
+
+        if (strstr($size, '&times;'))
+            $size = explode('&times;', $size);
+        else
+            $size = explode('×', $size);
+
+        $cache_image = Image::cache(function ($image) use ($size, $id, $name) {
+            return $image->make(storage_path() . '/advertisements/' . $id . '/' . $name)->fit($size[0], $size[1]);
+
+           // return $image->make(url('/' . $name))->fit($size[0], $size[1]);
+        }, 10);
+        return Response::make($cache_image, 200, ['Content-Type' => 'image']);
+    }
+    else {
+        abort(404);
+    }
+})->where('name', '([A-z\d-\/_.]+)?')->where('id', '[0-9]+');
+
 Route::get('image/{size}/{name}', function ($size = null, $name = null) {
 
     if (!is_null($size) && !is_null($name)) {
@@ -249,22 +278,17 @@ Route::get('image/{size}/{name}', function ($size = null, $name = null) {
             $size = explode('×', $size);
 
         $cache_image = Image::cache(function ($image) use ($size, $name) {
-
             return $image->make(url('/' . $name))->fit($size[0], $size[1]);
         }, 10);
-
         return Response::make($cache_image, 200, ['Content-Type' => 'image']);
     }
     else {
         abort(404);
     }
-
 })->where('name', '([A-z\d-\/_.]+)?');
-
 
 // Change Locale Route
 Route::get('lang/{lang}', function ($lang) {
-
 
     // Get Available Languages
     $available_locales = array_column(json_decode(json_encode(\DB::table('languages')
@@ -274,11 +298,9 @@ Route::get('lang/{lang}', function ($lang) {
         ->get()), true), 'code');
 
     if (in_array($lang, $available_locales)) {
-
         \Session::put('locale', $lang);
     }
     else {
-
         \Session::put('locale', \Config::get('locale'));
     }
 

@@ -8,11 +8,12 @@
 
     <section class="section-padding gray">
         <!-- Main Container -->
+        @include('adforest.profile.head')
         <div class="container">
 
             <!-- Row -->
             <div class="row">
-            @include('adforest.profile.head')
+            
 
             <!-- Middle Content Area -->
                 <br>
@@ -98,12 +99,12 @@
                                                         <a href="{{ url('adv/'. $object->id) }}">{{ $object->title }}</a>
                                                     </h3>
                                                     <!-- Category -->
-                                                    <div class="category-title"><span><a
-                                                                    href="#">{{ $object->category->title }}</a></span>
+                                                    <div class="category-title">
+                                                        <span><a href="#">{{ $object->category->title }}</a></span>
                                                     </div>
                                                     <!-- Short Description -->
                                                     <div class="clearfix visible-xs-block"></div>
-                                                    <p class="hidden-sm">{{ $object->details }}</p>
+                                                    <p class="hidden-sm">{{ str_limit($object->details, 150, $end = ' ..') }}</p>
                                                     <!-- Ad Features -->
 
                                                     <!-- Ad History -->

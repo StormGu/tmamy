@@ -124,7 +124,7 @@
     min-height: 133px;">
                                                             <a href="{{ url('adv/'. $adv->id) }}">
                                                                 <img class="img-responsive myimg"
-                                                                     src="{{ url('image/190×140/' . $adv->image_filename) }}">
+                                                                     src="{{ url('image/190×140/' . $adv->id . '/' . $adv->image_filename) }}">
                                                             </a>
                                                         </div>
                                                         <div class="detail-sec">
@@ -174,16 +174,19 @@
 
                                 <div class="adv">
                                     <div class="mbotn1" data-category="shopping">
-                                        <img src="">
+                                          
+                                        <img src="{{ url($advm->category->image) }}">
                                         <span class="colored" title=" cars / rent"> {{ $advm->category->name }}</span>
+                                        
                                     </div>
                                     <div class="cover">
-
-                                        <a href="">
+                                       
+                                        <a href="{{ url('profile/ShowStoresDetails/' . $advm->id) }}">
                                             <img src="{{ url('image/190×244/' . $advm->logo_file_name) }}">
                                         </a>
 
                                     </div>
+                                    <p>{{ $advm->name }}</p>
                                     <a id="ContentPlaceHolder1_Promoted_HLPromote"
                                        class="new btn bordered-style"
                                        href="{{ url('profile/ShowStoresDetails/' . $advm->id) }}">Show Store</a>

@@ -11,17 +11,21 @@ class CreateAdvertisementInfoHealthDoctorClinicTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('advertisement_info_health_doctor_clinic', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('advertisement_id')->nullable();
-            $table->string('clinic_name');
-            $table->string('clinic_mobile_no');
-            $table->string('clinic_phone_no');
-            $table->string('address');
-            $table->string('lon');
-            $table->string('lat');
+            $table->integer('advertisement_id')->unsigned();
+            $table->foreign('advertisement_id', 'aihdc_id_foreign')
+                ->references('id')
+                ->on('advertisement')
+                ->onDelete('cascade');
+
+            $table->string('clinic_name')->nullable();
+            $table->string('clinic_mobile_no')->nullable();
+            $table->string('clinic_phone_no')->nullable();
+            $table->string('address')->nullable();
+            $table->double('lon')->nullable();
+            $table->double('lat')->nullable();
 
             $table->timestamps();
         });
@@ -32,8 +36,7 @@ class CreateAdvertisementInfoHealthDoctorClinicTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('advertisement_info_health_doctor_clinic');
     }
 }
