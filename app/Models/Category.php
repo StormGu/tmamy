@@ -46,16 +46,14 @@ class Category extends Model
     }
 
 
-    public function latestAdvertisements()
-    {
-         return $this->advertisements()->latest()->nPerGroup('category_id', 2);
+    public function latestAdvertisements() {
+        return $this->advertisements()->latest()->nPerGroup('category_id', 2);
     }
 
 
     public function parent() {
         return $this->belongsTo(Category::class, 'parent_id');
     }
-
 
 
     public function children() {
@@ -69,6 +67,7 @@ class Category extends Model
     public function properties() {
         return $this->belongsToMany(Property::class, 'category_properties', 'category_id', 'property_id');
     }
+
     public function features() {
         return $this->belongsToMany(Feature::class, 'category_feature', 'category_id', 'feature_id');
     }
