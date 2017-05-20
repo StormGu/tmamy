@@ -203,7 +203,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::post('profile/disSubscribeStore', 'Site\UserProfileController@disSubscribeStore');
     Route::post('profile/likeStore', 'Site\UserProfileController@likeStore');
     Route::post('profile/dislikeStore', 'Site\UserProfileController@disLikeStore');
-    Route::get('profile/{id}', 'Site\UserProfileController@showprofile')->where('id', '[0-9]+');
+    Route::get('profile/{id}', 'Site\UserProfileController@show')->where('id', '[0-9]+');
     Route::get('profile/poststores', 'Site\UserProfileController@poststores');
     Route::post('postnewstores', 'Site\UserProfileController@postnewstores');
 
@@ -213,19 +213,19 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     Route::get('Message', 'Site\UserProfileController@msg');
 
     Route::get('profile/settings', 'Site\UserSettingController@index');
-    Route::post('profile/settings', 'Site\UserSettingController@update');
+    Route::post('profile/settings', 'Site\UserSettingController@updateProfile');
+    Route::post('profile/settings/updateUser', 'Site\UserSettingController@updateUser');
 
     Route::post('profile/Message', 'Site\MessageController@postmsg');
-    Route::get('profile/Message/{id}', 'Site\MessageController@getmsg');
     Route::get('profile/Message/getformmsg/{id}', 'Site\MessageController@getformmsg');
     Route::get('profile/getfollower/{id}', 'Site\UserProfileController@getfollower');
     Route::get('profile/settings/password', 'Site\UserSettingController@password');
     Route::post('profile/settings/password', 'Site\UserSettingController@updateUserPassword');
+    Route::get('profile/inbox', 'Site\MessageController@inbox');
 
     Route::get('profile/settings/social', 'Site\UserSettingController@social');
     Route::post('profile/settings/social', 'Site\UserSettingController@updateSocial');
 
-    
 
     Route::get('profile/upgrade', 'Site\UserSettingController@upgrade');
     Route::post('profile/upgrade', 'Site\UserSettingController@updateUpgrade');
@@ -259,7 +259,7 @@ Route::get('image/{size}/{id}/{name}', function ($size = null, $id = null, $name
         $cache_image = Image::cache(function ($image) use ($size, $id, $name) {
             return $image->make(storage_path() . '/advertisements/' . $id . '/' . $name)->fit($size[0], $size[1]);
 
-           // return $image->make(url('/' . $name))->fit($size[0], $size[1]);
+            // return $image->make(url('/' . $name))->fit($size[0], $size[1]);
         }, 10);
         return Response::make($cache_image, 200, ['Content-Type' => 'image']);
     }

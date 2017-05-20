@@ -63,11 +63,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data) {
 
-//        $data['captcha'] = $this->captchaCheck();
-//
-//        if (App::environment('local')) {
-//            $data['captcha'] = true;
-//        }
+        //        $data['captcha'] = $this->captchaCheck();
+        //
+        //        if (App::environment('local')) {
+        //            $data['captcha'] = true;
+        //        }
 
         return Validator::make($data, [
             'first_name' => 'required|max:255',
@@ -75,8 +75,9 @@ class RegisterController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|max:20|confirmed',
             'password_confirmation' => 'required|same:password',
-            //'g-recaptcha-response'  => '',
-            //'captcha'               => 'required|min:1'
+            'g-recaptcha-response' => 'required',
+            //'captcha' => 'required|min:1',
+            'agree' => 'required'
         ], [
             'name.unique' => trans('auth.userNameTaken'),
             'name.required' => trans('auth.userNameRequired'),
@@ -88,7 +89,8 @@ class RegisterController extends Controller
             'password.min' => trans('auth.PasswordMin'),
             'password.max' => trans('auth.PasswordMax'),
             'g-recaptcha-response.required' => trans('auth.captchaRequire'),
-            'captcha.min' => trans('auth.CaptchaWrong')
+            'captcha.min' => trans('auth.CaptchaWrong'),
+            'agree.required' => trans('auth.agreeRequired')
         ]);
 
     }

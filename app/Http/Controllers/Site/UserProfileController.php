@@ -27,9 +27,14 @@ class UserProfileController extends Controller
 
         $id = ($id) ? $id : \Auth::id();
 
-        $data['object'] = User::with('profile')->find($id);
+        $data['user'] = User::with('profile')->find($id);
+        $data['profile'] = Profile::whereUserId($id)->first();
 
-        return View('adforest.profile.index', $data);
+        $objects = Advertisement::query();
+
+        $data['objects'] = $objects->whereUserId($id)->orderBy('id', 'desc')->get();
+
+        return View('adforest.profile.show', $data);
     }
 
     public function update() {
@@ -40,7 +45,8 @@ class UserProfileController extends Controller
         $data['breadcrumbs'][trans('titles.myAds')] = '#';
 
         // User Get
-        $data['object'] = User::with('profile')->find(\Auth::id());
+        $data['user'] = \Auth::user();
+        $data['profile'] = Profile::whereUserId(\Auth::id())->first();
 
         $objects = Advertisement::query();
 
@@ -58,7 +64,8 @@ class UserProfileController extends Controller
         $data['breadcrumbs'][trans('titles.myStores')] = '#';
 
         // User Get
-        $data['object'] = User::with('profile')->find(\Auth::id());
+        $data['user'] = \Auth::user();
+        $data['profile'] = Profile::whereUserId(\Auth::id())->first();
 
         $objects = Store::query();
 
@@ -111,7 +118,7 @@ class UserProfileController extends Controller
 
         $stors->logo_file_name = 'uploads/' . $logoName;
         $stors->status = 'waiting_approval';
-        $stors->main_category =  1;
+        $stors->main_category = 1;
         $stors->name = "ibrss";
         $stors->background_file_name = 'uploads/' . $logoName;
         $stors->cr_no = 15;
@@ -123,11 +130,7 @@ class UserProfileController extends Controller
         $stors->pinterest = "pinterest";
 
 
-
-
-
-
-            $stors->save();
+        $stors->save();
 
 
         return redirect()->back();
@@ -174,39 +177,25 @@ class UserProfileController extends Controller
 
     public function follower(Request $request) {
 
+        $userFollow = new UserFollower();
+        $userFollow->fill($request->except('_token'));
+        $userFollow->save();
 
-        $userfollowers = new UserFollower();
-        $Input = $request->all();
-
-        $userfollowers->user_id = $Input['user_id'];
-        $userfollowers->user_followers_id = $Input['user_followers_id'];
-        $userfollowers->user_followers_name = $Input['user_followers_name'];
-
-        $userfollowers->save();
-
-        return redirect()->back();
+        return redirect('profile/' . $request->user_id)->withMessage([
+            'type' => 'success',
+            'message' => trans('common.success_followed')
+        ]);
     }
 
     public function unfollow(Request $request) {
-        $Input = $request->all();
 
-        DB::table('user_followers')->where('user_followers_id', $Input['user_followers_id'])->delete();
+        $follower = UserFollower::whereUserFollowersId(\Auth::id())->whereUserId($request->user_id)->first();
+        $follower->delete();
 
-        return redirect()->back();
-    }
-
-    public function showprofile($id) {
-        $data['breadcrumbs'][trans('titles.myProfile')] = '#';
-
-        $id = ($id) ? $id : \Auth::id();
-
-        $data['object'] = User::with('profile')->find($id);
-
-       
-
-        $user_id = \Auth::id();
-
-        return view('adforest.profile.showprofile', $data, compact('user_id'));
+        return redirect('profile/' . $request->user_id)->withMessage([
+            'type' => 'success',
+            'message' => trans('common.success_deleted')
+        ]);
     }
 
     public function SubscribeStore(Request $request) {
@@ -256,18 +245,16 @@ class UserProfileController extends Controller
         return view('adforest.profile.Message');
     }
 
-    public function getfollower($id){
-        
+    public function getfollower($id) {
+
         $data['breadcrumbs'][trans('titles.myProfile')] = '#';
 
         $id = ($id) ? $id : \Auth::id();
 
         $data['object'] = User::with('profile')->find($id);
 
-       
 
-        
-        return view('adforest.profile.followers',$data);
+        return view('adforest.profile.followers', $data);
     }
 
 }

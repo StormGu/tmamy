@@ -57,17 +57,28 @@
                             <p class="form-group ">
                             <div class="g-recaptcha" data-sitekey="{{ env('RE_CAP_SITE') }}"></div>
                             </p>
+                            @if ($errors->has('g-recaptcha-response'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                            @endif
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-7">
                                         <div class="skin-minimal">
                                             <ul class="list">
                                                 <li>
-                                                    <input type="checkbox" id="minimal-checkbox-1">
+                                                    <input name="agree" type="checkbox" id="minimal-checkbox-1">
                                                     <label for="minimal-checkbox-1">@lang('auth.agree')</label>
                                                 </li>
                                             </ul>
                                         </div>
+                                        @if ($errors->has('agree'))
+                                            <span class="help-block">
+                                            <strong>{{ $errors->first('agree') }}</strong>
+                                                @endif
+
+                                    </span>
                                     </div>
 
                                 </div>
@@ -78,7 +89,7 @@
                         <!-- Form -->
                     </div>
 
-                    
+
                     <!-- Middle Content Area  End -->
                 </div>
                 <!-- Row End -->

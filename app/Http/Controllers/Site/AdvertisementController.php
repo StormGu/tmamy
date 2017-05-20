@@ -44,6 +44,9 @@ class AdvertisementController extends Controller
 
         $object = Advertisement::find($id);
 
+        $object->view_count = ++$object->view_count;
+        $object->save();
+
         $data['breadcrumbs'][$object->title] = '#';
 
         if (!$object) {

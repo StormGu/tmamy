@@ -30,12 +30,6 @@ class UserSettingRequest extends FormRequest
             ];
         }
 
-        if ($this->password) {
-            $rules += [
-                'password' => 'required|confirmed',
-                'password_confirmation' => 'required|same:password',
-            ];
-        }
 
         return $rules;
     }

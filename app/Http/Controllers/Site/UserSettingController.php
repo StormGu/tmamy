@@ -17,12 +17,13 @@ class UserSettingController extends Controller
 
         $data['breadcrumbs'][trans('auth.settings')] = '#';
 
-        $data['object'] = \Auth::user();
+        $data['user'] = \Auth::user();
+        $data['profile'] = Profile::whereUserId(\Auth::id())->first();
 
         return View('adforest.profile.settings', $data);
     }
 
-    public function update(UserSettingRequest $request) {
+    public function updateProfile(UserSettingRequest $request) {
 
         if (\Input::hasFile('avatar')) {
             $currentUser = \Auth::user();
@@ -39,20 +40,55 @@ class UserSettingController extends Controller
 
             // Save the public image path
             $currentUser->profile->avatar = $public_path;
+            $currentUser->profile->avatar_status = 1;
             $currentUser->profile->save();
 
         }
 
-        if ($request->password) {
+        //
+        //        $validator = \Validator::make($request->all(), [
+        //            'first_name' => 'required|max:255',
+        //            'last_name' => 'required|max:255',
+        //            'email' => 'required|email|max:255|unique:users',
+        //            // Later
+        //        ], [
+        //            'first_name.required' => trans('auth.fNameRequired'),
+        //            'last_name.required' => trans('auth.lNameRequired'),
+        //            'email.required' => trans('auth.emailRequired'),
+        //            'email.email' => trans('auth.emailInvalid'),
+        //        ]);
+        //
+        //        if ($validator->fails()) {
+        //            $this->throwValidationException($request, $validator);
+        //        }
 
-            $request = $request->except('_token');
-            $request['password'] = bcrypt($request['password']);
+        if (Profile::whereUserId(\Auth::user()->id)->update($request->except('_token', 'avatar', 'avatar_status'))) {
+            return redirect('profile/settings')->withMessage([
+                'type' => 'success',
+                'message' => trans('common.success_edit')
+            ]);
         }
-        else
-            $request = $request->except('_token', 'password');
+    }
 
-        if (User::find(\Auth::user()->id)->update($request)) {
+    public function updateUser(Request $request) {
 
+        $validator = \Validator::make($request->all(), [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . \Auth::id()
+            // Later
+        ], [
+            'first_name.required' => trans('auth.fNameRequired'),
+            'last_name.required' => trans('auth.lNameRequired'),
+            'email.required' => trans('auth.emailRequired'),
+            'email.email' => trans('auth.emailInvalid'),
+        ]);
+
+        if ($validator->fails()) {
+            $this->throwValidationException($request, $validator);
+        }
+
+        if (User::find(\Auth::user()->id)->update($request->except('_token'))) {
             return redirect('profile/settings')->withMessage([
                 'type' => 'success',
                 'message' => trans('common.success_edit')
@@ -63,17 +99,12 @@ class UserSettingController extends Controller
     public function password() {
         $data['breadcrumbs'][trans('auth.password')] = '#';
 
-        $data['object'] = \Auth::user();
+        $data['user'] = \Auth::user();
+        $data['profile'] = Profile::whereUserId(\Auth::id())->first();
 
         return View('adforest.profile.password', $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request|\Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function updateUserPassword(Request $request) {
 
         $user = User::findOrFail(\Auth::id());
@@ -106,31 +137,25 @@ class UserSettingController extends Controller
         ]);
     }
 
-
     public function social() {
+
         $data['breadcrumbs'][trans('auth.social')] = '#';
 
-        $data['object'] = \Auth::user();
+        $data['user'] = \Auth::user();
+        $data['profile'] = Profile::whereUserId(\Auth::id())->first();
 
         return View('adforest.profile.social', $data);
     }
 
     public function updateSocial(Request $request) {
 
-        $user = User::findOrFail(\Auth::id());
+        $profile = Profile::whereUserId(\Auth::id())->first();
+        $profile->fill($request->except('_token'));
+        $profile->save();
+
         $ipAddress = new CaptureIpTrait;
-
-        $validator = \Validator::make($request->all(), [
-            'facebook' => '',
-            'twitter' => '',
-        ]);
-
-        if ($validator->fails()) {
-            $this->throwValidationException($request, $validator);
-        }
-        $user->fill($request->except('_token'));
+        $user = \Auth::user();
         $user->updated_ip_address = $ipAddress->getClientIp();
-
         $user->save();
 
         return redirect('profile/settings/social')->withMessage([
@@ -139,12 +164,12 @@ class UserSettingController extends Controller
         ]);
     }
 
-
     public function upgrade() {
 
         $data['breadcrumbs'][trans('profile.upgrade')] = '#';
 
-        $data['object'] = \Auth::user();
+        $data['user'] = \Auth::user();
+        $data['profile'] = Profile::whereUserId(\Auth::id())->first();
 
         return View('adforest.profile.upgrade', $data);
     }

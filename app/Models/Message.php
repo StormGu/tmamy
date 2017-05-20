@@ -12,21 +12,15 @@ class Message extends Model
 |--------------------------------------------------------------------------
 */
 
-     protected $table = 'user_messages';
+    protected $table = 'user_messages';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-     protected $fillable = [
-         'to_user_id',
-         'from_user_id',
-         'messages'
-     ];
-     protected $appends = [
-         'sender_name',
-         'recipient_name'
-     ];
-
-     
+    protected $fillable = [
+        'to_user_id',
+        'from_user_id',
+        'messages'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -42,11 +36,9 @@ class Message extends Model
     |--------------------------------------------------------------------------
     */
 
-        public function user(){
-            return $this->belongsTo(User::class);
-        }
-
-
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -59,33 +51,6 @@ class Message extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-
-   public function getSenderNameAttribute($value)
-    {
-     $this->sender = \DB::table($this->table)
-                ->join('users', function ($join) {
-                    $join->on('users.id', '=', $this->table.'.from_user_id');
-                })
-                ->where($this->table.'.id', $this->id)
-              //  ->orderBy('supports.recipient_admin', 'desc')
-                ->value('users.first_name');
-        
-        return $this->sender;   
-         }
-
-    public function getRecipientNameAttribute($value)
-    {
-             $this->recipient = \DB::table($this->table)
-                ->join('users', function ($join) {
-                    $join->on('users.id', '=', $this->table.'.to_user_id');
-                })
-                ->where($this->table.'.id', $this->id)
-              //  ->orderBy('supports.recipient_admin', 'desc')
-                ->value('users.first_name');
-        
-        return $this->recipient;
-    }
-
 
     /*
     |--------------------------------------------------------------------------
