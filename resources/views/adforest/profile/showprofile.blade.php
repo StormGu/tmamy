@@ -1,4 +1,4 @@
-@extends('adforest.layout.oldmaster')
+@extends('adforest.layout.master')
 
 
 

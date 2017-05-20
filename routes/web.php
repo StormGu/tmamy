@@ -55,13 +55,13 @@ Route::group([
     Route::post('CreateService', 'AdvertisementController@CreateService');
     Route::post('CreateRestaurant', 'AdvertisementController@CreateRestaurant');
 
-<<<<<<< HEAD
+
     /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
 //    Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
 //        ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
-=======
+
     Route::get('getSubCategories/{category_id}', 'AdvertisementController@getSubCategories');
->>>>>>> f4ab1a33f9098c21bb51b97805200465b21d500a
+
 });
 
 // Authentication Routes

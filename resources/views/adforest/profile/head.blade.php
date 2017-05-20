@@ -37,12 +37,12 @@
 
 
 <div style="margin-bottom: 0px !important;height: 129px;" class="profile-data">
-    <div class="container">
+
 
         <div class="image" data-user="avatar" data-type="B">
             <img id="imgAvatar"
                  src="@if (\Auth::user()->profile->avatar_status == 1){{ url(\Auth::user()->profile->avatar) }} @else {{ Gravatar::get(\Auth::user()->email) }} @endif">
-        </div>
+        
     </div>
 
     <ul class="st-social">
