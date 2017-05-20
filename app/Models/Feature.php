@@ -6,7 +6,7 @@ use Backpack\CRUD\ModelTraits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class FeatureList extends Model
+class Feature extends Model
 {
     use CrudTrait;
     use HasTranslations;
@@ -17,11 +17,11 @@ class FeatureList extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'advertisement_feature_list';
+    protected $table = 'features';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'parent_id'];
     // protected $hidden = [];
     // protected $dates = [];
     public $translatable = ['name'];
@@ -39,18 +39,18 @@ class FeatureList extends Model
     */
 
     public function parent() {
-        return $this->belongsTo(FeatureList::class, 'parent_id');
+        return $this->belongsTo(Feature::class, 'parent_id');
     }
 
     public function children() {
-        return $this->hasMany(FeatureList::class, 'parent_id');
+        return $this->hasMany(Feature::class, 'parent_id');
     }
 
     public function advertisements() {
-        return $this->belongsToMany(Advertisement::class, 'advertisement_feature', 'feature_list_id', 'advertisement_id');
+        return $this->belongsToMany(Advertisement::class, 'advertisement_feature', 'feature_list_id', 'advertisement_id')->withTimestamps();
     }
 
-    public function categories(){
+    public function categories() {
         return $this->belongsToMany(Category::class, 'category_feature', 'feature_id', 'category_id');
     }
 

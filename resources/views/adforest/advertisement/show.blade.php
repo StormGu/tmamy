@@ -1,4 +1,4 @@
-@extends('adforest.layout.oldmaster')
+@extends('adforest.layout.master')
 
 @section('content')
     <div class="container">
@@ -32,7 +32,7 @@
     <section class="section-padding error-page pattern-bgs gray ">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-xs-12 col-sm-12">
+                <div class="col-md-9 col-xs-12 col-sm-12">
                     <div class="single-ad">
                         <div class="ad-box featured-border">
                             <h1>{{ $object->title }}</h1>
@@ -90,7 +90,7 @@
 
                         <div class="ad-box">
 
-                            @if($features->count())
+                            @if($properties->count())
                                 <div class="short-features">
                                     <div class="heading-panel">
                                         <h3 class="main-title text-left">
@@ -105,19 +105,27 @@
                                 </div>
                             @endif
 
-                            @if($features->count())
+                            @if($features)
                                 <div class="short-features">
                                     <div class="heading-panel">
                                         <h3 class="main-title text-left">
-                                            @lang('advertisement.properties')
+                                            @lang('advertisement.features')
                                         </h3>
                                     </div>
                                     <div class="desc-points">
-                                        <ul>
-                                            @foreach($features as $feature)
-                                                <li>{{ $feature->name }}</li>
-                                            @endforeach
-                                        </ul>
+                                        @foreach($features as $key => $feature)
+                                            <ul>
+                                                <li>{{ $key }}
+                                                    @if(is_array($feature))
+                                                        <ul style="padding-left: 10px;">
+                                                            @foreach($feature as $key => $feature)
+                                                                <li>{{ $feature }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
+                                            </ul>
+                                        @endforeach
                                     </div>
                                 </div>
                         @endif
@@ -164,7 +172,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="white-bg user-contact-info margin-bottom-20">
                         <div class="text-center">
                             <img class="image margin-top-40" alt=""

@@ -71,9 +71,9 @@
                             @foreach($properties as $property)
                                 <div class="form-group @if ($errors->has($property->name)) has-error @endif">
                                     @if ($property->type == 'text')
-                                        {!! Form::text('properties[' . $property->name . ']', null, ['placeholder' => $property->label, 'class' => 'form-control margin-top-10']) !!}
+                                        {!! Form::text('properties[' . $property->id . ']', null, ['placeholder' => $property->label, 'class' => 'form-control margin-top-10']) !!}
                                     @elseif($property->type == 'select')
-                                        {!! Form::select('properties[' . $property->name . ']', \App\Models\Constant::where('key', '=', $property->key)->pluck('value', 'id'), null, ['placeholder' => $property->label, 'class' => 'form-control margin-top-10']) !!}
+                                        {!! Form::select('properties[' . $property->id . ']', \App\Models\ListOfValueDetail::where('parent_id', '=', $property->key)->pluck('title', 'id'), null, ['placeholder' => $property->label, 'class' => 'form-control margin-top-10']) !!}
                                     @endif
                                     @if ($errors->has($property->name))
                                         <span class="text-danger">{{ $errors->first($property->name) }}</span>
@@ -107,8 +107,8 @@
                             <hr>
                             @foreach($features as $feature)
                                 <div class="form-group">
-                                    <h2>{{ $feature->name }}</h2>
-                                    @foreach(\App\Models\FeatureList::whereParentId($feature->id)->get() as $child)
+                                    <h4>{{ $feature->name }}</h4>
+                                    @foreach(\App\Models\Feature::whereParentId($feature->id)->get() as $child)
                                         <div class="col-md-6">{!! Form::checkbox('features[]', $child->id) !!} {{ $child->name }}</div>
                                         @if($loop->iteration % 2 == 0)
                                             <div class="clearfix"></div>
@@ -188,7 +188,7 @@
 @section('custom_js')
     <script type="text/javascript">
         $(function () {
-            $(document).on('change', "input[type='checkbox']", function () {
+            $(document).on('change', "input[name='hotselling']", function () {
                 if ($(this).is(':checked')) {
                     window.location.href = '{{ Request::url() }}?hot=1';
                 } else {

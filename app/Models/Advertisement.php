@@ -113,7 +113,7 @@ class Advertisement extends Model
     }
 
     public function features() {
-        return $this->belongsToMany(FeatureList::class, 'advertisement_feature', 'advertisement_id', 'feature_list_id');
+        return $this->belongsToMany(Feature::class, 'advertisement_feature', 'advertisement_id', 'feature_list_id');
     }
 
     public function properties() {

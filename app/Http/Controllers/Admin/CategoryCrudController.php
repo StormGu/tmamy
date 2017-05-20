@@ -32,13 +32,20 @@ class CategoryCrudController extends CrudController
         $this->crud->enableReorder('name', 2);
         // ------ CRUD COLUMNS
         $this->crud->addColumn([
+            'name' => 'id',
+            'label' => 'ID',
+        ]);
+
+        $this->crud->addColumn([
             'name' => 'name',
             'label' => 'Name',
         ]);
-        $this->crud->addColumn([
-            'name' => 'slug',
-            'label' => 'Slug',
-        ]);
+
+//        $this->crud->addColumn([
+//            'name' => 'slug',
+//            'label' => 'Slug',
+//        ]);
+
         $this->crud->addColumn([
             'label' => 'Parent',
             'type' => 'select',
@@ -54,13 +61,13 @@ class CategoryCrudController extends CrudController
             'label' => __('category.name'),
         ]);
 
-        $this->crud->addField([
-            'name' => 'slug',
-            'label' => __('category.slug'),
-            'type' => 'text',
-            'hint' => 'Will be automatically generated from your name, if left empty.',
-            // 'disabled' => 'disabled'
-        ]);
+//        $this->crud->addField([
+//            'name' => 'slug',
+//            'label' => __('category.slug'),
+//            'type' => 'text',
+//            'hint' => 'Will be automatically generated from your name, if left empty.',
+//            // 'disabled' => 'disabled'
+//        ]);
 
         $this->crud->addField([
             'label' => __('category.parent'),
@@ -70,7 +77,6 @@ class CategoryCrudController extends CrudController
             'attribute' => 'name',
             'model' => "App\\Models\\Category",
         ]);
-
 
         $this->crud->addField([
             'name' => 'bgcolor',
@@ -82,6 +88,26 @@ class CategoryCrudController extends CrudController
             'name' => 'image',
             'label' => __('category.image'),
             'type' => 'browse'
+        ]);
+
+        $this->crud->addField([
+            'label' => __('category.related_features'),
+            'type' => 'featurelist',
+            'name' => 'features',
+            'entity' => 'features',
+            'attribute' => 'name',
+            'model' => "App\\Models\\Feature",
+            'pivot' => true,
+        ]);
+
+        $this->crud->addField([
+            'label' => __('category.related_properties'),
+            'type' => 'select2_multiple',
+            'name' => 'properties',
+            'entity' => 'properties',
+            'attribute' => 'label',
+            'model' => "App\\Models\\Property",
+            'pivot' => true
         ]);
 
         // $this->crud->setFromDb();
@@ -132,7 +158,7 @@ class CategoryCrudController extends CrudController
         // Please note the drawbacks of this though:
         // - 1-n and n-n columns are not searchable
         // - date and datetime columns won't be sortable anymore
-        // $this->crud->enableAjaxTable();
+        $this->crud->enableAjaxTable();
 
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.

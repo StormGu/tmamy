@@ -204,8 +204,11 @@ return [
 =======
         Cornford\Googlmapper\MapperServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+<<<<<<< HEAD
 >>>>>>> 499e1cbcf87b9def3fe495fc492b96ae3ffb0398
 
+=======
+>>>>>>> f4ab1a33f9098c21bb51b97805200465b21d500a
     ],
 
     /*

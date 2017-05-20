@@ -20,7 +20,7 @@ class ListOfValueCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\ListOfValue');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/listofvalues');
-        $this->crud->setEntityNameStrings('list_of_value', 'list_of_values');
+        $this->crud->setEntityNameStrings(__('listofvalue.list_of_value'), __('listofvalue.list_of_values'));
 
         /*
         |--------------------------------------------------------------------------
@@ -32,12 +32,12 @@ class ListOfValueCrudController extends CrudController
 
         $this->crud->addField([
             'name' => 'title',
-            'label' => __('list_if_value.title')
+            'label' => __('listofvalue.title')
         ]);
 
         $this->crud->addColumn([
             'name' => 'title',
-            'label' => __('list_if_value.title')
+            'label' => __('listofvalue.title')
         ]);
 
         // ------ CRUD FIELDS

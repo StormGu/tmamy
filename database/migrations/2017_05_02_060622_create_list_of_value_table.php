@@ -20,7 +20,12 @@ class CreateListOfValueTable extends Migration
         Schema::create('list_of_values_details', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->integer('parent_id');
+
+            $table->integer('parent_id')->unsigned();
+            $table->foreign('parent_id', 'lovd_parent_id_foreign')
+                ->references('id')
+                ->on('list_of_values')
+                ->onDelete('cascade');
         });
     }
 
@@ -30,7 +35,7 @@ class CreateListOfValueTable extends Migration
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('list_of_values');
         Schema::dropIfExists('list_of_values_details');
+        Schema::dropIfExists('list_of_values');
     }
 }

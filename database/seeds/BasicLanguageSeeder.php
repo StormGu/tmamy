@@ -3,7 +3,7 @@
 use App\Models\Language;
 use Illuminate\Database\Seeder;
 
-class LanguageSeeder extends Seeder
+class BasicLanguageSeeder extends Seeder
 {
     Private $defaultLanguages = [
         [

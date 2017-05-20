@@ -18,12 +18,13 @@ use App\Models\AdvertisementInfoHealthDoctorEducation;
 use App\Models\AdvertisementInfoHealthDoctorMembership;
 use App\Models\AdvertisementInfoHealthHospitalSchedule;
 use App\Models\AdvertisementInfoHealthHospitalSpecialty;
+use App\Models\AdvertisementInfoResturant;
 use App\Models\AdvertisementInfoService;
 use App\Models\AdvertisementInfoServicesCost;
 use App\Models\AdvertisementInfoTender;
 use App\Models\AdvertisementInfoWholesaler;
 use App\Models\Country;
-use App\Models\FeatureList;
+use App\Models\Feature;
 use App\Models\Profile;
 use App\Models\Property;
 use App\Models\User;
@@ -41,7 +42,7 @@ class AdvertisementController extends Controller
 
     public function get($id) {
 
-        $object = Advertisement::whereId($id)->whereStatus('approved')->first();
+        $object = Advertisement::find($id);
 
         $data['breadcrumbs'][$object->title] = '#';
 
@@ -50,11 +51,19 @@ class AdvertisementController extends Controller
         }
 
         $data['object'] = $object;
-        $data['features'] = $object->features()->get();
         $data['properties'] = $object->properties()->withPivot('property_value')->get();
+        $features = $object->features()->with('parent')->get();
+
+        $features_array = [];
+
+        foreach ($features as $feature) {
+            $features_array[$feature->parent->name][] = $feature->name;
+        }
+
+        $data['features'] = $features_array;
 
         Mapper::map($object->lat, $object->lon, [
-            'zoom' => 5,
+            'zoom' => 10,
             'center' => true,
             'marker' => true,
             'draggable' => false,
@@ -112,6 +121,9 @@ class AdvertisementController extends Controller
             return $this->infoService($id, $data);
         }
 
+        if (in_array($object->category_id, explode(',', config('settings.restaurant_categories')))) {
+            return $this->infoRestaurant($id, $data);
+        }
         return View('adforest.advertisement.show', $data);
     }
 
@@ -152,7 +164,6 @@ class AdvertisementController extends Controller
         $adv->image_filename = 'uploads/' . $logoName;
 
         $user = User::find($Input['user_id']);
-
 
         if ($user->Points == 0) {
             echo "error";
@@ -239,8 +250,10 @@ class AdvertisementController extends Controller
         return View('adforest.advertisement.info.infoService', $data);
     }
 
-    public function infoRestaurant() {
-        return View('adforest.advertisement.info.infoRestaurant');
+    public function infoRestaurant($id, $data) {
+        $data['restaurant'] = AdvertisementInfoResturant::whereAdvertisementId($id)->first();
+
+        return View('adforest.advertisement.info.infoRestaurant', $data);
     }
 
     public function infoTender($id, $data) {
@@ -272,19 +285,19 @@ class AdvertisementController extends Controller
         return View('adforest.advertisement.form.step2', $data);
     }
 
-    public function AddAdvertisementStep3(Request $request, $category_id, $subcategory_id = null) {
+    public function AddAdvertisementStep3(Request $request, $category_id) {
 
         $data['breadcrumbs'][__('advertisement.heading_title')] = '#';
 
         // $data['category_id'] = $category_id;
-        $data['category_id'] = $subcategory_id;
+        $data['category_id'] = $category_id;
 
-        $data['properties'] = Property::whereCategoryId($category_id)->get();
+        $data['properties'] = Category::find($category_id)->properties()->get();
         $data['features'] = Category::find($category_id)->features()->get();
 
         $health_doctor_categories = explode(',', config('settings.health_doctor_categories'));
 
-        if (in_array($subcategory_id, $health_doctor_categories)) {
+        if (in_array($category_id, $health_doctor_categories)) {
             $data['additional_info'] = View('adforest.advertisement.form.infoHealthDoctor');
         }
         else {
@@ -300,8 +313,6 @@ class AdvertisementController extends Controller
         }
 
         // Google Mapper
-
-
         if (old('lon') && old('lat')) {
             Mapper::map(old('lat'), old('lon'), [
                 'zoom' => 10,
@@ -321,8 +332,12 @@ class AdvertisementController extends Controller
             ]);
         }
 
-        if (in_array($subcategory_id, explode(',', config('settings.services_categories')))) {
+        if (in_array($category_id, explode(',', config('settings.services_categories')))) {
             return View('adforest.advertisement.form.infoService', $data);
+        }
+
+        if (in_array($category_id, explode(',', config('settings.restaurant_categories')))) {
+            return View('adforest.advertisement.form.infoRestaurant', $data);
         }
 
         return View('adforest.advertisement.form.step3', $data);
@@ -335,40 +350,31 @@ class AdvertisementController extends Controller
         $advertisement->user_id = \Auth::id();
         $advertisement->status = 'waiting_approval';
 
-        if (\Input::hasFile('image')) {
-            $currentUser = \Auth::user();
-            $image = \Input::file('image');
-            $filename = md5($image) . '.' . $image->getClientOriginalExtension();
-            //$save_path = storage_path() . '/users/id/' . $currentUser->id . '/uploads/advertisements/';
-            $save_path = 'uploads';
-
-            // Make the user a folder and set permissions
-            \File::makeDirectory($save_path, $mode = 0755, true, true);
-
-            // Save the file to the server
-            \Image::make($image)->save($save_path . DIRECTORY_SEPARATOR . $filename);
-
-            $advertisement->image_filename = $save_path . DIRECTORY_SEPARATOR . $filename;
-        }
 
         if ($advertisement->save()) {
+
+            if (\Input::hasFile('image')) {
+                $this->uploadPic($advertisement->id, \Input::file('image'));
+            }
 
             $profile = Profile::whereUserId(\Auth::id())->first();
             $profile->points = $request->input('after_points');
             $profile->save();
 
-            if ($request->input('properties'))
-                foreach ($request->input('properties') as $key => $value) {
-                    $property = Property::where('key', '=', $key)
-                        ->whereCategoryId($request->input('category_id'))
-                        ->first();
-                    $property->advertisements()->attach($advertisement->id, ['property_value' => $value]);
+            if ($request->input('properties')) {
+                foreach ($request->input('properties') as $id => $value) {
+
+                    if ($value != '') {
+                        $property = Property::find($id);
+                        $property->advertisements()->attach($advertisement->id, ['property_value' => $value]);
+                    }
                 }
+            }
 
             if ($request->input('features'))
                 foreach ($request->input('features') as $key => $value) {
 
-                    $feature = FeatureList::find($value);
+                    $feature = Feature::find($value);
                     $feature->advertisements()->attach($advertisement->id);
                 }
 
@@ -417,23 +423,11 @@ class AdvertisementController extends Controller
         $advertisement->status = 'waiting_approval';
 
 
-        if (\Input::hasFile('image')) {
-            $currentUser = \Auth::user();
-            $image = \Input::file('image');
-            $filename = md5($image) . '.' . $image->getClientOriginalExtension();
-            //$save_path = storage_path() . '/users/id/' . $currentUser->id . '/uploads/advertisements/';
-            $save_path = 'uploads';
-
-            // Make the user a folder and set permissions
-            \File::makeDirectory($save_path, $mode = 0755, true, true);
-
-            // Save the file to the server
-            \Image::make($image)->save($save_path . DIRECTORY_SEPARATOR . $filename);
-
-            $advertisement->image_filename = $save_path . DIRECTORY_SEPARATOR . $filename;
-        }
-
         if ($advertisement->save()) {
+
+            if (\Input::hasFile('image')) {
+                $this->uploadPic($advertisement->id, \Input::file('image'));
+            }
 
             $service = new AdvertisementInfoService;
             $service->fill($request->except('_token', 'points'));
@@ -466,4 +460,65 @@ class AdvertisementController extends Controller
         }
     }
 
+    public function CreateRestaurant(Request $request) {
+
+        $advertisement = new Advertisement();
+        $advertisement->fill($request->except('_token', 'points'));
+        $advertisement->user_id = \Auth::id();
+        $advertisement->status = 'waiting_approval';
+
+        if ($advertisement->save()) {
+
+            if (\Input::hasFile('image')) {
+                $this->uploadPic($advertisement->id, \Input::file('image'));
+            }
+
+            $service = new AdvertisementInfoResturant();
+            $service->fill($request->except('_token', 'points'));
+            $service->advertisement()->associate($advertisement);
+            $service->save();
+
+            $profile = Profile::whereUserId(\Auth::id())->first();
+            $profile->points = $request->input('after_points');
+            $profile->save();
+
+            return redirect('profile/ads')->withMessage([
+                'type' => 'success',
+                'message' => trans('common.success_added')
+            ]);
+        }
+        else {
+            return back()->withMessage([
+                'type' => 'warning',
+                'message' => trans('common.failed_added')
+            ]);
+        }
+    }
+
+    public function getSubCategories($category_id = null) {
+
+        $categories = Category::whereParentId($category_id)->get();
+
+        if ($categories->count())
+            $data['categories'] = $categories;
+        else {
+            $data['categories'] = $categories;
+            $data['category'] = Category::find($category_id);
+        }
+
+
+        return view('adforest.advertisement.form.subcategory', $data);
+    }
+
+    public function uploadPic($id, $file) {
+
+        $image_path = storage_path('advertisements' . DIRECTORY_SEPARATOR . $id);
+
+        if (!\File::exists($image_path)) {
+            \File::makeDirectory($image_path, 0755, true, true);
+        }
+        $filename = md5($file) . '.' . $file->getClientOriginalExtension();
+        \Image::make($file)->save($image_path . DIRECTORY_SEPARATOR . $filename);
+        \DB::table('advertisement')->where('id', $id)->update(['image_filename' => $filename]);
+    }
 }

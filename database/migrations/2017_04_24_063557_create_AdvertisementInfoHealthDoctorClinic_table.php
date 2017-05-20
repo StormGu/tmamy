@@ -14,6 +14,7 @@ class CreateAdvertisementInfoHealthDoctorClinicTable extends Migration
     public function up() {
         Schema::create('advertisement_info_health_doctor_clinic', function (Blueprint $table) {
             $table->increments('id');
+
             $table->integer('advertisement_id')->unsigned();
             $table->foreign('advertisement_id', 'aihdc_id_foreign')
                 ->references('id')

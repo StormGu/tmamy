@@ -1,6 +1,15 @@
 <?php
 
 return [
+    'property' => 'Property',
+    'properties' => 'Properties',
+
+    'label' => 'Label',
     'name' => 'name',
-    'category_id' => 'category id'
+    'categories' => 'Categories',
+    'type' => 'Type',
+
+    'choose_property' => ' === Choose Property Type === ',
+    'text' => 'Text',
+    'select' => 'Select',
 ];

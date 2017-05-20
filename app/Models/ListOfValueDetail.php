@@ -39,7 +39,6 @@ class ListOfValueDetail extends Model
     */
 
     public function parent() {
-
         return $this->belongsTo(ListOfValue::class, 'parent_id', 'id');
     }
 

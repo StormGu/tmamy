@@ -20,7 +20,7 @@ class ListOfValueDetailCrudController extends CrudController
 
         $this->crud->setModel('App\Models\ListOfValueDetail');
         // $this->crud->setRoute(config('backpack.base.route_prefix') . '/listofvaluedetail');
-        $this->crud->setEntityNameStrings('listofvaluedetail', 'list_of_value_details');
+        $this->crud->setEntityNameStrings(__('listofvalue.element'), __('listofvalue.elements'));
 
         $parent_id = \Route::current()->parameter('parent_id');
         $this->crud->setRoute("admin/listofvalues/" . $parent_id . "/listofvaluesdetails");
@@ -36,11 +36,11 @@ class ListOfValueDetailCrudController extends CrudController
 
         $this->crud->addField([
             'name' => 'title',
-            'label' => __('list_of_value_detail.title')
+            'label' => __('listofvalue.element')
         ]);
 
         $this->crud->addColumn([
-            'label' => __('list_of_value_detail.title'),
+            'label' => __('listofvalue.element'),
             'name' => 'title'
         ]);
 
@@ -126,6 +126,11 @@ class ListOfValueDetailCrudController extends CrudController
         return $redirect_location;
     }
 
+    public function edit($person_id, $parent_id = 0) {
+
+        return parent::edit($parent_id);
+    }
+
     public function update(UpdateRequest $request) {
         // your additional operations before save here
         $redirect_location = parent::updateCrud();
@@ -133,4 +138,9 @@ class ListOfValueDetailCrudController extends CrudController
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
     }
+
+    public function destroy($id, $parent_id = 0) {
+        return parent::destroy($parent_id);
+    }
+
 }

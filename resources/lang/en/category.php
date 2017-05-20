@@ -9,5 +9,7 @@ return [
     'parent' => 'parent',
     'bgcolor' => 'bgcolor',
     'image' => 'image',
+    'related_features' => 'Related Features',
+    'related_properties' => 'Related Properties',
 
 ];

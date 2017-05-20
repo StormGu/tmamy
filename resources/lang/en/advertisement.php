@@ -10,6 +10,9 @@ return [
     'currency_id' => 'Currency',
     'mobile' => 'Mobile',
     'phone' => 'Phone',
+    'fax' => 'Fax',
+    'email' => 'Email',
+    'web' => 'Website',
     'details' => 'Details',
     'image' => 'Image',
 
@@ -73,6 +76,7 @@ return [
     'current_balance' => 'current balance',
     'new_balance' => 'new  balance',
     'add_to_main_caetgory' => 'add to main caetgory',
-
+    'add_to' => 'Add To',
+    'category_selection_completed' => 'Category Selection is Completed.'
 
 ];
