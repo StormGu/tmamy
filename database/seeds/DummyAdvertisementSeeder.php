@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
-class AdvertisementSeeder extends Seeder
+class DummyAdvertisementSeeder extends Seeder
 {
     public function run() {
 

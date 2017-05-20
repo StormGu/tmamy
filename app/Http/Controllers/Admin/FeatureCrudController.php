@@ -8,19 +8,14 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\FeatureListRequest as StoreRequest;
 use App\Http\Requests\FeatureListRequest as UpdateRequest;
 
-class FeatureListCrudController extends CrudController
+class FeatureCrudController extends CrudController
 {
     public function setup()
     {
 
-        /*
-        |--------------------------------------------------------------------------
-        | BASIC CRUD INFORMATION
-        |--------------------------------------------------------------------------
-        */
-        $this->crud->setModel('App\Models\FeatureList');
+        $this->crud->setModel('App\Models\Feature');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/features');
-        $this->crud->setEntityNameStrings('featurelist', 'feature_lists');
+        $this->crud->setEntityNameStrings(__('feature.feature'), __('feature.features'));
 
         /*
         |--------------------------------------------------------------------------
@@ -30,42 +25,52 @@ class FeatureListCrudController extends CrudController
         $this->crud->allowAccess('reorder');
         $this->crud->enableReorder('name', 2);
         // ------ CRUD COLUMNS
+
         $this->crud->addColumn([
             'name' => 'name',
-            'label' => 'Name',
+            'label' => __('feature.name'),
         ]);
 
         $this->crud->addColumn([
-            'label' => 'Parent',
+            'label' => __('feature.parent'),
             'type' => 'select',
             'name' => 'parent_id',
             'entity' => 'parent',
             'attribute' => 'name',
-            'model' => "App\\Models\\FeatureList",
+            'model' => "App\\Models\\Feature",
+        ]);
+
+        $this->crud->addColumn([
+            'label' => __('feature.related_categories'),
+            'type' => 'select_multiple',
+            'name' => 'categories',
+            'entity' => 'categories',
+            'attribute' => 'name',
+            'model' => "App\\Models\\Category",
         ]);
 
         // ------ CRUD FIELDS
         $this->crud->addField([
             'name' => 'name',
-            'label' => 'Name',
+            'label' => __('feature.name'),
         ]);
 
         $this->crud->addField([
-            'label' => 'Parent',
-            'type' => 'featurelist',
+            'label' => __('feature.parent'),
+            'type' => 'select2',
             'name' => 'parent_id',
             'entity' => 'parent',
             'attribute' => 'name',
-            'model' => "App\\Models\\FeatureList",
+            'model' => "App\\Models\\Feature",
         ]);
 
         $this->crud->addField([
-            'label' => __('featurelist.categories'),
+            'label' => __('feature.related_categories'),
             'type' => 'select2_multiple',
             'name' => 'categories',
-            'entity' => 'categories', // the method that defines the relationship in your Model
-            'attribute' => 'name', // foreign key attribute that is shown to user
-            'model' => "App\\Models\\Category", // foreign key model
+            'entity' => 'categories',
+            'attribute' => 'name',
+            'model' => "App\\Models\\Category",
             'pivot' => true,
         ]);
 

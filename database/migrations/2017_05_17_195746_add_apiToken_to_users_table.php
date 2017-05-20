@@ -14,7 +14,7 @@ class AddApiTokenToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('api_token'); // length must be 355 in db
+            $table->string('api_token')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddApiTokenToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('api_token');
         });
     }
 }

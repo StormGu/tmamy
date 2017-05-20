@@ -21,7 +21,7 @@ class Property extends Model
     //protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['type', 'key', 'name', 'label', 'category_id'];
+    protected $fillable = ['type', 'key', 'name', 'label'];
     // protected $hidden = [];
     // protected $dates = [];
     public $translatable = ['label'];
@@ -37,12 +37,16 @@ class Property extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function category() {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+    public function listofvalue() {
+        return $this->belongsTo(ListOfValue::class, 'key', 'id');
+    }
+
+    public function categories() {
+        return $this->belongsToMany(Category::class, 'category_properties', 'property_id', 'category_id');
     }
 
     public function advertisements() {
-        return $this->belongsToMany(Advertisement::class, 'advertisement_property', 'property_id', 'advertisement_id');
+        return $this->belongsToMany(Advertisement::class, 'advertisement_property', 'property_id', 'advertisement_id')->withTimestamps();
     }
 
     /*

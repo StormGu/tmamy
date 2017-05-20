@@ -49,11 +49,13 @@ Route::group([
 
     // Ismail Add Adv Routes
     Route::get('AddAdv', 'AdvertisementController@AddAdvertisementStep1');
-    Route::get('AddAdv/{category_id}', 'AdvertisementController@AddAdvertisementStep2');
-    Route::get('AddAdv/{category_id}/{subcategory_id}', 'AdvertisementController@AddAdvertisementStep3');
+    Route::get('AddAdv/{category_id}', 'AdvertisementController@AddAdvertisementStep3');
+    // Route::get('AddAdv/{category_id}/{subcategory_id}', 'AdvertisementController@AddAdvertisementStep3');
     Route::post('CreateAdv', 'AdvertisementController@CreateAdvertisement');
     Route::post('CreateService', 'AdvertisementController@CreateService');
+    Route::post('CreateRestaurant', 'AdvertisementController@CreateRestaurant');
 
+    Route::get('getSubCategories/{category_id}', 'AdvertisementController@getSubCategories');
 });
 
 // Authentication Routes
@@ -81,7 +83,7 @@ Route::group([
     CRUD::resource('stores', 'StoreCrudController');
     CRUD::resource('users', 'UserCrudController');
     CRUD::resource('constants', 'ConstantCrudController');
-    CRUD::resource('features', 'FeatureListCrudController');
+    CRUD::resource('features', 'FeatureCrudController');
     CRUD::resource('slider', 'SliderCrudController');
     CRUD::resource('property', 'PropertyCrudController');
     CRUD::resource('listofvalues', 'ListOfValueCrudController');
@@ -98,6 +100,7 @@ Route::group([
 
     CRUD::resource('country', 'CountryCrudController');
     CRUD::resource('zone', 'ZoneCrudController');
+    CRUD::resource('language', 'LanguageCrudController');
 });
 
 // Registered, activated, and is admin routes.

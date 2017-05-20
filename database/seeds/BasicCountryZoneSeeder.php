@@ -7,7 +7,7 @@ class BasicCountryZoneSeeder extends Seeder
 
     public function run() {
 
-        $sql = file_get_contents(__DIR__ . '/sql/country.sql');
+        $sql = file_get_contents(__DIR__ . '/sql/countries.sql');
 
         if (!str_contains($sql, ['DELETE', 'TRUNCATE'])) {
             throw new Exception('Invalid sql file. This will not empty the tables first.');
@@ -20,7 +20,7 @@ class BasicCountryZoneSeeder extends Seeder
             DB::statement($stmt);
         }
 
-        $sql = file_get_contents(__DIR__ . '/sql/zone.sql');
+        $sql = file_get_contents(__DIR__ . '/sql/zones.sql');
 
         if (!str_contains($sql, ['DELETE', 'TRUNCATE'])) {
             throw new Exception('Invalid sql file. This will not empty the tables first.');

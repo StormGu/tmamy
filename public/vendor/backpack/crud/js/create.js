@@ -1,10 +1,11 @@
 /*
-*
-* Backpack Crud / Create
-*
-*/
+ *
+ * Backpack Crud / Create
+ *
+ */
 
-jQuery(function($){
+jQuery(function ($) {
 
-    'use strict';
+  'use strict';
 });
+

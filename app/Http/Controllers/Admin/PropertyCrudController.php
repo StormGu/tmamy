@@ -19,7 +19,7 @@ class PropertyCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Property');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/property');
-        $this->crud->setEntityNameStrings('property', 'properties');
+        $this->crud->setEntityNameStrings(__('property.property'), __('property.properties'));
 
         /*
         |--------------------------------------------------------------------------
@@ -39,30 +39,34 @@ class PropertyCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-            'label' => __('property.category_id'),
-            'type' => 'select',
-            'name' => 'category_id',
-            'entity' => 'category',
-            'attribute' => 'name',
-            'model' => "App\\Models\\Category",
+            'label' => __('property.categories'),
+            'type' => 'select2_multiple',
+            'name' => 'categories',
+            'entity' => 'categories', // the method that defines the relationship in your Model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'model' => "App\\Models\\Category", // foreign key model
+            'pivot' => true,
         ]);
 
         $this->crud->addField([
             'name' => 'type',
             'label' => __('property.type'),
             'type' => 'select_from_array',
-            'options' => ['text' => __('property.text'), 'select' => __('property.select')],
+            'options' => [
+                '' => __('property.choose_property'),
+                'text' => __('property.text'),
+                'select' => __('property.select')
+            ],
             'allows_null' => false,
         ]);
-
-        $constants = \App\Models\Constant::pluck('key', 'key');
 
         $this->crud->addField([
             'name' => 'key',
             'label' => __('property.key'),
-            'type' => 'select_from_array',
-            'options' => $constants,
-            'allows_null' => true,
+            'type' => 'select2',
+            'entity' => 'listofvalue',
+            'attribute' => 'title',
+            'model' => "App\\Models\\ListOfValue"
         ]);
 
         $this->crud->addColumn([
@@ -76,13 +80,10 @@ class PropertyCrudController extends CrudController
         ]);
 
         $this->crud->addColumn([
-            'label' => __('property.category_id'),
-            'type' => 'select',
-            'name' => 'category_id',
-            'entity' => 'category',
-            'attribute' => 'name',
-            'model' => "App\\Models\\Category",
+            'label' => __('property.type'),
+            'name' => 'type'
         ]);
+
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');

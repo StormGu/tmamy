@@ -56,11 +56,10 @@ class Category extends Model
     }
 
     public function properties() {
-        return $this->hasMany(Property::class, 'category_id', 'id');
+        return $this->belongsToMany(Property::class, 'category_properties', 'category_id', 'property_id');
     }
-
     public function features() {
-        return $this->belongsToMany(FeatureList::class, 'category_feature', 'category_id', 'feature_id');
+        return $this->belongsToMany(Feature::class, 'category_feature', 'category_id', 'feature_id');
     }
 
     /*

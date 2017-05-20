@@ -13,23 +13,22 @@ class ConnectRelationshipsSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
 
-	    /**
-	     * Get Available Permissions
-	     *
-	     */
-		$permissions = Permission::all();
+        /**
+         * Get Available Permissions
+         *
+         */
+        $permissions = Permission::all();
 
-	    /**
-	     * Attach Permissions to Roles
-	     *
-	     */
-		$roleAdmin = Role::where('name', '=', 'Admin')->first();
-		foreach ($permissions as $permission) {
-			$roleAdmin->attachPermission($permission);
-		}
+        /**
+         * Attach Permissions to Roles
+         *
+         */
+        $roleAdmin = Role::where('name', '=', 'Admin')->first();
+        foreach ($permissions as $permission) {
+            $roleAdmin->attachPermission($permission);
+        }
 
     }
 

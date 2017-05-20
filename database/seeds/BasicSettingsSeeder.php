@@ -2,12 +2,12 @@
 
 use Illuminate\Database\Seeder;
 
-class SettingsSeeder extends Seeder
+class BasicSettingsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
-     * @return void
+     * @throws Exception
      */
     public function run()
     {

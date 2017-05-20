@@ -201,7 +201,6 @@ return [
 
         Cornford\Googlmapper\MapperServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
-
     ],
 
     /*

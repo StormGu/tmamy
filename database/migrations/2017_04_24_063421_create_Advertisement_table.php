@@ -10,11 +10,10 @@ class createadvertisementtable extends migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         schema::create('advertisement', function (blueprint $table) {
             $table->increments('id');
-            
+
             $table->string('advertisementno')->nullable();
             $table->string('category_id')->nullable();
             $table->string('subcategory_id')->nullable();
@@ -34,7 +33,7 @@ class createadvertisementtable extends migration
             $table->integer('country_id')->nullable();
             $table->integer('city_id')->nullable();
             $table->integer('region_id')->nullable();
-            
+
             $table->string('title')->nullable();
             $table->text('details')->nullable();
             $table->text('details_summary')->nullable();
@@ -66,7 +65,15 @@ class createadvertisementtable extends migration
             $table->boolean('receive_voucher')->nullable();
             $table->date('is_dis_appear')->nullable();
 
-            $table->enum('status', ['approved', 'blocked', 'draft', 'expired', 'rejected', 'waiting_approval', 'waiting_edit_approval']);
+            $table->enum('status', [
+                'approved',
+                'blocked',
+                'draft',
+                'expired',
+                'rejected',
+                'waiting_approval',
+                'waiting_edit_approval'
+            ]);
 
             $table->softDeletes();
 
@@ -79,8 +86,7 @@ class createadvertisementtable extends migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         schema::dropifexists('advertisement');
     }
 }
