@@ -1,4 +1,4 @@
-@extends('adforest.layout.oldmaster')
+@extends('adforest.layout.master')
 
 
 @section('template_title', __('advertisement.add_advertisement'))
@@ -8,12 +8,14 @@
 @endsection
 
 @section('content')
+
+
     <section class="section-padding gray">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-xs-12 col-sm-12">
 
-                    <div class="ad-box">
+                    <div class="ad-box margin-top-10">
                         <div class="text-center margin-bottom-40 margin-top-40">
                             <h1>@lang('advertisement.what_you_are_listing')</h1>
                         </div>
@@ -51,4 +53,8 @@
 
         });
     </script>
+@endsection
+
+@section('custom_css')
+    <link rel="stylesheet" href="{{ asset('adforest/css/custome.css') }}">
 @endsection

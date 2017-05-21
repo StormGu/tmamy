@@ -49,7 +49,9 @@ Route::group([
 
     // Ismail Add Adv Routes
     Route::get('AddAdv', 'AdvertisementController@AddAdvertisementStep1');
+    Route::get('AddAdv/billing', 'AdvertisementController@AddAdvertisementBilling');
     Route::get('AddAdv/{category_id}', 'AdvertisementController@AddAdvertisementStep3');
+
     // Route::get('AddAdv/{category_id}/{subcategory_id}', 'AdvertisementController@AddAdvertisementStep3');
     Route::post('CreateAdv', 'AdvertisementController@CreateAdvertisement');
     Route::post('CreateService', 'AdvertisementController@CreateService');
@@ -272,7 +274,7 @@ Route::get('image/{size}/{folder}/{id}/{name}', function ($size = null, $folder 
 })->where('name', '([A-z\d-\/_.]+)?')->where('id', '[0-9]+');
 
 Route::get('image/{size}/{name}', function ($size = null, $name = null) {
-    dd(1);
+
     if (!is_null($size) && !is_null($name)) {
 
         if (strstr($size, '&times;'))

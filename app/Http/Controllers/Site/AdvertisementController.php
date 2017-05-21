@@ -290,6 +290,7 @@ class AdvertisementController extends Controller
 
     public function AddAdvertisementStep3(Request $request, $category_id) {
 
+
         $data['breadcrumbs'][__('advertisement.heading_title')] = '#';
 
         // $data['category_id'] = $category_id;
@@ -307,10 +308,11 @@ class AdvertisementController extends Controller
             $data['additional_info'] = '';
         }
 
+        $data['hot'] = 0;
         $data['current_points'] = \Auth::user()->profile->points;
         $data['after_points'] = \Auth::user()->profile->points - config('settings.normal_adv');
 
-        if ($request->get('hot')) {
+        if (old('hot')) {
             $data['hot'] = 1;
             $data['after_points'] -= 4000;
         }
@@ -344,6 +346,20 @@ class AdvertisementController extends Controller
         }
 
         return View('adforest.advertisement.form.step3', $data);
+    }
+
+    public function AddAdvertisementBilling(Request $request) {
+
+        $data['hot'] = 0;
+        $data['current_points'] = \Auth::user()->profile->points;
+        $data['after_points'] = \Auth::user()->profile->points - config('settings.normal_adv');
+
+        if ($request->get('hot')) {
+            $data['hot'] = 1;
+            $data['after_points'] -= 4000;
+        }
+
+        return View('adforest.advertisement.form.billing', $data);
     }
 
     public function CreateAdvertisement(AdvertisementRequest $request) {

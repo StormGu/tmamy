@@ -5,6 +5,9 @@ return [
     'heading_title' => 'Add Advertisement',
     'post_free_ad' => 'Post Free AD',
 
+    'general' => 'General',
+    'hotselling' => 'Hot Selling',
+
     'title' => 'Title',
     'price' => 'Price',
     'currency_id' => 'Currency',
@@ -65,6 +68,7 @@ return [
     'approved' => 'approved',
     'properties' => 'Properties',
     'features' => 'Features',
+    'map' => 'Locate On Map',
 
     'what_you_are_listing' => 'What you are listing for?',
     'choose_one_subcategory' => 'Choose One Subcategory',
