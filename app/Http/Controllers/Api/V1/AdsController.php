@@ -95,7 +95,8 @@ class AdsController extends Controller
        $cat = Category::parents()->with([
             'latestAdvertisements' => function ($query) {
              $query->where('is_free',0);
-             $query->with('user' ); 
+             $query->with('user'); 
+             $query->with('user.profile'); 
             }
         ])->get();
 

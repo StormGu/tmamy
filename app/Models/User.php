@@ -11,6 +11,7 @@ use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNo
 use Backpack\CRUD\CrudTrait;
 use Spatie\Permission\Traits\HasRoles;
 
+
 class User extends Authenticatable
 {
     use CrudTrait;

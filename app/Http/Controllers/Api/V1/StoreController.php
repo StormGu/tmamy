@@ -59,7 +59,7 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        $store = Store::where('id',$id)->with('children')->get();
+        $store = Store::find($id)->children()->paginate();
 
         if(count($store))
             $this->is_success= true;
