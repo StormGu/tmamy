@@ -229,8 +229,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'adpoints']],
 
     // Store Routes
     Route::get('stores/{user_id}', 'Site\StoreController@index');
-    Route::get('store/{id}', 'Site\StoreController@show');
     Route::get('store/create', 'Site\StoreController@create');
+    Route::get('store/{id}', 'Site\StoreController@show');
     Route::post('store', 'Site\StoreController@store');
 
 

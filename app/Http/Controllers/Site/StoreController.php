@@ -36,7 +36,8 @@ class StoreController extends Controller
         $data['user'] = $object->customer;
         $data['profile'] = $object->customer->profile;
 
-        $data['objects'] = Advertisement::whereStoreId($id)->get();
+        $data['object'] = $object;
+        $data['objects'] = Advertisement::whereStoreId($id)->latest()->get();
 
         return view('adforest.store.show', $data);
     }

@@ -52,6 +52,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+
                 <div class="ad-box margin-top-10">
                     <h3>@lang('advertisement.location')</h3>
                     <hr>
@@ -98,6 +99,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+
                 <div class="ad-box margin-top-10">
                     <h3>@lang('advertisement.restaurants')</h3>
                     <hr>
@@ -115,80 +117,23 @@
                     </div>
                 </div>
 
-                <div class="ad-box margin-top-10">
-                    <h3>@lang('advertisement.pic')</h3>
-                    <hr>
-                    <div class="clearfix"></div>
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-                            <div class="form-group {{ $errors->has('image') ? ' has-error' : '' }}">
-                                <div class="input-group">
-                                <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                @lang('profile.Browse') <input name="image" type="file" id="imgInp"
-                                                               value="{{old('image')}}">
-                                </span>
-                                </span>
-                                    <input type="text" class="form-control" readonly>
-                                </div>
-                                @if ($errors->has('image'))
-                                    <span class="text-danger">{{ $errors->first('image') }}</span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {{-- Ad Image Partial Block --}}
+                @include('adforest.advertisement.form_partials.image')
+                {{-- End Ad Image Partial Block --}}
 
-                <div class="ad-box margin-top-10">
-                    <h1>@lang('advertisement.Address')</h1>
-                    <hr>
-                    @include('adforest.advertisement.form.locate')
+                {{-- Locate On Map Partial Block --}}
+                @include('adforest.advertisement.form_partials.locate')
+                {{-- End Locate On Map Partial Block --}}
+
+                {{-- Hot Selling Partial Block --}}
+                @include('adforest.advertisement.form_partials.hotselling')
+                {{-- End Hot Selling Partial Block --}}
+
+                {{-- Billing Partial Block --}}
+                <div id="billing">
+                    @include('adforest.advertisement.form_partials.billing')
                 </div>
-                <div class="ad-box margin-top-10">
-                    <hr>
-                    <h1>@lang('advertisement.billing')</h1>
-                    <hr>
-                    <h3>@lang('advertisement.points')</h3>
-                    <table class="table table-responsive">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th style="width:30%">@lang('advertisement.points')</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>@lang('advertisement.add_advertisement')</td>
-                            <td>{{ config('settings.normal_adv') }}</td>
-                        </tr>
-                        @if (isset($hot))
-                            <tr>
-                                <td>@lang('advertisement.hot_advertisement')</td>
-                                <td>{{ config('settings.hot_adv') }}</td>
-                            </tr>
-                        @endif
-                        </tbody>
-                    </table>
-                    <h3>@lang('advertisement.balance')</h3>
-                    <table class="table table-responsive">
-                        <thead>
-                        <tr>
-                            <th>@lang('advertisement.current_balance')</th>
-                            <th style="width:30%">{{ $current_points }}</th>
-                        </tr>
-                        <tr>
-                            <th>@lang('advertisement.new_balance')</th>
-                            <th><span class="@if($after_points < 0) text-danger @endif"> {{ $after_points }}</span>
-                            </th>
-                        </tr>
-                        </thead>
-                    </table>
-                    {!! Form::hidden('after_points', $after_points) !!}
-                    @if ($errors->has('after_points'))
-                        <span class="text-danger">{!! $errors->first('after_points') !!}</span>
-                    @endif
-                </div>
+                {{-- End Billing Partial Block --}}
                 <div>
                     <button href="#" class="btn btn-success pull-right">@lang('advertisement.submit')</button>
                 </div>
@@ -196,15 +141,8 @@
             </div>
     </section>
 
-
 @endsection
 
 @section('custom_js')
-    <script type="text/javascript">
-        function createCompany(event) {
-            $('input[name=lat]').val(event.latLng.lat());
-            $('input[name=lon]').val(event.latLng.lng());
-        }
-    </script>
-    {!! Mapper::renderJavascript() !!}
+    @include('adforest.advertisement.form_partials.custom_js')
 @endsection
