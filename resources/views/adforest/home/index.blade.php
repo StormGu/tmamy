@@ -132,9 +132,15 @@
                                                                href="{{ url('adv/'. $adv->id) }}">{{ $adv->title }}</a>
                                                             <br>
                                                             <span style="font-size: 12px;" class="locate"><i
-                                                                        class="fa fa-map-marker"></i> Dubai,Uae</span>
+                                                                        class="fa fa-map-marker"></i>{{ $adv->country->name }} </span>
                                                             <div class="share-p"><i class="fa fa-money"></i> <span
-                                                                        class="price font-montserrat">70000/Year AED</span>
+                                                                        class="price font-montserrat">{{ $adv->price }} AED</span>
+                                                            </div>
+                                                            <div class="share-p">
+                                                            <i class="fa fa-user" aria-hidden="true"></i><span
+                                                                        class="price font-montserrat" style ="    color: #000000;
+    font-size: 12px;
+    font-weight: bold;">{{ $adv->user->name }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
