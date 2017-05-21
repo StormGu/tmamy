@@ -28,29 +28,10 @@
                         <!-- Sidebar Widgets -->
                         <div class="user-profile widget">
                             <div class="widget-heading">
-                                <h4 class="panel-title"><a>@lang('profile.status')</a></h4>
+                                <h4 class="panel-title"><a>@lang('profile.store')</a></h4>
                             </div>
                             <ul>
-                                <li @if(Request::is('profile/stores'))class="active"@endif><a
-                                            href="{{ url('profile/stores') }}">@lang('profile.store_all')</a></li>
-                                <li @if(Request::is('profile/stores/approved'))class="active"@endif><a
-                                            href="{{ url('profile/stores/approved') }}">@lang('profile.store_approved')</a>
-                                </li>
-                                <li @if(Request::is('profile/stores/blocked'))class="active"@endif><a
-                                            href="{{ url('profile/stores/blocked') }}">@lang('profile.store_blocked')</a>
-                                </li>
-                                <li @if(Request::is('profile/stores/draft'))class="active"@endif><a
-                                            href="{{ url('profile/stores/draft') }}">@lang('profile.store_draft')</a>
-                                </li>
-                                <li @if(Request::is('profile/stores/expired'))class="active"@endif><a
-                                            href="{{ url('profile/stores/expired') }}">@lang('profile.store_expired')</a>
-                                </li>
-                                <li @if(Request::is('profile/stores/rejected'))class="active"@endif><a
-                                            href="{{ url('profile/stores/rejected') }}">@lang('profile.store_rejected')</a>
-                                </li>
-                                <li @if(Request::is('profile/stores/waiting_approval'))class="active"@endif>
-                                    <a href="{{ url('profile/stores/waiting_approval') }}">@lang('profile.store_waiting_approval')</a>
-                                </li>
+                                <li><a href="">@lang('store.all_categories')</a></li>
                             </ul>
                         </div>
 
@@ -69,10 +50,10 @@
                                         <div class="white category-grid-box-1 ">
                                             <!-- Image Box -->
                                             <div class="image">
-
-                                                <img
-                                                        src="{{ url('image/300×240/stores/' . $object->id . '/'.  $object->logo_file_name) }}"
-                                                        class="img-responsive">
+                                                <a href="{{ url('store/'.$object->user_id ) }}">
+                                                    <img src="{{ url('image/300×240/stores/' . $object->id . '/'.  $object->logo_file_name) }}"
+                                                         class="img-responsive">
+                                                </a>
                                             </div>
                                             <!-- Short Description -->
                                             <div class="short-description-1 ">
@@ -82,7 +63,7 @@
                                                 </div>
                                                 <!-- Ad Title -->
                                                 <h3>
-                                                    <a href="{{ url('store/'.$object->id ) }}">{{ $object->title }}</a>
+                                                    <a href="{{ url('store/'.$object->user_id ) }}">{{ $object->title }}</a>
                                                 </h3>
                                                 <!-- Location -->
                                             </div>

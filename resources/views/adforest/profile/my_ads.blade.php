@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+    @include('adforest.profile.head')
     <section class="section-padding gray">
 
         <div class="container">
@@ -13,9 +13,9 @@
             <!-- Row -->
             <div class="row">
                 <!-- Main Container -->
-            @include('adforest.profile.head')
 
-            <!-- Middle Content Area -->
+
+                <!-- Middle Content Area -->
                 <br>
                 @include('adforest.common.message')
 
@@ -28,7 +28,7 @@
                 <!-- Row -->
                 <div class="row">
                     <!-- Middle Content Area -->
-                    <div class="col-md-4 leftbar-stick blog-sidebar">
+                    <div class="col-md-3 leftbar-stick blog-sidebar">
                         <!-- Sidebar Widgets -->
                         <div class="user-profile widget">
                             <div class="widget-heading">
@@ -59,7 +59,7 @@
 
                     </div>
 
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <!-- Row -->
                         <div class="row">
                             <!-- Sorting Filters -->
@@ -80,7 +80,7 @@
                                                 <div class="ad-archive-img">
                                                     <a href="#">
                                                         <div class="ribbon expired">{{ __('advertisement.' . $object->status) }}</div>
-                                                        <img src="{{ url('image/313×234/' . $object->image_filename) }}"
+                                                        <img src="{{ url('image/300×300/advertisements/' . $object->id.'/'. $object->image_filename) }}"
                                                              alt="">
                                                     </a>
                                                 </div>

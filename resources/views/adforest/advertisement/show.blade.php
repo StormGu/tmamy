@@ -53,7 +53,7 @@
                             <div class="flex-viewport">
                                 <ul class="slides slide-main">
                                     <li class="flex-active-slide"><img
-                                                src="{{ url('image/700×400/' . $object->id.'/'. $object->image_filename) }}"/>
+                                                src="{{ url('image/700×400/advertisements/' . $object->id.'/'. $object->image_filename) }}"/>
                                     </li>
                                 </ul>
                             </div>
@@ -64,7 +64,7 @@
                                 <ul class="slides slide-thumbnail">
                                     <li class="flex-active-slide">
                                         <img draggable="false"
-                                             src="{{ url('image/120×90/' .  $object->id.'/'.$object->image_filename) }}">
+                                             src="{{ url('image/120×90/advertisements/' .  $object->id.'/'.$object->image_filename) }}">
                                     </li>
                                 </ul>
                             </div>

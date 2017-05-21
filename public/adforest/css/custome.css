@@ -1,0 +1,21 @@
+.Adv{background: #eee}
+.Adv h1{padding-bottom: 40px}
+.Adv hr{height: 2px}
+.Adv .Adv-box {border: 1px solid #e7e7e7; border-radius: 1px; background: #fff; padding: 20px 30px;}
+.Adv .Adv-box ul{line-height: 200%; font-size: 14px}
+.Adv .Adv-box ul li{padding-bottom: 25px}
+.Adv .btn-lg, .btn-group-lg > .btn{width: 185px; font-size: 14px; height: 60px; padding: 9px 15px}
+.Adv .hvr-pop{width: 150px; background: #e7e7e7; height: 50px}
+.Adv .fin{float: left}
+.categ{background: #eee}
+.categ hr{padding-bottom: 30px}
+.categ .categ-box{background: #fff; padding: 10px; border: 1px solid #ddd; margin-bottom: 15px}
+.categ  ul li{padding-bottom: 20px; background: #fff; padding-left: 20px; text-decoration: none}
+.categ h2{padding-bottom: 20px}
+.categ .hea{color: #888; text-decoration: none}
+.categor .categor-box:hover a{border: 2px solid #dfdfdf;-webkit-transform:scale(1.1,1.1) rotate(360deg); -moz-transform:scale(1.1,1.1) rotate(360deg); -o-transform:scale(1.1,1.1) rotate(360deg); transform:scale(1.1,1.1) rotate(360deg); border: 2px solid #dfdfdf; text-decoration: none}
+.categor .categor-box a{font-size: 20px; font-weight: bold; color: #fff; width: 100px; height: 100px; background: #5bb85d; border: 2px solid #fff; border-radius: 50%; line-height: 100px; -webkit-transition-duration: 0.7s; -moz-transition-duration: 0.7s; -o-transition-duration: 0.7s; transition-duration: 0.7s}
+.category .category-box:hover a{border: 2px solid #dfdfdf;-webkit-transform:scale(1.1,1.1) rotate(360deg); -moz-transform:scale(1.1,1.1) rotate(360deg); -o-transform:scale(1.1,1.1) rotate(360deg); transform:scale(1.1,1.1) rotate(360deg); border: 2px solid #dfdfdf; text-decoration: none}
+.category .category-box a{font-size: 20px; font-weight: bold; color: #fff; width: 100px; height: 100px; background: #337aba; border: 2px solid #fff; border-radius: 50%; line-height: 100px; -webkit-transition-duration: 0.7s; -moz-transition-duration: 0.7s; -o-transition-duration: 0.7s; transition-duration: 0.7s}
+.categ .categ-box li:hover{background: #337aba; color: #888; text-decoration: none}
+

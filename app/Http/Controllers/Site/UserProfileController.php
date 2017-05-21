@@ -73,19 +73,12 @@ class UserProfileController extends Controller
             $objects->whereStatus($type);
         }
 
-        $data['objects'] = $objects->whereUserId(\Auth::id())->get();
+        $data['objects'] = $objects->whereUserId(\Auth::id())->orderBy('id', 'desc')->get();
 
         return View('adforest.profile.my_stores', $data, compact('countuserfollower'));
-
     }
 
-    public function poststores() {
-        $cat = Category::where('parent_id', null)->get();
 
-        $cou = Country::All();
-
-        return view('adforest.profile.PostStores', compact('cat', 'cou'));
-    }
 
     public function Postnewstores(Request $request) {
         $stors = new Store;
@@ -148,10 +141,6 @@ class UserProfileController extends Controller
 
     public function showstores($id) {
 
-        $Adve = Advertisement::where('store_id', $id)->get();
-        $countuserfollower = UserFollower::where('user_id', $id)->count();
-        $store_id = $id;
-        return view('adforest.profile.showdst', compact('Adve', 'countuserfollower', 'store_id'));
     }
 
     public function notifications() {
@@ -194,7 +183,7 @@ class UserProfileController extends Controller
 
         return redirect('profile/' . $request->user_id)->withMessage([
             'type' => 'success',
-            'message' => trans('common.success_deleted')
+            'message' => trans('common.success_unfollowed')
         ]);
     }
 
@@ -251,8 +240,8 @@ class UserProfileController extends Controller
 
         $id = ($id) ? $id : \Auth::id();
 
-        $data['object'] = User::with('profile')->find($id);
-
+        $data['user'] = User::with('profile')->find($id);
+        $data['profile'] = Profile::whereUserId($id)->first();
 
         return view('adforest.profile.followers', $data);
     }

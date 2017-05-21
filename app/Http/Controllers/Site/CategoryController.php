@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index(Request $request, $category_id) {
         //        dd(\App\Models\Category::whereParentId($category_id)->withCount('advertisements')->get());
 
-        $limit = $request->get('limit') ? $request->get('limit') : 2;
+        $limit = $request->get('limit') ? $request->get('limit') : 6;
 
         $data = [];
 
@@ -23,11 +23,11 @@ class CategoryController extends Controller
         $data['category_id'] = $category_id;
         $data['object'] = $category;
 
+        $categories_array = [];
 
-        $this->getChildren($data, $category_id);
+        $this->getChildren($categories_array, $category_id);
 
-        $categories = [];
-        $data['objects'] = Advertisement::whereIn('category_id', $categories)
+        $data['objects'] = Advertisement::whereIn('category_id', $categories_array + ['' => $category_id])
             ->approved()
             ->paginate($limit)
             ->appends(\Input::except('page'));;
@@ -35,22 +35,18 @@ class CategoryController extends Controller
         $data['sponsored'] = Advertisement::approved()->sponsered()->inRandomOrder()->limit(4)->get();
 
         $cat_id = $category_id;
-        return View('adforest.category.index', $data, compact('cat_id'));
 
+        return View('adforest.category.index', $data, compact('cat_id'));
     }
 
-    public function getChildren(&$data, $category_id) {
-
-        $data['categories'] = [];
+    public function getChildren(&$categories_array, $category_id) {
 
         $children = Category::whereParentId($category_id)->get();
-
-        $data['categories'] = $children->toArray();
-
+        $categories_array = $categories_array + $children->pluck('id', 'id')->toArray();
 
         foreach ($children as $child) {
-            $data['categories'][] = $this->getChildren($data, $child->id);
+            $this->getChildren($categories_array, $child->id);
         }
-        dd($data['categories']);
+
     }
 }

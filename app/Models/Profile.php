@@ -67,6 +67,10 @@ class Profile extends Model
         return $this->belongsTo(User::class, 'id', 'user_id');
     }
 
+    public function country() {
+        return $this->belongsTo(Country::class);
+    }
+
     /**
      * Profile Theme Relationships
      *
