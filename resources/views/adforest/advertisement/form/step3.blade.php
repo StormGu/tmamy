@@ -166,9 +166,6 @@
 @endsection
 
 @section('custom_js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js"
-            integrity="sha384-tIwI8+qJdZBtYYCKwRkjxBGQVZS3gGozr3CtI+5JF/oL1JmPEHzCEnIKbDbLTCer"
-            crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(function () {
             $(document).on('change', "input[name='hotselling']", function () {

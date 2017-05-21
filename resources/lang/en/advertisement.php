@@ -81,6 +81,17 @@ return [
     'new_balance' => 'new  balance',
     'add_to_main_caetgory' => 'add to main caetgory',
     'add_to' => 'Add To',
-    'category_selection_completed' => 'Category Selection is Completed.'
+    'category_selection_completed' => 'Category Selection is Completed.',
+
+
+    // WholeSale
+    'currency_id' => 'Currency',
+    'price_to' => 'Price To',
+    'mobile_no' => 'Mobile No.',
+    'phone_no' => 'Phone No',
+    'min_quantity' => 'Minimum Quantity',
+    'term_delivery_id' => 'Term Delivery',
+    'description' => 'Description',
+
 
 ];

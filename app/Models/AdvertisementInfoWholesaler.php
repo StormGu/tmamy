@@ -38,12 +38,16 @@ class AdvertisementInfoWholesaler extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function currency() {
+        return $this->belongsTo(Constant::class, 'currency_id', 'id');
+    }
+
     public function advertisement() {
         return $this->belongsTo(Advertisement::class);
     }
 
     public function term_delivery() {
-
+        return $this->belongsTo(Constant::class, 'term_delivery_id', 'id');
     }
 
     /*

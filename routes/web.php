@@ -15,20 +15,17 @@
 
 // Homepage Route
 
-Route::group(['namespace' => 'Site'], function () {
+Route::group(['namespace' => 'Site', 'middleware' => 'adpoints'], function () {
+
     Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@index');
     Route::get('contact', 'ContactController@index');
     Route::post('contact', 'ContactController@store');
-
-    Route::get('/PostAdvertisement', 'AdvertisementController@PostAdvertisement');
+    Route::get('PostAdvertisement', 'AdvertisementController@PostAdvertisement');
     Route::post('PostAdv', 'AdvertisementController@PostAdv');
-
     Route::get('category/{category_id}', 'CategoryController@index');
     Route::get('search', 'SearchController@index');
-
     Route::post('search', 'SearchController@index');
-
     Route::get('page/{page}/{subs?}', ['uses' => 'PageController@index'])->where([
         'page' => '^((?!admin).)*$',
         'subs' => '.*'
@@ -37,14 +34,12 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('adv/{id}', 'AdvertisementController@get');
     Route::get('advertisement/{id}', 'AdvertisementController@get');
     Route::post('comment', 'AdvertisementController@comment');
-
-
 });
 
 // Homepage Route
 Route::group([
     'namespace' => 'Site',
-    'middleware' => ['auth', 'activated']
+    'middleware' => ['auth', 'activated', 'adpoints']
 ], function () {
 
     // Ismail Add Adv Routes
@@ -56,6 +51,7 @@ Route::group([
     Route::post('CreateAdv', 'AdvertisementController@CreateAdvertisement');
     Route::post('CreateService', 'AdvertisementController@CreateService');
     Route::post('CreateRestaurant', 'AdvertisementController@CreateRestaurant');
+    Route::post('CreateWholesale', 'AdvertisementController@CreateWholesale');
 
     Route::get('getSubCategories/{category_id}', 'AdvertisementController@getSubCategories');
 });
@@ -172,7 +168,7 @@ Route::group(['middleware' => ['auth', 'activated']], function () {
 
 
 // Registered, activated, and is current user routes.
-Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function () {
+Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'adpoints']], function () {
 
     // User Profile and Account Routes
     //    Route::resource('profile', 'ProfilesController', [

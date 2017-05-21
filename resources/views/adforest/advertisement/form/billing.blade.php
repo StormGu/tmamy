@@ -13,6 +13,7 @@
         <td>@lang('advertisement.add_advertisement')</td>
         <td>{{ config('settings.normal_adv') }}</td>
     </tr>
+
     @if ((isset($hot) && $hot == 1) )
         <tr>
             <td>@lang('advertisement.hot_advertisement')</td>

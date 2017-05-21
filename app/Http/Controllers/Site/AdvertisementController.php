@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Requests\AdvertisementRequest;
 use App\Http\Requests\CreateServiceRequest;
+use App\Http\Requests\WholesaleRequest;
 use App\Models\Advertisement;
 use App\Models\AdvertisementInfoCareersJob;
 use App\Models\AdvertisementInfoCareersJobRequirement;
@@ -127,6 +128,11 @@ class AdvertisementController extends Controller
         if (in_array($object->category_id, explode(',', config('settings.restaurant_categories')))) {
             return $this->infoRestaurant($id, $data);
         }
+
+        if (in_array($object->category_id, explode(',', config('settings.wholesaler_categories')))) {
+            return $this->infoWholesaler($id, $data);
+        }
+
         return View('adforest.advertisement.show', $data);
     }
 
@@ -267,9 +273,9 @@ class AdvertisementController extends Controller
 
     public function infoWholesaler($id, $data) {
 
-        $data['wholesaler'] = AdvertisementInfoWholesaler::whereAdvertisementId($id)->first();
+        $data['wholesale'] = AdvertisementInfoWholesaler::select(['price_to', 'min_quantity', 'term_delivery_id'])->whereAdvertisementId($id)->first();
 
-        return View('adforest.advertisement.info.infoWholesaler', $data);
+        return View('adforest.advertisement.show', $data);
     }
 
     // Ismail Advertisement Add Form
@@ -300,9 +306,13 @@ class AdvertisementController extends Controller
         $data['features'] = Category::find($category_id)->features()->get();
 
         $health_doctor_categories = explode(',', config('settings.health_doctor_categories'));
+        $wholesaler_categories = explode(',', config('settings.wholesaler_categories'));
 
         if (in_array($category_id, $health_doctor_categories)) {
             $data['additional_info'] = View('adforest.advertisement.form.infoHealthDoctor');
+        }
+        elseif (in_array($category_id, $wholesaler_categories)) {
+            // $data['additional_info'] = View('adforest.advertisement.form.infoWholesaler');
         }
         else {
             $data['additional_info'] = '';
@@ -312,7 +322,7 @@ class AdvertisementController extends Controller
         $data['current_points'] = \Auth::user()->profile->points;
         $data['after_points'] = \Auth::user()->profile->points - config('settings.normal_adv');
 
-        if (old('hot')) {
+        if (old('hot') == 1) {
             $data['hot'] = 1;
             $data['after_points'] -= 4000;
         }
@@ -339,6 +349,10 @@ class AdvertisementController extends Controller
 
         if (in_array($category_id, explode(',', config('settings.services_categories')))) {
             return View('adforest.advertisement.form.infoService', $data);
+        }
+
+        if (in_array($category_id, explode(',', config('settings.wholesaler_categories')))) {
+            return View('adforest.advertisement.form.infoWholesaler', $data);
         }
 
         if (in_array($category_id, explode(',', config('settings.restaurant_categories')))) {
@@ -461,6 +475,54 @@ class AdvertisementController extends Controller
                     $service_cost->save();
                 }
             }
+
+            $profile = Profile::whereUserId(\Auth::id())->first();
+            $profile->points = $request->input('after_points');
+            $profile->save();
+
+            return redirect('profile/ads')->withMessage([
+                'type' => 'success',
+                'message' => trans('common.success_added')
+            ]);
+        }
+        else {
+            return back()->withMessage([
+                'type' => 'warning',
+                'message' => trans('common.failed_added')
+            ]);
+        }
+    }
+
+    public function CreateWholesale(WholesaleRequest $request) {
+
+        $advertisement = new Advertisement();
+        $advertisement->fill($request->except('_token', 'points'));
+        $advertisement->user_id = \Auth::id();
+        $advertisement->status = 'waiting_approval';
+
+
+        if ($advertisement->save()) {
+
+            if (\Input::hasFile('image')) {
+                $this->uploadPic($advertisement->id, \Input::file('image'));
+            }
+
+            $wholesale = new AdvertisementInfoWholesaler();
+            $wholesale->fill($request->except('_token', 'points'));
+            $wholesale->advertisement()->associate($advertisement);
+            $wholesale->save();
+
+
+            if ($request->input('properties')) {
+                foreach ($request->input('properties') as $id => $value) {
+
+                    if ($value != '') {
+                        $property = Property::find($id);
+                        $property->advertisements()->attach($advertisement->id, ['property_value' => $value]);
+                    }
+                }
+            }
+
 
             $profile = Profile::whereUserId(\Auth::id())->first();
             $profile->points = $request->input('after_points');

@@ -101,7 +101,7 @@
                 <div class="ad-box margin-top-10">
                     <h1>@lang('advertisement.Address')</h1>
                     <hr>
-                    @include('adforest.advertisement.form.map')
+                    @include('adforest.advertisement.form.locate')
 
                 </div>
                 <div class="ad-box margin-top-10">
