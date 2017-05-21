@@ -157,8 +157,7 @@ class UserProfileController extends Controller
 
     public function messages() {
 
-        // Inbox
-        // OutBox
+        //return 
     }
 
     public function powerAdvs() {
@@ -245,5 +244,42 @@ class UserProfileController extends Controller
 
         return view('adforest.profile.followers', $data);
     }
+
+
+       public function followeradvertisements($id,$type = null) {
+
+           $data['breadcrumbs'][trans('titles.myProfile')] = '#';
+
+        $id = ($id) ? $id : \Auth::id();
+
+        $data['user'] = User::with('profile')->find($id);
+        $data['profile'] = Profile::whereUserId($id)->first();
+
+        $objects = Advertisement::query();
+
+        $data['objects'] = $objects->whereUserId($id)->orderBy('id', 'desc')->get();
+        
+        return View('adforest.profile.show', $data);
+    }
+
+      public function followerstores($id,$type = null) {
+
+        $data['breadcrumbs'][trans('titles.myStores')] = '#';
+
+        // User Get
+        $data['user'] = User::with('profile')->find($id);
+        $data['profile'] = Profile::whereUserId($id)->first();
+
+        $objects = Store::query();
+
+        if ($type != null) {
+            $objects->whereStatus($type);
+        }
+
+        $data['objects'] = $objects->whereUserId($id)->orderBy('id', 'desc')->get();
+
+        return View('adforest.profile.my_stores', $data);
+    }
+
 
 }

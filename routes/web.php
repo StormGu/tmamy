@@ -198,7 +198,9 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
 
     Route::get('profile/ads/{type?}', 'Site\UserProfileController@advertisements');
+    Route::get('profile/{id}/ads/{type?}', 'Site\UserProfileController@followeradvertisements');
     Route::get('profile/stores/{type?}', 'Site\UserProfileController@stores');
+    Route::get('profile/{id}/stores/{type?}', 'Site\UserProfileController@followerstores');
     Route::post('profile/follower', 'Site\UserProfileController@follower');
     Route::post('profile/unfollower', 'Site\UserProfileController@unfollow');
     Route::post('profile/SubscribeStore', 'Site\UserProfileController@SubscribeStore');
