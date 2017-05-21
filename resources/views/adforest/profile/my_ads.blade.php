@@ -19,7 +19,7 @@
                 <br>
                 @include('adforest.common.message')
 
-                <div class="row margin-bottom-20">
+                <div class="row margin-bottom-20 hidden">
                     <div class="col-md-12">
                         <a href="{{ url('AddAdv') }}"
                            class="btn btn-primary pull-right">@lang('profile.post_free_advertisement')</a>
