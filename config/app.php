@@ -199,8 +199,13 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Backpack\PageManager\PageManagerServiceProvider::class,
 
+
+
+
         Cornford\Googlmapper\MapperServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+
+
     ],
 
     /*
@@ -259,10 +264,14 @@ return [
 
         'CRUD' => Backpack\CRUD\CrudServiceProvider::class,
 
+
+
+
         'Mapper'         => Cornford\Googlmapper\Facades\MapperFacade::class,
 
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+
     ],
 
 ];

@@ -31,7 +31,7 @@ class StoreController extends Controller
         $data['breadcrumbs'][trans('titles.stores')] = '#';
 
         $object = Store::find($id);
-
+         
         // User Get
         $data['user'] = $object->customer;
         $data['profile'] = $object->customer->profile;

@@ -19,7 +19,7 @@
                 <br>
                 @include('adforest.common.message')
 
-                <div class="row margin-bottom-20">
+                <div class="row margin-bottom-20 hidden">
                     <div class="col-md-12">
                         <a href="{{ url('AddAdv') }}"
                            class="btn btn-primary pull-right">@lang('profile.post_free_advertisement')</a>
@@ -73,70 +73,47 @@
 
                                     <!-- Ads Listing -->
                                     @forelse ($objects as $object)
-                                        <div class="ads-list-archive">
-                                            <!-- Image Block -->
-                                            <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
-                                                <!-- Img Block -->
-                                                <div class="ad-archive-img">
-                                                    <a href="#">
-                                                        <div class="ribbon expired">{{ __('advertisement.' . $object->status) }}</div>
-                                                        <img src="{{ url('image/300×300/advertisements/' . $object->id.'/'. $object->image_filename) }}"
-                                                             alt="">
-                                                    </a>
-                                                </div>
-                                                <!-- Img Block -->
+                                        <div class="col-md-4">
+                                        <div class="white category-grid-box-1 ">
+                                            <!-- Image Box -->
+                                            <div class="image">
+
+                                                <img
+                                                        src="{{  url('image/300×300/advertisements/' . $object->id.'/'. $object->image_filename) }}"
+                                                        class="img-responsive">
                                             </div>
-                                            <!-- Ads Listing -->
-                                            <div class="clearfix visible-xs-block"></div>
-                                            <!-- Content Block -->
-                                            <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
-                                                <!-- Ad Desc -->
-                                                <div class="ad-archive-desc">
-                                                    <!-- Price -->
-                                                    <div class="ad-price"> {{ isset($object->currency->value) ? $object->currency->value : '' }} {{ number_format( $object->price, 2) }}</div>
-                                                    <!-- Title -->
-                                                    <h3>
-                                                        <a href="{{ url('adv/'. $object->id) }}">{{ $object->title }}</a>
-                                                    </h3>
-                                                    <!-- Category -->
-                                                    <div class="category-title">
-                                                        <span><a href="#">{{ $object->category->title }}</a></span>
-                                                    </div>
-                                                    <!-- Short Description -->
-                                                    <div class="clearfix visible-xs-block"></div>
-                                                    <p class="hidden-sm">{{ str_limit($object->details, 150, $end = ' ..') }}</p>
-                                                    <!-- Ad Features -->
-
-                                                    <!-- Ad History -->
-                                                    <div class="clearfix archive-history">
-
-                                                        @if ($object->updated_at)
-                                                            <div class="last-updated">@lang('advertisement.updated_at')
-                                                                : {{ \Carbon\Carbon::parse($object->updated_at)->diffForHumans() }}</div>
-                                                        @else
-                                                            <div class="last-updated">@lang('advertisement.created_at')
-                                                                : {{ \Carbon\Carbon::parse($object->created_at)->diffForHumans() }}</div>
-                                                        @endif
-                                                        <div class="ad-meta">
-                                                            <a href="{{ url('profile/adDelet') }}/{{ $object->id }}"
-                                                               class="btn btn-danger"><i
-                                                                        class="fa fa-times"></i> @lang('common.delete')
-                                                            </a>
-                                                            @hasrole('admin')
-                                                            <a href="{{ url('adv/change_status/' . $object->id . '/approved') }}/{{ $object->id }}"
-                                                               class="btn btn-success">
-                                                                <i class="fa fa-apply"></i> @lang('common.approve')
-                                                            </a>
-                                                            @endhasrole
-                                                        </div>
-
-
-                                                    </div>
+                                            <!-- Short Description -->
+                                            <div class="short-description-1 ">
+                                                <!-- Category Title -->
+                                                <div class="category-title">
+                                                    <span>{{ $object->category->name }}</span>
                                                 </div>
-                                                <!-- Ad Desc End -->
+                                                <!-- Ad Title -->
+                                                <h3>
+                                                    <a href="{{ url('adv/'.$object->id ) }}">{{ $object->title }}</a>
+                                                </h3>
+                                                <!-- Location -->
                                             </div>
-                                            <!-- Content Block End -->
+                                            <!-- Ad Meta Stats -->
+                                            <div class="ad-info-1">
+                                                <ul class="pull-left">
+                                                    <li><i class="fa fa-thumbs-up"></i> {{ $object->price }}</li>
+
+                                                </ul>
+                                                <ul class="pull-right">
+                                                    <li>
+                                                    <i class="fa fa-trash" aria-hidden="true"><a href="{{ url('profile/adDelet') }}/{{ $object->id }}">@lang('common.delete')</a></i></li>
+                                                   @hasrole('admin')
+                                                    <li>
+
+                                                    <i class="fa fa-trash" aria-hidden="true"><a href="{{ url('adv/change_status/' . $object->id . '/approved') }}/{{ $object->id }}">@lang('common.approve')</a></i></li>
+                                                    @endhasrole
+                                                    
+                                                </ul>
+
+                                            </div>
                                         </div>
+                                    </div>
                                     @empty
                                         <section class="advertising">
                                             <div class="banner">

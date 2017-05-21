@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Activation extends Model
+class Page extends Model
 {
 
     /**
@@ -12,7 +12,7 @@ class Activation extends Model
      *
      * @var string
      */
-    protected $table = 'activations';
+    protected $table = 'pages';
 
     /**
      * The attributes that are not mass assignable.
@@ -22,7 +22,10 @@ class Activation extends Model
     protected $guarded = [
     	'id'
     ];
+    protected $fillable = [
+        'template','name','title','slug','content','extras'
 
+    ];
     protected $hidden = [
         'user_id',
         'token',

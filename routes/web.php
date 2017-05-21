@@ -53,7 +53,13 @@ Route::group([
     Route::post('CreateRestaurant', 'AdvertisementController@CreateRestaurant');
     Route::post('CreateWholesale', 'AdvertisementController@CreateWholesale');
 
+
+    /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
+//    Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
+//        ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
+
     Route::get('getSubCategories/{category_id}', 'AdvertisementController@getSubCategories');
+
 });
 
 // Authentication Routes
@@ -194,7 +200,9 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'adpoints']],
 
 
     Route::get('profile/ads/{type?}', 'Site\UserProfileController@advertisements');
+    Route::get('profile/{id}/ads/{type?}', 'Site\UserProfileController@followeradvertisements');
     Route::get('profile/stores/{type?}', 'Site\UserProfileController@stores');
+    Route::get('profile/{id}/stores/{type?}', 'Site\UserProfileController@followerstores');
     Route::post('profile/follower', 'Site\UserProfileController@follower');
     Route::post('profile/unfollower', 'Site\UserProfileController@unfollow');
     Route::post('profile/SubscribeStore', 'Site\UserProfileController@SubscribeStore');
