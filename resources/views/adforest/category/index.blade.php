@@ -13,21 +13,11 @@
             <div class="row">
                 <div class="col-md-9 col-md-push-3 col-lg-9 col-sx-12">
                     <div class="row">
-                        @if($objects->count())
-                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                                <div class="filter-brudcrums">
-                                <span>
-                                    @lang('common.showing')
-                                    <span class="showed">{{ $objects->currentPage() }}
-                                        - {{ $objects->lastPage() }}</span>
-                                </span>
-                                </div>
-                            </div>
-                        @endif
-                        <div class="clearfix"></div>
+                 
+                        
                         <div class="posts-masonry">
                             @forelse($objects as $object)
-                                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12  ">
+                                <div class="col-md-4 col-lg-3 col-sm-6 col-xs-12  ">
                                     @include('adforest.advertisement.adv_grid')
                                 </div>
                             @empty
@@ -42,6 +32,18 @@
                                 </div>
                             @endforelse
                         </div>
+                               <div class="clearfix"></div>
+                        @if($objects->count())
+                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                                <div class="filter-brudcrums">
+                                <span>
+                                    @lang('common.showing')
+                                    <span class="showed">{{ $objects->currentPage() }}
+                                        - {{ $objects->lastPage() }}</span>
+                                </span>
+                                </div>
+                            </div>
+                        @endif
                         <div class="clearfix"></div>
                         <div class="text-center margin-top-30">
                             {!! str_replace('/?', '?', $objects->render()) !!}
@@ -59,7 +61,7 @@
                                             @lang('category.related_categories')
                                         </a>
                                     </h4>
-                                </div>
+                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body categories">
                                         <ul>
