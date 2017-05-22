@@ -83,6 +83,7 @@ return [
     'add_to' => 'Add To',
     'category_selection_completed' => 'Category Selection is Completed.',
 
+    'additional_info' => 'Additional Info',
 
     // WholeSale
     'currency_id' => 'Currency',
@@ -93,5 +94,23 @@ return [
     'term_delivery_id' => 'Term Delivery',
     'description' => 'Description',
 
+    // Career Job
+    'company' => 'Company',
+    'company_name' => 'Company Name',
+    'company_address' => 'Company Address',
+    'company_phone_no' => 'Company Phone No.',
+    'company_website' => 'Company Website',
+    'company_size_id' => 'Company Size',
+    'company_over_view' => 'Company Overview',
+    'requirements' => 'Requirements',
+    'contact_email' => 'Contact Email',
+    'career_level_id' => 'Career Level',
+    'work_experience_id' => 'Work Experience',
+    'education_level_id' => 'Education Level',
+    'employment_status_id' => 'Employment Status',
+    'gender_id' => 'Gender',
+    'salary' => 'Salary',
+    'salary_from' => 'Salary From',
+    'salary_to' => 'Salary To',
 
 ];

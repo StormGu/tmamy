@@ -1,4 +1,4 @@
-@if($features->count())
+@if(isset($features) && $features->count())
     <div class="ad-box margin-top-10">
         <h1>@lang('advertisement.features')</h1>
         <hr>

@@ -11,7 +11,8 @@
         <div class="container">
             <div class="row">
                 {!! Form::open(['url' => url('CreateService'), 'files' => true]) !!}
-                {!! Form::hidden('category_id', $category_id) !!}
+
+                @include('adforest.advertisement.form_partials.hidden_fields')
                 <div class="ad-box">
                     <h3>@lang('advertisement.general')</h3>
                     <hr>
