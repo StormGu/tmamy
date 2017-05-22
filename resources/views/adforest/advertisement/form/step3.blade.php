@@ -7,16 +7,20 @@
 @endsection
 
 @section('content')
+    <div class="container">
+        <section class="section-padding gray">
 
-    <section class="section-padding gray">
-        <div class="container">
             <div class="row">
-                <div class="ad-box">
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-8">
-                        {!! Form::open(['url' => url('CreateAdv'), 'files' => true]) !!}
-                        {!! Form::hidden('category_id', $category_id) !!}
+
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    {!! Form::open(['url' => url('CreateAdv') , 'files' => true]) !!}
+
+                    @include('adforest.advertisement.form_partials.hidden_fields')
+                    <div class="ad-box margin-top-10">
+                        <h1>@lang('advertisement.general')</h1>
+                        <hr>
                         <div class="form-group @if ($errors->has('title')) has-error @endif">
                             {!! Form::text('title', old('title'), ['placeholder' => __('advertisement.title'), 'class' => 'form-control margin-top-10']) !!}
                             @if ($errors->has('title'))
@@ -59,142 +63,56 @@
                                 <span class="text-danger">{{ $errors->first('details') }}</span>
                             @endif
                         </div>
-
-                        @if ($additional_info)
-                            {!! $additional_info !!}
-                        @endif
-
-                        @if($properties->count())
-                            <hr>
-                            <h1>@lang('advertisement.properties')</h1>
-                            <hr>
-                            @foreach($properties as $property)
-                                <div class="form-group @if ($errors->has($property->name)) has-error @endif">
-                                    @if ($property->type == 'text')
-                                        {!! Form::text('properties[' . $property->id . ']', null, ['placeholder' => $property->label, 'class' => 'form-control margin-top-10']) !!}
-                                    @elseif($property->type == 'select')
-                                        {!! Form::select('properties[' . $property->id . ']', \App\Models\ListOfValueDetail::where('parent_id', '=', $property->key)->pluck('title', 'id'), null, ['placeholder' => $property->label, 'class' => 'form-control margin-top-10']) !!}
-                                    @endif
-                                    @if ($errors->has($property->name))
-                                        <span class="text-danger">{{ $errors->first($property->name) }}</span>
-                                    @endif
-                                </div>
-                            @endforeach
-                        @endif
-
-                        <hr>
-                        <h1>@lang('advertisement.image')</h1>
-                        <hr>
-
-                        <div class="form-group {{ $errors->has('image') ? ' has-error' : '' }}">
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                @lang('profile.Browse') <input name="image" type="file" id="imgInp"
-                                                               value="{{old('image')}}">
-                                </span>
-                                </span>
-                                <input type="text" class="form-control" readonly>
-                            </div>
-                            @if ($errors->has('image'))
-                                <span class="text-danger">{{ $errors->first('image') }}</span>
-                            @endif
-                        </div>
-
-                        @if($features->count())
-                            <hr>
-                            <h1>@lang('advertisement.features')</h1>
-                            <hr>
-                            @foreach($features as $feature)
-                                <div class="form-group">
-                                    <h4>{{ $feature->name }}</h4>
-                                    @foreach(\App\Models\Feature::whereParentId($feature->id)->get() as $child)
-                                        <div class="col-md-6">{!! Form::checkbox('features[]', $child->id) !!} {{ $child->name }}</div>
-                                        @if($loop->iteration % 2 == 0)
-                                            <div class="clearfix"></div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            @endforeach
-                        @endif
-
-                        <hr>
-                        <h1>@lang('advertisement.hotselling')</h1>
-                        <hr>
-                        <div class="form-group">
-                            <div class="col-md-12">@if(\Request::input('hot') == 1) {!! Form::checkbox('hotselling', 1 , ['checked' => 'checked']) !!} @else  {!! Form::checkbox('hotselling', 1 ) !!} @endif @lang('advertisement.hotselling')</div>
-                            <div class="clearfix"></div>
-                        </div>
-
-                        <hr>
-                        <h1>@lang('advertisement.billing')</h1>
-                        <hr>
-                        <h3>@lang('advertisement.points')</h3>
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th style="width:30%">@lang('advertisement.points')</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>@lang('advertisement.add_advertisement')</td>
-                                <td>{{ config('settings.normal_adv') }}</td>
-                            </tr>
-                            @if (isset($hot))
-                                <tr>
-                                    <td>@lang('advertisement.hot_advertisement')</td>
-                                    <td>{{ config('settings.hot_adv') }}</td>
-                                </tr>
-                            @endif
-                            </tbody>
-                        </table>
-                        <h3>@lang('advertisement.balance')</h3>
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <th>@lang('advertisement.current_balance')</th>
-                                <th style="width:30%">{{ $current_points }}</th>
-                            </tr>
-                            <tr>
-                                <th>@lang('advertisement.new_balance')</th>
-                                <th><span class="@if($after_points < 0) text-danger @endif"> {{ $after_points }}</span>
-                                </th>
-                            </tr>
-                            </thead>
-                        </table>
-                        {!! Form::hidden('after_points', $after_points) !!}
-                        @if ($errors->has('after_points'))
-                            <span class="text-danger">{!! $errors->first('after_points') !!}</span>
-                        @endif
-                        <hr>
-                        <br><br>
-
-                        <div>
-                            <button href="#" class="btn btn-success pull-right">@lang('advertisement.submit')</button>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
                     </div>
 
-                    <div class="clearfix"></div>
+                    @if ($additional_info)
+                        {!! $additional_info !!}
+                    @endif
 
+                    {{-- Properties Partial Block --}}
+                    @include('adforest.advertisement.form_partials.properties')
+                    {{-- End Properties Partial Block --}}
+
+                    {{-- Ad Image Partial Block --}}
+                    @include('adforest.advertisement.form_partials.image')
+                    {{-- End Ad Image Partial Block --}}
+
+                    {{-- Features Partial Block --}}
+                    @include('adforest.advertisement.form_partials.features')
+                    {{-- End Features Partial Block --}}
+
+                    {{-- Locate On Map Partial Block --}}
+                    @include('adforest.advertisement.form_partials.locate')
+                    {{-- End Locate On Map Partial Block --}}
+
+                    {{-- Hot Selling Partial Block --}}
+                    @include('adforest.advertisement.form_partials.hotselling')
+                    {{-- End Hot Selling Partial Block --}}
+
+                    {{-- Billing Partial Block --}}
+                    <div id="billing">
+                        @include('adforest.advertisement.form_partials.billing')
+                    </div>
+                    {{-- End Billing Partial Block --}}
+
+                    <hr>
+
+                    <div>
+                        <button href="#" class="btn btn-success pull-right">@lang('advertisement.submit')</button>
+                    </div>
                 </div>
+                <div class="col-md-2">
+                </div>
+
+                <div class="clearfix"></div>
+
             </div>
+    </div>
+
     </section>
+    </div>
 @endsection
 
 @section('custom_js')
-    <script type="text/javascript">
-        $(function () {
-            $(document).on('change', "input[name='hotselling']", function () {
-                if ($(this).is(':checked')) {
-                    window.location.href = '{{ Request::url() }}?hot=1';
-                } else {
-                    window.location.href = '{{ Request::url() }}';
-                }
-            });
-        });
-    </script>
+    @include('adforest.advertisement.form_partials.custom_js')
 @endsection

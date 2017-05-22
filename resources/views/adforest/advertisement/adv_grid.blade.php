@@ -2,7 +2,7 @@
     <!-- Image Box -->
     <div class="image">
         <a href="{{ url('adv/' . $object->id) }}">
-            <img alt="{{ $object->title }}" src="{{ url('image/300×300/'. $object->image_filename) }}"
+            <img alt="{{ $object->title }}" src="{{ url('image/300×300/advertisements/' . $object->id.'/'. $object->image_filename) }}""
                  class="img-responsive">
         </a>
     </div>

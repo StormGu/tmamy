@@ -7,6 +7,7 @@ use Backpack\CRUD\CrudTrait;
 use Backpack\CRUD\ModelTraits\SpatieTranslatable\HasTranslations;
 use App\Traits\NPerGroup;
 
+
 class Category extends Model
 {
 

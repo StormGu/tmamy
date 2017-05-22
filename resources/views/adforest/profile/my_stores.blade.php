@@ -5,11 +5,10 @@
 @endsection
 
 @section('content')
-
-    <section class="section-padding gray">
     @include('adforest.profile.head')
+    <section class="section-padding gray">
 
-    <!-- Main Container -->
+        <!-- Main Container -->
         <div class="container">
             <!-- Row -->
             <div class="row">
@@ -17,14 +16,15 @@
                 <br>
                 <div class="row margin-bottom-20">
                     <div class="col-md-12">
-                        <a href="{{ url('profile/poststores') }}"
-                           class="btn btn-primary pull-right">@lang('profile.store_Post_Store')</a>
+                        <a href="{{ url('store/create') }}" class="btn btn-primary pull-right">
+                            @lang('profile.store_Post_Store')
+                        </a>
                     </div>
                 </div>
                 <!-- Row -->
                 <div class="row">
                     <!-- Middle Content Area -->
-                    <div class="col-md-4 leftbar-stick blog-sidebar">
+                    <div class="col-md-3 leftbar-stick blog-sidebar">
                         <!-- Sidebar Widgets -->
                         <div class="user-profile widget">
                             <div class="widget-heading">
@@ -57,7 +57,7 @@
                     </div>
 
 
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <!-- Row -->
                         <div class="row">
                             <!-- Sorting Filters -->
@@ -70,18 +70,19 @@
                                             <!-- Image Box -->
                                             <div class="image">
 
-                                                <img alt="Tour Package"
-                                                     src="{{ url('image/300×240/' . $object->logo_file_name) }}"
-                                                     class="img-responsive">
+                                                <img
+                                                        src="{{ url('image/300×240/stores/' . $object->id . '/'.  $object->logo_file_name) }}"
+                                                        class="img-responsive">
                                             </div>
                                             <!-- Short Description -->
                                             <div class="short-description-1 ">
                                                 <!-- Category Title -->
-                                                <div class="category-title"><span><a
-                                                                href="{{ url('ShowStoresDetails/'.$object->id ) }}">{{ $object->category->name }}</a></span></div>
+                                                <div class="category-title">
+                                                    <span>{{ $object->category->name }}</span>
+                                                </div>
                                                 <!-- Ad Title -->
                                                 <h3>
-                                                    <a target="" href="{{ url('profile/ShowStoresDetails/'.$object->id ) }}">{{ $object->title }}</a>
+                                                    <a href="{{ url('store/'.$object->id ) }}">{{ $object->title }}</a>
                                                 </h3>
                                                 <!-- Location -->
                                             </div>

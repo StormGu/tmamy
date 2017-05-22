@@ -39,7 +39,7 @@
                                 <!-- Heading Area -->
                                 <div class="heading-panel">
                                     <h3 class="main-title text-left">
-                                        @lang('advertisement.job_description')
+                                        @lang('advertisement.description')
                                     </h3>
                                 </div>
                                 <p>
@@ -53,7 +53,7 @@
                             <div class="ad-box margin-top-20">
                                 <div class="heading-panel">
                                     <h3 class="main-title text-left">
-                                        @lang('advertisement.job_requirements')
+                                        @lang('advertisement.requirements')
                                     </h3>
                                 </div>
                                 <div class="desc-points">
@@ -69,7 +69,7 @@
                         <div class="ad-box margin-top-20">
                             <div class="heading-panel">
                                 <h3 class="main-title text-left">
-                                    @lang('advertisement.job_aditional_info')
+                                    @lang('advertisement.additional_info')
                                 </h3>
                             </div>
 
@@ -101,14 +101,14 @@
                             @endif
                             @if(isset($object_career->currency->value))
                                 <div class="col-md-12 no-padding">
-                                    <span><strong>@lang('advertisement.currency')</strong> :</span> {{ $object_career->currency->value }}
+                                    <span><strong>@lang('advertisement.currency_id')</strong> :</span> {{ $object_career->currency->value }}
                                 </div>
                             @endif
                             <div class="clearfix"></div>
                         </div>
                     </div>
 
-                    @if(isset($features) && $features->count())
+                    @if(isset($features) && count($features))
                         <div class="ad-box margin-top-20">
                             <div class="heading-panel">
                                 <h3 class="main-title text-left">
@@ -140,7 +140,7 @@
                                 <b>@lang('advertisement.company_name')</b> : {{ $object_career->company_name }}
                             </p>
                             <p>
-                                <b>@lang('advertisement.company_overview')</b> : {{ $object_career->company_over_view }}
+                                <b>@lang('advertisement.company_over_view')</b> : {{ $object_career->company_over_view }}
                             </p>
                             <p>
                                 <b>@lang('advertisement.company_size_id')</b> : {{ $object_career->company_size_id }}

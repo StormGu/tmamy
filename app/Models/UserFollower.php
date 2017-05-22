@@ -17,11 +17,11 @@ class UserFollower extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-     protected $fillable = [
-         'user_id',
-         'user_followers_id',
-         'user_followers_name'
-     ];
+    protected $fillable = [
+        'user_id',
+        'user_followers_id',
+        'user_followers_name'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -36,14 +36,18 @@ class UserFollower extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-        public function user(){
-            return $this->belongsTo(User::class, 'user_followers_id');
-        }
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
-         
-        public function profile(){
-            return $this->belongsTo(Profile::class);
-        }
+    public function follower() {
+        return $this->belongsTo(User::class, 'user_followers_id', 'id');
+    }
+
+
+    public function profile() {
+        return $this->belongsTo(Profile::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

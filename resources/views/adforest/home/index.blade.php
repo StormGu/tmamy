@@ -105,7 +105,7 @@
                             <ul class="nav nav-tabs navbar-right" role="tablist">
                                 <div>
                                     <a href="{{ url('category/' . $category->id) }}">
-                                    <img src="{{ asset('adforest/logo/more11.png') }}" style="width: 30px;">
+                                        <img src="{{ asset('adforest/logo/more11.png') }}" style="width: 30px;">
                                     </a>
                                 </div>
                             </ul>
@@ -124,14 +124,23 @@
     min-height: 133px;">
                                                             <a href="{{ url('adv/'. $adv->id) }}">
                                                                 <img class="img-responsive myimg"
-                                                                     src="{{ url('image/190×140/' . $adv->id . '/' . $adv->image_filename) }}">
+                                                                     src="{{ url('image/190×140/advertisements/' . $adv->id . '/' . $adv->image_filename) }}">
                                                             </a>
                                                         </div>
                                                         <div class="detail-sec">
-                                                            <a style="color: #000000;font-size: 12px;font-weight: bold" href="{{ url('adv/'. $adv->id) }}">{{ $adv->title }}</a>
+                                                            <a style="color: #000000;font-size: 12px;font-weight: bold"
+                                                               href="{{ url('adv/'. $adv->id) }}">{{ $adv->title }}</a>
                                                             <br>
-                                                            <span style="font-size: 12px;" class="locate"><i class="fa fa-map-marker"></i> Dubai,Uae</span>
-                                                            <div class="share-p"><i class="fa fa-money"></i> <span class="price font-montserrat">70000/Year AED</span>
+                                                            <span style="font-size: 12px;" class="locate"><i
+                                                                        class="fa fa-map-marker"></i>{{ $adv->country->name }} </span>
+                                                            <div class="share-p"><i class="fa fa-money"></i> <span
+                                                                        class="price font-montserrat">{{ $adv->price }} AED</span>
+                                                            </div>
+                                                            <div class="share-p">
+                                                            <i class="fa fa-user" aria-hidden="true"></i><span
+                                                                        class="price font-montserrat" style ="    color: #000000;
+    font-size: 12px;
+    font-weight: bold;">{{ $adv->user->name }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -172,26 +181,26 @@
                             @foreach(\App\Models\Store::where('store_account_type_id', 1)->limit(2)->get() as $advm )
 
 
-                                <div class="adv">
-                                    <div class="mbotn1" data-category="shopping">
-                                          
-                                        <img src="{{ url($advm->category->image) }}">
-                                        <span class="colored" title=" cars / rent"> {{ $advm->category->name }}</span>
-                                        
-                                    </div>
-                                    <div class="cover">
-                                       
-                                        <a href="{{ url('profile/ShowStoresDetails/' . $advm->id) }}">
-                                            <img src="{{ url('image/190×244/' . $advm->logo_file_name) }}">
-                                        </a>
+                                {{--<div class="adv">--}}
+                                {{--<div class="mbotn1" data-category="shopping">--}}
 
-                                    </div>
-                                    <p>{{ $advm->name }}</p>
-                                    <a id="ContentPlaceHolder1_Promoted_HLPromote"
-                                       class="new btn bordered-style"
-                                       href="{{ url('profile/ShowStoresDetails/' . $advm->id) }}">Show Store</a>
+                                {{--<img src="{{ url($advm->category->image) }}">--}}
+                                {{--<span class="colored" title=" cars / rent"> {{ $advm->category->name }}</span>--}}
 
-                                </div>
+                                {{--</div>--}}
+                                {{--<div class="cover">--}}
+
+                                {{--<a href="{{ url('profile/ShowStoresDetails/' . $advm->id) }}">--}}
+                                {{--<img src="{{ url('image/190×244/' . $advm->logo_file_name) }}">--}}
+                                {{--</a>--}}
+
+                                {{--</div>--}}
+                                {{--<p>{{ $advm->name }}</p>--}}
+                                {{--<a id="ContentPlaceHolder1_Promoted_HLPromote"--}}
+                                {{--class="new btn bordered-style"--}}
+                                {{--href="{{ url('profile/ShowStoresDetails/' . $advm->id) }}">Show Store</a>--}}
+
+                                {{--</div>--}}
                             @endforeach
                             <div class="adv">
                                 <div class="category-title" data-category="shopping">

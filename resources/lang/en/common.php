@@ -10,10 +10,14 @@ return [
     'showing' => 'showing',
     'search' => 'search',
     'searchPlaceholder' => 'search place holder',
-    'success_edit' => 'success edit',
+    'success_edit' => 'Updated Successfully.',
     'follow' => 'follow',
     'message' => 'message',
     'main_categories' => 'main categories',
 
     'success_added' => 'Added Successfully. Waiting for Administration Approval.',
+    'choose' => '=== Choose ===',
+    'success_sent' => 'Message Successfully Sent.',
+    'success_followed' => 'Person followed Successfully.',
+    'success_unfollowed' => 'Person unfollowed Successfully.',
 ];

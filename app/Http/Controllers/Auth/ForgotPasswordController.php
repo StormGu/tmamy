@@ -20,7 +20,6 @@ class ForgotPasswordController extends Controller
     }
 
     public function showLinkRequestForm() {
-
         $data['breadcrumbs'][trans('auth.resetPassword')] = '#';
 
         return view('adforest.auth.passwords.email', $data);

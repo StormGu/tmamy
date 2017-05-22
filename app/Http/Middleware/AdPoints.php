@@ -16,6 +16,7 @@ class AdPoints
     }
 
     public function handle($request, Closure $next) {
+
         if ($this->auth->check()) {
             $row = DB::table('profiles')->select('points')->where('user_id', $this->auth->id())->first();
             $row->points += 2;

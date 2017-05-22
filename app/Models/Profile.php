@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
 
+
     /**
      * The database table used by the model.
      *
@@ -37,6 +38,21 @@ class Profile extends Model
         'user_profile_bg',
         'avatar',
         'avatar_status',
+        'bio',
+        'gender_id',
+        'language_id',
+        'country_id',
+        'city_id',
+        'address',
+        'dob',
+        'mobile_no',
+
+        'facebook',
+        'twitter',
+        'googleplus',
+        'linkedin',
+        'pinterest',
+        'Points'
     ];
 
     protected $casts = [
@@ -50,6 +66,10 @@ class Profile extends Model
      */
     public function user() {
         return $this->belongsTo(User::class, 'id', 'user_id');
+    }
+
+    public function country() {
+        return $this->belongsTo(Country::class);
     }
 
     /**

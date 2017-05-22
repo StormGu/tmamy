@@ -15,20 +15,17 @@
 
 // Homepage Route
 
-Route::group(['namespace' => 'Site'], function () {
+Route::group(['namespace' => 'Site', 'middleware' => 'adpoints'], function () {
+
     Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@index');
     Route::get('contact', 'ContactController@index');
     Route::post('contact', 'ContactController@store');
-
-    Route::get('/PostAdvertisement', 'AdvertisementController@PostAdvertisement');
+    Route::get('PostAdvertisement', 'AdvertisementController@PostAdvertisement');
     Route::post('PostAdv', 'AdvertisementController@PostAdv');
-
     Route::get('category/{category_id}', 'CategoryController@index');
     Route::get('search', 'SearchController@index');
-
     Route::post('search', 'SearchController@index');
-
     Route::get('page/{page}/{subs?}', ['uses' => 'PageController@index'])->where([
         'page' => '^((?!admin).)*$',
         'subs' => '.*'
@@ -37,25 +34,32 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('adv/{id}', 'AdvertisementController@get');
     Route::get('advertisement/{id}', 'AdvertisementController@get');
     Route::post('comment', 'AdvertisementController@comment');
-
-
 });
 
 // Homepage Route
 Route::group([
     'namespace' => 'Site',
-    'middleware' => ['auth', 'activated']
+    'middleware' => ['auth', 'activated', 'adpoints']
 ], function () {
 
     // Ismail Add Adv Routes
     Route::get('AddAdv', 'AdvertisementController@AddAdvertisementStep1');
+    Route::get('AddAdv/billing', 'AdvertisementController@AddAdvertisementBilling');
     Route::get('AddAdv/{category_id}', 'AdvertisementController@AddAdvertisementStep3');
+
     // Route::get('AddAdv/{category_id}/{subcategory_id}', 'AdvertisementController@AddAdvertisementStep3');
     Route::post('CreateAdv', 'AdvertisementController@CreateAdvertisement');
     Route::post('CreateService', 'AdvertisementController@CreateService');
     Route::post('CreateRestaurant', 'AdvertisementController@CreateRestaurant');
+    Route::post('CreateWholesale', 'AdvertisementController@CreateWholesale');
+    Route::post('CreateCareerJob', 'AdvertisementController@CreateCareerJob');
+
+    /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
+    //    Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
+    //        ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
 
     Route::get('getSubCategories/{category_id}', 'AdvertisementController@getSubCategories');
+
 });
 
 // Authentication Routes
@@ -170,7 +174,7 @@ Route::group(['middleware' => ['auth', 'activated']], function () {
 
 
 // Registered, activated, and is current user routes.
-Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function () {
+Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'adpoints']], function () {
 
     // User Profile and Account Routes
     //    Route::resource('profile', 'ProfilesController', [
@@ -196,36 +200,34 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
 
 
     Route::get('profile/ads/{type?}', 'Site\UserProfileController@advertisements');
+    Route::get('profile/{id}/ads/{type?}', 'Site\UserProfileController@followeradvertisements');
     Route::get('profile/stores/{type?}', 'Site\UserProfileController@stores');
+    Route::get('profile/{id}/stores/{type?}', 'Site\UserProfileController@followerstores');
     Route::post('profile/follower', 'Site\UserProfileController@follower');
     Route::post('profile/unfollower', 'Site\UserProfileController@unfollow');
     Route::post('profile/SubscribeStore', 'Site\UserProfileController@SubscribeStore');
     Route::post('profile/disSubscribeStore', 'Site\UserProfileController@disSubscribeStore');
     Route::post('profile/likeStore', 'Site\UserProfileController@likeStore');
     Route::post('profile/dislikeStore', 'Site\UserProfileController@disLikeStore');
-    Route::get('profile/{id}', 'Site\UserProfileController@showprofile')->where('id', '[0-9]+');
-    Route::get('profile/poststores', 'Site\UserProfileController@poststores');
-    Route::post('postnewstores', 'Site\UserProfileController@postnewstores');
+    Route::get('profile/{id}', 'Site\UserProfileController@show')->where('id', '[0-9]+');
 
-    Route::get('profile/ShowStoresDetails/{id}', 'Site\UserProfileController@showstores');
 
     Route::get('profile/adDelet/{id}', 'Site\UserProfileController@deletads');
     Route::get('Message', 'Site\UserProfileController@msg');
 
     Route::get('profile/settings', 'Site\UserSettingController@index');
-    Route::post('profile/settings', 'Site\UserSettingController@update');
+    Route::post('profile/settings', 'Site\UserSettingController@updateProfile');
+    Route::post('profile/settings/updateUser', 'Site\UserSettingController@updateUser');
 
     Route::post('profile/Message', 'Site\MessageController@postmsg');
-    Route::get('profile/Message/{id}', 'Site\MessageController@getmsg');
     Route::get('profile/Message/getformmsg/{id}', 'Site\MessageController@getformmsg');
     Route::get('profile/getfollower/{id}', 'Site\UserProfileController@getfollower');
     Route::get('profile/settings/password', 'Site\UserSettingController@password');
     Route::post('profile/settings/password', 'Site\UserSettingController@updateUserPassword');
+    Route::get('profile/inbox', 'Site\MessageController@inbox');
 
     Route::get('profile/settings/social', 'Site\UserSettingController@social');
     Route::post('profile/settings/social', 'Site\UserSettingController@updateSocial');
-
-    
 
     Route::get('profile/upgrade', 'Site\UserSettingController@upgrade');
     Route::post('profile/upgrade', 'Site\UserSettingController@updateUpgrade');
@@ -233,7 +235,13 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser']], function ()
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);
 
-
+    // Store Routes
+    // Route::get('stores/{user_id}', 'Site\StoreController@index');
+    Route::get('store/create', 'Site\StoreController@create');
+    Route::get('store/{id}', 'Site\StoreController@show');
+    Route::get('store/{id}/edit', 'Site\StoreController@edit');
+    Route::post('store', 'Site\StoreController@store');
+    Route::post('store/{id}', 'Site\StoreController@update');
 });
 
 
@@ -247,7 +255,7 @@ Route::group(['middleware' => ['auth', 'activated']], function () {
 
 // Resize Image
 
-Route::get('image/{size}/{id}/{name}', function ($size = null, $id = null, $name = null) {
+Route::get('image/{size}/{folder}/{id}/{name}', function ($size = null, $folder = 'advertisement', $id = null, $name = null) {
 
     if (!is_null($size) && !is_null($name)) {
 
@@ -256,10 +264,11 @@ Route::get('image/{size}/{id}/{name}', function ($size = null, $id = null, $name
         else
             $size = explode('×', $size);
 
-        $cache_image = Image::cache(function ($image) use ($size, $id, $name) {
-            return $image->make(storage_path() . '/advertisements/' . $id . '/' . $name)->fit($size[0], $size[1]);
+        $cache_image = Image::cache(function ($image) use ($size, $id, $name, $folder) {
+            // dd(storage_path() . '/' . $folder . '/' . $id . '/' . $name);
+            return $image->make(storage_path() . '/' . $folder . '/' . $id . '/' . $name)->fit($size[0], $size[1]);
 
-           // return $image->make(url('/' . $name))->fit($size[0], $size[1]);
+            // return $image->make(url('/' . $name))->fit($size[0], $size[1]);
         }, 10);
         return Response::make($cache_image, 200, ['Content-Type' => 'image']);
     }
