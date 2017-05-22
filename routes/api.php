@@ -41,7 +41,7 @@ Route::post('login', 'AuthController@authenticate');
 	Route::get('ism', function () {
       return bcrypt(123456);
  	});
-
+http://localhost/tmamy/public/api/v1/profile/unfollow
 Route::group(['middleware' => ['jwt.auth']], function () {
  	
  	Route::post('profile/Message', 'MessageController@postmsg');
@@ -53,7 +53,15 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::post('profile/editProfile', 'UserProfileController@updateProfile');
     Route::post('profile/editPassword', 'UserProfileController@updateUserPassword');
     Route::post('profile/editSocial', 'UserProfileController@updateSocial');
-
+    Route::post('profile/follow', 'UserProfileController@follow');
+    Route::post('profile/unfollow', 'UserProfileController@unfollow');
+  //  Route::get('profile/upgrade', 'UserSettingController@upgrade');
+    Route::post('profile/upgrade', 'UserProfileController@updateUpgrade');
+    Route::post('store/likeStore', 'StoreController@likeStore');
+    Route::post('store/dislikeStore', 'StoreController@disLikeStore');
+    Route::post('store/SubscribeStore', 'StoreController@SubscribeStore');
+    Route::post('store/disSubscribeStore', 'StoreController@disSubscribeStore');
+ 
 
     });
 
