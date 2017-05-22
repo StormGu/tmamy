@@ -7,6 +7,7 @@ return [
     'expired' => 'Expired',
     'waiting_approval' => 'Waiting Approval',
     /************/
+    'all_categories' => 'All Categories',
     'category' => 'category',
     'customer' => 'customer',
     'status' => 'status',

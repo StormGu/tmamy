@@ -5,28 +5,29 @@
 @endsection
 
 @section('content')
-    @include('adforest.profile.head')
+
+    @include('adforest.store.head')
+
     <section class="section-padding gray">
 
-        <!-- Main Container -->
+        s
         <div class="container">
-            <!-- Row -->
             <div class="row">
-                <!-- Middle Content Area -->
                 <br>
-                <div class="row margin-bottom-20">
-                    <div class="col-md-12">
-                        <a href="{{ url('AddAdv/' . $object->category_id . '?store_id=' . $object->id) }}"
-                           class="btn btn-primary pull-right">
-                            @lang('profile.ad_Post_ad')
-                        </a>
+
+                @if(\Auth::id() == $object->user_id)
+                    <div class="row margin-bottom-20">
+                        <div class="col-md-12">
+                            <a href="{{ url('AddAdv/' . $object->category_id . '?store_id=' . $object->id) }}"
+                               class="btn btn-primary pull-right">
+                                @lang('profile.ad_Post_ad')
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <!-- Row -->
+                @endif
+
                 <div class="row">
-                    <!-- Middle Content Area -->
                     <div class="col-md-3 leftbar-stick blog-sidebar">
-                        <!-- Sidebar Widgets -->
                         <div class="user-profile widget">
                             <div class="widget-heading">
                                 <h4 class="panel-title"><a>@lang('profile.store')</a></h4>
@@ -35,7 +36,6 @@
                                 <li><a href="">@lang('store.all_categories')</a></li>
                             </ul>
                         </div>
-
                     </div>
 
 

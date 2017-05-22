@@ -236,11 +236,10 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'adpoints']],
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);
 
     // Store Routes
-    Route::get('stores/{user_id}', 'Site\StoreController@index');
+    // Route::get('stores/{user_id}', 'Site\StoreController@index');
     Route::get('store/create', 'Site\StoreController@create');
     Route::get('store/{id}', 'Site\StoreController@show');
     Route::post('store', 'Site\StoreController@store');
-
 
 });
 
