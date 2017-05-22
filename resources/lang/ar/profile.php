@@ -170,6 +170,7 @@ return [
     'roles' => 'نوع المستخدم',
     'upgrade_account' => 'ترقية الحساب',
     'post_free_advertisement' => 'إعلان مجاني',
+    'store' => 'المتجر',
 
 
 

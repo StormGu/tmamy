@@ -256,6 +256,8 @@ return [
     'coupon' => 'Coupon',
     'upgrade_account' => 'upgrade account',
     'post_free_advertisement' => 'post free ad',
+    'store' => 'store',
+
 
 
 ];

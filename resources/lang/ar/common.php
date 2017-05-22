@@ -29,6 +29,7 @@ return [
     'follow' => 'متابعة',
     'message' => 'رسالة',
     'main_categories' => 'التصنيفات الرئيسية',
+    'approve' => 'موافق عليه',
 
 
 
