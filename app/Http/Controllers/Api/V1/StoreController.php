@@ -56,8 +56,8 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        $store = Store::find($id)->children()->paginate();
-
+        $store = Store::find($id);
+        $store->setRelation('advertisements', $store->children()->paginate(1));
         if(count($store))
             $this->is_success= true;
 
