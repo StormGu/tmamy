@@ -7,8 +7,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use JWTAuth;
-
+use App\Models\UserFollower;
+use App\Models\Coupon;
+use App\Models\Role;
+use App\Models\Profile;
  
+
+
 class UserProfileController extends Controller
 {
 
@@ -30,12 +35,12 @@ class UserProfileController extends Controller
 
         $user = JWTAuth::parseToken()->authenticate();
         $validator = \Validator::make($request->all(), [
-       //     'first_name' => 'required|min:3',
-         //   'last_name' => 'required|min:3',
-          //  'email' => 'required|email',
-          //  'mobile_no' => 'required|integer',
-          //  'language_id' => 'required|integer',
-          //  'country_id' => 'required|integer',
+            'first_name' => 'required|min:3',
+            'last_name' => 'required|min:3',
+            'email' => 'required|email',
+            'mobile_no' => 'required|integer',
+            'language_id' => 'required|integer',
+            'country_id' => 'required|integer',
             'bio' => '',
             'dob' => '',
             'gender_id' => '',
@@ -118,28 +123,61 @@ class UserProfileController extends Controller
 
 
     
-    public function follower(Request $request) {
+    public function follow(Request $request) {
 
+     $user = JWTAuth::parseToken()->authenticate();
+     $params = ['user_id' =>$request->user_id,'user_followers_id'=>$user->id];
 
-        $userfollowers = new UserFollower();
-        $Input = $request->all();
+     $userfollowers =  UserFollower::firstOrCreate($params);
 
-        $userfollowers->user_id = $Input['user_id'];
-        $userfollowers->user_followers_id = $Input['user_followers_id'];
-        $userfollowers->user_followers_name = $Input['user_followers_name'];
-
-        $userfollowers->save();
-
-        return redirect()->back();
+        return response()->json(['success'=>true ,'message' => [trans('common.success_follow')]]);
+       
     }
 
     public function unfollow(Request $request) {
-        $Input = $request->all();
 
-        DB::table('user_followers')->where('user_followers_id', $Input['user_followers_id'])->delete();
+     $user = JWTAuth::parseToken()->authenticate();
+     $params = ['user_id' =>$request->user_id,'user_followers_id'=>$user->id];
 
-        return redirect()->back();
+     $userfollowers =  UserFollower::where($params)->delete();
+    
+     return response()->json(['success'=>true ,'message' => [trans('common.success_unfollow')]]);
     }
+
+
+
+
+    public function updateUpgrade(Request $request) {
+
+        $user = JWTAuth::parseToken()->authenticate();
+
+        $coupon = Coupon::where('code', $request->coupon)->where('expire_date', '>', date('Y-m-d'))->get();
+
+        if (!$coupon->count())
+          return response()->json(['success'=>false ,'message' => [trans('common.wrong_copoun')]]);
+     
+
+        $role = Role::find($request->roles);
+
+        $user = User::findOrFail($user->id);
+
+        if (!$user->hasRole($role->id)) {
+
+            $user->attachRole($role->id);
+
+            $updatePoints = Profile::where('user_id', $user->id)->first();
+            $updatePoints->points += config('settings.business_points');
+            $updatePoints->save();
+
+          return response()->json(['success'=>true ,'message' => [trans('common.success_edit')]]);
+
+         
+        }
+        
+         return response()->json(['success'=>false ,'message' => [trans('common.you_have_this_role')]]);
+        
+    }
+
 
 
     public function stores()
@@ -181,65 +219,6 @@ class UserProfileController extends Controller
         $user_id = \Auth::id();
 
         return view('adforest.profile.showprofile', $data, compact('user_id'));
-    }
-
-    public function SubscribeStore(Request $request) {
-        $store_subscription = new StoreSubscription();
-        $Input = $request->all();
-
-        $store_subscription->user_id = $Input['user_id'];
-        $store_subscription->store_id = $Input['store_id'];
-
-
-        $store_subscription->save();
-
-        return redirect()->back();
-    }
-
-    public function disSubscribeStore(Request $request) {
-        $Input = $request->all();
-
-
-        DB::table('store_subscription')->where('user_id', $Input['user_id'])->delete();
-
-        return redirect()->back();
-    }
-
-    public function likeStore(Request $request) {
-        $likeStore = new StoreLike();
-        $Input = $request->all();
-
-        $likeStore->user_id = $Input['user_id'];
-        $likeStore->store_id = $Input['store_id'];
-
-
-        $likeStore->save();
-
-        return redirect()->back();
-    }
-
-    public function disLikeStore(Request $request) {
-        $Input = $request->all();
-
-        DB::table('store_like')->where('user_id', $Input['user_id'])->delete();
-
-        return redirect()->back();
-    }
-
-    
-
-    public function getfollower($id){
-        
-        $data['breadcrumbs'][trans('titles.myProfile')] = '#';
-
-        $id = ($id) ? $id : \Auth::id();
-
-        $data['object'] = User::with('profile')->find($id);
-
-       
-
-        
-        return view('adforest.profile.followers',$data);
     }
 
 }

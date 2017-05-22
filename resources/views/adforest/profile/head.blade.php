@@ -7,34 +7,8 @@
 @include('adforest.home.slider')
 
 
-<div class="container">
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            <form action="{{ url('profile/Message') }}" method="post">
-                <!-- Modal content-->
-                {{ csrf_field() }}
-                <div class="modal-content">
-                    <div class="modal-header">
 
-                        <h4 class="modal-title">Message</h4>
-                    </div>
-                    <div class="modal-body">
-                        <input type="hidden" name="from_name" value="{{ \Auth::user()->name }}">
-                        <input type="hidden" name="to_user_id" value="{{ $object->id }}">
-                        <input type="hidden" name="from_user_id" value="{{ Auth::id() }}">
-                        <textarea name="messages" class="form-control" rows="5" id="comment"
-                                  placeholder="Enter Your Message"></textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default1 rig1" data-dismiss="modal"><a>Close</a></button>
-                        <button type="submit" class="btn btn-default1 rig1"><a>Send</a></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 
 
 <div style="margin-bottom: 0px !important;height: 129px;" class="profile-data">
@@ -214,7 +188,6 @@
                 </a>
             </li>
 
-
             <li class="menusettings">
                 <a href="{{ url('profile/settings') }}">
                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
@@ -222,6 +195,7 @@
                 </a>
             </li>
         </ul>
+
 
 
         <div class="details" style="height: 116px;">
@@ -285,3 +259,7 @@
                     </div>
                 </form>
             </div>
+
+    </div>
+</div>
+

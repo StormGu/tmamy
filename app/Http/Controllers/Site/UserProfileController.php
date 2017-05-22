@@ -78,8 +78,6 @@ class UserProfileController extends Controller
         return View('adforest.profile.my_stores', $data, compact('countuserfollower'));
     }
 
-
-
     public function Postnewstores(Request $request) {
         $stors = new Store;
 
