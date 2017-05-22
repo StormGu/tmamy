@@ -134,7 +134,6 @@ class Store extends Model
     */
 
 
-
     public function children()
     {
         return $this->hasMany(Advertisement::class,'store_id');

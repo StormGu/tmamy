@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Site;
 use Backpack\PageManager\app\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class PageController extends Controller
 {

@@ -31,12 +31,13 @@ class StoreController extends Controller
         $data['breadcrumbs'][trans('titles.stores')] = '#';
 
         $object = Store::find($id);
-         
+
         // User Get
         $data['user'] = $object->customer;
         $data['profile'] = $object->customer->profile;
 
-        $data['objects'] = Advertisement::whereStoreId($id)->get();
+        $data['object'] = $object;
+        $data['objects'] = Advertisement::whereStoreId($id)->latest()->get();
 
         return view('adforest.store.show', $data);
     }
@@ -65,6 +66,44 @@ class StoreController extends Controller
             }
 
             return redirect('profile/stores')->withMessage([
+                'type' => 'success',
+                'message' => trans('common.success_added')
+            ]);
+        }
+        else {
+            return back()->withMessage([
+                'type' => 'warning',
+                'message' => trans('common.failed_added')
+            ]);
+        }
+    }
+
+    public function edit($id = null) {
+
+        $data['breadcrumbs'][__('store.new_store')] = '#';
+
+        $data['object'] = Store::find($id);
+
+        $data['categories'] = Category::parents()->pluck('name', 'id');
+        $data['countries'] = Country::pluck('name', 'id');
+
+        return view('adforest.store.form', $data);
+    }
+
+    public function update(StoreRequest $request, $id) {
+
+        $store = Store::find($id);
+        $store->fill($request->except('_token'));
+        $store->user_id = \Auth::id();
+        $store->status = 'waiting_approval';
+
+        if ($store->save()) {
+
+            if (\Input::hasFile('image')) {
+                $this->uploadPic($store->id, \Input::file('image'));
+            }
+
+            return redirect('store/' . $id)->withMessage([
                 'type' => 'success',
                 'message' => trans('common.success_added')
             ]);

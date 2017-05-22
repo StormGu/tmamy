@@ -18,8 +18,12 @@
                                     @lang('profile.Post_Your_Store')
                                 </h3>
                             </div>
+                            @if(isset($object))
+                                {!! Form::model($object, ['url' => 'store/' . $object->id, 'method' => 'post', 'files' => true, 'class'=> 'submit-form']) !!}
+                            @else
+                                {!! Form::open(['url' => url('store'), 'files' =>true, 'class'=> 'submit-form']) !!}
+                            @endif
 
-                            {!! Form::open(['url' => url('store'), 'files' =>true, 'class'=> 'submit-form']) !!}
                             <div class="row">
                                 <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                     <label class="control-label">@lang('profile.Category')
@@ -66,14 +70,14 @@
                                     {!! Form::select('country_id', $countries , old('country_id'), ['class'=> 'form-control']) !!}
                                 </div>
                                 {{--<div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">--}}
-                                    {{--<label class="control-label">@lang('profile.Store Type')--}}
-                                        {{--<small>@lang('profile.Select_suitable_category_for_your_Store')</small>--}}
-                                    {{--</label>--}}
-                                    {{--<select name="store_account_type_id" class="category form-control">--}}
-                                        {{--<option label=@lang('profile.SelectOption')></option>--}}
-                                        {{--<option value="1">Financed</option>--}}
-                                        {{--<option value="1">Free</option>--}}
-                                    {{--</select>--}}
+                                {{--<label class="control-label">@lang('profile.Store Type')--}}
+                                {{--<small>@lang('profile.Select_suitable_category_for_your_Store')</small>--}}
+                                {{--</label>--}}
+                                {{--<select name="store_account_type_id" class="category form-control">--}}
+                                {{--<option label=@lang('profile.SelectOption')></option>--}}
+                                {{--<option value="1">Financed</option>--}}
+                                {{--<option value="1">Free</option>--}}
+                                {{--</select>--}}
                                 {{--</div>--}}
 
                             </div>

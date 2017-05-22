@@ -15,8 +15,9 @@
                 <div class="col-md-2">
                 </div>
                 <div class="col-md-8">
-                    {!! Form::open(['url' => url('CreateAdv'), 'files' => true]) !!}
-                    {!! Form::hidden('category_id', $category_id) !!}
+                    {!! Form::open(['url' => url('CreateAdv') , 'files' => true]) !!}
+
+                    @include('adforest.advertisement.form_partials.hidden_fields')
                     <div class="ad-box margin-top-10">
                         <h1>@lang('advertisement.general')</h1>
                         <hr>
@@ -68,85 +69,32 @@
                         {!! $additional_info !!}
                     @endif
 
-                    @if($properties->count())
-                        <div class="ad-box margin-top-10">
+                    {{-- Properties Partial Block --}}
+                    @include('adforest.advertisement.form_partials.properties')
+                    {{-- End Properties Partial Block --}}
 
-                            <h1>@lang('advertisement.properties')</h1>
-                            <hr>
-                            @foreach($properties as $property)
-                                <div class="form-group @if ($errors->has($property->name)) has-error @endif">
-                                    @if ($property->type == 'text')
-                                        {!! Form::text('properties[' . $property->id . ']', null, ['placeholder' => $property->label, 'class' => 'form-control margin-top-10']) !!}
-                                    @elseif($property->type == 'select')
-                                        {!! Form::select('properties[' . $property->id . ']', \App\Models\ListOfValueDetail::where('parent_id', '=', $property->key)->pluck('title', 'id'), null, ['placeholder' => $property->label, 'class' => 'form-control margin-top-10']) !!}
-                                    @endif
-                                    @if ($errors->has($property->name))
-                                        <span class="text-danger">{{ $errors->first($property->name) }}</span>
-                                    @endif
-                                </div>
-                            @endforeach
-                        </div>
-                    @endif
+                    {{-- Ad Image Partial Block --}}
+                    @include('adforest.advertisement.form_partials.image')
+                    {{-- End Ad Image Partial Block --}}
 
-                    <div class="ad-box margin-top-10">
-                        <h1>@lang('advertisement.image')</h1>
-                        <hr>
+                    {{-- Features Partial Block --}}
+                    @include('adforest.advertisement.form_partials.features')
+                    {{-- End Features Partial Block --}}
 
-                        <div class="form-group {{ $errors->has('image') ? ' has-error' : '' }}">
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                @lang('profile.Browse') <input name="image" type="file" id="imgInp"
-                                                               value="{{old('image')}}">
-                                </span>
-                                </span>
-                                <input type="text" class="form-control" readonly>
-                            </div>
-                            @if ($errors->has('image'))
-                                <span class="text-danger">{{ $errors->first('image') }}</span>
-                            @endif
-                        </div>
+                    {{-- Locate On Map Partial Block --}}
+                    @include('adforest.advertisement.form_partials.locate')
+                    {{-- End Locate On Map Partial Block --}}
+
+                    {{-- Hot Selling Partial Block --}}
+                    @include('adforest.advertisement.form_partials.hotselling')
+                    {{-- End Hot Selling Partial Block --}}
+
+                    {{-- Billing Partial Block --}}
+                    <div id="billing">
+                        @include('adforest.advertisement.form_partials.billing')
                     </div>
+                    {{-- End Billing Partial Block --}}
 
-                    @if($features->count())
-                        <div class="ad-box margin-top-10">
-                            <h1>@lang('advertisement.features')</h1>
-                            <hr>
-                            @foreach($features as $feature)
-                                <div class="form-group">
-                                    <h4>{{ $feature->name }}</h4>
-                                    @foreach(\App\Models\Feature::whereParentId($feature->id)->get() as $child)
-                                        <div class="col-md-6">{!! Form::checkbox('features[]', $child->id) !!} {{ $child->name }}</div>
-                                        @if($loop->iteration % 2 == 0)
-                                            <div class="clearfix"></div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            @endforeach
-                        </div>
-                    @endif
-
-                    <div class="ad-box margin-top-10">
-                        <h1>@lang('advertisement.map')</h1>
-                        <hr>
-                        @include('adforest.advertisement.form.locate')
-                    </div>
-
-                    <div class="ad-box margin-top-10">
-                        <h1>@lang('advertisement.hotselling')</h1>
-                        <hr>
-                        <div class="form-group">
-                            <div class="col-md-12">@if(\Request::input('hot') == 1) {!! Form::checkbox('hotselling', 1 , ['checked' => 'checked']) !!} @else  {!! Form::checkbox('hotselling', 1 ) !!} @endif @lang('advertisement.hotselling')</div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <div class="ad-box margin-top-10" id="billing">
-                        @include('adforest.advertisement.form.billing')
-                    </div>
-                    @if ($errors->has('after_points'))
-                        <span class="text-danger">{!! $errors->first('after_points') !!}</span>
-                    @endif
                     <hr>
 
                     <div>
@@ -166,23 +114,5 @@
 @endsection
 
 @section('custom_js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js"
-            integrity="sha384-tIwI8+qJdZBtYYCKwRkjxBGQVZS3gGozr3CtI+5JF/oL1JmPEHzCEnIKbDbLTCer"
-            crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(function () {
-            $(document).on('change', "input[name='hotselling']", function () {
-                var query = '?';
-
-                if ($(this).is(':checked')) {
-                    query += 'hot=1'
-                }
-                $.get("{{ url('AddAdv/billing') }}" + query, function (data) {
-                    $("#billing").html(data);
-                    alert("Load was performed.");
-                });
-            });
-        });
-
-    </script>
+    @include('adforest.advertisement.form_partials.custom_js')
 @endsection

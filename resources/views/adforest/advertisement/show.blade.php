@@ -87,25 +87,50 @@
 
                         <div class="clearfix"></div>
 
+                        <div class="ad-box margin-top-20">
 
-                        <div class="ad-box">
-
-                            @if($properties->count())
-                                <div class="short-features">
-                                    <div class="heading-panel">
-                                        <h3 class="main-title text-left">
-                                            @lang('advertisement.properties')
-                                        </h3>
-                                    </div>
-                                    @foreach($properties as $property)
-                                        <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                                            <span><strong>{{ $property->label }}</strong>: {{ $property->pivot->property_value }}</span>
-                                        </div>
-                                    @endforeach
+                            <div class="short-features">
+                                <div class="heading-panel">
+                                    <h3 class="main-title text-left">
+                                        @lang('advertisement.properties')
+                                    </h3>
                                 </div>
-                            @endif
+                                @if(isset($wholesale))
+                                    @if(isset($object->currency->value))
+                                        <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+                                        <span>
+                                            <strong>@lang('advertisement.price')</strong> :
+                                            {{ $object->price }}
+                                            - {{ $wholesale->price_to }} {{ $object->currency->value }}
+                                        </span>
+                                        </div>
+                                    @endif
+                                    <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+                                        <span>
+                                            <strong>@lang('advertisement.min_quantity')</strong> :
+                                            {{ $wholesale->min_quantity }}
+                                        </span>
+                                    </div>
+                                    @if(isset($wholesale->term_delivery->value))
+                                        <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+                                        <span>
+                                            <strong>@lang('advertisement.term_delivery')</strong> :
+                                            {{ $wholesale->term_delivery->value }}
+                                        </span>
+                                        </div>
+                                    @endif
+                                @endif
+                                @foreach($properties as $property)
+                                    <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+                                        <span><strong>{{ $property->label }}</strong>: {{ $property->pivot->property_value }}</span>
+                                    </div>
+                                @endforeach
 
-                            @if($features)
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        @if($features)
+                            <div class="ad-box margin-top-20">
                                 <div class="short-features">
                                     <div class="heading-panel">
                                         <h3 class="main-title text-left">
@@ -128,9 +153,11 @@
                                         @endforeach
                                     </div>
                                 </div>
+                            </div>
                         @endif
 
-                        <!-- Ad Specifications -->
+                        <div class="ad-box margin-top-20">
+                            <!-- Ad Specifications -->
                             <div class="specification">
                                 <!-- Heading Area -->
                                 <div class="heading-panel">
@@ -145,6 +172,8 @@
                             </div>
 
                             <div class="clearfix"></div>
+                        </div>
+                        <div class="ad-box margin-top-20">
                             <!-- Short Features  -->
                             <div id="disqus_thread"></div>
                             <script>

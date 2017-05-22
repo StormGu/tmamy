@@ -11,7 +11,8 @@
         <div class="container">
             <div class="row">
                 {!! Form::open(['url' => url('CreateService'), 'files' => true]) !!}
-                {!! Form::hidden('category_id', $category_id) !!}
+
+                @include('adforest.advertisement.form_partials.hidden_fields')
                 <div class="ad-box">
                     <h3>@lang('advertisement.general')</h3>
                     <hr>
@@ -76,7 +77,6 @@
                     </div>
                 </div>
                 <div class="ad-box margin-top-10">
-
                     <h3 class="moon">@lang('advertisement.cost_of_services')</h3>
                     <hr>
                     <div class="clearfix"></div>
@@ -98,83 +98,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="ad-box margin-top-10">
-                    <h1>@lang('advertisement.Address')</h1>
-                    <hr>
-                    @include('adforest.advertisement.form.map')
 
+                {{-- Locate On Map Partial Block --}}
+                @include('adforest.advertisement.form_partials.locate')
+                {{-- End Locate On Map Partial Block --}}
+
+                {{-- Hot Selling Partial Block --}}
+                @include('adforest.advertisement.form_partials.hotselling')
+                {{-- End Hot Selling Partial Block --}}
+
+                {{-- Billing Partial Block --}}
+                <div id="billing">
+                    @include('adforest.advertisement.form_partials.billing')
                 </div>
-                <div class="ad-box margin-top-10">
-                    <hr>
-                    <h1>@lang('advertisement.billing')</h1>
-                    <hr>
-                    <h3>@lang('advertisement.points')</h3>
-                    <table class="table table-responsive">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th style="width:30%">@lang('advertisement.points')</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>@lang('advertisement.add_advertisement')</td>
-                            <td>{{ config('settings.normal_adv') }}</td>
-                        </tr>
-                        @if (isset($hot))
-                            <tr>
-                                <td>@lang('advertisement.hot_advertisement')</td>
-                                <td>{{ config('settings.hot_adv') }}</td>
-                            </tr>
-                        @endif
-                        </tbody>
-                    </table>
-                    <h3>@lang('advertisement.balance')</h3>
-                    <table class="table table-responsive">
-                        <thead>
-                        <tr>
-                            <th>@lang('advertisement.current_balance')</th>
-                            <th style="width:30%">{{ $current_points }}</th>
-                        </tr>
-                        <tr>
-                            <th>@lang('advertisement.new_balance')</th>
-                            <th><span class="@if($after_points < 0) text-danger @endif"> {{ $after_points }}</span>
-                            </th>
-                        </tr>
-                        </thead>
-                    </table>
-                    {!! Form::hidden('after_points', $after_points) !!}
-                    @if ($errors->has('after_points'))
-                        <span class="text-danger">{!! $errors->first('after_points') !!}</span>
-                    @endif
-                </div>
+                {{-- End Billing Partial Block --}}
                 <div>
                     <button href="#" class="btn btn-success pull-right">@lang('advertisement.submit')</button>
                 </div>
                 {!! Form::close() !!}
             </div>
     </section>
-
-
 @endsection
 
 @section('custom_js')
-    <script type="text/javascript">
-        $(function () {
-            $(document).on('change', "input[type='checkbox']", function () {
-                if ($(this).is(':checked')) {
-                    window.location.href = '{{ Request::url() }}?hot=1';
-                } else {
-                    window.location.href = '{{ Request::url() }}';
-                }
-            });
-        });
-
-        function createCompany(event) {
-            $('input[name=lat]').val(event.latLng.lat());
-            $('input[name=lon]').val(event.latLng.lng());
-        }
-    </script>
-
-    {!! Mapper::renderJavascript() !!}
+    @include('adforest.advertisement.form_partials.custom_js')
 @endsection

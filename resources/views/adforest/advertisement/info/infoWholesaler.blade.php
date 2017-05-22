@@ -35,115 +35,74 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <hr>
-                                <p>
-                                    {!! nl2br($object->details) !!}
-                                </p>
+
                             </div>
                             <div class="clearfix"></div>
                         </div>
+                        <div class="ad-box margin-top-20">
+
+                            @if($properties->count())
+                                <div class="short-features">
+                                    <div class="heading-panel">
+                                        <h3 class="main-title text-left">
+                                            @lang('advertisement.properties')
+                                        </h3>
+                                    </div>
+                                    @foreach($properties as $property)
+                                        <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+                                            <span><strong>{{ $property->label }}</strong>: {{ $property->pivot->property_value }}</span>
+                                        </div>
+                                    @endforeach
+                                    <div class="clearfix"></div>
+                                </div>
+                            @endif
+
+                        </div>
+                        <div class="ad-box margin-top-20">
+                            <!-- Ad Specifications -->
+                            <div class="specification">
+                                <!-- Heading Area -->
+                                <div class="heading-panel">
+                                    <h3 class="main-title text-left">
+                                        @lang('advertisement.description')
+                                    </h3>
+                                </div>
+                                <p>
+                                    {{ $object->details }}
+                                </p>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="ad-box margin-top-20">
+                            <!-- Short Features  -->
+                            <div id="disqus_thread"></div>
+                            <script>
+
+                                /**
+                                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                                /*
+                                 var disqus_config = function () {
+                                 this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                 };
+                                 */
+                                (function () { // DON'T EDIT BELOW THIS LINE
+                                    var d = document, s = d.createElement('script');
+                                    s.src = 'https://tmamystore.disqus.com/embed.js';
+                                    s.setAttribute('data-timestamp', +new Date());
+                                    (d.head || d.body).appendChild(s);
+                                })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                                    powered by Disqus.</a></noscript>
+
+
+                        </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-
-                        <div class="white-bg user-contact-info margin-bottom-20">
-                        <h3 class="main-title" style="padding: 20px">
-                        @lang('advertisement.tender')
-                        </h3>
-                        <hr/>
-                        <div class="ad-listing-meta">
-                        <ul>
-                        {{--<li>@lang('advertisement.ref_no') <span>{{ $tender->tender_ref_no }}</span></li>--}}
-                        {{--<li>@lang('advertisement.value') <span>{{ $tender->tender_value }}</span></li>--}}
-                        {{--<li>@lang('advertisement.document_cost') <span>{{ $tender->document_cost }}</span></li>--}}
-                        {{--<li>@lang('advertisement.announcement_date') <span>{{ $tender->announcement_date }}</span></li>--}}
-                        {{--<li>@lang('advertisement.value_currency_id') <span>{{ $tender->tender_value_currency_id }}</span></li>--}}
-                        {{--<li>@lang('advertisement.document_cost_currency_id') <span>{{ $tender->document_cost_currency_id }}</span></li>--}}
-                        {{--<li>@lang('advertisement.opening_date') <span>{{ $tender->opening_date }}</span></li>--}}
-                        {{--<li>@lang('advertisement.opening_time') <span>{{ $tender->opening_time }}</span></li>--}}
-                        {{--<li>@lang('advertisement.last_collection_date') <span>{{ $tender->last_collection_date }}</span></li>--}}
-                        {{--<li>@lang('advertisement.address') <span>{{ $tender->address }}</span></li>--}}
-                        {{--<li>@lang('advertisement.organisation_name') <span>{{ $tender->organisation_name }}</span></li>--}}
-                        {{--<li>@lang('advertisement.organisation_street') <span>{{ $tender->organisation_street }}</span></li>--}}
-                        {{--<li>@lang('advertisement.organisation_phone') <span>{{ $tender->organisation_phone }}</span></li>--}}
-                        {{--<li>@lang('advertisement.organisation_fax') <span>{{ $tender->organisation_fax }}</span></li>--}}
-                        {{--<li>@lang('advertisement.organisation_email') <span>{{ $tender->organisation_email }}</span></li>--}}
-                        {{--<li>@lang('advertisement.contact_person') <span>{{ $tender->contact_person }}</span></li>--}}
-
-                        </ul>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        {{--<div class="ad-box  white-bg user-contact-info margin-bottom-20">--}}
-                        {{--<h3 class="main-title" style="padding: 20px">--}}
-                        {{--@lang('service.about')--}}
-                        {{--</h3>--}}
-                        {{--<hr/>--}}
-                        {{--<p>--}}
-                        {{--{{ $service->my_services }}--}}
-                        {{--</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="ad-box  white-bg user-contact-info margin-bottom-20">--}}
-                        {{--<h3 class="main-title" style="padding: 20px">--}}
-                        {{--@lang('advertisement.cost_of_services')--}}
-                        {{--</h3>--}}
-                        {{--<hr/>--}}
-                        {{--<div class="ad-listing-meta">--}}
-                        {{--<ul>--}}
-                        {{--@foreach($costs as $cost)--}}
-                        {{--<li> {{ $cost->service_title }} <span>{{ $cost->service_cost . ' ' .  $cost->currency->value }}</span></li>--}}
-                        {{--@endforeach--}}
-                        {{--</ul>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--@if($educations->count())--}}
-                        {{--<div class="ad-box margin-top-20">--}}
-                        {{--<h1> @lang('advertisement.education')</h1>--}}
-                        {{--<hr/>--}}
-                        {{--<div class="desc-points">--}}
-                        {{--<ul>--}}
-                        {{--@foreach($educations as $education)--}}
-                        {{--<li>--}}
-                        {{--<b>{{ $education->college_name }}</b>--}}
-                        {{--{{ $education->start_date }} - {{ $education->end_date }}<br>--}}
-                        {{--{{ $education->description }}--}}
-                        {{--</li>--}}
-                        {{--@endforeach--}}
-                        {{--</ul>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--@endif--}}
-                        {{--@if($memberships->count())--}}
-                        {{--<div class="ad-box margin-top-20">--}}
-                        {{--<h1> @lang('advertisement.membership')</h1>--}}
-                        {{--<hr/>--}}
-                        {{--<div class="desc-points">--}}
-                        {{--<ul>--}}
-                        {{--@foreach($memberships as $membership)--}}
-                        {{--<li>{{ $membership->name }}</li>--}}
-                        {{--@endforeach--}}
-                        {{--</ul>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--@endif--}}
-                        {{--@if($features->count())--}}
-                        {{--<div class="ad-box margin-top-20">--}}
-                        {{--<h1> @lang('advertisement.specialized_in')</h1>--}}
-                        {{--<hr/>--}}
-                        {{--<div class="desc-points">--}}
-                        {{--<ul>--}}
-                        {{--@foreach($features as $feature)--}}
-                        {{--<li>{{ $feature->name }}</li>--}}
-                        {{--@endforeach--}}
-                        {{--</ul>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--@endif--}}
-                    </div>
-                </div>
 
             </div>
             <div class="col-md-3">

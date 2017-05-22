@@ -23,7 +23,7 @@
                         <li>Digital Plus Company</li>
                         <li>{{ config('settings.address') }}</li>
                         <li>{{ config('settings.mobile_no') }}</li>
-                        <li><a href="#">{{ config('settings.contact_email') }}</a></li>
+                        <li><a href="{{ url('page/compEmail') }}">admin@updivision.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -31,9 +31,10 @@
                 <div class="footer-widget">
                     <h4>Help &amp; FAQ</h4>
                     <ul class="single-widget-list">
-                        <li><a href="#">Digital Plus Company</a></li>
-                        <li><a href="#">Tmamy Business Gate</a></li>
-                        <li><a href="#">Tamamy Stores</a></li>
+                        <li><a href="{{ url('page/Digital Plus Company') }}">Digital Plus Company</a></li>
+                        <li><a href="{{ url('page/Tmamy Business Gate') }}">Tmamy Business Gate</a></li>
+                        <li><a href="{{ url('page/Tamamy Stores') }}">Tamamy Stores</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -41,7 +42,7 @@
                 <div class="footer-widget">
                     <h4>Privacy Policy</h4>
                     <ul class="single-widget-list">
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="{{ url('page/Privacy Policy') }}">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,7 +50,7 @@
                 <div class="footer-widget">
                     <h4>Terms of Use</h4>
                     <ul class="single-widget-list">
-                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="{{ url('page/Terms of Use') }}">Terms of Use</a></li>
                     </ul>
                 </div>
             </div>
