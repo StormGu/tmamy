@@ -12,4 +12,6 @@ return [
     'customer' => 'customer',
     'status' => 'status',
     'created_at' => 'created at',
+
+    'edit' => 'Edit Store',
 ];

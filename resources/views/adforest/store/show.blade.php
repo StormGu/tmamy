@@ -19,8 +19,12 @@
                     <div class="row margin-bottom-20">
                         <div class="col-md-12">
                             <a href="{{ url('AddAdv/' . $object->category_id . '?store_id=' . $object->id) }}"
-                               class="btn btn-primary pull-right">
+                               class="btn btn-primary pull-right" style="margin: 0 4px">
                                 @lang('profile.ad_Post_ad')
+                            </a>
+                            <a href="{{ url('store/' . $object->id . '/edit') }}"
+                               class="btn btn-warning pull-right" style="margin: 0 4px">
+                                @lang('store.edit')
                             </a>
                         </div>
                     </div>
