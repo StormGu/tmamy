@@ -41,9 +41,8 @@ Route::post('login', 'AuthController@authenticate');
 	Route::get('ism', function () {
       return bcrypt(123456);
  	});
-http://localhost/tmamy/public/api/v1/profile/unfollow
 Route::group(['middleware' => ['jwt.auth']], function () {
- 	
+    Route::get('profile/{id}', 'UserProfileController@showProfile');	
  	Route::post('profile/Message', 'MessageController@postmsg');
  	Route::get('profile/Message', 'MessageController@messages');
     Route::get('profile/Message/{id}', 'MessageController@getmsg');

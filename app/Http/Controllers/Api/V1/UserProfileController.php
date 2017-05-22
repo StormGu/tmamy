@@ -207,18 +207,12 @@ class UserProfileController extends Controller
     }
 
 
-    public function showprofile($id) {
-        $data['breadcrumbs'][trans('titles.myProfile')] = '#';
+    public function showProfile($id) {
 
-        $id = ($id) ? $id : \Auth::id();
+        $User = User::with('profile')->find($id);
 
-        $data['object'] = User::with('profile')->find($id);
+        return response()->json(['success' => true, 'message' => [], 'data' => $User]);
 
-       
-
-        $user_id = \Auth::id();
-
-        return view('adforest.profile.showprofile', $data, compact('user_id'));
     }
 
 }

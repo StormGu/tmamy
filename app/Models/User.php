@@ -72,6 +72,12 @@ class User extends Authenticatable
         'deleted_at'
     ];
 
+    protected $appends = [
+        'CountFollowers','CountFollowing'
+    ];
+
+
+
     /**
      * Build Social Relationships
      *
@@ -135,8 +141,32 @@ class User extends Authenticatable
 
     function followers()
     {
-        return $this->belongsToMany('App\Models\User', 'user_followers', 'user_id', 'user_followers_id');
+        return $this->hasMany(UserFollower::class);
+     //   return $this->belongsToMany('App\Models\User', 'user_followers', 'user_id', 'user_followers_id');
     }
+ 
+     /**
+     * Get the list of followers of this user.
+     *
+     * @return bool
+     */
+    public function getCountFollowersAttribute()
+    {
+        return $this->followers()->where('user_followers_id',\Auth::id())->count();
+    }
+
+
+     /**
+     * Get the list of followers of this user.
+     *
+     * @return bool
+     */
+    public function getCountFollowingAttribute()
+    {
+        return $this->followers()->where('user_id',\Auth::id())->count();
+    }
+
+
 
     function follow(User $user) {
         $this->followers()->attach($user->id);
