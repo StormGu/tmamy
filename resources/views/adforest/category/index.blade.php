@@ -48,63 +48,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="col-lg-3 col-md-3 hidden-sm rtl" style="    width: 270px !important;">
-
-                    <aside class="widget widget-banner">
-                        <div class="side-divv">
-                            <ul style="    background: #ddd;">
-
-                                <li style="background: #06776f;
-    border-bottom: 4px solid #9ea7af;
-    border-right: 1px solid #343a45;
-    font-size: 19px;
-    font-weight: 100;
-    padding: 1px;
-    text-align: left;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    vertical-align: middle;"><a class="active" href=""
-                                style="  margin-left:35px;  color: #ffffff;">@lang('category.main_categories')</a>
-                                </li>
-                                @foreach(\App\Models\Category::parents()->has('advertisements')->withCount('advertisements')->get() as $category)
-                                    <li style="border-left: 3px solid #6e6f72;" data-category="realestate">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <a href="{{ url('category/'. $category->id) }}"
-                                                   style="margin-left: -34px;">
-                                                    <img src="{{ asset('adforest/logo/'.$category->name.'.png') }}"
-                                                         style="width: 30px;
-    height: 30px;
-    margin-top: -1px;
-    margin-left: 20px;">
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <div class="row">
-                                                    <div class="col-lg-8">
-                                                        <a href="{{ url('category/'. $category->id) }}"
-                                                           style="margin-left: -47px;">{{ $category->name }}</a>
-                                                    </div>
-                                                    <div class="col-lg-4" style="    margin-top: 35px;">
-                                                        <a href="{{ url('category/'. $category->id) }}"
-                                                           class="rits">{{ $category->advertisements_count }}</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-
-                            </ul>
-                        </div>
-
-                        <div class="app-img"><a href=""><img src="{{ asset('adforest/logo/add-friend2.png') }}"> </a>
-                        </div>
-                        <div class="app-img"><a href=""><img src="{{ asset('adforest/logo/add-friend.png') }}"> </a>
-                        </div>
-                    </aside>
-
-                </div>
-             <!--   <div class="col-md-3 col-md-pull-9 col-sx-12">
+                <div class="col-md-3 col-md-pull-9 col-sx-12">
                     <div class="sidebar">
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
@@ -150,13 +94,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Latest Ads Panel End -->
                         </div>
+                        <!-- panel-group end -->
                     </div>
-                    
+                    <!-- Sidebar Widgets End -->
                 </div>
-                      <!-- Sidebar Widgets End -->
                 <!-- Left Sidebar End -->
-                
             </div>
             <!-- Row End -->
         </div>
