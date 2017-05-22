@@ -55,10 +55,12 @@
                                     <div class="time"><i class="fa fa-clock-o"></i> Today 8:55 AM</div>
                                  </div>
                               </li>
-                              @foreach(\App\Models\UserMessage::where('from_user_id', $ms->to_user_id)->get() as $myms)
+                              
+                           @endforeach
+                           @foreach(\App\Models\UserMessage::where('from_user_id', $ms->to_user_id)->get() as $myms)
                                 <li class="friend-message clearfix">
                                  <figure class="profile-picture">
-                                    <img src="images/users/2.jpg" class="img-circle" alt="Profile Pic">
+                                    <img src="" class="img-circle" alt="Profile Pic">
                                  </figure>
                                  <div class="message">
                                    {{ $myms->messages }}
@@ -66,10 +68,9 @@
                                  </div>
                               </li>
                               @endforeach
-                           @endforeach
                            </ul>
                            <div class="chat-form ">
-         <form role="form" class="form-inline" action="{{ url('profile/Message') }}" method="post">
+                    <form role="form" class="form-inline" action="{{ url('profile/Message') }}" method="post">
                   {{ csrf_field() }}
                        <div class="form-group">
                            <input type="hidden" name="from_name" value="{{ \Auth::user()->name }}">

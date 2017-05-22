@@ -1,4 +1,4 @@
-@extends('adforest.layout.master')
+pf-content@extends('adforest.layout.master')
 
 @section('content')
 
@@ -6,6 +6,7 @@
     @include('adforest.profile.show_head')
 
     <div class="container">
+    
         <div class="pf-content">
             <div id="AdvContainer">
 

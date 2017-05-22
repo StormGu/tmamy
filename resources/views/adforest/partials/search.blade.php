@@ -16,7 +16,7 @@
 <div class="search-holder margin-top-30 pull-right" style="min-width: 400px">
     <div id="custom-search-input">
         <div class="input-group col-md-12 col-xs-12 col-sm-12">
-            {!! Form::text('keyword', isset($keyword)?$keyword:'', ['placeholder' => __('common.searchPlaceholder'), 'class' => 'form-control']) !!}
+            {!! Form::select('keyword', isset($keyword)?$keyword:'', ['placeholder' => __('common.searchPlaceholder'), 'class' => 'form-control']) !!}
 
             <span class="input-group-btn">
 <button class="btn btn-theme" type="button" style="padding: 15px !important;">

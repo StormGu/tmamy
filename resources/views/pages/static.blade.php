@@ -36,7 +36,7 @@
 
                                     @foreach(\Backpack\PageManager\app\Models\Page::get() as $url)
                                         <li @if(Route::current()->parameters('page')['page'] == $url->slug) class="curr"@endif>
-                                            <a href="{{ url($url->slug) }}">{{ $url->title }}</a></li>
+                                            <a href="{{ url('page/' . $url->slug) }}">{{ $url->title }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>

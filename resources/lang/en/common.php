@@ -20,4 +20,5 @@ return [
     'success_sent' => 'Message Successfully Sent.',
     'success_followed' => 'Person followed Successfully.',
     'success_unfollowed' => 'Person unfollowed Successfully.',
+    'approve' => 'approve',
 ];
