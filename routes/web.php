@@ -15,7 +15,7 @@
 
 // Homepage Route
 
-Route::group(['namespace' => 'Site', 'middleware' => 'adpoints'], function () {
+Route::group(['namespace' => 'Site'], function () {
 
     Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@index');

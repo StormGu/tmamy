@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-use App\Models\Page;
 
 class PageController extends Controller
 {
