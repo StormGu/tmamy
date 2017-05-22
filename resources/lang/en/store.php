@@ -7,8 +7,11 @@ return [
     'expired' => 'Expired',
     'waiting_approval' => 'Waiting Approval',
     /************/
+    'all_categories' => 'All Categories',
     'category' => 'category',
     'customer' => 'customer',
     'status' => 'status',
     'created_at' => 'created at',
+
+    'edit' => 'Edit Store',
 ];

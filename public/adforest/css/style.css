@@ -374,7 +374,7 @@ ul {
 	font-size: 12px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
-	border-radius: 2px;
+	border-radius: 32px;
 }
 .btn-xs {
 	padding: 6px 18px;
@@ -2675,7 +2675,7 @@ ul.add_info li i {
 }
 .ad-box {
 	border: 1px solid #e7e7e7;
-	border-radius: 1px;
+	border-radius: 5px;
 	background: #fff;
 	padding: 20px 30px;
 }
@@ -8371,7 +8371,7 @@ ul.listingViewIcon li.shortByListingLi ul li a {
 }
 
 .featured-ribbon span {
-	background: #d2281e none repeat scroll 0 0;
+	background: #06776f none repeat scroll 0 0;
 	box-shadow: 0 3px 12px -7px rgba(0, 0, 0, 1);
 	color: #fff;
 	display: block;
@@ -8443,7 +8443,10 @@ ul.listingViewIcon li.shortByListingLi ul li a {
 	color:#fff;
 }
 .single-ad  .featured-border {
-	border-top: 4px solid #b63339;
+	border-top: 4px solid #06776f;
 	position: realtive;
 	width: 100%;
+    border-radius: 34px 34px 0 0;
+    border-left: 1px;
+    border-right: 1px;
 }

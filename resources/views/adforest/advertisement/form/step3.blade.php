@@ -16,12 +16,8 @@
                 </div>
                 <div class="col-md-8">
                     {!! Form::open(['url' => url('CreateAdv') , 'files' => true]) !!}
-                    {!! Form::hidden('category_id', $category_id) !!}
 
-                    @if(Request::get('store_id') || old('store_id'))
-                        {!! Form::hidden('store_id', (old('store_id')) ? old('store_id'): Request::get('store_id')) !!}
-                    @endif
-
+                    @include('adforest.advertisement.form_partials.hidden_fields')
                     <div class="ad-box margin-top-10">
                         <h1>@lang('advertisement.general')</h1>
                         <hr>

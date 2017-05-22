@@ -1,4 +1,4 @@
-@extends('adforest.layout.oldmaster')
+@extends('adforest.layout.master')
 
 @section('template_title', __('advertisement.heading_title'))
 
