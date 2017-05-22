@@ -318,3 +318,8 @@ Route::get('lang/{lang}', function ($lang) {
 Route::get('images/profile/{id}/avatar/{image}', [
     'uses' => 'ProfilesController@userProfileAvatar'
 ]);
+
+
+Route::get('/ibra', function () {
+    
+});

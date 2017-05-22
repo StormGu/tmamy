@@ -16,7 +16,7 @@ class MessageController extends Controller
         $msg->fill($request->except('_token'));
         $msg->save();
 
-        return redirect('profile/' . $request->to_user_id)->withMessage([
+        return redirect('profile/Message/getformmsg/' . $request->to_user_id)->withMessage([
             'type' => 'success',
             'message' => trans('common.success_sent')
         ]);
@@ -24,8 +24,12 @@ class MessageController extends Controller
 
     public function inbox() {
 
-        $user_msg = Message::where('to_user_id', $id)->get();
-        $user_name = User::where('id', $id)->get();
+
+
+
+        $user_msg = Message::where('from_user_id', \Auth::id())->get();
+        $user_msgto = Message::where('to_user_id', \Auth::id())->get();
+        $user_name = User::where('id', \Auth::id())->get();
 
         foreach ($user_name as $key) {
             $key->name;
@@ -39,6 +43,7 @@ class MessageController extends Controller
     }
 
     public function getformmsg($id) {
+
         $user_msg = Message::where('from_user_id', $id)->get();
 
         $user_name = User::where('id', $id)->get();

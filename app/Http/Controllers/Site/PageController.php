@@ -14,7 +14,7 @@ class PageController extends Controller
 
         if (!$page)
         {
-            abort(404, 'Please go back to our <a href="'.url('').'">homepage</a>.');
+            abort(404, 'Please go back to our <a href="">homepage</a>.');
         }
 
         $this->data['title'] = $page->title;
