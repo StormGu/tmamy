@@ -100,7 +100,7 @@
                                                     <li><i class="fa fa-thumbs-up"></i> {{ $object->price }}</li>
 
                                                 </ul>
-                                                <ul class="pull-right">
+                                                <ul class="pull-left">
                                                     <li>
                                                     <i class="fa fa-trash" aria-hidden="true"><a href="{{ url('profile/adDelet') }}/{{ $object->id }}">@lang('common.delete')</a></i></li>
                                                    @hasrole('admin')

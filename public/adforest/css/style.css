@@ -374,7 +374,7 @@ ul {
 	font-size: 12px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
-	border-radius: 2px;
+	border-radius: 30px;
 }
 .btn-xs {
 	padding: 6px 18px;
@@ -3617,6 +3617,7 @@ ul.add_info li i {
 	color: #232323;
 }
 .user-contact-info {
+	background: #fff;
 	margin-bottom: 5px;
 }
 .blog-detial .page-numbers {
@@ -8376,7 +8377,7 @@ ul.listingViewIcon li.shortByListingLi ul li a {
 }
 
 .featured-ribbon span {
-    background: #d2281e none repeat scroll 0 0;
+    background: #4fa08c none repeat scroll 0 0;
     box-shadow: 0 3px 12px -7px rgba(0, 0, 0, 1);
     color: #fff;
     display: block;
@@ -8448,7 +8449,7 @@ ul.listingViewIcon li.shortByListingLi ul li a {
 	color:#fff;	
 }
 .single-ad  .featured-border {
-    border-top: 4px solid #b63339;
-    position: realtive;
+    border-top: 4px solid #4fa08c;
+    
     width: 100%;
 }
