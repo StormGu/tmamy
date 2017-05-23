@@ -62,10 +62,10 @@
                 <div class="col-md-6">
 
                     <div class="ad-box">
-                        <h1>@lang('advertisement.job_exhibition_info')</h1>
+                        <h1>@lang('advertisement.exhibition_info')</h1>
                         <hr>
                         <p>
-                        <h3>@lang('advertisement.resume_venue')</h3>
+                        <h3>@lang('advertisement.venue_name')</h3>
                         {{--{{ $exhibition->venue_city_id  }},--}}
                         {{--{{ $exhibition->venue_country_id  }}<br>--}}
                         {{ $exhibition->venue_name }}
@@ -99,10 +99,7 @@
 
                 <div class="col-md-6">
                     <div class="ad-box">
-                        <a href="#map" data-lat="31.5179714562342" data-lon="34.44934844970703"
-                           data-modal="SHOWMAP">
-                            <img src="https://maps.googleapis.com/maps/api/staticmap?center=31.5179714562342,34.44934844970703&zoom=12&size=540x200">
-                        </a>
+                        {!! Mapper::render() !!}
                     </div>
                 </div>
             </div>

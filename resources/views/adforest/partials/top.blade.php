@@ -1,15 +1,12 @@
 <div class="header-top">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 rtl">
-
+            <div class="col-lg-5 col-md-5 col-sm-5 rtl" style="margin-top:7px;">
                 <ul class="header-left-top header-menu">
                     <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false"> {!! Html::image('images/flags/' . $current_locale->image) !!} {{ $current_locale->locale }}
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
+                        <a href="#">{!! Html::image('images/flags/' . $current_locale->image) !!} {{ $current_locale->locale }}
+                            <i class="fa fa-angle-down"></i></a>
+                        <ul class="header-dropdown">
                             @foreach(\App\Models\Language::active()->get() as $locale)
                                 <li>
                                     <a href="{{ url('lang/'. $locale->code) }}">{!! Html::image('images/flags/' . $locale->image ) !!} {{ $locale->locale }} </a>
@@ -38,31 +35,23 @@
                     @endif
                 </ul>
             </div>
-            <div class="col-md-6 ltr">
+            <div class="col-lg-7 col-md-7 col-sm-7 ltr">
                 <div class="header-right-top">
-                    <div class="header-s-icons">
-                        (
-                        <a href="{{ url('AddAdv') }}" style="color:white; font-weight: bold">@lang('advertisement.post_free_ad')</a>
-                        )
-                        @if(Config('settings.facebook_url'))
-                            <a href="{{ url( Config('settings.facebook_url')) }}"><i class="fa fa-facebook"></i></a>
-                        @endif
-                        @if(Config('settings.twitter_url'))
-                            <a href="{{ url( Config('settings.twitter_url')) }}"><i class="fa fa-twitter"></i></a>
-                        @endif
-                        @if(Config('settings.linkedin_url'))
-                            <a href="{{ url( Config('settings.linkedin_url')) }}"><i class="fa fa-linkedin"></i></a>
-                        @endif
-                        @if(Config('settings.google_url'))
-                            <a href="{{ url( Config('settings.googleplus_url')) }}"><i
-                                        class="fa fa-google-plus"></i></a>
-                        @endif
-
-                    </div>
-                    <div class="header-contact-info">
-                        <p><i class="fa fa-mobile"></i> <span>@lang('advertisement.phone')</span>:
-                            <span>{{ Config('settings.mobile_no') }}</span></p>
-                    </div>
+                    <a class="new btn bordered-style" href="{{ url('AddAdv') }}"
+                       style="border-radius: 30px;">@lang('advertisement.post_free_ad')</a>
+                    @if(Config('settings.facebook_url'))
+                        <a href="{{ url( Config('settings.facebook_url')) }}"><i class="fa fa-facebook"></i></a>
+                    @endif
+                    @if(Config('settings.twitter_url'))
+                        <a href="{{ url( Config('settings.twitter_url')) }}"><i class="fa fa-twitter"></i></a>
+                    @endif
+                    @if(Config('settings.linkedin_url'))
+                        <a href="{{ url( Config('settings.linkedin_url')) }}"><i class="fa fa-linkedin"></i></a>
+                    @endif
+                    @if(Config('settings.google_url'))
+                        <a href="{{ url( Config('settings.googleplus_url')) }}"><i
+                                    class="fa fa-google-plus"></i></a>
+                    @endif
                 </div>
             </div>
         </div>

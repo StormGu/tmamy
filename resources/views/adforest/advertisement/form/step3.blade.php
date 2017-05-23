@@ -65,7 +65,6 @@
                         </div>
                     </div>
 
-
                     {{-- Properties Partial Block --}}
                     @include('adforest.advertisement.form_partials.properties')
                     {{-- End Properties Partial Block --}}

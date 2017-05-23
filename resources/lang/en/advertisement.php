@@ -129,4 +129,19 @@ return [
     'start_date' => 'Start Date',
     'end_date' => 'End Date',
     'memberships' => 'Memberships',
+
+    // Exhibition
+    'interval' => 'Interval',
+    'founded_date' => 'Founded Date',
+    'exhibition_info' => 'Exhibition Info',
+    'venue_country_id' => 'Venue Country',
+    'venue_name' => 'Venue Name',
+    'from_time' => 'From Time',
+    'to_time' => 'To Time',
+    'from_price' => 'From Price',
+    'to_price' => 'To Price',
+    'space' => 'Space',
+    'date' => 'Date',
+    'hours' => 'Hours',
+
 ];

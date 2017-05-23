@@ -10,7 +10,7 @@
     <section class="section-padding gray">
         <div class="container">
             <div class="row">
-                {!! Form::open(['url' => url('CreateWholesale'), 'files' => true]) !!}
+                {!! Form::open(['url' => url('CreateExhibition'), 'files' => true]) !!}
 
                 @include('adforest.advertisement.form_partials.hidden_fields')
 
@@ -26,24 +26,86 @@
                                     <span class="text-danger">{{ $errors->first('title') }}</span>
                                 @endif
                             </div>
+                            <div class="form-group @if ($errors->has('interval')) has-error @endif">
+                                {!! Form::select('interval', \App\Models\Constant::where('key', '=', 'interval')->pluck('value', 'id'),  old('interval'), ['placeholder' => __('advertisement.interval'), 'class' => 'form-control']) !!}
+                                @if ($errors->has('interval'))
+                                    <span class="text-danger">{{ $errors->first('interval') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group @if ($errors->has('founded_date')) has-error @endif">
+                                {!! Form::text('founded_date', old('founded_date'), ['placeholder' => __('advertisement.founded_date'), 'class' => 'form-control']) !!}
+                                @if ($errors->has('founded_date'))
+                                    <span class="text-danger">{{ $errors->first('founded_date') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group @if ($errors->has('details')) has-error @endif">
+                                {!! Form::textarea('details', old('details'), ['placeholder' => __('advertisement.details'), 'class' => 'form-control']) !!}
+                                @if ($errors->has('details'))
+                                    <span class="text-danger">{{ $errors->first('details') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="ad-box margin-top-10">
+                    <h3>@lang('advertisement.exhibition_info')</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <div class="form-group @if ($errors->has('venue_country_id')) has-error @endif">
+                                {!! Form::select('venue_country_id', \App\Models\Country::pluck('name', 'id'),  old('venue_country_id'), ['placeholder' => __('advertisement.venue_country_id'), 'class' => 'form-control']) !!}
+                                @if ($errors->has('venue_country_id'))
+                                    <span class="text-danger">{{ $errors->first('venue_country_id') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group @if ($errors->has('venue_name')) has-error @endif">
+                                {!! Form::text('venue_name', old('venue_name'), ['placeholder' => __('advertisement.venue_name'), 'class' => 'form-control']) !!}
+                                @if ($errors->has('venue_name'))
+                                    <span class="text-danger">{{ $errors->first('venue_name') }}</span>
+                                @endif
+                            </div>
                             <div class="row" style="padding: 0 10px;">
-                                <div class="col-md-4" style="padding: 0 5px !important;">
-                                    <div class="form-group @if ($errors->has('price')) has-error @endif">
-                                        {!! Form::text('price', old('price'), ['placeholder' => __('advertisement.price'), 'class' => 'form-control']) !!}
-                                        @if ($errors->has('price'))
-                                            <span class="text-danger">{{ $errors->first('price') }}</span>
+                                <div class="col-md-6" style="padding: 0 5px !important;">
+                                    <div class="form-group @if ($errors->has('start_date')) has-error @endif">
+                                        {!! Form::text('start_date', old('start_date'), ['placeholder' => __('advertisement.start_date'), 'class' => 'form-control']) !!}
+                                        @if ($errors->has('start_date'))
+                                            <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-4" style="padding: 0 5px !important;">
-                                    <div class="form-group @if ($errors->has('price_to')) has-error @endif">
-                                        {!! Form::text('price_to', old('price_to'), ['placeholder' => __('advertisement.price_to'), 'class' => 'form-control']) !!}
-                                        @if ($errors->has('price_to'))
-                                            <span class="text-danger">{{ $errors->first('price_to') }}</span>
+                                <div class="col-md-6" style="padding: 0 5px !important;">
+                                    <div class="form-group @if ($errors->has('end_date')) has-error @endif">
+                                        {!! Form::text('end_date', old('end_date'), ['placeholder' => __('advertisement.end_date'), 'class' => 'form-control']) !!}
+                                        @if ($errors->has('end_date'))
+                                            <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-4" style="padding: 0 5px !important;">
+                            </div>
+
+                            <div class="row" style="padding: 0 10px;">
+                                <div class="col-md-6" style="padding: 0 5px !important;">
+                                    <div class="form-group @if ($errors->has('from_time')) has-error @endif">
+                                        {!! Form::text('from_time', old('from_time'), ['placeholder' => __('advertisement.from_time'), 'class' => 'form-control']) !!}
+                                        @if ($errors->has('from_time'))
+                                            <span class="text-danger">{{ $errors->first('from_time') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="padding: 0 5px !important;">
+                                    <div class="form-group @if ($errors->has('to_time')) has-error @endif">
+                                        {!! Form::text('to_time', old('to_time'), ['placeholder' => __('advertisement.to_time'), 'class' => 'form-control']) !!}
+                                        @if ($errors->has('to_time'))
+                                            <span class="text-danger">{{ $errors->first('to_time') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 0 10px;">
+                                <div class="col-md-6" style="padding: 0 5px !important;">
                                     <div class="form-group @if ($errors->has('currency_id')) has-error @endif">
                                         {!! Form::select('currency_id', \App\Models\Constant::where('key', '=', 'currency')->pluck('value', 'id'),  old('currency_id'), ['placeholder' => __('advertisement.currency_id'), 'class' => 'form-control']) !!}
                                         @if ($errors->has('currency_id'))
@@ -51,47 +113,38 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="col-md-6" style="padding: 0 5px !important;">
+                                    <div class="form-group @if ($errors->has('space')) has-error @endif">
+                                        {!! Form::select('space', \App\Models\Constant::where('key', '=', 'space')->pluck('value', 'id'),  old('space'), ['placeholder' => __('advertisement.space'), 'class' => 'form-control']) !!}
+                                        @if ($errors->has('space'))
+                                            <span class="text-danger">{{ $errors->first('space') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="form-group @if ($errors->has('mobile_no')) has-error @endif">
-                                {!! Form::text('mobile_no', old('mobile_no'), ['placeholder' => __('advertisement.mobile_no'), 'class' => 'form-control']) !!}
-                                @if ($errors->has('mobile_no'))
-                                    <span class="text-danger">{{ $errors->first('mobile_no') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group @if ($errors->has('phone_no')) has-error @endif">
-                                {!! Form::text('phone_no', old('phone_no'), ['placeholder' => __('advertisement.phone_no'), 'class' => 'form-control']) !!}
-                                @if ($errors->has('phone_no'))
-                                    <span class="text-danger">{{ $errors->first('phone_no') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group @if ($errors->has('min_quantity')) has-error @endif">
-                                {!! Form::text('min_quantity', old('min_quantity'), ['placeholder' => __('advertisement.min_quantity'), 'class' => 'form-control']) !!}
-                                @if ($errors->has('min_quantity'))
-                                    <span class="text-danger">{{ $errors->first('min_quantity') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group @if ($errors->has('term_delivery_id')) has-error @endif">
-                                {!! Form::select('term_delivery_id', \App\Models\Constant::where('key', '=', 'term_delivery')->pluck('value', 'id'),  old('term_delivery_id'), ['placeholder' => __('advertisement.term_delivery_id'), 'class' => 'form-control']) !!}
-                                @if ($errors->has('term_delivery_id'))
-                                    <span class="text-danger">{{ $errors->first('term_delivery_id') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group @if ($errors->has('details')) has-error @endif">
-                                {!! Form::textarea('details', old('details'), ['placeholder' => __('advertisement.details'), 'class' => 'form-control', 'rows' => 5]) !!}
-                                @if ($errors->has('details'))
-                                    <span class="text-danger">{{ $errors->first('details') }}</span>
-                                @endif
+                            <div class="row" style="padding: 0 10px;">
+                                <div class="col-md-6" style="padding: 0 5px !important;">
+                                    <div class="form-group @if ($errors->has('from_price')) has-error @endif">
+                                        {!! Form::text('from_price', old('from_price'), ['placeholder' => __('advertisement.from_price'), 'class' => 'form-control']) !!}
+                                        @if ($errors->has('from_price'))
+                                            <span class="text-danger">{{ $errors->first('from_price') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="padding: 0 5px !important;">
+                                    <div class="form-group @if ($errors->has('to_price')) has-error @endif">
+                                        {!! Form::text('to_price', old('to_price'), ['placeholder' => __('advertisement.to_price'), 'class' => 'form-control']) !!}
+                                        @if ($errors->has('to_price'))
+                                            <span class="text-danger">{{ $errors->first('to_price') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-
-                {{-- Properties Partial Block --}}
-                @include('adforest.advertisement.form_partials.properties')
-                {{-- End Properties Partial Block --}}
 
                 {{-- Ad Image Partial Block --}}
                 @include('adforest.advertisement.form_partials.image')

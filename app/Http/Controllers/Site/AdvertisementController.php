@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Requests\AdvertisementRequest;
 use App\Http\Requests\CreateDoctorRequest;
+use App\Http\Requests\CreateExhibitionRequest;
 use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\WholesaleRequest;
@@ -141,6 +142,10 @@ class AdvertisementController extends Controller
 
         if (in_array($object->category_id, explode(',', config('settings.health_doctor_categories')))) {
             return $this->infoHealthDoctorClinic($id, $data);
+        }
+
+        if (in_array($object->category_id, explode(',', config('settings.exhibition_categories')))) {
+            return $this->infoExhibition($id, $data);
         }
 
         return View('adforest.advertisement.show', $data);
@@ -621,6 +626,41 @@ class AdvertisementController extends Controller
                     }
                 }
             }
+
+            $profile = Profile::whereUserId(\Auth::id())->first();
+            $profile->points = $request->input('after_points');
+            $profile->save();
+
+            return redirect('profile/ads')->withMessage([
+                'type' => 'success',
+                'message' => trans('common.success_added')
+            ]);
+        }
+        else {
+            return back()->withMessage([
+                'type' => 'warning',
+                'message' => trans('common.failed_added')
+            ]);
+        }
+    }
+
+    public function CreateExhibition(CreateExhibitionRequest $request) {
+
+        $advertisement = new Advertisement();
+        $advertisement->fill($request->except('_token', 'points'));
+        $advertisement->user_id = \Auth::id();
+        $advertisement->status = 'waiting_approval';
+
+        if ($advertisement->save()) {
+
+            if (\Input::hasFile('image')) {
+                $this->uploadPic($advertisement->id, \Input::file('image'));
+            }
+
+            $service = new AdvertisementInfoExhibition();
+            $service->fill($request->except('_token', 'points'));
+            $service->advertisement()->associate($advertisement);
+            $service->save();
 
             $profile = Profile::whereUserId(\Auth::id())->first();
             $profile->points = $request->input('after_points');

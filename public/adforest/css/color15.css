@@ -1,0 +1,443 @@
+﻿[data-category="realestate"] .next-step button  , 
+[data-category="realestate"] .category ul li.active,
+[data-category="realestate"] .post-adv-steps li:after,
+[data-category="realestate"] .subcategory-selector .success-selection p:before,
+[data-category="realestate"] .post-adv-steps ul:before,
+[data-category="realestate"] .payment-method li.active,
+[data-category="realestate"] .irs-bar ,
+[data-category="realestate"] .d3dBtn, 
+[data-category="realestate"] #CreateFilter,
+[data-category="realestate"] .cu-background {
+    background-color: #06776f;
+}
+
+[data-category="vehicles"] .next-step button ,
+[data-category="vehicles"] .category ul li.active ,
+[data-category="vehicles"] .post-adv-steps li:after,
+[data-category="vehicles"] .subcategory-selector .success-selection p:before,
+[data-category="vehicles"] .post-adv-steps ul:before,
+[data-category="vehicles"] .payment-method li.active,
+[data-category="vehicles"] .irs-bar ,
+[data-category="vehicles"] .d3dBtn ,
+[data-category="vehicles"] .cu-background, 
+[data-category="vehicles"] #CreateFilter {
+    background-color: #178faf;
+}
+
+
+[data-category="health"] ul li {
+    background-color: #93dee3;
+}
+
+[data-category="shopping"] .next-step button ,
+[data-category="shopping"] .category ul li.active , 
+[data-category="shopping"] .post-adv-steps li:after,
+[data-category="shopping"] .subcategory-selector .success-selection p:before ,
+[data-category="shopping"] .post-adv-steps ul:before,
+[data-category="shopping"] .payment-method li.active,
+[data-category="shopping"] .irs-bar ,
+[data-category="shopping"] .d3dBtn ,
+[data-category="shopping"] .cu-background, 
+[data-category="shopping"] #CreateFilter {
+    background-color: #c33178;
+}
+
+[data-category="industrial"] .next-step button,
+[data-category="industrial"]  .category ul li.active ,
+[data-category="industrial"] .post-adv-steps li:after,
+[data-category="industrial"] .subcategory-selector .success-selection p:before,
+[data-category="industrial"] .post-adv-steps ul:before,
+[data-category="industrial"] .payment-method li.active,
+[data-category="industrial"] .irs-bar ,
+[data-category="industrial"] .d3dBtn ,
+[data-category="industrial"] .cu-background, 
+[data-category="industrial"] #CreateFilter {
+    background-color: #272ea5;
+}
+
+[data-category="agriculture"] .next-step button,
+[data-category="agriculture"] .category ul li.active,
+[data-category="agriculture"] .post-adv-steps li:after,
+[data-category="agriculture"] .subcategory-selector .success-selection p:before,
+[data-category="agriculture"] .post-adv-steps ul:before,
+[data-category="agriculture"] .payment-method li.active,
+[data-category="agriculture"] .irs-bar ,
+[data-category="agriculture"] .d3dBtn ,
+[data-category="agriculture"] .cu-background, 
+[data-category="agriculture"] #CreateFilter  {
+    background-color: #cf6d24;
+}
+
+[data-category="careers"] .next-step button ,
+[data-category="careers"] .category ul li.active,
+[data-category="careers"] .post-adv-steps li:after,
+[data-category="careers"] .subcategory-selector .success-selection p:before,
+[data-category="careers"] .post-adv-steps ul:before,
+[data-category="careers"] .payment-method li.active,
+[data-category="careers"] .irs-bar ,
+[data-category="careers"] .d3dBtn ,
+[data-category="careers"] .cu-background, 
+[data-category="careers"] #CreateFilter  {
+    background-color: #83aa7d;
+}
+
+[data-category="services"] .next-step button ,
+[data-category="services"] .category ul li.active,
+[data-category="services"] .post-adv-steps li:after,
+[data-category="services"] .subcategory-selector .success-selection p:before,
+[data-category="services"] .post-adv-steps ul:before,
+[data-category="services"] .payment-method li.active,
+[data-category="services"] .irs-bar ,
+[data-category="services"] .d3dBtn  ,
+[data-category="services"] .cu-background, 
+[data-category="services"] #CreateFilter {
+    background-color: #b171c6;
+}
+
+[data-category="offers"] .next-step button ,
+[data-category="offers"] .category ul li.active,
+[data-category="offers"] .post-adv-steps li:after,
+[data-category="offers"] .subcategory-selector .success-selection p:before,
+[data-category="offers"] .post-adv-steps ul:before,
+[data-category="offers"] .payment-method li.active,
+[data-category="offers"] .irs-bar ,
+[data-category="offers"] .d3dBtn ,
+[data-category="offers"] .cu-background , 
+[data-category="offers"] #CreateFilter {
+    background-color: #7995c0;
+}
+
+[data-category="wholsalers"] .next-step button,
+[data-category="wholsalers"] .category ul li.active ,
+[data-category="wholsalers"] .post-adv-steps li:after,
+[data-category="wholsalers"] .subcategory-selector .success-selection p:before,
+[data-category="wholsalers"] .post-adv-steps ul:before,
+[data-category="wholsalers"] .payment-method li.active,
+[data-category="wholsalers"] .irs-bar ,
+[data-category="wholsalers"] .d3dBtn,
+[data-category="wholsalers"] .cu-background , 
+[data-category="wholsalers"] #CreateFilter {
+    background-color: #0a6042;
+}
+
+[data-category="foragent"] .next-step button ,
+[data-category="foragent"] .category ul li.active,
+[data-category="foragent"] .post-adv-steps li:after,
+[data-category="foragent"] .subcategory-selector .success-selection p:before,
+[data-category="foragent"] .post-adv-steps ul:before ,
+[data-category="foragent"] .payment-method li.active,
+[data-category="foragent"] .irs-bar ,
+[data-category="foragent"] .d3dBtn ,
+[data-category="foragent"] .cu-background, 
+[data-category="foragent"] #CreateFilter {
+    background-color: #e57e99;
+}
+
+[data-category="exhibitions"] .next-step button ,
+[data-category="exhibitions"] .category ul li.active,
+[data-category="exhibitions"] .post-adv-steps li:after,
+[data-category="exhibitions"] .subcategory-selector .success-selection p:before,
+[data-category="exhibitions"] .post-adv-steps ul:before,
+[data-category="exhibitions"] .payment-method li.active,
+[data-category="exhibitions"] .irs-bar ,
+[data-category="exhibitions"] .d3dBtn ,
+[data-category="exhibitions"] .cu-background, 
+[data-category="exhibitions"] #CreateFilter  {
+    background-color: #585252;
+}
+
+[data-category="tenders"] .next-step button ,
+[data-category="tenders"] .category ul li.active,
+[data-category="tenders"] .post-adv-steps li:after,
+[data-category="tenders"] .subcategory-selector .success-selection p:before,
+[data-category="tenders"] .post-adv-steps ul:before,
+[data-category="tenders"] .payment-method li.active,
+[data-category="tenders"] .irs-bar  ,
+[data-category="tenders"] .d3dBtn ,
+[data-category="tenders"] .cu-background, 
+[data-category="tenders"] #CreateFilter {
+    background-color: #45ab9e;
+}
+
+[data-category="restaurants"] .next-step button ,
+[data-category="restaurants"] .category ul li.active,
+[data-category="restaurants"] .post-adv-steps li:after,
+[data-category="restaurants"] .subcategory-selector .success-selection p:before,
+[data-category="restaurants"] .post-adv-steps ul:before,
+[data-category="restaurants"] .payment-method li.active,
+[data-category="restaurants"] .irs-bar ,
+[data-category="restaurants"] .d3dBtn  ,
+[data-category="restaurants"] .cu-background, 
+[data-category="restaurants"] #CreateFilter {
+    background-color: #f33b3b;
+}
+
+[data-category="itaxi"] .next-step button ,
+[data-category="itaxi"] .category ul li.active ,
+[data-category="itaxi"] .post-adv-steps li:after,
+[data-category="itaxi"] .subcategory-selector .success-selection p:before,
+[data-category="itaxi"] .post-adv-steps ul:before,
+[data-category="itaxi"] .payment-method li.active,
+[data-category="itaxi"] .irs-bar ,
+[data-category="itaxi"] .d3dBtn,
+[data-category="itaxi"] .cu-background, 
+[data-category="itaxi"] #CreateFilter  {
+    background-color: #ffd633;
+}
+
+
+
+
+
+
+/********************************************************************/
+
+
+
+ 
+[data-category="realestate"] .category ul li.active:after {
+    border-left-color: #8db35e;
+}
+
+[data-category="vehicles"] .category ul li.active:after {
+    border-left-color: #178faf;
+}
+
+[data-category="health"] .category ul li.active:after {
+    border-left-color: #93dee3;
+}
+
+[data-category="shopping"] .category ul li.active:after {
+    border-left-color: #c33178;
+}
+
+[data-category="industrial"]  .category ul li.active:after {
+    border-left-color: #272ea5;
+}
+
+[data-category="agriculture"] .category ul li.active:after {
+    border-left-color: #cf6d24;
+}
+
+[data-category="careers"] .category ul li.active:after {
+    border-left-color: #83aa7d;
+}
+
+[data-category="services"] .category ul li.active:after {
+    border-left-color: #b171c6;
+}
+
+[data-category="offers"]  .category ul li.active:after {
+    border-left-color: #7995c0;
+}
+
+[data-category="wholsalers"]  .category ul li.active:after {
+    border-left-color: #0a6042;
+}
+
+[data-category="foragent"] .next-step button ,
+[data-category="foragent"] .category ul li.active:after {
+    border-left-color: #e57e99;
+}
+
+[data-category="exhibitions"] .category ul li.active:after {
+    border-left-color: #585252;
+}
+
+[data-category="tenders"] .category ul li.active:after {
+    border-left-color: #45ab9e;
+}
+
+[data-category="restaurants"] .category ul li.active:after {
+    border-left-color: #f33b3b;
+}
+
+[data-category="itaxi"] .category ul li.active:after {
+    border-left-color: #ffd633;
+}
+
+
+/***********************************/
+ 
+
+[data-category="realestate"] .sub-bread ul li span ,
+[data-category="realestate"] .hovercolor:hover ,
+.cu-background [data-category="realestate"]:before{
+    color: #8db35e;
+}
+
+[data-category="vehicles"] .sub-bread ul li span ,
+[data-category="vehicles"] .hovercolor:hover ,
+.cu-background [data-category="vehicles"]:before{
+    color: #178faf;
+}
+
+[data-category="health"] .sub-bread ul li span ,
+[data-category="health"] .hovercolor:hover ,
+.cu-background [data-category="health"]:before{
+    color: #93dee3;
+}
+
+[data-category="shopping"] .sub-bread ul li span ,
+[data-category="shopping"] .hovercolor:hover ,
+.cu-background [data-category="shopping"]:before{
+    color: #c33178;
+}
+
+[data-category="industrial"]  .sub-bread ul li span ,
+[data-category="industrial"] .hovercolor:hover ,
+.cu-background [data-category="industrial"]:before{
+    color: #272ea5;
+}
+
+[data-category="agriculture"] .sub-bread ul li span ,
+[data-category="agriculture"] .hovercolor:hover ,
+.cu-background [data-category="agriculture"]:before{
+    color: #cf6d24;
+}
+
+[data-category="careers"] .sub-bread ul li span ,
+[data-category="careers"] .hovercolor:hover ,
+.cu-background [data-category="careers"]:before{
+    color: #83aa7d;
+}
+
+[data-category="services"] .sub-bread ul li span ,
+[data-category="services"] .hovercolor:hover ,
+.cu-background [data-category="services"]:before{
+    color: #b171c6;
+}
+
+[data-category="offers"]  .sub-bread ul li span ,
+[data-category="offers"] .hovercolor:hover ,
+.cu-background [data-category="offers"]:before{
+    color: #7995c0;
+}
+
+[data-category="wholsalers"]  .sub-bread ul li span ,
+[data-category="wholsalers"] .hovercolor:hover ,
+.cu-background [data-category="wholsalers"]:before{
+    color: #0a6042;
+}
+
+ [data-category="foragent"] .sub-bread ul li span ,
+[data-category="foragent"] .hovercolor:hover ,
+.cu-background [data-category="foragent"]:before{
+    color: #e57e99;
+}
+
+[data-category="exhibitions"] .sub-bread ul li span ,
+[data-category="exhibitions"] .hovercolor:hover ,
+.cu-background [data-category="exhibitions"]:before{
+    color: #585252;
+}
+
+[data-category="tenders"] .sub-bread ul li span ,
+[data-category="tenders"] .hovercolor:hover ,
+.cu-background [data-category="tenders"]:before{
+    color: #45ab9e;
+}
+
+[data-category="restaurants"] .sub-bread ul li span ,
+[data-category="restaurants"] .hovercolor:hover ,
+.cu-background [data-category="restaurants"]:before{
+    color: #f33b3b;
+}
+
+[data-category="itaxi"] .sub-bread ul li span ,
+[data-category="itaxi"] .hovercolor:hover ,
+.cu-background [data-category="itaxi"]:before{
+    color: #ffd633;
+}
+/*****************************************************/
+
+
+  [data-category="realestate"] .tab-radio input:checked ~ .name,
+  [data-category="realestate"] .ads-type button.active ,
+  [data-category="realestate"] .view-toggler label input:checked ~ i  {
+   background-color: #8db35e;border-color: #8db35e;
+}
+
+  [data-category="vehicles"] .tab-radio input:checked ~ .name,
+  [data-category="vehicles"] .ads-type button.active,
+  [data-category="vehicles"] .view-toggler label input:checked ~ i  {
+   background-color: #178faf;border-color: #178faf;
+}
+
+  [data-category="health"] .tab-radio input:checked ~ .name,
+  [data-category="health"] .ads-type button.active,
+  [data-category="health"] .view-toggler label input:checked ~ i  {
+   background-color: #93dee3;border-color: #93dee3;
+}
+
+  [data-category="shopping"] .tab-radio input:checked ~ .name,
+  [data-category="shopping"] .ads-type button.active,
+  [data-category="shopping"] .view-toggler label input:checked ~ i  {
+   background-color: #c33178;border-color: #c33178;
+}
+
+  [data-category="industrial"] .tab-radio input:checked ~ .name,
+  [data-category="industrial"] .ads-type button.active,
+  [data-category="industrial"] .view-toggler label input:checked ~ i  {
+   background-color: #272ea5;border-color: #272ea5;
+}
+
+  [data-category="agriculture"] .tab-radio input:checked ~ .name,
+  [data-category="agriculture"] .ads-type button.active ,
+  [data-category="agriculture"] .view-toggler label input:checked ~ i {
+   background-color: #cf6d24;border-color: #cf6d24;
+}
+
+  [data-category="careers"] .tab-radio input:checked ~ .name,
+  [data-category="careers"] .ads-type button.active,
+  [data-category="careers"] .view-toggler label input:checked ~ i  {
+   background-color: #83aa7d;border-color: #83aa7d;
+}
+
+  [data-category="services"] .tab-radio input:checked ~ .name,
+  [data-category="services"] .ads-type button.active,
+  [data-category="services"] .view-toggler label input:checked ~ i  {
+   background-color: #b171c6;border-color: #b171c6;
+}
+
+  [data-category="offers"] .tab-radio input:checked ~ .name,
+  [data-category="offers"] .ads-type button.active ,
+  [data-category="offers"] .view-toggler label input:checked ~ i {
+   background-color: #7995c0;border-color: #7995c0;
+}
+
+  [data-category="wholsalers"] .tab-radio input:checked ~ .name,
+  [data-category="wholsalers"] .ads-type button.active,
+  [data-category="wholsalers"] .view-toggler label input:checked ~ i  {
+   background-color: #0a6042;border-color: #0a6042;
+}
+
+  [data-category="foragent"] .tab-radio input:checked ~ .name,
+  [data-category="foragent"] .ads-type button.active,
+  [data-category="foragent"] .view-toggler label input:checked ~ i  {
+   background-color: #e57e99;border-color: #e57e99;
+}
+
+  [data-category="exhibitions"] .tab-radio input:checked ~ .name,
+  [data-category="exhibitions"] .ads-type button.active,
+  [data-category="exhibitions"] .view-toggler label input:checked ~ i  {
+   background-color: #585252;border-color: #585252;
+}
+
+  [data-category="tenders"] .tab-radio input:checked ~ .name,
+  [data-category="tenders"] .ads-type button.active ,
+  [data-category="tenders"] .view-toggler label input:checked ~ i {
+   background-color: #45ab9e;border-color: #45ab9e;
+}
+
+  [data-category="restaurants"] .tab-radio input:checked ~ .name,
+  [data-category="restaurants"] .ads-type button.active,
+  [data-category="restaurants"] .view-toggler label input:checked ~ i  {
+   background-color: #f33b3b;border-color: #f33b3b;
+}
+
+  [data-category="itaxi"] .tab-radio input:checked ~ .name,
+  [data-category="itaxi"] .ads-type button.active,
+  [data-category="itaxi"] .view-toggler label input:checked ~ i  {
+   background-color: #ffd633;border-color: #ffd633;
+}

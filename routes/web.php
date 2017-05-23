@@ -54,6 +54,7 @@ Route::group([
     Route::post('CreateWholesale', 'AdvertisementController@CreateWholesale');
     Route::post('CreateCareerJob', 'AdvertisementController@CreateCareerJob');
     Route::post('CreateHealthDoctor', 'AdvertisementController@CreateHealthDoctor');
+    Route::post('CreateExhibition', 'AdvertisementController@CreateExhibition');
 
     /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
     //    Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
