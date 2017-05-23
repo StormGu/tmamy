@@ -290,7 +290,7 @@ video, object {
 
 h1, h2, h3, h4, h5, h6 {
 	position: relative;
-	font-family: 'Merriweather', serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: normal;
 	margin: 0px;
 	background: none;
@@ -1234,7 +1234,7 @@ ul {
 	font-size: 40px;
 	font-weight: 600;
 	text-transform: capitalize;
-	font-family: 'Merriweather', serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .hero .content h1 {
@@ -1623,6 +1623,8 @@ ul.category-list-style li a span {
 	font-size: 18px;
 	margin-bottom: 4px;
 	text-transform: capitalize;
+	    height: 25px;
+    overflow: hidden;
 }
 .white.category-grid-box-1 h3 a {
 	color: #232323;
@@ -1712,13 +1714,17 @@ ul.category-list-style li a span {
 	font-size: 14px;
 }
 .ad-info-1 ul li span {
-	color: #fff;
+	color: #50a18b;
 	font-size: 12px;
+	margin-left:5px;
 }
+.imguser{    float: left !important;
+    display: inline-flex !important;}
 .ad-info-1 ul li i {
 	margin-right: 10px;
 }
 .white.category-grid-box-1 .ad-info-1 ul li, .white.category-grid-box-1 .ad-info-1 ul li a {
+	float:right;
 	color: #a0a0a0;
 	font-weight: 400;
 }
@@ -1751,7 +1757,7 @@ ul.category-list-style li a span {
 }
 .rating .rating-count {
 	color: #706a68;
-	font-family: "Montserrat", sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 14px;
 	padding-left: 5px;
 }
@@ -5344,7 +5350,7 @@ ul.category-list-data li:hover a span {
 }
 /* =-=-=-=-=-=-= 404 Page =-=-=-=-=-=-= */
 .error-page .error-container {
-	font-family: 'Merriweather', serif;
+	font-family: 'Source Sans Pro', sans-serif
 }
 .error-page .error-container {
 	margin-bottom: 40px;
@@ -5648,7 +5654,7 @@ ul.category-list-data li:hover a span {
 .filter-brudcrums span {
 	color: #232323;
 	font-size: 16px;
-	font-family: 'Merriweather', serif;
+	font-family: 'Source Sans Pro', sans-serif
 }
 .filter-brudcrums-sort {
 	float: right;
@@ -6390,7 +6396,7 @@ ul.category-list-data li:hover a span {
 .btn.app-download-button span.app-store-btn span span:last-child {
 	font-size: 20px;
 	font-weight: 600;
-	font-family: 'Merriweather', serif;
+	font-family: 'Source Sans Pro', sans-serif
 }
 .app-download-section.style-2 .btn.app-download-button span.app-store-btn span span:last-child {
 	letter-spacing: 0;
@@ -6454,7 +6460,7 @@ span.app-store-btn {
 }
 .section-title {
 	color: #1e1e1e;
-	font-family: 'Merriweather', serif;
+	font-family: 'Source Sans Pro', sans-serif
 	font-size: 42px;
 	font-weight: 700;
 	line-height: 42px;
@@ -6882,7 +6888,7 @@ span.app-store-btn {
 .profile-count > li {
 	color: #ffffff;
 	float: right;
-	font-family: 'Merriweather', serif;
+	font-family: 'Source Sans Pro', sans-serif
 	font-size: 31px;
 	font-weight: 600;
 	list-style: outside none none;
@@ -6915,7 +6921,7 @@ span.app-store-btn {
 	background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
 	border: 2px solid rgba(255, 255, 255, 0.5);
 	color: #fff;
-	font-family: 'Merriweather', serif;
+	font-family: 'Source Sans Pro', sans-serif
 	font-size: 14px;
 	padding: 11px 22px;
 }
@@ -7586,7 +7592,7 @@ a.delete i {
 	z-index: 10;
 }
 .pricing-fancy .price-large {
-	font-family: 'Merriweather', serif;
+	font-family: 'Source Sans Pro', sans-serif
 	font-size: 72px;
 	font-weight: 500;
 	line-height: 82px;
