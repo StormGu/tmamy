@@ -65,9 +65,6 @@
                         </div>
                     </div>
 
-                    @if ($additional_info)
-                        {!! $additional_info !!}
-                    @endif
 
                     {{-- Properties Partial Block --}}
                     @include('adforest.advertisement.form_partials.properties')

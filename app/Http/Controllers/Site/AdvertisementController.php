@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Requests\AdvertisementRequest;
+use App\Http\Requests\CreateDoctorRequest;
 use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\WholesaleRequest;
@@ -136,6 +137,10 @@ class AdvertisementController extends Controller
 
         if (in_array($object->category_id, explode(',', config('settings.career_job_categories')))) {
             return $this->infoCareerJob($id, $data);
+        }
+
+        if (in_array($object->category_id, explode(',', config('settings.health_doctor_categories')))) {
+            return $this->infoHealthDoctorClinic($id, $data);
         }
 
         return View('adforest.advertisement.show', $data);
@@ -311,19 +316,6 @@ class AdvertisementController extends Controller
         $data['properties'] = Category::find($category_id)->properties()->get();
         $data['features'] = Category::find($category_id)->features()->get();
 
-        $health_doctor_categories = explode(',', config('settings.health_doctor_categories'));
-        $wholesaler_categories = explode(',', config('settings.wholesaler_categories'));
-
-        if (in_array($category_id, $health_doctor_categories)) {
-            $data['additional_info'] = View('adforest.advertisement.form.infoHealthDoctor');
-        }
-        elseif (in_array($category_id, $wholesaler_categories)) {
-            // $data['additional_info'] = View('adforest.advertisement.form.infoWholesaler');
-        }
-        else {
-            $data['additional_info'] = '';
-        }
-
         $data['hot'] = 0;
         $data['current_points'] = \Auth::user()->profile->points;
         $data['after_points'] = \Auth::user()->profile->points - config('settings.normal_adv');
@@ -363,6 +355,10 @@ class AdvertisementController extends Controller
 
         if (in_array($category_id, explode(',', config('settings.career_job_categories')))) {
             return View('adforest.advertisement.form.infoCareerJob', $data);
+        }
+
+        if (in_array($category_id, explode(',', config('settings.health_doctor_categories')))) {
+            return View('adforest.advertisement.form.infoHealthDoctor', $data);
         }
 
         if (in_array($category_id, explode(',', config('settings.career_resume_categories')))) {
@@ -553,6 +549,75 @@ class AdvertisementController extends Controller
                         $service_cost->fill($value);
                         $service_cost->advertisement()->associate($advertisement);
                         $service_cost->save();
+                    }
+                }
+            }
+
+            $profile = Profile::whereUserId(\Auth::id())->first();
+            $profile->points = $request->input('after_points');
+            $profile->save();
+
+            return redirect('profile/ads')->withMessage([
+                'type' => 'success',
+                'message' => trans('common.success_added')
+            ]);
+        }
+        else {
+            return back()->withMessage([
+                'type' => 'warning',
+                'message' => trans('common.failed_added')
+            ]);
+        }
+    }
+
+    public function CreateHealthDoctor(CreateDoctorRequest $request) {
+
+        $advertisement = new Advertisement();
+        $advertisement->fill($request->except('_token', 'points'));
+        $advertisement->user_id = \Auth::id();
+        $advertisement->status = 'waiting_approval';
+
+        if ($advertisement->save()) {
+
+            if (\Input::hasFile('image')) {
+                $this->uploadPic($advertisement->id, \Input::file('image'));
+            }
+
+            $service = new AdvertisementInfoHealth();
+            $service->fill($request->except('_token', 'points'));
+            $service->advertisement()->associate($advertisement);
+            $service->save();
+
+
+            if (null !== $request->get('clinic')) {
+                foreach ($request->get('clinic') as $key => $value) {
+                    if ($value['clinic_name'] != null) {
+                        $clinic = new AdvertisementInfoHealthDoctorClinic();
+                        $clinic->fill($value);
+                        $clinic->advertisement()->associate($advertisement);
+                        $clinic->save();
+                    }
+                }
+            }
+
+            if (null !== $request->get('educations')) {
+                foreach ($request->get('educations') as $key => $value) {
+                    if ($value['college_name'] != null) {
+                        $clinic = new AdvertisementInfoHealthDoctorEducation();
+                        $clinic->fill($value);
+                        $clinic->advertisement()->associate($advertisement);
+                        $clinic->save();
+                    }
+                }
+            }
+
+            if (null !== $request->get('memberships')) {
+                foreach ($request->get('memberships') as $key => $value) {
+                    if ($value['name'] != null) {
+                        $clinic = new AdvertisementInfoHealthDoctorMembership();
+                        $clinic->fill($value);
+                        $clinic->advertisement()->associate($advertisement);
+                        $clinic->save();
                     }
                 }
             }

@@ -16,8 +16,8 @@
                         <div class="col-md-2">
                             <div class="text-center">
                                 <img class="image  margin-top-40" alt=""
-                                     src="@if ($object->customer->profile->avatar_status == 1){{ url($object->customer->profile->avatar) }} @else {{ Gravatar::get($object->customer->email) }} @endif"
-                                     alt="{{ $object->customer->name }}" width="100" height="100"/>
+                                     src="{{ url('image/150×150/advertisements/' . $object->id . '/' . $object->image_filename) }}"
+                                     alt="{{ $object->customer->name }}" />
                             </div>
                         </div>
                         <div class="col-md-10">
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                     @endif
-                    @if($features->count())
+                    @if(isset($features) && is_array($features) && count($features))
                         <div class="ad-box margin-top-20">
                             <h1> @lang('advertisement.specialized_in')</h1>
                             <hr/>

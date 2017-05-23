@@ -7,6 +7,26 @@
                 window.location.href = '{{ Request::url() }}';
             }
         });
+
+        var count = 2;
+
+        $(document).on('click', "button.plus", function () {
+            var html = $(this).closest('.form-group').html();
+            $(this).closest('.form-group').after('<div class="form-group @if ($errors->has('requirements[1][name]')) has-error @endif">' +
+                    '<div class="input-group">' +
+                    '<input type="text" name="requirements[' + ++count + '][name]" value="" class="form-control" placeholder="@lang('advertisement.requirements')" />' +
+                    '<span class="input-group-btn">' +
+                    '<button class="btn btn-secondary minus" type="button"' +
+                    ' style="padding: 11px 17px !important;font-size: 15pt;">-</button>' +
+                    '</span>' +
+                    '</div>' +
+                    '</div>'
+            );
+        });
+        $(document).on('click', "button.minus", function () {
+            $(this).closest('.form-group').remove();
+
+        });
     });
 
     function createCompany(event) {

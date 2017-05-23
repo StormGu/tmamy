@@ -113,4 +113,20 @@ return [
     'salary_from' => 'Salary From',
     'salary_to' => 'Salary To',
 
+
+    // Health Doctor
+    'degree_short' => 'Degree',
+    'doctor_name' => 'Doctor Name',
+    'practice_name' => 'Practice Name',
+    'specialization' => 'General Specialities',
+    'about_doctor' => 'About Doctor',
+    'clinics' => 'Clinics',
+    'clinic_name' => 'Clinic Name',
+    'clinic_mobile_no' => 'Clinic Mobile No.',
+    'clinic_phone_no' => 'Clinic Phone No.',
+    'education' => 'Education',
+    'college_name' => 'College Name',
+    'start_date' => 'Start Date',
+    'end_date' => 'End Date',
+    'memberships' => 'Memberships',
 ];

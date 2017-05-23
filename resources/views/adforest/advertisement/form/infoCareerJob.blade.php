@@ -102,12 +102,35 @@
                     <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
-                            <div class="form-group @if ($errors->has('requirements[1][name]')) has-error @endif">
-                                {!! Form::text('requirements[1][name]', old('requirements[1][name]'), ['placeholder' => __('advertisement.requirements'), 'class' => 'form-control']) !!}
-                                @if ($errors->has('requirements[1][name]'))
-                                    <span class="text-danger">{{ $errors->first('requirements[1][name]') }}</span>
-                                @endif
-                            </div>
+                            @if(null !== old('requirements'))
+                                @foreach( old('requirements') as $key => $value)
+                                    <div class="form-group @if ($errors->has('requirements['.$key.'][name]')) has-error @endif">
+                                        <div class="input-group">
+                                            {!! Form::text('requirements['.$key.'][name]', old('requirements['.$key.'][name]'), ['placeholder' => __('advertisement.requirements'), 'class' => 'form-control']) !!}
+                                            <span class="input-group-btn">
+                                        <button class="btn btn-secondary plus" type="button"
+                                                style="padding: 11px 17px !important;font-size: 15pt;">+</button>
+                                    </span>
+                                        </div>
+                                        @if ($errors->has('requirements['.$key.'][name]'))
+                                            <span class="text-danger">{{ $errors->first('requirements['.$key.'][name]') }}</span>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="form-group @if ($errors->has('requirements[1][name]')) has-error @endif">
+                                    <div class="input-group">
+                                        {!! Form::text('requirements[1][name]', old('requirements[1][name]'), ['placeholder' => __('advertisement.requirements'), 'class' => 'form-control']) !!}
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-secondary plus" type="button"
+                                                style="padding: 11px 17px !important;font-size: 15pt;">+</button>
+                                    </span>
+                                    </div>
+                                    @if ($errors->has('requirements[1][name]'))
+                                        <span class="text-danger">{{ $errors->first('requirements[1][name]') }}</span>
+                                    @endif
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="clearfix"></div>
