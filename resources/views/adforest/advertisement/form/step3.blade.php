@@ -1,4 +1,4 @@
-@extends('adforest.layout.oldmaster')
+@extends('adforest.layout.master')
 
 @section('template_title', __('advertisement.heading_title'))
 
@@ -64,6 +64,19 @@
                             @endif
                         </div>
                     </div>
+
+                    @role('business user')
+                    <div class="ad-box margin-top-10">
+                        <h1>@lang('advertisement.video')</h1>
+                        <hr>
+                        <div class="form-group @if ($errors->has('video_url')) has-error @endif">
+                            {!! Form::text('video_url', old('video_url'), ['placeholder' => __('advertisement.video_url'), 'class' => 'form-control margin-top-10']) !!}
+                            @if ($errors->has('video_url'))
+                                <span class="text-danger">{{ $errors->first('video_url') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    @endrole
 
                     {{-- Properties Partial Block --}}
                     @include('adforest.advertisement.form_partials.properties')

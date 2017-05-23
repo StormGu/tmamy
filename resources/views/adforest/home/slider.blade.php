@@ -26,14 +26,16 @@
                                    style="border-radius: 23px;">@lang('advertisement.post_free_ad')</a>
                             </div>
                             <div class="col-lg-2" align="right" style="margin-top: 2px;">
-                                <a class="new btn bordered-style" href="" style="border-radius: 23px;">Promote Now</a>
+                                <a class="new btn bordered-style" href="" style="border-radius: 23px;">
+                                    @lang('common.hot_deals')
+                                </a>
                             </div>
                             <div class="col-lg-2" align="right" style="margin-top: 2px;">
-                                <a class="new btn bordered-style" href="" style="border-radius: 23px;">Promote Now</a>
+                                <a class="new btn bordered-style" href="" style="border-radius: 23px;">
+                                    @lang('common.hot_stores')
+                                </a>
                             </div>
-                            <div class="col-lg-2" align="right" style="margin-top: 2px;">
-                                <a class="new btn bordered-style" href="" style="border-radius: 23px;">Promote Now</a>
-                            </div>
+
                             <div class="col-lg-2"></div>
                         </div>
                     </div>

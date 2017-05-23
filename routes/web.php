@@ -61,6 +61,7 @@ Route::group([
     //        ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
 
     Route::get('getSubCategories/{category_id}', 'AdvertisementController@getSubCategories');
+    Route::get('checkCoupon', 'AdvertisementController@checkCoupon');
 
 });
 
@@ -77,7 +78,7 @@ Route::group([
     'as' => 'admin.',
     'prefix' => 'admin',
     'namespace' => 'Admin',
-    'middleware' => ['auth', 'activated', 'role:admin']
+    'middleware' => ['auth', 'activated', 'role:Admin']
 ], function () {
     // Dashboard
     Route::get('/', ['uses' => 'HomeController@index']);

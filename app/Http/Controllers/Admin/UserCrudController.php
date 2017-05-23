@@ -201,7 +201,7 @@ class UserCrudController extends CrudController
 
         $profile    = new Profile;
         $this->crud->entry->profile()->save($profile);
-        $this->crud->entry->attachRole($request->input('role'));
+        $this->crud->entry->roles()->sync($request->input('roles'));
 
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
@@ -219,7 +219,7 @@ class UserCrudController extends CrudController
         // use $this->data['entry'] or $this->crud->entry
         $profile    = new Profile;
         $this->crud->entry->profile()->save($profile);
-        $this->crud->entry->attachRole($request->input('role'));
+        $this->crud->entry->roles()->sync($request->input('roles'));
 
         return $redirect_location;
     }

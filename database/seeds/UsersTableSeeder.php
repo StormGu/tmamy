@@ -1,12 +1,9 @@
 <?php
 
 use App\Models\Profile;
-use App\Models\Theme;
 use App\Models\User;
+use Backpack\PermissionManager\app\Models\Role;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
-use jeremykenedy\LaravelRoles\Models\Role;
-use jeremykenedy\LaravelRoles\Models\Permission;
 
 class UsersTableSeeder extends Seeder
 {
@@ -20,7 +17,6 @@ class UsersTableSeeder extends Seeder
     {
 
         $faker = Faker\Factory::create();
-        $profile = new Profile;
         $adminRole = Role::whereName('Admin')->first();
         $userRole = Role::whereName('User')->first();
 
@@ -40,8 +36,8 @@ class UsersTableSeeder extends Seeder
                 'admin_ip_address'  => $faker->ipv4
             ));
 
-            $user->profile()->save($profile);
-            $user->attachRole($adminRole);
+            $user->profile()->save(new Profile);
+            $user->assignRole($adminRole->name);
             $user->save();
 
         }
@@ -62,7 +58,7 @@ class UsersTableSeeder extends Seeder
             ));
 
             $user->profile()->save(new Profile);
-            $user->attachRole($userRole);
+            $user->assignRole($userRole->name);
             $user->save();
         }
 
@@ -71,7 +67,7 @@ class UsersTableSeeder extends Seeder
         // $users = User::All();
         // foreach ($users as $user) {
         //     if (!($user->isAdmin()) && !($user->isUnverified())) {
-        //         $user->attachRole($userRole);
+        //         $user->assignRole($userRole);
         //     }
         // }
 

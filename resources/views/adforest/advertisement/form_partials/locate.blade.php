@@ -3,7 +3,7 @@
     <h1>@lang('advertisement.map')</h1>
     <hr>
     <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-md-8" style="height: 250px;">
         {!! Mapper::render() !!}
     </div>
     <div class="col-md-2"></div>

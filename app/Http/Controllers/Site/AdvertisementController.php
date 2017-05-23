@@ -331,24 +331,24 @@ class AdvertisementController extends Controller
         }
 
         // Google Mapper
-        //        if (old('lon') && old('lat')) {
-        //            Mapper::map(old('lat'), old('lon'), [
-        //                'zoom' => 10,
-        //                'center' => true,
-        //                'marker' => true,
-        //                'draggable' => true,
-        //                'eventDragEnd' => 'createCompany(event);'
-        //            ]);
-        //        }
-        //        else {
-        //            Mapper::location('gaza strip')->map([
-        //                'zoom' => 10,
-        //                'center' => true,
-        //                'marker' => true,
-        //                'draggable' => true,
-        //                'eventDragEnd' => 'createCompany(event);'
-        //            ]);
-        //        }
+        if (old('lon') && old('lat')) {
+            Mapper::map(old('lat'), old('lon'), [
+                'zoom' => 10,
+                'center' => true,
+                'marker' => true,
+                'draggable' => true,
+                'eventDragEnd' => 'createCompany(event);'
+            ]);
+        }
+        else {
+            Mapper::location('gaza strip')->map([
+                'zoom' => 10,
+                'center' => true,
+                'marker' => true,
+                'draggable' => true,
+                'eventDragEnd' => 'createCompany(event);'
+            ]);
+        }
 
         if (in_array($category_id, explode(',', config('settings.services_categories')))) {
             return View('adforest.advertisement.form.infoService', $data);
@@ -399,6 +399,10 @@ class AdvertisementController extends Controller
 
     public function AddAdvertisementBilling(Request $request) {
 
+        if (!\Auth::user()->hasRole('Business User')) {
+
+        }
+
         $data['hot'] = 0;
         $data['current_points'] = \Auth::user()->profile->points;
         $data['after_points'] = \Auth::user()->profile->points - config('settings.normal_adv');
@@ -408,7 +412,7 @@ class AdvertisementController extends Controller
             $data['after_points'] -= 4000;
         }
 
-        return View('adforest.advertisement.form.billing', $data);
+        return View('adforest.advertisement.form_partials.billing', $data);
     }
 
     public function CreateAdvertisement(AdvertisementRequest $request) {
@@ -787,5 +791,30 @@ class AdvertisementController extends Controller
         $filename = md5($file) . '.' . $file->getClientOriginalExtension();
         \Image::make($file)->save($image_path . DIRECTORY_SEPARATOR . $filename);
         \DB::table('advertisement')->where('id', $id)->update(['image_filename' => $filename]);
+    }
+
+    public function checkCoupon(Request $request) {
+
+        if (\App\Models\Coupon::whereCode($request->get('coupon'))->count()) {
+            if (!\Auth::user()->coupons()->count()) {
+                $coupon = \App\Models\Coupon::whereCode($request->get('coupon'))->first();
+                \Auth::user()->coupons()->attach($coupon->id);
+
+                $currentPoints = Profile::whereUserId(\Auth::id())->first();
+                $points = $currentPoints->points + $coupon->percentage;
+
+                Profile::whereUserId(\Auth::id())->update(['points' => $points]);
+
+                return __('common.correct_coupon');
+            }
+            else {
+                return __('common.coupon_have_been_used');
+            }
+
+
+        }
+        else {
+            return __('common.wrong_coupon');
+        }
     }
 }

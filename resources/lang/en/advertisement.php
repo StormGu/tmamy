@@ -8,6 +8,9 @@ return [
     'general' => 'General',
     'hotselling' => 'Hot Selling',
 
+    'coupon' => 'Coupon',
+    'your_membership_doesnt_allow_you_to_add_hot_deal' => 'Your Membership doesnt allow you to add hot deal! Please fill coupon.',
+
     'title' => 'Title',
     'price' => 'Price',
     'currency_id' => 'Currency',

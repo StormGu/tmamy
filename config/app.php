@@ -189,7 +189,6 @@ return [
         App\Providers\LocalEnvironmentServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
-
         Backpack\CRUD\CrudServiceProvider::class,
         Backpack\Settings\SettingsServiceProvider::class,
         Spatie\Translatable\TranslatableServiceProvider::class,
@@ -199,12 +198,8 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Backpack\PageManager\PageManagerServiceProvider::class,
 
-
-
-
         Cornford\Googlmapper\MapperServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
-
 
     ],
 

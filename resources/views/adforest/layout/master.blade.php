@@ -83,7 +83,6 @@
 <script src="{{ asset('adforest/js/jquery.elevatezoom.js')  }}"></script>
 <script src="{{ asset('adforest/js/meanmenu.js') }}"></script>
 <script src="{{ asset('adforest/js/plugins.js') }}"></script>
-<script src="{{ asset('adforest/js/main.js') }}"></script>
 
 <script>
     $(document).ready(function () {
@@ -160,6 +159,6 @@
         return false;
     });
 </script>
-
+@yield('custom_js')
 </body>
 </html>

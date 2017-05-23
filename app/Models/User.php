@@ -2,23 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
 use Backpack\CRUD\CrudTrait;
 use Spatie\Permission\Traits\HasRoles;
 
-
 class User extends Authenticatable
 {
     use CrudTrait;
-    use HasRoleAndPermission;
+    // use HasRoleAndPermission;
     use Notifiable;
     use SoftDeletes;
-   // use HasRoles;
+    use HasRoles;
 
     /**
      * The database table used by the model.
@@ -73,9 +70,9 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'CountFollowers','CountFollowing'
+        'CountFollowers',
+        'CountFollowing'
     ];
-
 
 
     /**
@@ -98,29 +95,32 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class, 'user_id', 'id');
     }
 
+    public function coupons() {
+        return $this->belongsToMany(Coupon::class, 'user_coupons');
+    }
 
     // User Profile Setup - SHould move these to a trait or interface...
-
-    public function profiles() {
-        return $this->belongsToMany('App\Models\Profile')->withTimestamps();
-    }
-
-    public function hasProfile($name) {
-        foreach ($this->profiles as $profile) {
-            if ($profile->name == $name)
-                return true;
-        }
-
-        return false;
-    }
-
-    public function assignProfile($profile) {
-        return $this->profiles()->attach($profile);
-    }
-
-    public function removeProfile($profile) {
-        return $this->profiles()->detach($profile);
-    }
+    //
+    //    public function profiles() {
+    //        return $this->belongsToMany('App\Models\Profile')->withTimestamps();
+    //    }
+    //
+    //    public function hasProfile($name) {
+    //        foreach ($this->profiles as $profile) {
+    //            if ($profile->name == $name)
+    //                return true;
+    //        }
+    //
+    //        return false;
+    //    }
+    //
+    //    public function assignProfile($profile) {
+    //        return $this->profiles()->attach($profile);
+    //    }
+    //
+    //    public function removeProfile($profile) {
+    //        return $this->profiles()->detach($profile);
+    //    }
 
     /**
      * Send the password reset notification.
@@ -138,34 +138,29 @@ class User extends Authenticatable
     }
 
 
-
-    function followers()
-    {
+    function followers() {
         return $this->hasMany(UserFollower::class);
-     //   return $this->belongsToMany('App\Models\User', 'user_followers', 'user_id', 'user_followers_id');
+        //   return $this->belongsToMany('App\Models\User', 'user_followers', 'user_id', 'user_followers_id');
     }
- 
-     /**
+
+    /**
      * Get the list of followers of this user.
      *
      * @return bool
      */
-    public function getCountFollowersAttribute()
-    {
-        return $this->followers()->where('user_followers_id',\Auth::id())->count();
+    public function getCountFollowersAttribute() {
+        return $this->followers()->where('user_followers_id', \Auth::id())->count();
     }
 
 
-     /**
+    /**
      * Get the list of followers of this user.
      *
      * @return bool
      */
-    public function getCountFollowingAttribute()
-    {
-        return $this->followers()->where('user_id',\Auth::id())->count();
+    public function getCountFollowingAttribute() {
+        return $this->followers()->where('user_id', \Auth::id())->count();
     }
-
 
 
     function follow(User $user) {
@@ -188,7 +183,7 @@ class User extends Authenticatable
     }
 
 
-        /**
+    /**
      * User Profile Relationships
      *
      * @var array
@@ -197,10 +192,6 @@ class User extends Authenticatable
     public function advertisements() {
         return $this->hasMany(Advertisement::class);
     }
-
-
-
-
 
 
 }

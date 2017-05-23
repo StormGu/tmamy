@@ -1,9 +1,9 @@
 <?php
 
 use App\User;
-use jeremykenedy\LaravelRoles\Models\Role;
-use jeremykenedy\LaravelRoles\Models\Permission;
-use Illuminate\Database\Eloquent\Model;
+
+use Backpack\PermissionManager\app\Models\Permission;
+use Backpack\PermissionManager\app\Models\Role;
 use Illuminate\Database\Seeder;
 
 class ConnectRelationshipsSeeder extends Seeder
@@ -25,11 +25,13 @@ class ConnectRelationshipsSeeder extends Seeder
          * Attach Permissions to Roles
          *
          */
-        $roleAdmin = Role::where('name', '=', 'Admin')->first();
+        $role = Role::where('name', '=', 'Admin')->first();
         foreach ($permissions as $permission) {
-            $roleAdmin->attachPermission($permission);
-        }
+            if (!$role->hasPermissionTo($permission)) {
+                $role->givePermissionTo($permission);
+            }
 
+        }
     }
 
 }

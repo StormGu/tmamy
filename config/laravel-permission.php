@@ -24,7 +24,7 @@ return [
         |
         */
 
-        'permission' => \App\Models\Permission::class,
+        'permission' => Backpack\PermissionManager\app\Models\Permission::class,
 
         /*
         |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ return [
         |
         */
 
-        'role' => \App\Models\Role::class,
+        'role' => Backpack\PermissionManager\app\Models\Role::class,
 
     ],
 
@@ -100,7 +100,7 @@ return [
         |
         */
 
-        'user_has_permissions' => 'permission_user',
+        'user_has_permissions' => 'permission_users',
 
         /*
         |--------------------------------------------------------------------------
@@ -113,7 +113,7 @@ return [
         |
         */
 
-        'user_has_roles' => 'role_user',
+        'user_has_roles' => 'role_users',
 
         /*
         |--------------------------------------------------------------------------
@@ -126,7 +126,7 @@ return [
         |
         */
 
-        'role_has_permissions' => 'permission_role',
+        'role_has_permissions' => 'permission_roles',
 
     ],
 

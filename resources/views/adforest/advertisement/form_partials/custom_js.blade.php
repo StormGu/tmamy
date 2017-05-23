@@ -1,11 +1,24 @@
 <script type="text/javascript">
     $(function () {
-        $(document).on('change', "input[type='checkbox']", function () {
+        $(document).on('change', "input[name='hotselling']", function () {
+            var query = '?';
             if ($(this).is(':checked')) {
-                window.location.href = '{{ Request::url() }}?hot=1';
-            } else {
-                window.location.href = '{{ Request::url() }}';
+                query += 'hot=1'
             }
+
+            $.get("{{ url('AddAdv/billing') }}" + query, function (data) {
+                $("#billing").html(data);
+            });
+        });
+
+        $(document).on('keyup', "input[name='coupon']", function (e) {
+            var query = '?';
+
+            query += 'coupon=' + $(this).val();
+
+            $.get("{{ url('checkCoupon') }}" + query, function (data) {
+                $("#coupon_result").html(data);
+            });
         });
 
         var count = 2;
