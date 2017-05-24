@@ -11,10 +11,11 @@ use JWTAuth;
 class MessageController extends Controller
 {
     
+  private $is_success = false;
 
+  
 
-
- public function messages() {
+  public function messages() {
  
     $user = JWTAuth::parseToken()->authenticate();
 
@@ -44,31 +45,17 @@ class MessageController extends Controller
 
       }
 
-      public function getmsg($id){
-           $user_msg = Message::where('from_user_id', $id)->get();
-             $user_name = User::where('id', $id)->get();
-            foreach ($user_name as $key) {
-              $key->name;
-              $key->id;
-            }
-           
-           $user_nm = $key->name;
-           $user_id = $key->id;
-           return view('adforest.profile.Message', compact('user_msg','user_nm','user_id'));
+   public function getmsg($id){
+
+     $user = JWTAuth::parseToken()->authenticate();
+
+     $message = Message::find($id); 
+      if($message)
+        $this->is_success = true;
+
+    return response()->json(['success' => $this->is_success, 'message' => [], 'data' => $message]);
       }
 
-       public function getformmsg($id){
-           $user_msg = Message::where('from_user_id', $id)->get();
-           
-           $user_name = User::where('id', $id)->get();
-            foreach ($user_name as $key) {
-              $key->name;
-              $key->id;
-            }
-           
-           $user_nm = $key->name;
-           $user_id = $key->id;
+   
 
-           return view('adforest.profile.Message', compact('user_msg','user_nm','user_id'));
-      }
 }
