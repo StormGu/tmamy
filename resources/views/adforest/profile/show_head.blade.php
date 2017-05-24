@@ -26,26 +26,28 @@
                 <span>@lang('profile.ad_likes')</span>
             </li>
         </ul>
-        <ul class="st-social rig100">
-            @if(\App\Models\UserFollower::whereUserId($user->id)->whereUserFollowersId(\Auth::id())->count())
-                {!! Form::open(['url' => url('profile/unfollower')]) !!}
-            @else
-                {!! Form::open(['url' => url('profile/follower')]) !!}
-            @endif
-            <input type="hidden" name="user_id" value="{{ $user->id }}">
-            <input type="hidden" name="user_followers_id" value="{{ \Auth::id() }}">
-            <button type="submit" class="btn btn-default1 rig">
+        @if(\Auth::id() != $user->id)
+            <ul class="st-social rig100">
                 @if(\App\Models\UserFollower::whereUserId($user->id)->whereUserFollowersId(\Auth::id())->count())
-                    @lang('profile.unfollow')
+                    {!! Form::open(['url' => url('profile/unfollower')]) !!}
                 @else
-                    @lang('profile.follow')
+                    {!! Form::open(['url' => url('profile/follower')]) !!}
                 @endif
-            </button>
-            {!! Form::close() !!}
-            <button type="button" class="btn btn-default1 rig1" data-toggle="modal" data-target="#myModal">
-                @lang('profile.message')
-            </button>
-        </ul>
+                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                <input type="hidden" name="user_followers_id" value="{{ \Auth::id() }}">
+                <button type="submit" class="btn btn-default1 rig">
+                    @if(\App\Models\UserFollower::whereUserId($user->id)->whereUserFollowersId(\Auth::id())->count())
+                        @lang('profile.unfollow')
+                    @else
+                        @lang('profile.follow')
+                    @endif
+                </button>
+                {!! Form::close() !!}
+                <button type="button" class="btn btn-default1 rig1" data-toggle="modal" data-target="#myModal">
+                    @lang('profile.message')
+                </button>
+            </ul>
+        @endif
         <ul class="socail-share">
             @if($profile->facebook)
                 <li>

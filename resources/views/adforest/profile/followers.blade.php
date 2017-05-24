@@ -1,4 +1,4 @@
-pf-content@extends('adforest.layout.master')
+@extends('adforest.layout.master')
 
 @section('content')
 

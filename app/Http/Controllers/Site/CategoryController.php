@@ -47,6 +47,5 @@ class CategoryController extends Controller
         foreach ($children as $child) {
             $this->getChildren($categories_array, $child->id);
         }
-
     }
 }

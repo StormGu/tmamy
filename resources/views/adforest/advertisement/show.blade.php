@@ -1,7 +1,9 @@
 @extends('adforest.layout.master')
 
 @section('content')
+
     <div class="container">
+
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
@@ -32,6 +34,7 @@
     <section class="section-padding error-page pattern-bgs gray ">
         <div class="container">
             <div class="row">
+                @include('adforest.advertisement.admin_bar')
                 <div class="col-md-9 col-xs-12 col-sm-12">
                     <div class="single-ad">
                         <div class="ad-box featured-border">
@@ -53,7 +56,7 @@
                             <div class="flex-viewport">
                                 <ul class="slides slide-main">
                                     <li class="flex-active-slide"><img
-                                                src="{{ url('image/700×400/advertisements/' . $object->id.'/'. $object->image_filename) }}"/>
+                                                src="{{ url('image/800×400/advertisements/' . $object->id.'/'. $object->image_filename) }}"/>
                                     </li>
                                 </ul>
                             </div>
@@ -166,7 +169,7 @@
                                     </h3>
                                 </div>
                                 <p>
-                                    {{ $object->details }}
+                                    {!! nl2br( $object->details ) !!}
                                 </p>
 
                             </div>
@@ -202,6 +205,9 @@
                     </div>
                 </div>
                 <div class="col-md-3">
+                    <div class="ad-listing-price">
+                        <p>{{ isset($object->currency->value) ? $object->currency->value : '' }} {{ number_format($object->price, 2) }}</p>
+                    </div>
                     <div class="white-bg user-contact-info margin-bottom-20">
                         <div class="text-center">
                             <img class="image margin-top-40" alt=""
@@ -248,7 +254,7 @@
                                 </li>
                             </ul>
                             <div id="itemMap" style="width: 100%; height: 370px; margin-bottom:5px;">
-                                {!! Mapper::render() !!}
+
                             </div>
                         </div>
                     </div>

@@ -69,13 +69,13 @@ class AdvertisementController extends Controller
 
         $data['features'] = $features_array;
 
-        Mapper::map($object->lat, $object->lon, [
-            'zoom' => 10,
-            'center' => true,
-            'marker' => true,
-            'draggable' => false,
-            'locate' => false
-        ]);
+        //        Mapper::map($object->lat, $object->lon, [
+        //            'zoom' => 10,
+        //            'center' => true,
+        //            'marker' => true,
+        //            'draggable' => false,
+        //            'locate' => false
+        //        ]);
 
         // switch ($object->category_id) {
         //            case 73:
@@ -217,6 +217,19 @@ class AdvertisementController extends Controller
     public function filterAdvertisements($categoryId) {
     }
 
+    public function changeStatus($id, $status = null) {
+
+        $object = Advertisement::find($id);
+        $object->status = $status;
+
+        if ($object->save()) {
+            return redirect('adv/' . $id)->withMessage([
+                'type' => 'success',
+                'message' => trans('common.success_edit')
+            ]);
+        }
+    }
+
     public function infoCareerJob($id, $data) {
 
         $data['object_career'] = AdvertisementInfoCareersJob::whereAdvertisementId($id)->first();
@@ -331,24 +344,24 @@ class AdvertisementController extends Controller
         }
 
         // Google Mapper
-        if (old('lon') && old('lat')) {
-            Mapper::map(old('lat'), old('lon'), [
-                'zoom' => 10,
-                'center' => true,
-                'marker' => true,
-                'draggable' => true,
-                'eventDragEnd' => 'createCompany(event);'
-            ]);
-        }
-        else {
-            Mapper::location('gaza strip')->map([
-                'zoom' => 10,
-                'center' => true,
-                'marker' => true,
-                'draggable' => true,
-                'eventDragEnd' => 'createCompany(event);'
-            ]);
-        }
+        //        if (old('lon') && old('lat')) {
+        //            Mapper::map(old('lat'), old('lon'), [
+        //                'zoom' => 10,
+        //                'center' => true,
+        //                'marker' => true,
+        //                'draggable' => true,
+        //                'eventDragEnd' => 'createCompany(event);'
+        //            ]);
+        //        }
+        //        else {
+        //            Mapper::location('gaza strip')->map([
+        //                'zoom' => 10,
+        //                'center' => true,
+        //                'marker' => true,
+        //                'draggable' => true,
+        //                'eventDragEnd' => 'createCompany(event);'
+        //            ]);
+        //        }
 
         if (in_array($category_id, explode(',', config('settings.services_categories')))) {
             return View('adforest.advertisement.form.infoService', $data);

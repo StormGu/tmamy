@@ -100,7 +100,7 @@ class SocialController extends Controller
                 $socialData->social_id  = $user->id;
                 $socialData->provider   = $provider;
                 $user->social()->save($socialData);
-                $user->attachRole($role);
+                $user->assignRole($role->name);
                 $user->activated = true;
 
                 $user->profile()->save($profile);

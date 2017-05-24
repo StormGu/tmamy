@@ -65,12 +65,12 @@ class ActivateController extends Controller
 
             Log::info('Activated user attempted to visit ' . $currentRoute . '. ', [$user]);
 
-            if ($user->isAdmin()) {
-                return redirect()->route(self::getAdminHomeRoute())->with('message', [
-                        'type' => 'info',
-                        'message' => trans('auth.alreadyActivated'),
-                    ]);
-            }
+//            if ($user->isAdmin()) {
+//                return redirect()->route(self::getAdminHomeRoute())->with('message', [
+//                        'type' => 'info',
+//                        'message' => trans('auth.alreadyActivated'),
+//                    ]);
+//            }
 
             return redirect()->route(self::getUserHomeRoute())->with('message', [
                     'type' => 'info',
@@ -152,7 +152,7 @@ class ActivateController extends Controller
         $user = Auth::user();
         $currentRoute = Route::currentRouteName();
         $ipAddress = new CaptureIpTrait;
-        $role = Role::where('name', '=', 'user')->first();
+        $role = Role::where('name', '=', 'User')->first();
         $profile = new Profile;
 
         $profile->points = config('settings.basic_user_points');
@@ -176,8 +176,7 @@ class ActivateController extends Controller
         }
 
         $user->activated = true;
-        $user->detachAllRoles();
-        $user->attachRole($role);
+        $user->roles()->sync($role->id);
         $user->signup_confirmation_ip_address = $ipAddress->getClientIp();
         $user->profile()->save($profile);
         $user->save();
@@ -189,13 +188,13 @@ class ActivateController extends Controller
 
         Log::info('Registered user successfully activated. ' . $currentRoute . '. ', [$user]);
 
-        if ($user->isAdmin()) {
-            return redirect()->route(self::$getAdminHomeRoute())->with('message', [
-                    'type' => 'success',
-                    'message' => trans('auth.successActivated'),
-                ]);
-
-        }
+//        if ($user->isAdmin()) {
+//            return redirect()->route(self::$getAdminHomeRoute())->with('message', [
+//                    'type' => 'success',
+//                    'message' => trans('auth.successActivated'),
+//                ]);
+//
+//        }
 
         return redirect()->route(self::getUserHomeRoute())->with('message', [
                 'type' => 'success',

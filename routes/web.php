@@ -245,6 +245,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'adpoints']],
     Route::get('store/{id}/edit', 'Site\StoreController@edit');
     Route::post('store', 'Site\StoreController@store');
     Route::post('store/{id}', 'Site\StoreController@update');
+
+    Route::get('advertisement/{id}/{status}', 'Site\AdvertisementController@changeStatus');
 });
 
 
@@ -290,7 +292,7 @@ Route::get('image/{size}/{name}', function ($size = null, $name = null) {
             $size = explode('×', $size);
 
         $cache_image = Image::cache(function ($image) use ($size, $name) {
-            return $image->make(url('/' . $name))->fit($size[0], $size[1]);
+            return $image->make(public_path().'/'. $name)->fit($size[0], $size[1]);
         }, 10);
         return Response::make($cache_image, 200, ['Content-Type' => 'image']);
     }

@@ -9,7 +9,6 @@
 
 @section('content')
 
-
     <section class="section-padding gray">
         <div class="container">
             <div class="row">

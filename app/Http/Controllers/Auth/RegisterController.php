@@ -118,7 +118,7 @@ class RegisterController extends Controller
             'points' => 0
         ]);
 
-        $user->attachRole($role);
+        $user->assignRole($role->name);
         $this->initiateEmailActivation($user);
 
         return $user;

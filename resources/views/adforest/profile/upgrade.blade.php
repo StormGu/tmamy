@@ -12,7 +12,6 @@
         <div class="container">
             <div class="row">
 
-
                 <br>
                 <div class="row">
                     <!-- Middle Content Area -->
@@ -32,14 +31,14 @@
                                     </ul>
                                 </div>
 
-                                <div class="form-group col-md-12 {{ $errors->has('roles') ? ' has-error' : '' }}">
-                                    {!! Form::label('roles', __('profile.roles')) !!}
+                                {{--<div class="form-group col-md-12 {{ $errors->has('roles') ? ' has-error' : '' }}">--}}
+                                    {{--{!! Form::label('roles', __('profile.roles')) !!}--}}
 
-                                    {!! Form::select('roles', \jeremykenedy\LaravelRoles\Models\Role::whereNotIn('id', \Auth::user()->roles()->pluck('role_user.id'))->whereLevel(1)->pluck('name', 'id'), null, ['class' => 'form-control']) !!}
-                                    @if ($errors->has('roles'))
-                                        <span class="text-danger">{{ $errors->first('roles') }}</span>
-                                    @endif
-                                </div>
+                                    {{--{!! Form::select('roles', [2 => 'Yellow User', 4 => 'Business User'], null, ['class' => 'form-control']) !!}--}}
+                                    {{--@if ($errors->has('roles'))--}}
+                                        {{--<span class="text-danger">{{ $errors->first('roles') }}</span>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
 
                                 <div class="form-group col-md-12 {{ $errors->has('roles') ? ' has-error' : '' }}">
                                     {!! Form::label('coupon', __('profile.coupon')) !!}

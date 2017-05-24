@@ -176,38 +176,39 @@ class UserSettingController extends Controller
 
     public function updateUpgrade(Request $request) {
 
-        $coupon = Coupon::where('code', $request->get('coupon'))->where('expire_date', '>', date('Y-m-d'))->get();
+        if (\App\Models\Coupon::whereCode($request->get('coupon'))->count()) {
 
-        if (!$coupon->count()) {
-            return back()->withMessage([
-                'type' => 'warning',
-                'message' => trans('common.wrong_copoun')
-            ]);
-        }
+            if (!\Auth::user()->coupons()->count()) {
 
-        $role = Role::find($request->input('roles'));
+                $coupon = \App\Models\Coupon::whereCode($request->get('coupon'))
+                    ->where('expire_date', '>', date('Y-m-d'))
+                    ->first();
 
-        $user = User::findOrFail(\Auth::id());
+                \Auth::user()->coupons()->attach($coupon->id);
 
-        if (!$user->hasRole($role->id)) {
+                $currentPoints = Profile::whereUserId(\Auth::id())->first();
+                $points = $currentPoints->points + $coupon->percentage;
 
+                Profile::whereUserId(\Auth::id())->update(['points' => $points]);
 
-            $user->attachRole($role->id);
-
-            $updatePoints = Profile::where('user_id', $user->id)->first();
-            $updatePoints->points += config('settings.business_points');
-            $updatePoints->save();
-
-            return back()->withMessage([
-                'type' => 'success',
-                'message' => trans('common.success_edit')
-            ]);
+                return back()->withMessage([
+                    'type' => 'success',
+                    'message' => trans('common.correct_coupon')
+                ]);
+            }
+            else {
+                return back()->withMessage([
+                    'type' => 'warning',
+                    'message' => trans('common.coupon_have_been_used')
+                ]);
+            }
         }
         else {
             return back()->withMessage([
                 'type' => 'warning',
-                'message' => trans('common.you_have_this_role')
+                'message' => trans('common.wrong_coupon')
             ]);
         }
+
     }
 }

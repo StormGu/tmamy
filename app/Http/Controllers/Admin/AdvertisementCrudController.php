@@ -143,6 +143,7 @@ class AdvertisementCrudController extends CrudController
         // $this->crud->orderBy();
         // $this->crud->groupBy();
         // $this->crud->limit();
+        $this->crud->orderBy('id', 'desc');
 
         $this->crud->removeButton('create');
         $this->crud->removeButton('update');
