@@ -30,16 +30,17 @@
                     <div class="mainmenu">
                         <nav>
                             <ul id="nav">
-                                @foreach(\App\Models\Category::parents()->limit(11)->pluck('name', 'id') as $category_id => $category)
-                                    <li data-category="{{ $category }}" style="margin-left: 0px;">
-                                        <a href="{{ url('category/' . $category_id) }}">{{ $category }}</a>
+                                @php $categories = \App\Models\Category::parents()->limit(11)->with('children')->get(); @endphp
+                                @foreach($categories as $category)
+                                    <li data-category="{{ $category->name }}" style="margin-left: 0px;">
+                                        <a href="{{ url('category/' . $category->id) }}">{{ $category->name }}</a>
                                         <div class="megamenu healths" style="opacity: 0.8;">
                                             <div class="megamenu-image clearfix">
                                                 <div class="col-md-3 mega-banner">
                                                     <div class="none">
-                                                        @foreach(\App\Models\Category::whereParentId($category_id)->limit(15)->pluck('name', 'id') as $child_id => $child_name)
-                                                            <a href="{{ url('category/' . $child_id) }}"
-                                                               class="mega-title">{{$child_name}}</a>
+                                                        @foreach($category->children as $child)
+                                                            <a href="{{ url('category/' . $child->id) }}"
+                                                               class="mega-title">{{$child->name}}</a>
                                                             @if($loop->iteration % 5 == 0)
                                                     </div>
                                                 </div>

@@ -27,6 +27,7 @@ class Advertisement extends Model
     protected $fillable = [
         'advertisementno',
         'category_id',
+        'subcategory_id',
         'account_type_id',
         'customer_id',
         'advertisment_type_id',

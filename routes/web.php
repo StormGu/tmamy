@@ -45,7 +45,7 @@ Route::group([
     // Ismail Add Adv Routes
     Route::get('AddAdv', 'AdvertisementController@AddAdvertisementStep1');
     Route::get('AddAdv/billing', 'AdvertisementController@AddAdvertisementBilling');
-    Route::get('AddAdv/{category_id}', 'AdvertisementController@AddAdvertisementStep3');
+    Route::get('AddAdv/{main_category_id}/{category_id}', 'AdvertisementController@AddAdvertisementStep3');
 
     // Route::get('AddAdv/{category_id}/{subcategory_id}', 'AdvertisementController@AddAdvertisementStep3');
     Route::post('CreateAdv', 'AdvertisementController@CreateAdvertisement');
@@ -60,7 +60,7 @@ Route::group([
     //    Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
     //        ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
 
-    Route::get('getSubCategories/{category_id}', 'AdvertisementController@getSubCategories');
+    Route::get('getSubCategories/{main_category_id}/{category_id}', 'AdvertisementController@getSubCategories');
     Route::get('checkCoupon', 'AdvertisementController@checkCoupon');
 
 });
@@ -271,7 +271,7 @@ Route::get('image/{size}/{folder}/{id}/{name}', function ($size = null, $folder 
 
         $cache_image = Image::cache(function ($image) use ($size, $id, $name, $folder) {
             // dd(storage_path() . '/' . $folder . '/' . $id . '/' . $name);
-            return $image->make(storage_path() . '/' . $folder . '/' . $id . '/' . $name)->fit($size[0], $size[1]);
+            return $image->make(storage_path($folder . '/' . $id . '/' . $name))->fit($size[0], $size[1]);
 
             // return $image->make(url('/' . $name))->fit($size[0], $size[1]);
         }, 10);
@@ -292,7 +292,7 @@ Route::get('image/{size}/{name}', function ($size = null, $name = null) {
             $size = explode('×', $size);
 
         $cache_image = Image::cache(function ($image) use ($size, $name) {
-            return $image->make(public_path().'/'. $name)->fit($size[0], $size[1]);
+            return $image->make(public_path($name))->fit($size[0], $size[1]);
         }, 10);
         return Response::make($cache_image, 200, ['Content-Type' => 'image']);
     }
@@ -328,5 +328,5 @@ Route::get('images/profile/{id}/avatar/{image}', [
 
 
 Route::get('/ibra', function () {
-    
+
 });

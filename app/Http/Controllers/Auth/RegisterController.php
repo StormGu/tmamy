@@ -8,10 +8,9 @@ use App\Traits\CaptchaTrait;
 use App\Traits\CaptureIpTrait;
 use App\Traits\ActivationTrait;
 use App\Http\Controllers\Controller;
+use Backpack\PermissionManager\app\Models\Role;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use jeremykenedy\LaravelRoles\Models\Permission;
-use jeremykenedy\LaravelRoles\Models\Role;
 
 class RegisterController extends Controller
 {

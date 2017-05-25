@@ -22,7 +22,7 @@
                         <div class="subcategory">
                             @foreach(\App\Models\Category::parents()->get() as $category)
                                 <div class="col-md-3" style="padding: 20px;">
-                                    <a href="{{ url('getSubCategories/' . $category->id) }}"
+                                    <a href="{{ url('getSubCategories/' .  $category->id . '/' . $category->id) }}"
                                        class="col-md-12 btn btn-default ajax">
                                         {{ $category->name }}
                                     </a>

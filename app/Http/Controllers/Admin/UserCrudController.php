@@ -11,6 +11,7 @@ use App\Http\Requests\UserRequest as StoreRequest;
 use App\Http\Requests\UserRequest as UpdateRequest;
 use Illuminate\Http\Request;
 
+
 class UserCrudController extends CrudController
 {
     public function setup() {
@@ -64,7 +65,7 @@ class UserCrudController extends CrudController
             'name' => 'roles',
             'entity' => 'roles',
             'attribute' => 'name',
-            'model' => '\jeremykenedy\LaravelRoles\Models\Role',
+            'model' => '\Backpack\PermissionManager\app\Models\Role',
             'pivot' => true,
         ]);
 
