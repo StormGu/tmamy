@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use App\Models\Category;
+use JWTAuth;
 
 class AdsController extends Controller
 {
@@ -40,9 +41,48 @@ class AdsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        //
+  public function store(Request $request) {
+
+        $user = JWTAuth::parseToken()->authenticate();
+
+        $adv = new Advertisement;
+
+        $Input = $request->all();
+
+        $adv->category_id = $Input['category_id'];
+
+        $filelogo = $request->file('image_filename');
+        $logoName = time() . '.' . $filelogo->getClientOriginalName();
+        $filelogo->move("uploads/", $logoName);
+
+        $adv->advertisementno = 1555;
+        $adv->title = $Input['title'];
+        $adv->user_id = $user->id;
+        $adv->category_id = $Input['category_id'];
+        $adv->country_id = $Input['country_id'];
+        $adv->title = $Input['title'];
+        $adv->details = $Input['details'];
+        $adv->mobile_no = $Input['mobile_no'];
+        $adv->phone_no = $Input['phone_no'];
+        $adv->advertisment_date = $Input['advertisment_date'];
+        $adv->expiry_date = $Input['expiry_date'];
+        $adv->advertisment_type_id = $Input['advertisment_type_id'];
+        $adv->price = $Input['price'];
+        $adv->image_filename = 'uploads/' . $logoName;
+
+        if ($user->Points == 0) 
+           return response()->json(['success'=> false,'message' => [trans('common.failed_added')]]);
+       
+       
+            $user->Points = $user->Points - 300;
+            $user->save();
+            $adv->save();
+          return response()->json(['success'=> true,'message' => [trans('common.success_added')]]);
+
+
+
     }
+
 
     /**
      * Display the specified resource.

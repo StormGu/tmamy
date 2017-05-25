@@ -11,6 +11,9 @@ use App\Models\StoreSubscription;
 
 class StoreController extends Controller
 {
+
+
+    private $is_success= false;
     /**
      * Display a listing of the resource.
      *
@@ -21,21 +24,14 @@ class StoreController extends Controller
         $store  = Store::orderBy('id','desc')->paginate(20)->toArray();
 
         if(count($store))
-            $is_success = true;
+            $this->is_success = true;
 
-        return response()->json(['success'=>$is_success ,'message' => [],'data'=>$store], 200);
+      return response()->json(['success'=>$this->is_success ,'message' => [],'data'=>$stroe]);
     }
  
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -45,7 +41,22 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = JWTAuth::parseToken()->authenticate();
+        $store = new Store();
+        $store->fill($request->all());
+        $store->user_id = $user->id;
+        $store->status = 'waiting_approval';
+
+        if ($store->save()) {
+
+            if (\Input::hasFile('image')) {
+                $this->uploadPic($store->id, \Input::file('image'));
+           return response()->json(['success'=> true,'message' => [trans('common.success_added')]]);
+            }
+      }
+
+     return response()->json(['success'=> false,'message' => [trans('common.failed_added')]]);
+
     }
 
     /**
@@ -64,17 +75,7 @@ class StoreController extends Controller
         return response()->json(['success'=>$this->is_success ,'message' =>[],'data'=>$store]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
+  
     /**
      * Update the specified resource in storage.
      *
@@ -152,5 +153,19 @@ class StoreController extends Controller
 
 
 
+
+
+ private function uploadPic($id, $file) {
+
+        $image_path = storage_path('stores' . DIRECTORY_SEPARATOR . $id);
+
+        if (!\File::exists($image_path)) {
+            \File::makeDirectory($image_path, 0755, true, true);
+        }
+
+        $filename = md5($file) . '.' . $file->getClientOriginalExtension();
+        \Image::make($file)->save($image_path . DIRECTORY_SEPARATOR . $filename);
+        \DB::table('store')->where('id', $id)->update(['logo_file_name' => $filename]);
+    }
 
 }

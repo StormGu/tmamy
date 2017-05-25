@@ -50,8 +50,8 @@ use jeremykenedy\LaravelRoles\Models\Role;
             'password' => 'required|min:6|max:20|confirmed',
             'password_confirmation' => 'required|same:password',
         ], [
-            'name.unique' => trans('auth.userNameTaken'),
-            'name.required' => trans('auth.userNameRequired'),
+         //   'name.unique' => trans('auth.userNameTaken'),
+        //   'name.required' => trans('auth.userNameRequired'),
             'first_name.required' => trans('auth.fNameRequired'),
             'last_name.required' => trans('auth.lNameRequired'),
             'email.required' => trans('auth.emailRequired'),
@@ -64,8 +64,6 @@ use jeremykenedy\LaravelRoles\Models\Role;
             if ($validator->fails()) 
                 return ['success'=>false,'message'=>$validator->errors()->all()];
           
-
-        $ipAddress = new CaptureIpTrait;
         $role = Role::where('name', '=', 'Unverified')->first();
 
         $user = User::create([
@@ -75,7 +73,7 @@ use jeremykenedy\LaravelRoles\Models\Role;
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'token' => str_random(64),
-            'signup_ip_address' => $ipAddress->getClientIp(),
+            'signup_ip_address' => 0,
             'activated' => !config('settings.activation'),
             'points' => 0
         ]);
